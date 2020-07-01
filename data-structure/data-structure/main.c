@@ -7,9 +7,21 @@
 //
 
 #include <stdio.h>
+#include "fibonacci.h"
+
+#include "common.h"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    printf("Hello, World!\n");
+    
+    time_t start, end;
+    start = clock();
+//    start = time(NULL);
+    int result = fibonacci(44);
+    printf("%d\n", result);
+    end = clock();
+//    end = time(NULL);
+    printf("%.2f ms\n", difftime(end, start));
+    
+
     return 0;
 }

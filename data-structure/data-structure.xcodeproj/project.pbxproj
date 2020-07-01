@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0335DF1124AB8DE400507ACF /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 0335DF1024AB8DE400507ACF /* main.c */; };
+		03A7605E24ACB4F700940BC7 /* fibonacci.c in Sources */ = {isa = PBXBuildFile; fileRef = 03A7605D24ACB4F700940BC7 /* fibonacci.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,9 @@
 /* Begin PBXFileReference section */
 		0335DF0D24AB8DE400507ACF /* data-structure */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "data-structure"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0335DF1024AB8DE400507ACF /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		03A7605B24ACB4A500940BC7 /* common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+		03A7605C24ACB4F700940BC7 /* fibonacci.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fibonacci.h; sourceTree = "<group>"; };
+		03A7605D24ACB4F700940BC7 /* fibonacci.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fibonacci.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,9 @@
 		0335DF0F24AB8DE400507ACF /* data-structure */ = {
 			isa = PBXGroup;
 			children = (
+				03A7605B24ACB4A500940BC7 /* common.h */,
+				03A7605C24ACB4F700940BC7 /* fibonacci.h */,
+				03A7605D24ACB4F700940BC7 /* fibonacci.c */,
 				0335DF1024AB8DE400507ACF /* main.c */,
 			);
 			path = "data-structure";
@@ -119,6 +126,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03A7605E24ACB4F700940BC7 /* fibonacci.c in Sources */,
 				0335DF1124AB8DE400507ACF /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,4 +11,8 @@
 
 #include <stdio.h>
 
+int fibonacci(int);
+int fibonacci_(int);
+
+
 #endif /* fibonacci_h */
