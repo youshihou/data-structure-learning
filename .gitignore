@@ -1,6 +1,9 @@
 # Prerequisites
 *.d
 
+xcuserdata/
+.DS_Store
+
 # Object files
 *.o
 *.ko
