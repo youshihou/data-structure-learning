@@ -17,9 +17,6 @@ struct Node {
     struct Node* next;
 };
 
-int size;
-struct Node* first;
-
 
 int size_(void);
 bool isEmpty(void);

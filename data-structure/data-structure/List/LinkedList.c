@@ -11,6 +11,8 @@
 
 static int ELEMENT_NOT_FOUND = -1;
 
+int size;
+struct Node* first;
 
 
 // MARK: - private
