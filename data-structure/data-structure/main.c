@@ -19,7 +19,10 @@ int main(int argc, const char * argv[]) {
         _add(88);
         _add(77);
         _add(66);
-        _add(55);
+        _add(10);
+        for (int i = 0; i < 30; i++) {
+            _add(i);
+        }
         _print();
 //        _remove(0);
 //        _remove(_size() - 1);
@@ -28,14 +31,13 @@ int main(int argc, const char * argv[]) {
 //        __add(1, 100);
 //        __add(_size(), 100);
 //        __add(_size() - 1, 100);
-        _set(3, 80);
-        _print();
-        assert(_get(3) == 80);
-        
-        _remove(0);
-        assert(_get(0) == 88);
-        assert(_size() == 4);
-        
+//        _set(3, 80);
+//        _print();
+//        assert(_get(3) == 80);
+//
+//        _remove(0);
+//        assert(_get(0) == 88);
+//        assert(_size() == 4);
 #endif
     }
     

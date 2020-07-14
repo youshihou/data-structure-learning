@@ -12,6 +12,7 @@ static int ELEMENT_NOT_FOUND_ = -1;
 static int DEFAULT_CAPACITY = 10;
 
 int _size_ = 0;
+int _len = 0;
 int *elements = NULL;
 
 // MARK: - private
@@ -32,10 +33,25 @@ void _rangeCheckForAdd(int index) {
     }
 }
 
+void _ensureCapacity(int capacity) {
+    int oldCapacity = _len;
+    if (oldCapacity >= capacity) { return; }
+    
+    int newCapacity = oldCapacity + (oldCapacity >> 1);
+    _len = newCapacity;
+    int *newElements = malloc(sizeof(int) * newCapacity);
+    for (int i = 0; i < _size_; i++) { // CARE!!! IS _size_ NOT _len
+        newElements[i] = elements[i];
+    }
+    elements = newElements;
+    free(newElements);
+    printf("oldCapacity: %d --> newCapacoty: %d\n", oldCapacity, newCapacity);
+}
+
 // MARK: - public
 void createList(int capacity) {
-    int len = capacity < DEFAULT_CAPACITY ? DEFAULT_CAPACITY : capacity;
-    elements = malloc(sizeof(int) * len);
+    _len = capacity < DEFAULT_CAPACITY ? DEFAULT_CAPACITY : capacity;
+    elements = malloc(sizeof(int) * _len);
 }
 
 void _createList() {
@@ -65,6 +81,9 @@ bool _contains(int element) {
 
 void __add(int index, int element) {
     _rangeCheckForAdd(index);
+    
+    _ensureCapacity(_size_ + 1);
+    
     for (int i = _size_ - 1; i >= index; i--) { // CARE!!! i = [_size_ - 1, index]
         elements[i + 1] = elements[i];
     }
