@@ -7,12 +7,11 @@
 //
 
 #include "LinkedList.h"
-#include "common.h"
 
 static int ELEMENT_NOT_FOUND = -1;
 
-int size;
-struct Node* first;
+int size = 0;
+struct Node* first = NULL;
 
 
 // MARK: - private
