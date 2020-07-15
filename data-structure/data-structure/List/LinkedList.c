@@ -17,7 +17,7 @@ struct Node* first = NULL;
 // MARK: - private
 void outOfBounds(int index) {
     printf("Index: %d, Size: %d", index, size);
-    assert(true);
+    assert(false);
 }
 
 void rangeCheck(int index) {
@@ -32,7 +32,23 @@ void rangeCheckForAdd(int index) {
     }
 }
 
+struct Node* node(int index) {
+    rangeCheck(index);
+    
+    struct Node* node = first;
+    for (int i = 0; i < index; i++) {
+        node = node->next;
+    }
+    return node;
+}
+
 // MARK: - public
+void create_(void) {
+    first = malloc(sizeof(struct Node));
+    first->element = 0;
+    first->next = NULL;
+}
+
 int size_(void) {
     return size;
 }
@@ -56,16 +72,6 @@ bool contains(int element) {
     return indexOf(element) != ELEMENT_NOT_FOUND;
 }
 
-struct Node* node(int index) {
-    rangeCheck(index);
-    
-    struct Node* node = first;
-    for (int i = 0; i < index; i++) {
-        node = node->next;
-    }
-    return node;
-}
-
 void add_(int index, int element) {
     struct Node* _node = malloc(sizeof(struct Node));
     _node->element = element;
@@ -87,17 +93,21 @@ void add(int element) {
 }
 
 int remove_(int index) {
-    struct Node* _node = first;
+    struct Node* tmp = first;
+    int element = tmp->element;
     if (index == 0) {
         first = first->next;
+        free(tmp);
     } else {
         struct Node* prev = node(index - 1);
-        _node = prev->next;
+        tmp = prev->next;
+        element = tmp->element;
         prev->next = prev->next->next;
+        free(tmp);
     }
     size--;
 
-    return _node->element;
+    return element;
 }
 
 
@@ -121,5 +131,15 @@ void clear_(void) {
     size = 0;
 }
 
-
-
+void print_(void) {
+    printf("size = %d, [", size);
+    struct Node* node = first;
+    for (int i = 0; i < size; i++) {
+        if (i != 0) {
+            printf(", ");
+        }
+        printf("%d", node->element);
+        node = node->next;
+    }
+    printf("]\n");
+}

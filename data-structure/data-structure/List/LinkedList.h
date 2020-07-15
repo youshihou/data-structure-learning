@@ -18,6 +18,7 @@ struct Node {
 };
 
 
+void create_(void);
 int size_(void);
 bool isEmpty(void);
 int indexOf(int);
@@ -28,6 +29,6 @@ int remove_(int);
 int get(int);
 int set(int, int);
 void clear_(void);
-
+void print_(void);
 
 #endif /* LinkedList_h */

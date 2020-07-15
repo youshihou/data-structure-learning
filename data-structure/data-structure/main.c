@@ -13,7 +13,7 @@
 
 int main(int argc, const char * argv[]) {
     {
-#if 1
+#if 0
         _createList();
         _add(99);
         _add(88);
@@ -41,6 +41,20 @@ int main(int argc, const char * argv[]) {
 #endif
     }
     
-
+    {
+#if 1
+        create_();
+        add(20);
+        add_(0, 10);
+        add(30);
+        add_(size_(), 40);
+        print_();
+        remove_(1);
+        print_();
+#endif
+        
+    }
+    
+    
     return 0;
 }
