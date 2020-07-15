@@ -20,7 +20,7 @@ int main(int argc, const char * argv[]) {
         _add(77);
         _add(66);
         _add(10);
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 20; i++) {
             _add(i);
         }
         _print();

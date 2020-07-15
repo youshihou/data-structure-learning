@@ -83,10 +83,14 @@ void __add(int index, int element) {
     _rangeCheckForAdd(index);
     
     _ensureCapacity(_size_ + 1);
-    
-    for (int i = _size_ - 1; i >= index; i--) { // CARE!!! i = [_size_ - 1, index]
-        elements[i + 1] = elements[i];
+  
+    for (int i = _size_; i > index; i--) { // CARE!!! i = [_size_, index)
+        elements[i] = elements[i - 1];
     }
+
+//    for (int i = _size_ - 1; i >= index; i--) { // CARE!!! i = [_size_ - 1, index]
+//        elements[i + 1] = elements[i];
+//    }
     elements[index] = element;
     _size_++;
 }
@@ -100,6 +104,10 @@ int _remove(int index) {
     _rangeCheck(index);
     
     int old = elements[index];
+//    for (int i = index + 1; i < _size_; i++) { // CARE!!! i = [index + 1, _size_)
+//        elements[i - 1] = elements[i];
+//    }
+    
     for (int i = index + 1; i <= _size_ - 1; i++) { // CARE!!! i = [index + 1, _size_ - 1]
         elements[i - 1] = elements[i];
     }
