@@ -48,6 +48,21 @@ void _ensureCapacity(int capacity) {
     printf("oldCapacity: %d --> newCapacoty: %d\n", oldCapacity, newCapacity);
 }
 
+void _trim(void) {
+    int oldCapacity = _len;
+    int newCapacity = (oldCapacity >> 1);
+    if (_size_ >= newCapacity || oldCapacity <= DEFAULT_CAPACITY) { return; } // CARE!!! IS || NOT &&
+    
+    _len = newCapacity;
+    int *newElements = malloc(sizeof(int) * newCapacity); // ERROR!!! why?
+    for (int i = 0; i < _size_; i++) {
+        newElements[i] = elements[i];
+    }
+    elements = newElements;
+//    free(newElements); // ERROR!!! why?
+    printf("oldCapacity: %d --> newCapacoty: %d\n", oldCapacity, newCapacity);
+}
+
 // MARK: - public
 void createList(int capacity) {
     _len = capacity < DEFAULT_CAPACITY ? DEFAULT_CAPACITY : capacity;
@@ -112,6 +127,9 @@ int _remove(int index) {
         elements[i - 1] = elements[i];
     }
     _size_--;
+    
+    _trim();
+
     return old;
 }
 

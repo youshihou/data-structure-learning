@@ -13,17 +13,17 @@
 
 int main(int argc, const char * argv[]) {
     {
-#if 0
-        _createList();
-        _add(99);
-        _add(88);
-        _add(77);
-        _add(66);
-        _add(10);
-        for (int i = 0; i < 20; i++) {
-            _add(i);
-        }
-        _print();
+#if 1
+//        _createList();
+//        _add(99);
+//        _add(88);
+//        _add(77);
+//        _add(66);
+//        _add(10);
+//        for (int i = 0; i < 20; i++) {
+//            _add(i);
+//        }
+//        _print();
 //        _remove(0);
 //        _remove(_size() - 1);
 //        _remove(2);
@@ -38,11 +38,20 @@ int main(int argc, const char * argv[]) {
 //        _remove(0);
 //        assert(_get(0) == 88);
 //        assert(_size() == 4);
+        
+        _createList();
+        for (int i = 0; i < 50; i++) {
+            _add(i);
+        }
+        for (int i = 0; i < 50; i++) {
+            _remove(0);
+        }
+        _print();
 #endif
     }
     
     {
-#if 1
+#if 0
         create_();
         add(20);
         add_(0, 10);
