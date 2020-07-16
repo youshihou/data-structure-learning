@@ -43,6 +43,8 @@ struct Node* node(int index) {
 }
 
 // MARK: - public
+
+// use virtual head node
 void create_(void) {
     first = malloc(sizeof(struct Node));
     first->element = 0;
@@ -58,7 +60,10 @@ bool isEmpty(void) {
 }
 
 int indexOf(int element) {
-    struct Node* node = first;
+    // use virtual head node
+    struct Node* node = first->next;
+    
+//    struct Node* node = first;
     for (int i = 0; i < size; i--) {
         if (node->element == element) {
             return i;
@@ -77,16 +82,22 @@ void add_(int index, int element) {
     
     struct Node* _node = malloc(sizeof(struct Node));
     _node->element = element;
-    if (index == 0) {
-//        _node->next = NULL; // error?
-//        first->next = _node; // error?
-        _node->next = first; // why?
-        first = _node; // why?
-    } else {
-        struct Node* prev = node(index - 1);
-        _node->next = prev->next;
-        prev->next = _node;
-    }
+    
+    // use virtual head node
+    struct Node* prev = index == 0 ? first : node(index - 1);
+    _node->next = prev->next;
+    prev->next = _node;
+    
+//    if (index == 0) {
+////        _node->next = NULL; // error?
+////        first->next = _node; // error?
+//        _node->next = first; // why?
+//        first = _node; // why?
+//    } else {
+//        struct Node* prev = node(index - 1);
+//        _node->next = prev->next;
+//        prev->next = _node;
+//    }
     size++;
 }
 
@@ -97,18 +108,25 @@ void add(int element) {
 int remove_(int index) {
     rangeCheck(index);
     
-    struct Node* tmp = first;
+    // use virtual head node
+    struct Node* prev = index == 0 ? first : node(index - 1);
+    struct Node* tmp = prev->next;
     int element = tmp->element;
-    if (index == 0) {
-        first = first->next;
-        free(tmp);
-    } else {
-        struct Node* prev = node(index - 1);
-        tmp = prev->next;
-        element = tmp->element;
-        prev->next = prev->next->next;
-        free(tmp);
-    }
+    prev->next = prev->next->next;
+    free(tmp);
+    
+//    struct Node* tmp = first;
+//    int element = tmp->element;
+//    if (index == 0) {
+//        first = first->next;
+//        free(tmp);
+//    } else {
+//        struct Node* prev = node(index - 1);
+//        tmp = prev->next;
+//        element = tmp->element;
+//        prev->next = prev->next->next;
+//        free(tmp);
+//    }
     size--;
 
     return element;
@@ -127,17 +145,30 @@ int set(int index, int element) {
 }
 
 void clear_(void) {
-    while (first) {
-        struct Node* tmp = first;
-        first = first->next;
+    // use virtual head node
+    
+    struct Node* curr = first->next;
+    while (curr) {
+        struct Node* tmp = curr;
+        curr = curr->next;
         free(tmp);
     }
+        
+//    while (first) {
+//        struct Node* tmp = first;
+//        first = first->next;
+//        free(tmp);
+//    }
     size = 0;
 }
 
 void print_(void) {
     printf("size = %d, [", size);
-    struct Node* node = first;
+    
+    // use virtual head node
+    struct Node* node = first->next;
+    
+//    struct Node* node = first;
     for (int i = 0; i < size; i++) {
         if (i != 0) {
             printf(", ");
