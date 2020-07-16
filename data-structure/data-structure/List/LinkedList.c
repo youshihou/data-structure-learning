@@ -73,6 +73,8 @@ bool contains(int element) {
 }
 
 void add_(int index, int element) {
+    rangeCheckForAdd(index);
+    
     struct Node* _node = malloc(sizeof(struct Node));
     _node->element = element;
     if (index == 0) {
@@ -93,6 +95,8 @@ void add(int element) {
 }
 
 int remove_(int index) {
+    rangeCheck(index);
+    
     struct Node* tmp = first;
     int element = tmp->element;
     if (index == 0) {
