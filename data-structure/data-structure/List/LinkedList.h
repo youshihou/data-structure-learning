@@ -1,34 +1,34 @@
 //
-//  LinkedList.h
+//  DoubleLinkedList.h
 //  data-structure
 //
-//  Created by Ankui on 7/13/20.
+//  Created by Ankui on 7/17/20.
 //  Copyright © 2020 Ankui. All rights reserved.
 //
 
-#ifndef LinkedList_h
-#define LinkedList_h
+#ifndef DoubleLinkedList_h
+#define DoubleLinkedList_h
 
 #include "common.h"
 
-
-struct Node {
+struct ListNode {
     int element;
-    struct Node* next;
+    struct ListNode* prev;
+    struct ListNode* next;
 };
 
+void list_create(void);
+int list_size(void);
+bool list_isEmpty(void);
+int list_indexOf(int);
+bool list_contains(int);
+void list_add_(int, int);
+void list_add(int);
+int list_remove(int);
+int list_get(int);
+int list_set(int, int);
+void list_clear(void);
+void list_print(void);
 
-void create_(void);
-int size_(void);
-bool isEmpty(void);
-int indexOf(int);
-bool contains(int);
-void add_(int, int);
-void add(int);
-int remove_(int);
-int get(int);
-int set(int, int);
-void clear_(void);
-void print_(void);
 
-#endif /* LinkedList_h */
+#endif /* DoubleLinkedList_h */
