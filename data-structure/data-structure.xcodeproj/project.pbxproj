@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0335DF1124AB8DE400507ACF /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 0335DF1024AB8DE400507ACF /* main.c */; };
-		0344427024BC8EC50030765D /* LinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 0344426F24BC8EC50030765D /* LinkedList.c */; };
+		0344427024BC8EC50030765D /* SingleLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 0344426F24BC8EC50030765D /* SingleLinkedList.c */; };
 		0344427424BC912B0030765D /* ArrayList.c in Sources */ = {isa = PBXBuildFile; fileRef = 0344427324BC912B0030765D /* ArrayList.c */; };
-		038E9F8924C1D41F005DD7A2 /* DoubleLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 038E9F8824C1D41E005DD7A2 /* DoubleLinkedList.c */; };
+		038E9F8924C1D41F005DD7A2 /* LinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 038E9F8824C1D41E005DD7A2 /* LinkedList.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,12 +28,12 @@
 /* Begin PBXFileReference section */
 		0335DF0D24AB8DE400507ACF /* data-structure */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "data-structure"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0335DF1024AB8DE400507ACF /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
-		0344426E24BC8EC50030765D /* LinkedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkedList.h; sourceTree = "<group>"; };
-		0344426F24BC8EC50030765D /* LinkedList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = LinkedList.c; sourceTree = "<group>"; };
+		0344426E24BC8EC50030765D /* SingleLinkedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SingleLinkedList.h; sourceTree = "<group>"; };
+		0344426F24BC8EC50030765D /* SingleLinkedList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SingleLinkedList.c; sourceTree = "<group>"; };
 		0344427224BC912B0030765D /* ArrayList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArrayList.h; sourceTree = "<group>"; };
 		0344427324BC912B0030765D /* ArrayList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ArrayList.c; sourceTree = "<group>"; };
-		038E9F8724C1D41E005DD7A2 /* DoubleLinkedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DoubleLinkedList.h; sourceTree = "<group>"; };
-		038E9F8824C1D41E005DD7A2 /* DoubleLinkedList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = DoubleLinkedList.c; sourceTree = "<group>"; };
+		038E9F8724C1D41E005DD7A2 /* LinkedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkedList.h; sourceTree = "<group>"; };
+		038E9F8824C1D41E005DD7A2 /* LinkedList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = LinkedList.c; sourceTree = "<group>"; };
 		03A7605B24ACB4A500940BC7 /* common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,10 +79,10 @@
 			children = (
 				0344427224BC912B0030765D /* ArrayList.h */,
 				0344427324BC912B0030765D /* ArrayList.c */,
-				0344426E24BC8EC50030765D /* LinkedList.h */,
-				0344426F24BC8EC50030765D /* LinkedList.c */,
-				038E9F8724C1D41E005DD7A2 /* DoubleLinkedList.h */,
-				038E9F8824C1D41E005DD7A2 /* DoubleLinkedList.c */,
+				0344426E24BC8EC50030765D /* SingleLinkedList.h */,
+				0344426F24BC8EC50030765D /* SingleLinkedList.c */,
+				038E9F8724C1D41E005DD7A2 /* LinkedList.h */,
+				038E9F8824C1D41E005DD7A2 /* LinkedList.c */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -145,8 +145,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0344427424BC912B0030765D /* ArrayList.c in Sources */,
-				038E9F8924C1D41F005DD7A2 /* DoubleLinkedList.c in Sources */,
-				0344427024BC8EC50030765D /* LinkedList.c in Sources */,
+				038E9F8924C1D41F005DD7A2 /* LinkedList.c in Sources */,
+				0344427024BC8EC50030765D /* SingleLinkedList.c in Sources */,
 				0335DF1124AB8DE400507ACF /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

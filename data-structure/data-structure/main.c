@@ -8,8 +8,8 @@
 
 #include <stdio.h>
 #include "ArrayList.h"
+#include "SingleLinkedList.h"
 #include "LinkedList.h"
-#include "DoubleLinkedList.h"
 
 int main(int argc, const char * argv[]) {
     {

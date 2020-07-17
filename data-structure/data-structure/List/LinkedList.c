@@ -1,12 +1,12 @@
 //
-//  DoubleLinkedList.c
+//  LinkedList.c
 //  data-structure
 //
 //  Created by Ankui on 7/17/20.
 //  Copyright © 2020 Ankui. All rights reserved.
 //
 
-#include "DoubleLinkedList.h"
+#include "LinkedList.h"
 
 static int _ELEMENT_NOT_FOUND = -1;
 
