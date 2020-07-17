@@ -10,6 +10,7 @@
 		0335DF1124AB8DE400507ACF /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 0335DF1024AB8DE400507ACF /* main.c */; };
 		0344427024BC8EC50030765D /* LinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 0344426F24BC8EC50030765D /* LinkedList.c */; };
 		0344427424BC912B0030765D /* ArrayList.c in Sources */ = {isa = PBXBuildFile; fileRef = 0344427324BC912B0030765D /* ArrayList.c */; };
+		038E9F8924C1D41F005DD7A2 /* DoubleLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 038E9F8824C1D41E005DD7A2 /* DoubleLinkedList.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,8 @@
 		0344426F24BC8EC50030765D /* LinkedList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = LinkedList.c; sourceTree = "<group>"; };
 		0344427224BC912B0030765D /* ArrayList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArrayList.h; sourceTree = "<group>"; };
 		0344427324BC912B0030765D /* ArrayList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ArrayList.c; sourceTree = "<group>"; };
+		038E9F8724C1D41E005DD7A2 /* DoubleLinkedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DoubleLinkedList.h; sourceTree = "<group>"; };
+		038E9F8824C1D41E005DD7A2 /* DoubleLinkedList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = DoubleLinkedList.c; sourceTree = "<group>"; };
 		03A7605B24ACB4A500940BC7 /* common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +81,8 @@
 				0344427324BC912B0030765D /* ArrayList.c */,
 				0344426E24BC8EC50030765D /* LinkedList.h */,
 				0344426F24BC8EC50030765D /* LinkedList.c */,
+				038E9F8724C1D41E005DD7A2 /* DoubleLinkedList.h */,
+				038E9F8824C1D41E005DD7A2 /* DoubleLinkedList.c */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -140,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0344427424BC912B0030765D /* ArrayList.c in Sources */,
+				038E9F8924C1D41F005DD7A2 /* DoubleLinkedList.c in Sources */,
 				0344427024BC8EC50030765D /* LinkedList.c in Sources */,
 				0335DF1124AB8DE400507ACF /* main.c in Sources */,
 			);

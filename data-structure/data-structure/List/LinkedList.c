@@ -64,7 +64,7 @@ int indexOf(int element) {
     struct Node* node = first->next;
     
 //    struct Node* node = first;
-    for (int i = 0; i < size; i--) {
+    for (int i = 0; i < size; i++) {
         if (node->element == element) {
             return i;
         }

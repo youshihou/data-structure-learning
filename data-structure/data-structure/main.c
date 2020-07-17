@@ -9,11 +9,11 @@
 #include <stdio.h>
 #include "ArrayList.h"
 #include "LinkedList.h"
-
+#include "DoubleLinkedList.h"
 
 int main(int argc, const char * argv[]) {
     {
-#if 1
+#if 0
 //        _createList();
 //        _add(99);
 //        _add(88);
@@ -49,7 +49,6 @@ int main(int argc, const char * argv[]) {
         _print();
 #endif
     }
-    
     {
 #if 0
         create_();
@@ -63,7 +62,38 @@ int main(int argc, const char * argv[]) {
 #endif
         
     }
-    
+    {
+#if 1
+//        list_create();
+        list_add(11);
+        list_add(22);
+        list_add(33);
+        list_add(44);
+        
+        list_add_(0, 55);
+        list_print();
+        list_add_(2, 66);
+        list_print();
+        list_add_(list_size(), 77);
+        list_print();
+        printf("---------------------------------------\n");
+        list_remove(0);
+        list_print();
+        list_remove(2);
+        list_print();
+        list_remove(list_size() - 1);
+        list_print();
+        
+        assert(list_indexOf(44) == 3);
+        assert(list_indexOf(22) == -1);
+        assert(list_contains(33));
+        assert(list_get(0) == 11);
+        assert(list_get(1) == 66);
+        assert(list_get(list_size() - 1) == 44);
+
+#endif
+        
+    }
     
     return 0;
 }
