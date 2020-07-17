@@ -71,16 +71,16 @@ int main(int argc, const char * argv[]) {
         list_add(44);
         
         list_add_(0, 55);
-        list_print();
+//        list_print();
         list_add_(2, 66);
-        list_print();
+//        list_print();
         list_add_(list_size(), 77);
-        list_print();
-        printf("---------------------------------------\n");
+//        list_print();
+//        printf("---------------------------------------\n");
         list_remove(0);
-        list_print();
+//        list_print();
         list_remove(2);
-        list_print();
+//        list_print();
         list_remove(list_size() - 1);
         list_print();
         

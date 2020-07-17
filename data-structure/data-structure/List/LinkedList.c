@@ -111,6 +111,15 @@ void list_add_(int index, int element) {
         } else {
             prev->next = add;
         }
+        
+//        add->prev = next->prev;
+//        add->next = next;
+//        if (next->prev == NULL) { // index == 0
+//            listFirst = add;
+//        } else {
+//            next->prev->next = add;
+//        }
+//        next->prev = add; // CARE!!!
     }
     
     listSize++;
@@ -137,6 +146,18 @@ int list_remove(int index) {
     } else {
         next->prev = prev;
     }
+    
+//    if (remove->prev == NULL) { // index == 0
+//        listFirst = remove->next;
+//    } else {
+//        remove->prev->next = remove->next;
+//    }
+//    if (remove->next == NULL) { // index == listSize - 1
+//        listLast = remove->prev;
+//    } else {
+//        remove->next->prev = remove->prev;
+//    }
+
     free(remove);
 
     listSize--;
