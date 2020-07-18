@@ -148,6 +148,20 @@ void test_cycle_list() {
     assert(cl_get(cl_size() - 1) == 44);
 }
 
+void test_josephus() {
+    for (int i = 1; i <= 8; i++) {
+        cl_add(i);
+    }
+    
+    cl_reset();
+    while (!cl_isEmpty()) {
+        cl_next();
+        cl_next();
+        int element = cl_remove_();
+        printf("%d\n", element);
+    }
+}
+
 int main(int argc, const char * argv[]) {
 #if 0
     test_array_list();
@@ -166,7 +180,8 @@ int main(int argc, const char * argv[]) {
 #endif
 
 #if 1
-    test_cycle_list();
+//    test_cycle_list();
+    test_josephus();
 #endif
     
     return 0;

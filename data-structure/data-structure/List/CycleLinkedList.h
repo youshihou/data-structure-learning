@@ -24,4 +24,8 @@ int cl_set(int, int);
 void cl_clear(void);
 void cl_print(void);
 
+void cl_reset(void);
+int cl_next(void);
+int cl_remove_(void);
+
 #endif /* CycleLinkedList_h */

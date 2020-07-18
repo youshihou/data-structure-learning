@@ -11,7 +11,7 @@
 int cl_size_ = 0;
 struct ListNode* cl_first = NULL;
 struct ListNode* cl_last = NULL;
-
+struct ListNode* cl_current = NULL;
 
 // MARK: - private
 void cl_outOfBounds(int index) {
@@ -47,6 +47,29 @@ struct ListNode* cl_node(int index) {
         }
         return node;
     }
+}
+
+int _cl_remove(struct ListNode* remove) {
+    if (cl_size_ == 1) {
+        cl_first = NULL;
+        cl_last = NULL;
+    } else {
+        struct ListNode* prev = remove->prev;
+        struct ListNode* next = remove->next;
+        prev->next = next;
+        next->prev = prev;
+        if (remove == cl_first) { // index == 0
+            cl_first = next;
+        }
+        if (remove == cl_last) { // index == cl_size_ - 1
+            cl_last = prev;
+        }
+    }
+    free(remove);
+
+    cl_size_--;
+
+    return remove->element;
 }
 
 // MARK: - public
@@ -125,28 +148,30 @@ void cl_add(int element) {
 int cl_remove(int index) {
     cl_rangeCheck(index);
     
-    struct ListNode* remove = cl_node(index);
-    int element = remove->element;
-    if (cl_size_ == 1) {
-        cl_first = NULL;
-        cl_last = NULL;
-    } else {
-        struct ListNode* prev = remove->prev;
-        struct ListNode* next = remove->next;
-        prev->next = next;
-        next->prev = prev;
-        if (remove == cl_first) { // index == 0
-            cl_first = next;
-        }
-        if (remove == cl_last) { // index == cl_size_ - 1
-            cl_last = prev;
-        }
-    }
-    free(remove);
-
-    cl_size_--;
-
-    return element;
+    return _cl_remove(cl_node(index));
+    
+//    struct ListNode* remove = cl_node(index);
+//    int element = remove->element;
+//    if (cl_size_ == 1) {
+//        cl_first = NULL;
+//        cl_last = NULL;
+//    } else {
+//        struct ListNode* prev = remove->prev;
+//        struct ListNode* next = remove->next;
+//        prev->next = next;
+//        next->prev = prev;
+//        if (remove == cl_first) { // index == 0
+//            cl_first = next;
+//        }
+//        if (remove == cl_last) { // index == cl_size_ - 1
+//            cl_last = prev;
+//        }
+//    }
+//    free(remove);
+//
+//    cl_size_--;
+//
+//    return element;
 }
 
 
@@ -191,4 +216,28 @@ void cl_print(void) {
         node = node->next;
     }
     printf("]\n");
+}
+
+void cl_reset(void) {
+    cl_current = cl_first;
+}
+
+int cl_next(void) {
+    if (cl_current == NULL) { return ELEMENT_NOT_FOUND; }
+    
+    cl_current = cl_current->next;
+    return cl_current->element;
+}
+
+int cl_remove_(void) {
+    if (cl_current == NULL) { return ELEMENT_NOT_FOUND; }
+    
+    struct ListNode* next = cl_current->next;
+    int element = _cl_remove(cl_current);
+    if (cl_size_ == 0) {
+        cl_current = NULL;
+    } else {
+        cl_current = next;
+    }
+    return element;
 }
