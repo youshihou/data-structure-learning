@@ -9,6 +9,13 @@
 #ifndef stack_h
 #define stack_h
 
-#include <stdio.h>
+#include "common.h"
+
+int stack_size(struct Node**);
+bool stack_isEmpty(struct Node**);
+void stack_push(struct Node**, int);
+int stack_pop(struct Node**);
+int stack_top(struct Node**);
+void stack_print(struct Node**);
 
 #endif /* stack_h */

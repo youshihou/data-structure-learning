@@ -11,7 +11,7 @@
 #include "LinkedList.h"
 #include "SingleCycleLinkedList.h"
 #include "CycleLinkedList.h"
-
+#include "stack.h"
 
 
 void test_array_list() {
@@ -162,6 +162,23 @@ void test_josephus() {
     }
 }
 
+void test_stack() {
+    struct Node* s = NULL;
+    
+    for (int i = 0; i < 5; i++) {
+        printf("push %d\n", i);
+        stack_push(&s, i);
+        stack_print(&s);
+    }
+        
+    while (!stack_isEmpty(&s)) {
+        printf("top gets %d, pop gets %d\n", stack_top(&s), stack_pop(&s));
+        stack_print(&s);
+    }
+}
+
+
+
 int main(int argc, const char * argv[]) {
 #if 0
     test_array_list();
@@ -179,9 +196,13 @@ int main(int argc, const char * argv[]) {
     test_list();
 #endif
 
-#if 1
-//    test_cycle_list();
+#if 0
+    test_cycle_list();
     test_josephus();
+#endif
+
+#if 1
+    test_stack();
 #endif
     
     return 0;

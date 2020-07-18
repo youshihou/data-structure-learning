@@ -13,6 +13,7 @@
 		038E9F8924C1D41F005DD7A2 /* LinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 038E9F8824C1D41E005DD7A2 /* LinkedList.c */; };
 		038E9F8C24C298D4005DD7A2 /* SingleCycleLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 038E9F8B24C298D4005DD7A2 /* SingleCycleLinkedList.c */; };
 		038E9F8F24C2B98A005DD7A2 /* CycleLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 038E9F8E24C2B98A005DD7A2 /* CycleLinkedList.c */; };
+		038E9F9324C2EBE3005DD7A2 /* stack.c in Sources */ = {isa = PBXBuildFile; fileRef = 038E9F9224C2EBE3005DD7A2 /* stack.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,6 +41,8 @@
 		038E9F8B24C298D4005DD7A2 /* SingleCycleLinkedList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SingleCycleLinkedList.c; sourceTree = "<group>"; };
 		038E9F8D24C2B98A005DD7A2 /* CycleLinkedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CycleLinkedList.h; sourceTree = "<group>"; };
 		038E9F8E24C2B98A005DD7A2 /* CycleLinkedList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CycleLinkedList.c; sourceTree = "<group>"; };
+		038E9F9124C2EBE3005DD7A2 /* stack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stack.h; sourceTree = "<group>"; };
+		038E9F9224C2EBE3005DD7A2 /* stack.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = stack.c; sourceTree = "<group>"; };
 		03A7605B24ACB4A500940BC7 /* common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +78,7 @@
 			children = (
 				03A7605B24ACB4A500940BC7 /* common.h */,
 				0344427124BC8ECC0030765D /* List */,
+				038E9F9024C2EBC8005DD7A2 /* stack */,
 				0335DF1024AB8DE400507ACF /* main.c */,
 			);
 			path = "data-structure";
@@ -95,6 +99,15 @@
 				038E9F8E24C2B98A005DD7A2 /* CycleLinkedList.c */,
 			);
 			path = List;
+			sourceTree = "<group>";
+		};
+		038E9F9024C2EBC8005DD7A2 /* stack */ = {
+			isa = PBXGroup;
+			children = (
+				038E9F9124C2EBE3005DD7A2 /* stack.h */,
+				038E9F9224C2EBE3005DD7A2 /* stack.c */,
+			);
+			path = stack;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,6 +171,7 @@
 				038E9F8924C1D41F005DD7A2 /* LinkedList.c in Sources */,
 				0344427024BC8EC50030765D /* SingleLinkedList.c in Sources */,
 				038E9F8F24C2B98A005DD7A2 /* CycleLinkedList.c in Sources */,
+				038E9F9324C2EBE3005DD7A2 /* stack.c in Sources */,
 				0335DF1124AB8DE400507ACF /* main.c in Sources */,
 				038E9F8C24C298D4005DD7A2 /* SingleCycleLinkedList.c in Sources */,
 			);
