@@ -79,10 +79,9 @@ void sc_add_(int index, int element) {
     _node->element = element;
         
     if (index == 0) {
+        struct Node* last = sc_size_ == 0 ? sc_first : sc_node(sc_size_ - 1);
         _node->next = sc_first;
         sc_first = _node;
-        
-        struct Node* last = sc_size_ == 0 ? sc_first : sc_node(sc_size_ - 1);
         last->next = sc_first;
     } else {
         struct Node* prev = sc_node(index - 1);
@@ -152,6 +151,7 @@ void sc_print(void) {
             printf(", ");
         }
         printf("%d", node->element);
+        printf("_%d", node->next->element);
         node = node->next;
     }
     printf("]\n");

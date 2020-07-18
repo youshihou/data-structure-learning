@@ -95,6 +95,7 @@ void test_sc_list() {
     sc_add(22);
     sc_add(33);
     sc_add(44);
+    sc_print();
 
     sc_add_(0, 55);
     sc_print();
@@ -102,6 +103,7 @@ void test_sc_list() {
     sc_print();
     sc_add_(sc_size(), 77);
     sc_print();
+    
     sc_remove(0);
     sc_print();
     sc_remove(2);
@@ -120,7 +122,7 @@ void test_sc_list() {
 
 
 int main(int argc, const char * argv[]) {
-#if 1
+#if 0
     test_array_list();
 #endif
 
@@ -132,7 +134,7 @@ int main(int argc, const char * argv[]) {
     test_list();
 #endif
       
-#if 0
+#if 1
     test_sc_list();
 #endif
     
