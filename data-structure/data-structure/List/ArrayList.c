@@ -10,36 +10,36 @@
 
 static int DEFAULT_CAPACITY = 10;
 
-int _size_ = 0;
-int _len = 0;
+int al_size_ = 0;
+int al_len = 0;
 int *elements = NULL;
 
 // MARK: - private
-void _outOfBounds(int index) {
-    printf("Index: %d, Size: %d\n", index, _size_);
+void al_outOfBounds(int index) {
+    printf("Index: %d, Size: %d\n", index, al_size_);
     assert(false);
 }
 
-void _rangeCheck(int index) {
-    if (index < 0 || index >= _size_) {
-        _outOfBounds(index);
+void al_rangeCheck(int index) {
+    if (index < 0 || index >= al_size_) {
+        al_outOfBounds(index);
     }
 }
 
-void _rangeCheckForAdd(int index) {
-    if (index < 0 || index > _size_) { // CARE!!! IS index > _size_ NOT index>= _size_
-        _outOfBounds(index);
+void al_rangeCheckForAdd(int index) {
+    if (index < 0 || index > al_size_) { // CARE!!! IS index > al_size_ NOT index>= al_size_
+        al_outOfBounds(index);
     }
 }
 
-void _ensureCapacity(int capacity) {
-    int oldCapacity = _len;
+void al_ensureCapacity(int capacity) {
+    int oldCapacity = al_len;
     if (oldCapacity >= capacity) { return; }
     
     int newCapacity = oldCapacity + (oldCapacity >> 1);
-    _len = newCapacity;
+    al_len = newCapacity;
     int *newElements = malloc(sizeof(int) * newCapacity);
-    for (int i = 0; i < _size_; i++) { // CARE!!! IS _size_ NOT _len
+    for (int i = 0; i < al_size_; i++) { // CARE!!! IS al_size_ NOT _len
         newElements[i] = elements[i];
     }
     elements = newElements;
@@ -47,41 +47,41 @@ void _ensureCapacity(int capacity) {
     printf("oldCapacity: %d --> newCapacoty: %d\n", oldCapacity, newCapacity);
 }
 
-void _trim(void) {
-    int oldCapacity = _len;
+void al_trim(void) {
+    int oldCapacity = al_len;
     int newCapacity = (oldCapacity >> 1);
-    if (_size_ >= newCapacity || oldCapacity <= DEFAULT_CAPACITY) { return; } // CARE!!! IS || NOT &&
+    if (al_size_ >= newCapacity || oldCapacity <= DEFAULT_CAPACITY) { return; } // CARE!!! IS || NOT &&
     
-    _len = newCapacity;
+    al_len = newCapacity;
     int *newElements = malloc(sizeof(int) * newCapacity); // ERROR!!! why?
-    for (int i = 0; i < _size_; i++) {
+    for (int i = 0; i < al_size_; i++) {
         newElements[i] = elements[i];
     }
     elements = newElements;
-//    free(newElements); // ERROR!!! why?
+    free(newElements); // ERROR!!! why?
     printf("oldCapacity: %d --> newCapacoty: %d\n", oldCapacity, newCapacity);
 }
 
 // MARK: - public
-void createList(int capacity) {
-    _len = capacity < DEFAULT_CAPACITY ? DEFAULT_CAPACITY : capacity;
-    elements = malloc(sizeof(int) * _len);
+void al_createList(int capacity) {
+    al_len = capacity < DEFAULT_CAPACITY ? DEFAULT_CAPACITY : capacity;
+    elements = malloc(sizeof(int) * al_len);
 }
 
-void _createList() {
-    createList(DEFAULT_CAPACITY);
+void al_createList_() {
+    al_createList(DEFAULT_CAPACITY);
 }
 
-int _size(void) {
-    return _size_;
+int al_size(void) {
+    return al_size_;
 }
 
-bool _isEmpty(void) {
-    return _size_ == 0;
+bool al_isEmpty(void) {
+    return al_size_ == 0;
 }
 
-int _indexOf(int element) {
-    for (int i = 0; i < _size_; i++) {
+int al_indexOf(int element) {
+    for (int i = 0; i < al_size_; i++) {
         if (elements[i] == element) {
             return i;
         }
@@ -89,69 +89,69 @@ int _indexOf(int element) {
     return ELEMENT_NOT_FOUND;
 }
 
-bool _contains(int element) {
-    return _indexOf(element) != ELEMENT_NOT_FOUND;
+bool al_contains(int element) {
+    return al_indexOf(element) != ELEMENT_NOT_FOUND;
 }
 
-void __add(int index, int element) {
-    _rangeCheckForAdd(index);
+void al_add_(int index, int element) {
+    al_rangeCheckForAdd(index);
     
-    _ensureCapacity(_size_ + 1);
+    al_ensureCapacity(al_size_ + 1);
   
-    for (int i = _size_; i > index; i--) { // CARE!!! i = [_size_, index)
+    for (int i = al_size_; i > index; i--) { // CARE!!! i = [al_size_, index)
         elements[i] = elements[i - 1];
     }
 
-//    for (int i = _size_ - 1; i >= index; i--) { // CARE!!! i = [_size_ - 1, index]
+//    for (int i = al_size_ - 1; i >= index; i--) { // CARE!!! i = [al_size_ - 1, index]
 //        elements[i + 1] = elements[i];
 //    }
     elements[index] = element;
-    _size_++;
+    al_size_++;
 }
 
-void _add(int element) {
+void al_add(int element) {
 //    elements[_size_++] = element;
-    __add(_size_, element);
+    al_add_(al_size_, element);
 }
 
-int _remove(int index) {
-    _rangeCheck(index);
+int al_remove(int index) {
+    al_rangeCheck(index);
     
     int old = elements[index];
-//    for (int i = index + 1; i < _size_; i++) { // CARE!!! i = [index + 1, _size_)
+//    for (int i = index + 1; i < al_size_; i++) { // CARE!!! i = [index + 1, al_size_)
 //        elements[i - 1] = elements[i];
 //    }
     
-    for (int i = index + 1; i <= _size_ - 1; i++) { // CARE!!! i = [index + 1, _size_ - 1]
+    for (int i = index + 1; i <= al_size_ - 1; i++) { // CARE!!! i = [index + 1, al_size_ - 1]
         elements[i - 1] = elements[i];
     }
-    _size_--;
+    al_size_--;
     
-    _trim();
+    al_trim();
 
     return old;
 }
 
-int _get(int index) {
-    _rangeCheck(index);
+int al_get(int index) {
+    al_rangeCheck(index);
     return elements[index];
 }
 
-int _set(int index, int element) {
-    _rangeCheck(index);
+int al_set(int index, int element) {
+    al_rangeCheck(index);
     int old = elements[index];
     elements[index] = element;
     return old;
 }
 
-void _clear(void) {
+void al_clear(void) {
     free(elements);
-    _size_ = 0;
+    al_size_ = 0;
 }
 
-void _print(void) {
-    printf("size = %d, [", _size_);
-    for (int i = 0; i < _size_; i++) {
+void al_print(void) {
+    printf("size = %d, [", al_size_);
+    for (int i = 0; i < al_size_; i++) {
         if (i != 0) {
             printf(", ");
         }

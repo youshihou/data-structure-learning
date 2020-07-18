@@ -14,40 +14,40 @@
 
 
 void test_array_list() {
-    _createList();
-    _add(99);
-    _add(88);
-    _add(77);
-    _add(66);
-    _add(10);
+    al_createList_();
+    al_add(99);
+    al_add(88);
+    al_add(77);
+    al_add(66);
+    al_add(10);
     for (int i = 0; i < 20; i++) {
-        _add(i);
+        al_add(i);
     }
-    _print();
-    _remove(0);
-    _remove(_size() - 1);
-    _remove(2);
-    __add(0, 100);
-    __add(1, 100);
-    __add(_size(), 100);
-    __add(_size() - 1, 100);
-    _set(3, 80);
-    _print();
-    assert(_get(3) == 80);
+    al_print();
+    al_remove(0);
+    al_remove(al_size() - 1);
+    al_remove(2);
+    al_add_(0, 100);
+    al_add_(1, 100);
+    al_add_(al_size(), 100);
+    al_add_(al_size() - 1, 100);
+    al_set(3, 80);
+    al_print();
+    assert(al_get(3) == 80);
 
-    _remove(0);
-    assert(_get(0) == 100);
-    assert(_size() == 25);
-    _print();
+    al_remove(0);
+    assert(al_get(0) == 100);
+    assert(al_size() == 25);
+    al_print();
 
-//    _createList();
+//    al_createList_();
 //    for (int i = 0; i < 50; i++) {
-//        _add(i);
+//        al_add(i);
 //    }
 //    for (int i = 0; i < 50; i++) {
-//        _remove(0);
+//        al_remove(0);
 //    }
-//    _print();
+//    al_print();
 }
 
 void test_single_list() {
@@ -120,7 +120,7 @@ void test_sc_list() {
 
 
 int main(int argc, const char * argv[]) {
-#if 0
+#if 1
     test_array_list();
 #endif
 
@@ -132,7 +132,7 @@ int main(int argc, const char * argv[]) {
     test_list();
 #endif
       
-#if 1
+#if 0
     test_sc_list();
 #endif
     

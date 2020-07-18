@@ -11,18 +11,18 @@
 
 #include "common.h"
 
-void createList(int);
-void _createList(void);
-int _size(void);
-bool _isEmpty(void);
-int _indexOf(int);
-bool _contains(int);
-void __add(int, int);
-void _add(int);
-int _remove(int);
-int _get(int);
-int _set(int, int);
-void _clear(void);
-void _print(void);
+void al_createList(int);
+void al_createList_(void);
+int al_size(void);
+bool al_isEmpty(void);
+int al_indexOf(int);
+bool al_contains(int);
+void al_add_(int, int);
+void al_add(int);
+int al_remove(int);
+int al_get(int);
+int al_set(int, int);
+void al_clear(void);
+void al_print(void);
 
 #endif /* ArrayList_h */
