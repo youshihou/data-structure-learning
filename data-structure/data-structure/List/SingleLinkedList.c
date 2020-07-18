@@ -8,30 +8,30 @@
 
 #include "SingleLinkedList.h"
 
-int size = 0;
+int sl_size_ = 0;
 struct Node* first = NULL;
 
 
 // MARK: - private
-void outOfBounds(int index) {
-    printf("Index: %d, Size: %d", index, size);
+void sl_outOfBounds(int index) {
+    printf("Index: %d, Size: %d", index, sl_size_);
     assert(false);
 }
 
-void rangeCheck(int index) {
-    if (index < 0 || index >= size) {
-        outOfBounds(index);
+void sl_rangeCheck(int index) {
+    if (index < 0 || index >= sl_size_) {
+        sl_outOfBounds(index);
     }
 }
 
-void rangeCheckForAdd(int index) {
-    if (index < 0 || index > size) {
-        outOfBounds(index);
+void sl_rangeCheckForAdd(int index) {
+    if (index < 0 || index > sl_size_) {
+        sl_outOfBounds(index);
     }
 }
 
-struct Node* node(int index) {
-    rangeCheck(index);
+struct Node* sl_node(int index) {
+    sl_rangeCheck(index);
     
     struct Node* node = first;
     for (int i = 0; i < index; i++) {
@@ -43,26 +43,26 @@ struct Node* node(int index) {
 // MARK: - public
 
 // use virtual head node
-void create_(void) {
+void sl_create(void) {
     first = malloc(sizeof(struct Node));
     first->element = 0;
     first->next = NULL;
 }
 
-int size_(void) {
-    return size;
+int sl_size(void) {
+    return sl_size_;
 }
 
-bool isEmpty(void) {
-    return size == 0;
+bool sl_isEmpty(void) {
+    return sl_size_ == 0;
 }
 
-int indexOf(int element) {
+int sl_indexOf(int element) {
     // use virtual head node
     struct Node* node = first->next;
     
 //    struct Node* node = first;
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < sl_size_; i++) {
         if (node->element == element) {
             return i;
         }
@@ -71,18 +71,18 @@ int indexOf(int element) {
     return ELEMENT_NOT_FOUND;
 }
 
-bool contains(int element) {
-    return indexOf(element) != ELEMENT_NOT_FOUND;
+bool csl_ontains(int element) {
+    return sl_indexOf(element) != ELEMENT_NOT_FOUND;
 }
 
-void add_(int index, int element) {
-    rangeCheckForAdd(index);
+void sl_add_(int index, int element) {
+    sl_rangeCheckForAdd(index);
     
     struct Node* _node = malloc(sizeof(struct Node));
     _node->element = element;
     
     // use virtual head node
-    struct Node* prev = index == 0 ? first : node(index - 1);
+    struct Node* prev = index == 0 ? first : sl_node(index - 1);
     _node->next = prev->next;
     prev->next = _node;
     
@@ -92,22 +92,22 @@ void add_(int index, int element) {
 //        _node->next = first; // why?
 //        first = _node; // why?
 //    } else {
-//        struct Node* prev = node(index - 1);
+//        struct Node* prev = sl_node(index - 1);
 //        _node->next = prev->next;
 //        prev->next = _node;
 //    }
-    size++;
+    sl_size_++;
 }
 
-void add(int element) {
-    add_(size, element);
+void sl_add(int element) {
+    sl_add_(sl_size_, element);
 }
 
-int remove_(int index) {
-    rangeCheck(index);
+int sl_remove(int index) {
+    sl_rangeCheck(index);
     
     // use virtual head node
-    struct Node* prev = index == 0 ? first : node(index - 1);
+    struct Node* prev = index == 0 ? first : sl_node(index - 1);
     struct Node* tmp = prev->next;
     int element = tmp->element;
     prev->next = prev->next->next;
@@ -119,30 +119,30 @@ int remove_(int index) {
 //        first = first->next;
 //        free(tmp);
 //    } else {
-//        struct Node* prev = node(index - 1);
+//        struct Node* prev = sl_node(index - 1);
 //        tmp = prev->next;
 //        element = tmp->element;
 //        prev->next = prev->next->next;
 //        free(tmp);
 //    }
-    size--;
+    sl_size_--;
 
     return element;
 }
 
 
-int get(int index) {
-    return node(index)->element;
+int sl_get(int index) {
+    return sl_node(index)->element;
 }
 
-int set(int index, int element) {
-    struct Node* _node = node(index);
+int sl_set(int index, int element) {
+    struct Node* _node = sl_node(index);
     int old = _node->element;
     _node->element = element;
     return old;
 }
 
-void clear_(void) {
+void sl_clear(void) {
     // use virtual head node
     
     struct Node* curr = first->next;
@@ -157,17 +157,17 @@ void clear_(void) {
 //        first = first->next;
 //        free(tmp);
 //    }
-    size = 0;
+    sl_size_ = 0;
 }
 
-void print_(void) {
-    printf("size = %d, [", size);
+void sl_print(void) {
+    printf("size = %d, [", sl_size_);
     
     // use virtual head node
     struct Node* node = first->next;
     
 //    struct Node* node = first;
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < sl_size_; i++) {
         if (i != 0) {
             printf(", ");
         }

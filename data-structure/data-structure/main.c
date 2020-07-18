@@ -51,14 +51,14 @@ void test_array_list() {
 }
 
 void test_single_list() {
-    create_();
-    add(20);
-    add_(0, 10);
-    add(30);
-    add_(size_(), 40);
-    print_();
-    remove_(1);
-    print_();
+    sl_create();
+    sl_add(20);
+    sl_add_(0, 10);
+    sl_add(30);
+    sl_add_(sl_size(), 40);
+    sl_print();
+    sl_remove(1);
+    sl_print();
 }
 
 void test_list() {

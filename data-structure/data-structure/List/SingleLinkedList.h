@@ -11,17 +11,17 @@
 
 #include "common.h"
 
-void create_(void);
-int size_(void);
-bool isEmpty(void);
-int indexOf(int);
-bool contains(int);
-void add_(int, int);
-void add(int);
-int remove_(int);
-int get(int);
-int set(int, int);
-void clear_(void);
-void print_(void);
+void sl_create(void);
+int sl_size(void);
+bool sl_isEmpty(void);
+int sl_indexOf(int);
+bool sl_contains(int);
+void sl_add_(int, int);
+void sl_add(int);
+int sl_remove(int);
+int sl_get(int);
+int sl_set(int, int);
+void sl_clear(void);
+void sl_print(void);
 
 #endif /* SingleLinkedList_h */
