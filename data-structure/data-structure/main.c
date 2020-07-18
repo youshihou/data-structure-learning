@@ -157,7 +157,7 @@ int main(int argc, const char * argv[]) {
     test_single_list();
 #endif
       
-#if 1
+#if 0
     test_single_cycle_list();
 #endif
 
@@ -165,7 +165,7 @@ int main(int argc, const char * argv[]) {
     test_list();
 #endif
 
-#if 0
+#if 1
     test_cycle_list();
 #endif
     

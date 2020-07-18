@@ -90,15 +90,18 @@ void cl_add_(int index, int element) {
     struct ListNode* add = malloc(sizeof(struct ListNode));
     add->element = element;
     
-    if (index == cl_size_) { // index == lisSize
+    if (index == cl_size_) { // index == cl_size_
         struct ListNode* oldLast = cl_last;
         add->prev = oldLast;
-        add->next = NULL;
+        add->next = cl_first;
         cl_last = add;
         if (oldLast == NULL) { // add the first node
             cl_first = cl_last;
+            cl_last->next = cl_first;
+            cl_first->prev = cl_first;
         } else {
             oldLast->next = cl_last;
+            cl_first->prev = cl_last;
         }
     } else {
         struct ListNode* next = cl_node(index);
@@ -106,10 +109,9 @@ void cl_add_(int index, int element) {
         add->prev = prev;
         add->next = next;
         next->prev = add;
-        if (prev == NULL) { // index == 0
+        prev->next = add;
+        if (next == cl_first) { // index == 0
             cl_first = add;
-        } else {
-            prev->next = add;
         }
     }
     
@@ -124,18 +126,21 @@ int cl_remove(int index) {
     cl_rangeCheck(index);
     
     struct ListNode* remove = cl_node(index);
-    struct ListNode* prev = remove->prev;
-    struct ListNode* next = remove->next;
     int element = remove->element;
-    if (prev == NULL) { // index == 0
-        cl_first = next;
+    if (cl_size_ == 1) {
+        cl_first = NULL;
+        cl_last = NULL;
     } else {
+        struct ListNode* prev = remove->prev;
+        struct ListNode* next = remove->next;
         prev->next = next;
-    }
-    if (next == NULL) { // index == listSize - 1
-        cl_last = prev;
-    } else {
         next->prev = prev;
+        if (remove == cl_first) { // index == 0
+            cl_first = next;
+        }
+        if (remove == cl_last) { // index == cl_size_ - 1
+            cl_last = prev;
+        }
     }
     free(remove);
 
