@@ -11,7 +11,7 @@
 
 #include "common.h"
 
-void list_create(void);
+//void list_create(void);
 int list_size(void);
 bool list_isEmpty(void);
 int list_indexOf(int);

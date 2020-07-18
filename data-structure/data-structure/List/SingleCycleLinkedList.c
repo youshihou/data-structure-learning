@@ -41,8 +41,6 @@ struct Node* sc_node(int index) {
 }
 
 // MARK: - public
-
-// use virtual head node
 void sc_create(void) {
     sc_first = malloc(sizeof(struct Node));
     sc_first->element = 0;

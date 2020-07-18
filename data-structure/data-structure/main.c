@@ -6,11 +6,12 @@
 //  Copyright © 2020 Ankui. All rights reserved.
 //
 
-#include <stdio.h>
 #include "ArrayList.h"
 #include "SingleLinkedList.h"
-#include "SingleCycleLinkedList.h"
 #include "LinkedList.h"
+#include "SingleCycleLinkedList.h"
+#include "CycleLinkedList.h"
+
 
 
 void test_array_list() {
@@ -61,35 +62,7 @@ void test_single_list() {
     sl_print();
 }
 
-void test_list() {
-//    list_create();
-    list_add(11);
-    list_add(22);
-    list_add(33);
-    list_add(44);
-    
-    list_add_(0, 55);
-    list_print();
-    list_add_(2, 66);
-    list_print();
-    list_add_(list_size(), 77);
-    list_print();
-    list_remove(0);
-    list_print();
-    list_remove(2);
-    list_print();
-    list_remove(list_size() - 1);
-    list_print();
-    
-    assert(list_indexOf(44) == 3);
-    assert(list_indexOf(22) == -1);
-    assert(list_contains(33));
-    assert(list_get(0) == 11);
-    assert(list_get(1) == 66);
-    assert(list_get(list_size() - 1) == 44);
-}
-
-void test_sc_list() {
+void test_single_cycle_list() {
     sc_create();
     sc_add(11);
     sc_add(22);
@@ -119,7 +92,61 @@ void test_sc_list() {
     assert(sc_get(sc_size() - 1) == 44);
 }
 
+void test_list() {
+    list_add(11);
+    list_add(22);
+    list_add(33);
+    list_add(44);
+    
+    list_add_(0, 55);
+    list_print();
+    list_add_(2, 66);
+    list_print();
+    list_add_(list_size(), 77);
+    list_print();
+    list_remove(0);
+    list_print();
+    list_remove(2);
+    list_print();
+    list_remove(list_size() - 1);
+    list_print();
+    
+    assert(list_indexOf(44) == 3);
+    assert(list_indexOf(22) == -1);
+    assert(list_contains(33));
+    assert(list_get(0) == 11);
+    assert(list_get(1) == 66);
+    assert(list_get(list_size() - 1) == 44);
+}
 
+void test_cycle_list() {
+    cl_add(11);
+    cl_add(22);
+    cl_add(33);
+    cl_add(44);
+    cl_print();
+
+    cl_add_(0, 55);
+    cl_print();
+    cl_add_(2, 66);
+    cl_print();
+    cl_add_(cl_size(), 77);
+    cl_print();
+    
+    cl_remove(0);
+    cl_print();
+    cl_remove(2);
+    cl_print();
+    cl_remove(cl_size() - 1);
+    cl_print();
+
+    assert(cl_indexOf(44) == 3);
+    assert(cl_indexOf(22) == -1);
+    assert(cl_contains(33));
+    assert(cl_get(0) == 11);
+    assert(cl_get(1) == 66);
+    assert(cl_get(cl_size() - 1) == 44);
+}
 
 int main(int argc, const char * argv[]) {
 #if 0
@@ -129,13 +156,17 @@ int main(int argc, const char * argv[]) {
 #if 0
     test_single_list();
 #endif
+      
+#if 1
+    test_single_cycle_list();
+#endif
 
 #if 0
     test_list();
 #endif
-      
-#if 1
-    test_sc_list();
+
+#if 0
+    test_cycle_list();
 #endif
     
     return 0;

@@ -50,14 +50,16 @@ struct ListNode* list_node(int index) {
 }
 
 // MARK: - public
-void list_create(void) {
-    listFirst = malloc(sizeof(struct ListNode));
-    listFirst->element = 0;
-    listFirst->next = NULL;
-    listLast = malloc(sizeof(struct ListNode));
-    listLast->element = 0;
-    listLast->next = NULL;
-}
+
+// use virtual head node
+//void list_create(void) {
+//    listFirst = malloc(sizeof(struct ListNode));
+//    listFirst->element = 0;
+//    listFirst->next = NULL;
+//    listLast = malloc(sizeof(struct ListNode));
+//    listLast->element = 0;
+//    listLast->next = NULL;
+//}
 
 int list_size(void) {
     return listSize;
