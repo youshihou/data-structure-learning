@@ -12,7 +12,7 @@
 #include "SingleCycleLinkedList.h"
 #include "CycleLinkedList.h"
 #include "stack.h"
-
+#include "queue.h"
 
 void test_array_list() {
     al_createList_();
@@ -175,8 +175,44 @@ void test_stack() {
         printf("top gets %d, pop gets %d\n", stack_top(&s), stack_pop(&s));
         stack_print(&s);
     }
+    
+    stack_destroy(&s);
+    stack_print(&s);
 }
 
+void test_stack_() {
+    struct stack* s = stack_create();
+    for (int i = 0; i < 5; i++) {
+        printf("push %d\n", i);
+        stack_push_(s, i);
+        stack_print_(s);
+    }
+        
+    while (!stack_isEmpty_(s)) {
+        printf("top gets %d, pop gets %d\n", stack_top_(s), stack_pop_(s));
+        stack_print_(s);
+    }
+    
+    stack_destroy_(s);
+    stack_print_(s);
+}
+
+void test_queue() {
+    struct queue* q = queue_create();
+    for (int i = 0; i < 5; i++) {
+        printf("enq %d\n", i);
+        en_queue(q, i);
+        queue_print(q);
+    }
+    
+    while (!queue_isEmpty(q)) {
+        printf("deq gets %d\n", de_queue(q));
+        queue_print(q);
+    }
+    
+    queue_destroy(q);
+    queue_print(q);
+}
 
 
 int main(int argc, const char * argv[]) {
@@ -201,8 +237,9 @@ int main(int argc, const char * argv[]) {
     test_josephus();
 #endif
 
-#if 1
+#if 0
     test_stack();
+    test_stack_();
 #endif
     
     return 0;

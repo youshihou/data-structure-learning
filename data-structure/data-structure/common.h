@@ -21,12 +21,10 @@
 
 static int ELEMENT_NOT_FOUND = -1;
 
-
 struct Node {
     int element;
     struct Node* next;
 };
-
 
 struct ListNode {
     int element;
