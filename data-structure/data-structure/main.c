@@ -242,5 +242,9 @@ int main(int argc, const char * argv[]) {
     test_stack_();
 #endif
     
+#if 1
+    test_queue();
+#endif
+    
     return 0;
 }
