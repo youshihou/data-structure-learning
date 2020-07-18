@@ -201,12 +201,12 @@ void test_queue() {
     struct queue* q = queue_create();
     for (int i = 0; i < 5; i++) {
         printf("enq %d\n", i);
-        en_queue(q, i);
+        enqueue(q, i);
         queue_print(q);
     }
     
     while (!queue_isEmpty(q)) {
-        printf("deq gets %d\n", de_queue(q));
+        printf("deq gets %d\n", dequeue(q));
         queue_print(q);
     }
     

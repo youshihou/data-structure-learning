@@ -21,7 +21,7 @@ bool queue_isEmpty(struct queue* q) {
     return q->head == NULL;
 }
 
-void en_queue(struct queue* q, int value) {
+void enqueue(struct queue* q, int value) {
     struct Node* e = malloc(sizeof(struct Node));
     assert(e);
     
@@ -30,12 +30,12 @@ void en_queue(struct queue* q, int value) {
     if (q->head == NULL) {
         q->head = e;
     } else {
-        q->tail->next = e;
+        q->tail->next = e; // CARE!!!
     }
     q->tail = e;
 }
 
-int de_queue(struct queue* q) {
+int dequeue(struct queue* q) {
     assert(!queue_isEmpty(q));
     
     struct Node* e = q->head;
@@ -48,7 +48,7 @@ int de_queue(struct queue* q) {
 
 void queue_destroy(struct queue* q) {
     while (!queue_isEmpty(q)) {
-        de_queue(q);
+        dequeue(q);
     }
     free(q);
 }

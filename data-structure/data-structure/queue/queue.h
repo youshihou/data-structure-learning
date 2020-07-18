@@ -18,8 +18,8 @@ struct queue {
 
 struct queue* queue_create(void);
 bool queue_isEmpty(struct queue*);
-void en_queue(struct queue*, int);
-int de_queue(struct queue*);
+void enqueue(struct queue*, int);
+int dequeue(struct queue*);
 void queue_destroy(struct queue*);
 void queue_print(struct queue*);
 int queue_size(struct queue*);
