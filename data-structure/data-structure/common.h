@@ -19,5 +19,20 @@
 #include <time.h>
 
 
+static int ELEMENT_NOT_FOUND = -1;
+
+
+struct Node {
+    int element;
+    struct Node* next;
+};
+
+
+struct ListNode {
+    int element;
+    struct ListNode* prev;
+    struct ListNode* next;
+};
+
 
 #endif /* common_h */

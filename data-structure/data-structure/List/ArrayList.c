@@ -8,7 +8,6 @@
 
 #include "ArrayList.h"
 
-static int ELEMENT_NOT_FOUND_ = -1;
 static int DEFAULT_CAPACITY = 10;
 
 int _size_ = 0;
@@ -87,11 +86,11 @@ int _indexOf(int element) {
             return i;
         }
     }
-    return ELEMENT_NOT_FOUND_;
+    return ELEMENT_NOT_FOUND;
 }
 
 bool _contains(int element) {
-    return _indexOf(element) != ELEMENT_NOT_FOUND_;
+    return _indexOf(element) != ELEMENT_NOT_FOUND;
 }
 
 void __add(int index, int element) {

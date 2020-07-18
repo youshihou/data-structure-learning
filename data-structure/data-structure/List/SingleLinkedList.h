@@ -11,13 +11,6 @@
 
 #include "common.h"
 
-
-struct Node {
-    int element;
-    struct Node* next;
-};
-
-
 void create_(void);
 int size_(void);
 bool isEmpty(void);

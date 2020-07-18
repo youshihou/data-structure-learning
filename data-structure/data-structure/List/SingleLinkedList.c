@@ -8,8 +8,6 @@
 
 #include "SingleLinkedList.h"
 
-static int ELEMENT_NOT_FOUND = -1;
-
 int size = 0;
 struct Node* first = NULL;
 

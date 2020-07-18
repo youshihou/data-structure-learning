@@ -11,12 +11,6 @@
 
 #include "common.h"
 
-struct ListNode {
-    int element;
-    struct ListNode* prev;
-    struct ListNode* next;
-};
-
 void list_create(void);
 int list_size(void);
 bool list_isEmpty(void);

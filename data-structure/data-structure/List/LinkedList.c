@@ -8,8 +8,6 @@
 
 #include "LinkedList.h"
 
-static int _ELEMENT_NOT_FOUND = -1;
-
 int listSize = 0;
 struct ListNode* listFirst = NULL;
 struct ListNode* listLast = NULL;
@@ -77,11 +75,11 @@ int list_indexOf(int element) {
         }
         node = node->next;
     }
-    return _ELEMENT_NOT_FOUND;
+    return ELEMENT_NOT_FOUND;
 }
 
 bool list_contains(int element) {
-    return list_indexOf(element) != _ELEMENT_NOT_FOUND;
+    return list_indexOf(element) != ELEMENT_NOT_FOUND;
 }
 
 void list_add_(int index, int element) {
