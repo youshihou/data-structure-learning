@@ -141,3 +141,111 @@ void stack_print_(struct stack* s) {
     }
     printf("]\n");
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+struct old_stack* old_stack_create(void) {
+    return NULL;
+}
+
+struct old_stack* old_stack_push(struct old_stack* old, const char* book) {
+    struct old_stack* new = malloc(sizeof(struct old_stack));
+    if (new == NULL) { return NULL; }
+    new->next = old;
+    new->book = strdup(book);
+    if (new->book == NULL) {
+        free(new);
+        return NULL;
+    }
+    return new;
+}
+
+struct old_stack* old_stack_pop(struct old_stack* old, char** book) {
+    if (old == NULL) {
+        *book = NULL;
+        return NULL;
+    } else {
+        struct old_stack* new = old->next;
+        *book = old->book;
+        free(old);
+        return new;
+    }
+}
+
+void old_stack_destroy(struct old_stack* s) {
+    char* book;
+    while (s) {
+        s = old_stack_pop(s, &book);
+        free(book);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+struct object_stack** object_stack_create(void) {
+    struct object_stack** s = malloc(sizeof(struct object_stack *));
+    assert(s);
+    
+    *s = NULL;
+    
+    return s;
+}
+
+bool object_stack_isEmpty(struct object_stack** s) {
+    return *s == NULL;
+}
+
+int object_stack_push(struct object_stack** s, const char* book) {
+    struct object_stack* new = malloc(sizeof(struct object_stack));
+    assert(new);
+    
+    new->next = *s;
+    new->book = strdup(book);
+    if (new->book == NULL) {
+        free(new);
+        return 0;
+    }
+    *s = new;
+    return 1;
+}
+
+char* object_stack_pop(struct object_stack** s) {
+    if (*s == NULL) {
+        return NULL;
+    } else {
+        char *book = (*s)->book;
+        struct object_stack* new = (*s)->next;
+        free(*s);
+        *s = new;
+        return book;
+    }
+}
+
+void object_stack_destroy(struct object_stack** s) {
+    while (!object_stack_isEmpty(s)) {
+        free(object_stack_pop(s));
+    }
+    free(s);
+}
