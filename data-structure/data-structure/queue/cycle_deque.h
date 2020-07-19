@@ -21,5 +21,6 @@ int cycle_deque_dequeue_front(void);
 int cycle_deque_front(void);
 int cycle_deque_back(void);
 void cycle_deque_print(void);
+void cycle_deque_clear(void);
 
 #endif /* cycle_deque_h */

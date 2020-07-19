@@ -87,3 +87,12 @@ void cycle_queue_print(void) {
     }
     printf("]\n");
 }
+
+void cycle_queue_clear(void) {
+    for (int i = 0; i < cycle_size; i++) {
+        int idx = cycle_queue_index(i);
+        cycle_elements[idx] = -1;
+    }
+    cycle_size = 0;
+    cycle_front = 0;
+}

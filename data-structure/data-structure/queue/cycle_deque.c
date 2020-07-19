@@ -107,3 +107,12 @@ void cycle_deque_print(void) {
     }
     printf("]\n");
 }
+
+void cycle_deque_clear(void) {
+    for (int i = 0; i < cycle_deque_size_; i++) {
+        int idx = cycle_deque_index(i);
+        cycle_deque_elements[idx] = -1;
+    }
+    cycle_deque_size_ = 0;
+    cycle_deque_front_ = 0;
+}

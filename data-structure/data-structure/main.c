@@ -316,5 +316,7 @@ int main(int argc, const char * argv[]) {
     test_cycle_deque();
 #endif
     
+    test_queue();
+
     return 0;
 }

@@ -18,5 +18,6 @@ void cycle_queue_enqueue(int);
 int cycle_queue_dequeue(void);
 int cycle_queue_front(void);
 void cycle_queue_print(void);
+void cycle_queue_clear(void);
 
 #endif /* cycle_queue */
