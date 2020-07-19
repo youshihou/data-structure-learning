@@ -14,9 +14,9 @@
 void cycle_queue_create(void);
 int cycle_queue_size(void);
 bool cycle_queue_isEmpty(void);
-void cycle_enqueue(int);
-int cycle_dequeue(void);
-int cycle_front(void);
-void cycle_print(void);
+void cycle_queue_enqueue(int);
+int cycle_queue_dequeue(void);
+int cycle_queue_front(void);
+void cycle_queue_print(void);
 
 #endif /* cycle_queue */

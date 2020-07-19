@@ -262,18 +262,18 @@ void test_deque(int n) {
 void test_cycle_queue() {
     cycle_queue_create();
     for (int i = 0; i < 10; i++) {
-        cycle_enqueue(i);
+        cycle_queue_enqueue(i);
     }
     for (int i = 0; i < 5; i++) {
-        cycle_dequeue();
+        cycle_queue_dequeue();
     }
-    cycle_print();
-    for (int i = 15; i < 20; i++) {
-        cycle_enqueue(i);
+    cycle_queue_print();
+    for (int i = 15; i < 23; i++) {
+        cycle_queue_enqueue(i);
     }
-    cycle_print();
+    cycle_queue_print();
     while (!cycle_queue_isEmpty()) {
-        printf("%d ", cycle_dequeue());
+        printf("%d ", cycle_queue_dequeue());
     }
     printf("\n");
 }
