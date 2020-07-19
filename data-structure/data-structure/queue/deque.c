@@ -173,5 +173,89 @@ void ringbuffer_deque_destroy(struct ringbuffer_deque* d) {
 
 
 
+#define RIGHT (0)
+#define LEFT (1)
 
+typedef struct elt {
+    struct elt* next[2];
+} *Elt;
 
+Elt listCreate(void) {
+    Elt e;
+    e = malloc(sizeof(*e));
+    if (e) {
+        e->next[LEFT] = e->next[RIGHT] = e;
+    }
+    return e;
+}
+
+void listRemove(Elt e) {
+    e->next[RIGHT]->next[LEFT] = e->next[LEFT];
+    e->next[LEFT]->next[RIGHT] = e->next[RIGHT];
+}
+
+void listInsert(Elt head, int dir, Elt e) {
+    e->next[dir] = head->next[dir];
+    e->next[!dir] = head;
+    
+    e->next[dir]->next[!dir] = e;
+    e->next[!dir]->next[dir] = e;
+}
+
+void listSplit(Elt e1, Elt e2) {
+    e2->next[RIGHT]->next[LEFT] = e1->next[LEFT];
+    e1->next[LEFT]->next[RIGHT] = e2->next[RIGHT];
+    
+    e2->next[RIGHT] = e1;
+    e1->next[LEFT] = e2;
+}
+
+void listSplice(Elt e1, Elt e2) {
+    e2->next[LEFT]->next[RIGHT] = e1->next[RIGHT];
+    e1->next[RIGHT]->next[LEFT] = e2->next[LEFT];
+    
+    e1->next[RIGHT] = e2;
+    e2->next[LEFT] = e1;
+}
+
+void listDestroy(Elt e) {
+    Elt next = NULL;
+    Elt target = e->next[RIGHT];
+    for (; target != e; target = next) {
+        next = target->next[RIGHT];
+        free(target);
+    }
+    
+//    while (target != e) {
+//        next = target->next[RIGHT];
+//        free(target);
+//        target = next;
+//    }
+    
+    free(e);
+}
+
+//void listSanityCheck(Elt e) {
+//    assert(e != NULL);
+//
+//    Elt check = e;
+//    do {
+//        assert(check->next[RIGHT]->next[LEFT] == check);
+//        assert(check->next[LEFT]->next[RIGHT] == check);
+//        check = check->next[RIGHT];
+//    } while (check != e);
+//}
+
+//struct elt_ {
+//    struct elt_* next[2];
+//    char* name;
+//    int socialSecurityNumber;
+//    int gullibility;
+//};
+//
+//struct fancyElt {
+//    struct elt* next[2];
+//    char* name;
+//    int socialSecurityNumber;
+//    int gullibility;
+//};
