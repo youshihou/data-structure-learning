@@ -17,6 +17,7 @@
 		038E9FA324C3355A005DD7A2 /* queue.c in Sources */ = {isa = PBXBuildFile; fileRef = 038E9FA224C3355A005DD7A2 /* queue.c */; };
 		038E9FA924C3DED7005DD7A2 /* deque.c in Sources */ = {isa = PBXBuildFile; fileRef = 038E9FA824C3DED7005DD7A2 /* deque.c */; };
 		038E9FB024C4033A005DD7A2 /* cycle_queue.c in Sources */ = {isa = PBXBuildFile; fileRef = 038E9FAF24C4033A005DD7A2 /* cycle_queue.c */; };
+		038E9FB324C40ECA005DD7A2 /* cycle_deque.c in Sources */ = {isa = PBXBuildFile; fileRef = 038E9FB224C40ECA005DD7A2 /* cycle_deque.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -52,6 +53,8 @@
 		038E9FA824C3DED7005DD7A2 /* deque.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = deque.c; sourceTree = "<group>"; };
 		038E9FAE24C4033A005DD7A2 /* cycle_queue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cycle_queue.h; sourceTree = "<group>"; };
 		038E9FAF24C4033A005DD7A2 /* cycle_queue.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cycle_queue.c; sourceTree = "<group>"; };
+		038E9FB124C40ECA005DD7A2 /* cycle_deque.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cycle_deque.h; sourceTree = "<group>"; };
+		038E9FB224C40ECA005DD7A2 /* cycle_deque.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cycle_deque.c; sourceTree = "<group>"; };
 		03A7605B24ACB4A500940BC7 /* common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,6 +132,8 @@
 				038E9FA824C3DED7005DD7A2 /* deque.c */,
 				038E9FAE24C4033A005DD7A2 /* cycle_queue.h */,
 				038E9FAF24C4033A005DD7A2 /* cycle_queue.c */,
+				038E9FB124C40ECA005DD7A2 /* cycle_deque.h */,
+				038E9FB224C40ECA005DD7A2 /* cycle_deque.c */,
 			);
 			path = queue;
 			sourceTree = "<group>";
@@ -196,6 +201,7 @@
 				0344427024BC8EC50030765D /* SingleLinkedList.c in Sources */,
 				038E9F8F24C2B98A005DD7A2 /* CycleLinkedList.c in Sources */,
 				038E9F9324C2EBE3005DD7A2 /* stack.c in Sources */,
+				038E9FB324C40ECA005DD7A2 /* cycle_deque.c in Sources */,
 				038E9FA324C3355A005DD7A2 /* queue.c in Sources */,
 				038E9FA924C3DED7005DD7A2 /* deque.c in Sources */,
 				0335DF1124AB8DE400507ACF /* main.c in Sources */,
