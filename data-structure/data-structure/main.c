@@ -14,6 +14,7 @@
 #include "stack.h"
 #include "queue.h"
 #include "deque.h"
+#include "cycle_queue.h"
 
 void test_array_list() {
     al_createList_();
@@ -258,6 +259,25 @@ void test_deque(int n) {
     deque_destroy(d);
 }
 
+void test_cycle_queue() {
+    cycle_queue_create();
+    for (int i = 0; i < 10; i++) {
+        cycle_enqueue(i);
+    }
+    for (int i = 0; i < 5; i++) {
+        cycle_dequeue();
+    }
+    cycle_print();
+    for (int i = 15; i < 20; i++) {
+        cycle_enqueue(i);
+    }
+    cycle_print();
+    while (!cycle_queue_isEmpty()) {
+        printf("%d ", cycle_dequeue());
+    }
+    printf("\n");
+}
+
 
 int main(int argc, const char * argv[]) {
 #if 0
@@ -270,9 +290,10 @@ int main(int argc, const char * argv[]) {
     test_stack();
     test_stack_();
     test_queue();
-#endif
-    
     test_deque(10);
+#endif
+        
+    test_cycle_queue();
     
     return 0;
 }

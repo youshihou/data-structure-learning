@@ -16,6 +16,7 @@
 		038E9F9324C2EBE3005DD7A2 /* stack.c in Sources */ = {isa = PBXBuildFile; fileRef = 038E9F9224C2EBE3005DD7A2 /* stack.c */; };
 		038E9FA324C3355A005DD7A2 /* queue.c in Sources */ = {isa = PBXBuildFile; fileRef = 038E9FA224C3355A005DD7A2 /* queue.c */; };
 		038E9FA924C3DED7005DD7A2 /* deque.c in Sources */ = {isa = PBXBuildFile; fileRef = 038E9FA824C3DED7005DD7A2 /* deque.c */; };
+		038E9FB024C4033A005DD7A2 /* cycle_queue.c in Sources */ = {isa = PBXBuildFile; fileRef = 038E9FAF24C4033A005DD7A2 /* cycle_queue.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,6 +50,8 @@
 		038E9FA224C3355A005DD7A2 /* queue.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = queue.c; sourceTree = "<group>"; };
 		038E9FA724C3DED7005DD7A2 /* deque.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = deque.h; sourceTree = "<group>"; };
 		038E9FA824C3DED7005DD7A2 /* deque.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = deque.c; sourceTree = "<group>"; };
+		038E9FAE24C4033A005DD7A2 /* cycle_queue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cycle_queue.h; sourceTree = "<group>"; };
+		038E9FAF24C4033A005DD7A2 /* cycle_queue.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cycle_queue.c; sourceTree = "<group>"; };
 		03A7605B24ACB4A500940BC7 /* common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,6 +127,8 @@
 				038E9FA224C3355A005DD7A2 /* queue.c */,
 				038E9FA724C3DED7005DD7A2 /* deque.h */,
 				038E9FA824C3DED7005DD7A2 /* deque.c */,
+				038E9FAE24C4033A005DD7A2 /* cycle_queue.h */,
+				038E9FAF24C4033A005DD7A2 /* cycle_queue.c */,
 			);
 			path = queue;
 			sourceTree = "<group>";
@@ -185,6 +190,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				038E9FB024C4033A005DD7A2 /* cycle_queue.c in Sources */,
 				0344427424BC912B0030765D /* ArrayList.c in Sources */,
 				038E9F8924C1D41F005DD7A2 /* LinkedList.c in Sources */,
 				0344427024BC8EC50030765D /* SingleLinkedList.c in Sources */,

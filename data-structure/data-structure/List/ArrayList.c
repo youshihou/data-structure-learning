@@ -8,8 +8,6 @@
 
 #include "ArrayList.h"
 
-static int DEFAULT_CAPACITY = 10;
-
 int al_size_ = 0;
 int al_len = 0;
 int *elements = NULL;

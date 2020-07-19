@@ -19,6 +19,7 @@
 #include <time.h>
 
 
+static int DEFAULT_CAPACITY = 10;
 static int ELEMENT_NOT_FOUND = -1;
 
 struct Node {
