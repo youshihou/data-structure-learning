@@ -13,6 +13,7 @@
 #include "CycleLinkedList.h"
 #include "stack.h"
 #include "queue.h"
+#include "deque.h"
 
 void test_array_list() {
     al_createList_();
@@ -214,37 +215,64 @@ void test_queue() {
     queue_print(q);
 }
 
+void test_deque(int n) {
+    Deque* d = deque_create();
+    assert(deque_isEmpty(d));
+    for (int i = 0; i < n; i++) {
+        deque_push(d, i, DEQUE_FRONT);
+        assert(!deque_isEmpty(d));
+    }
+    for (int i = 0; i < n; i++) {
+        assert(deque_pop(d, DEQUE_BACK) == i);
+    }
+    assert(deque_isEmpty(d));
+    for (int i = 0; i < n; i++) {
+        deque_push(d, i, DEQUE_BACK);
+        assert(!deque_isEmpty(d));
+    }
+    for (int i = 0; i < n; i++) {
+        assert(deque_pop(d, DEQUE_FRONT) == i);
+    }
+    assert(deque_isEmpty(d));
+    
+    for (int i = 0; i < n; i++) {
+        deque_push(d, i, DEQUE_BACK);
+        assert(!deque_isEmpty(d));
+    }
+    for (int i = n - 1; i >= 0; i--) {
+        assert(deque_pop(d, DEQUE_BACK) == i);
+    }
+    assert(deque_isEmpty(d));
+    for (int i = 0; i < n; i++) {
+        deque_push(d, i, DEQUE_FRONT);
+        assert(!deque_isEmpty(d));
+    }
+    for (int i = n - 1; i >= 0; i--) {
+        assert(deque_pop(d, DEQUE_FRONT) == i);
+    }
+    assert(deque_isEmpty(d));
+    
+    assert(deque_pop(d, DEQUE_FRONT) == DEQUE_EMPTY);
+    assert(deque_pop(d, DEQUE_BACK) == DEQUE_EMPTY);
+    deque_push(d, 12, DEQUE_FRONT);
+    deque_destroy(d);
+}
+
 
 int main(int argc, const char * argv[]) {
 #if 0
     test_array_list();
-#endif
-
-#if 0
     test_single_list();
-#endif
-      
-#if 0
     test_single_cycle_list();
-#endif
-
-#if 0
     test_list();
-#endif
-
-#if 0
     test_cycle_list();
     test_josephus();
-#endif
-
-#if 0
     test_stack();
     test_stack_();
-#endif
-    
-#if 1
     test_queue();
 #endif
+    
+    test_deque(10);
     
     return 0;
 }
