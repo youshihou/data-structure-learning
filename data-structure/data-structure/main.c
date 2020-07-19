@@ -313,9 +313,8 @@ int main(int argc, const char * argv[]) {
     test_queue();
     test_deque(10);
     test_cycle_queue();
-#endif
-        
     test_cycle_deque();
+#endif
     
     return 0;
 }

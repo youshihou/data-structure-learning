@@ -15,7 +15,9 @@ int cycle_front = 0;
 
 // MARK: - private
 int cycle_queue_index(int idx) {
-    return (cycle_front + idx) % cycle_len;
+//    return (cycle_front + idx) % cycle_len;
+    idx += cycle_front;
+    return idx - (idx >= cycle_len ? cycle_len : 0);
 }
 
 void cycle_queue_ensureCapacity(int capacity) {

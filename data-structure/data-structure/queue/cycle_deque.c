@@ -19,7 +19,8 @@ int cycle_deque_index(int idx) {
     if (idx < 0) {
         return idx + cycle_deque_len;
     }
-    return idx % cycle_deque_len;
+//    return idx % cycle_deque_len;
+    return idx - (idx >= cycle_deque_len ? cycle_deque_len : 0);
 }
 
 void cycle_deque_ensureCapacity(int capacity) {
