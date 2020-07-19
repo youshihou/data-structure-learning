@@ -108,7 +108,7 @@ int stack_pop_(struct stack* s) {
 int stack_top_(struct stack* s) {
     assert(!stack_isEmpty_(s));
     
-    return (s->head)->element;
+    return s->head->element;
 }
 
 void stack_destroy_(struct stack* s) {
