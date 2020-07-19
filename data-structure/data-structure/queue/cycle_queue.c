@@ -14,6 +14,10 @@ int cycle_len = 0;
 int cycle_front = 0;
 
 // MARK: - private
+int cycle_queue_index(int idx) {
+    return (cycle_front + idx) % cycle_len;
+}
+
 void cycle_queue_ensureCapacity(int capacity) {
     int oldCapacity = cycle_len;
     if (oldCapacity >= capacity) { return; }
@@ -22,7 +26,8 @@ void cycle_queue_ensureCapacity(int capacity) {
     int *newElements = malloc(sizeof(int) * newCapacity);
     memset(newElements, -1, sizeof(int) * newCapacity);
     for (int i = 0; i < cycle_size; i++) {
-        int idx = (i + cycle_front) % cycle_len;
+//        int idx = (cycle_front + i) % cycle_len;
+        int idx = cycle_queue_index(i);
         newElements[i] = cycle_elements[idx];
     }
     cycle_elements = newElements;
@@ -51,7 +56,8 @@ bool cycle_queue_isEmpty(void) {
 void cycle_queue_enqueue(int value) {
     cycle_queue_ensureCapacity(cycle_size + 1);
     
-    int idx = (cycle_front + cycle_size) % cycle_len;
+//    int idx = (cycle_front + cycle_size) % cycle_len;
+    int idx = cycle_queue_index(cycle_size);
     cycle_elements[idx] = value;
     cycle_size++;
 }
@@ -59,7 +65,8 @@ void cycle_queue_enqueue(int value) {
 int cycle_queue_dequeue(void) {
     int value = cycle_elements[cycle_front];
     cycle_elements[cycle_front] = -1;
-    cycle_front = (cycle_front + 1) % cycle_len;
+//    cycle_front = (cycle_front + 1) % cycle_len;
+    cycle_front = cycle_queue_index(1);
     cycle_size--;
     return value;
 }
