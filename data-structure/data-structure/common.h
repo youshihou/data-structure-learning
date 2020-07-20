@@ -17,6 +17,7 @@
 #include <stdint.h>
 #include <limits.h>
 #include <time.h>
+#include <math.h>
 
 
 static int DEFAULT_CAPACITY = 10;

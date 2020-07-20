@@ -16,7 +16,7 @@
 #include "deque.h"
 #include "cycle_queue.h"
 #include "cycle_deque.h"
-
+#include "binary_search_tree.h"
 
 void test_array_list() {
     al_createList_();
@@ -300,6 +300,15 @@ void test_cycle_deque() {
     printf("\n");
 }
 
+void test_binary_search_tree() {
+    int list[8] = {7, 4, 9, 2, 5, 8, 11, 3};
+    for (int i = 0; i < 8; i++) {
+        bst_add(list[i]);
+    }
+    bst_print();
+}
+
+
 int main(int argc, const char * argv[]) {
 #if 0
     test_array_list();
@@ -316,7 +325,7 @@ int main(int argc, const char * argv[]) {
     test_cycle_deque();
 #endif
     
-    test_queue();
+    test_binary_search_tree();
 
     return 0;
 }
