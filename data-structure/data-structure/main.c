@@ -301,8 +301,9 @@ void test_cycle_deque() {
 }
 
 void test_binary_search_tree() {
-    int list[8] = {7, 4, 9, 2, 5, 8, 11, 3};
-    for (int i = 0; i < 8; i++) {
+    int list[] = {7, 4, 9, 2, 5, 8, 11, 3, 12, 1};
+    int len = 10;
+    for (int i = 0; i < len; i++) {
         bst_add(list[i]);
     }
     bst_print();

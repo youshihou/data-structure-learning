@@ -1,13 +1,13 @@
 //
-//  print_tree.h
+//  print_tree_helper.h
 //  data-structure
 //
 //  Created by Ankui on 7/20/20.
 //  Copyright © 2020 Ankui. All rights reserved.
 //
 
-#ifndef print_tree_h
-#define print_tree_h
+#ifndef print_tree_helper_h
+#define print_tree_helper_h
 
 #include "common.h"
 
@@ -36,4 +36,4 @@ int object_queue_size(struct object_queue*);
 void* object_queue_front(struct object_queue* q);
 
 
-#endif /* print_tree_h */
+#endif /* print_tree_helper_h */

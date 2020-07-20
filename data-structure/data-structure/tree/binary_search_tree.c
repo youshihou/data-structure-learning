@@ -7,79 +7,7 @@
 //
 
 #include "binary_search_tree.h"
-
-// MARK: - object_queue
-struct node_depth {
-    struct bst_node* node;
-    int level;
-};
-
-struct object_node {
-    struct node_depth* value;
-    struct object_node* next;
-};
-
-struct object_queue {
-    struct object_node* head;
-    struct object_node* tail;
-};
-
-struct object_queue* object_queue_create(void) {
-    struct object_queue* q = malloc(sizeof(struct object_queue));
-    assert(q);
-    q->head = q->tail = NULL;
-    return q;
-}
-
-bool object_queue_isEmpty(struct object_queue* q) {
-    return q->head == NULL;
-}
-
-void object_queue_enqueue(struct object_queue* q, void* value) {
-    struct object_node* e = malloc(sizeof(struct object_node));
-    assert(e);
-    e->value = value;
-    e->next = NULL;
-    if (q->head == NULL) {
-        q->head = e;
-    } else {
-        q->tail->next = e;
-    }
-    q->tail = e;
-}
-
-struct node_depth* object_queue_dequeue(struct object_queue* q) {
-    assert(!object_queue_isEmpty(q));
-    struct object_node* e = q->head;
-    struct node_depth* ret = e->value;
-    q->head = e->next;
-    free(e);
-    return ret;
-}
-
-void object_queue_destroy(struct object_queue* q) {
-    while (!object_queue_isEmpty(q)) {
-        object_queue_dequeue(q);
-    }
-    free(q);
-}
-
-int object_queue_size(struct object_queue* q) {
-    int size = 0;
-    struct object_node* e = q->head;
-    while (e) {
-        size++;
-        e = e->next;
-    }
-    return size;
-}
-
-struct node_depth* object_queue_front(struct object_queue* q) {
-    assert(!object_queue_isEmpty(q));
-    return q->head->value;
-}
-
-
+#include "print_tree_helper.h"
 
 
 int bst_szie_ = 0;
@@ -132,19 +60,24 @@ int get_max_depth(struct bst_node* root) {
     return 1 + fmax(left_max, right_max);
 }
 
-void internal_bas_print() {
+void internal_bst_print() {
     int depth = get_max_depth(root);
     int last_level = 0;
     char buffer[1024];
     int offset = (1 << depth) - 1;
+    struct node_depth {
+        struct bst_node* node;
+        int level;
+    };
         
     struct object_queue* q = object_queue_create();
     struct node_depth* root_nd = malloc(sizeof(struct node_depth));
     root_nd->node = root;
     root_nd->level = last_level;
     object_queue_enqueue(q, root_nd);
+    printf("\n");
     while (object_queue_size(q)) {
-        struct node_depth* nd = object_queue_front(q);
+        struct node_depth* nd = (struct node_depth *)object_queue_front(q);
         if (last_level != nd->level) {
             printf("\n\n");
             last_level = nd->level;
@@ -171,6 +104,7 @@ void internal_bas_print() {
         object_queue_dequeue(q);
     }
     printf("\n\n\n");
+    object_queue_destroy(q);
 }
 
 
@@ -238,5 +172,5 @@ bool bst_contains(int element) {
 void bst_print(void) {
 //    bst_print_helper(root, 0);
 //    bst_print_internal(root, 0);
-    internal_bas_print();
+    internal_bst_print();
 }

@@ -11,6 +11,7 @@
 		0344427024BC8EC50030765D /* SingleLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 0344426F24BC8EC50030765D /* SingleLinkedList.c */; };
 		0344427424BC912B0030765D /* ArrayList.c in Sources */ = {isa = PBXBuildFile; fileRef = 0344427324BC912B0030765D /* ArrayList.c */; };
 		0377F59E24C5C16600ADE08D /* binary_search_tree.c in Sources */ = {isa = PBXBuildFile; fileRef = 0377F59D24C5C16600ADE08D /* binary_search_tree.c */; };
+		0377F5A124C5ED5000ADE08D /* print_tree_helper.c in Sources */ = {isa = PBXBuildFile; fileRef = 0377F5A024C5ED5000ADE08D /* print_tree_helper.c */; };
 		038E9F8924C1D41F005DD7A2 /* LinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 038E9F8824C1D41E005DD7A2 /* LinkedList.c */; };
 		038E9F8C24C298D4005DD7A2 /* SingleCycleLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 038E9F8B24C298D4005DD7A2 /* SingleCycleLinkedList.c */; };
 		038E9F8F24C2B98A005DD7A2 /* CycleLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 038E9F8E24C2B98A005DD7A2 /* CycleLinkedList.c */; };
@@ -42,6 +43,8 @@
 		0344427324BC912B0030765D /* ArrayList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ArrayList.c; sourceTree = "<group>"; };
 		0377F59C24C5C16600ADE08D /* binary_search_tree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = binary_search_tree.h; sourceTree = "<group>"; };
 		0377F59D24C5C16600ADE08D /* binary_search_tree.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = binary_search_tree.c; sourceTree = "<group>"; };
+		0377F59F24C5ED5000ADE08D /* print_tree_helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = print_tree_helper.h; sourceTree = "<group>"; };
+		0377F5A024C5ED5000ADE08D /* print_tree_helper.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = print_tree_helper.c; sourceTree = "<group>"; };
 		038E9F8724C1D41E005DD7A2 /* LinkedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkedList.h; sourceTree = "<group>"; };
 		038E9F8824C1D41E005DD7A2 /* LinkedList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = LinkedList.c; sourceTree = "<group>"; };
 		038E9F8A24C298D4005DD7A2 /* SingleCycleLinkedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SingleCycleLinkedList.h; sourceTree = "<group>"; };
@@ -123,6 +126,8 @@
 			children = (
 				0377F59C24C5C16600ADE08D /* binary_search_tree.h */,
 				0377F59D24C5C16600ADE08D /* binary_search_tree.c */,
+				0377F59F24C5ED5000ADE08D /* print_tree_helper.h */,
+				0377F5A024C5ED5000ADE08D /* print_tree_helper.c */,
 			);
 			path = tree;
 			sourceTree = "<group>";
@@ -210,6 +215,7 @@
 			files = (
 				038E9FB024C4033A005DD7A2 /* cycle_queue.c in Sources */,
 				0344427424BC912B0030765D /* ArrayList.c in Sources */,
+				0377F5A124C5ED5000ADE08D /* print_tree_helper.c in Sources */,
 				0377F59E24C5C16600ADE08D /* binary_search_tree.c in Sources */,
 				038E9F8924C1D41F005DD7A2 /* LinkedList.c in Sources */,
 				0344427024BC8EC50030765D /* SingleLinkedList.c in Sources */,
