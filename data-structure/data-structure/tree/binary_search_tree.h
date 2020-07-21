@@ -48,4 +48,9 @@ void inorder_traversal(struct visitor*);
 void preorder_traversal(struct visitor*);
 
 
+int bst_tree_height(void);
+int tree_height(void);
+
+
+
 #endif /* binary_search_tree_h */

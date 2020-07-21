@@ -372,6 +372,9 @@ void test_binary_search_tree() {
     preorder_traversal(visitor);
     
     free(visitor);
+    
+    printf("tree_height: %d\n", bst_tree_height());
+    printf("tree_height: %d\n\n", tree_height());
 }
 
 

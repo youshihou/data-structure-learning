@@ -20,47 +20,6 @@ static int bst_compare(int v1, int v2) {
     return v1 - v2;
 }
 
-#if 0
-static void bst_print_helper(struct bst_node* root, int depth) {
-    if (root) {
-        bst_print_helper(root->left, depth + 1);
-        for (int i = 0; i < 2 * depth; i++) {
-            putchar(' ');
-        }
-        printf("%d (%p)\n", root->element, (void*)root);
-        bst_print_helper(root->right, depth + 1);
-    }
-}
-
-static void bst_print_internal(struct bst_node* root, int depth) {
-    if (depth > 0) {
-        for (int i = 0; i < depth - 1; i++) {
-            printf(print_list[i] ? "│   " : "    ");
-        }
-        printf(print_list[depth - 1] ? "├── " : "└── ");
-    }
-    if (root == NULL) {
-        printf("(NULL)\n");
-        return;
-    }
-    printf("%d\n", root->element);
-    if (root->left == NULL && root->right == NULL) { return; }
-    
-    print_list[depth] = 1;
-    bst_print_internal(root->left, depth + 1);
-    print_list[depth] = 0;
-    bst_print_internal(root->right, depth + 1);
-}
-#endif
-
-int get_max_depth(struct bst_node* root) {
-    if (root == NULL) { return 0; }
-    int left_max = get_max_depth(root->left);
-    int right_max = get_max_depth(root->right);
-    return 1 + fmax(left_max, right_max);
-}
-
-
 
 // MARK: - public
 int bst_size(void) {
@@ -120,6 +79,48 @@ void bst_remove(int element) {
 
 bool bst_contains(int element) {
     return false;
+}
+
+
+
+#if 0
+static void bst_print_helper(struct bst_node* root, int depth) {
+    if (root) {
+        bst_print_helper(root->left, depth + 1);
+        for (int i = 0; i < 2 * depth; i++) {
+            putchar(' ');
+        }
+        printf("%d (%p)\n", root->element, (void*)root);
+        bst_print_helper(root->right, depth + 1);
+    }
+}
+
+static void bst_print_internal(struct bst_node* root, int depth) {
+    if (depth > 0) {
+        for (int i = 0; i < depth - 1; i++) {
+            printf(print_list[i] ? "│   " : "    ");
+        }
+        printf(print_list[depth - 1] ? "├── " : "└── ");
+    }
+    if (root == NULL) {
+        printf("(NULL)\n");
+        return;
+    }
+    printf("%d\n", root->element);
+    if (root->left == NULL && root->right == NULL) { return; }
+    
+    print_list[depth] = 1;
+    bst_print_internal(root->left, depth + 1);
+    print_list[depth] = 0;
+    bst_print_internal(root->right, depth + 1);
+}
+#endif
+
+int get_max_depth(struct bst_node* root) {
+    if (root == NULL) { return 0; }
+    int left_max = get_max_depth(root->left);
+    int right_max = get_max_depth(root->right);
+    return 1 + fmax(left_max, right_max);
 }
 
 void bst_print(void) {
@@ -263,7 +264,7 @@ void levelorder_traversal(bool(*visitor)(void*)) {
 }
 
 void postorder_internal(struct bst_node* node, struct visitor* visitor) {
-    if (node == NULL) { return; }
+    if (node == NULL || visitor->stop) { return; }
     
     postorder_internal(node->left, visitor);
     postorder_internal(node->right, visitor);
@@ -281,7 +282,7 @@ void postorder_traversal(struct visitor* visitor) {
 }
 
 void inorder_internal(struct bst_node* node, struct visitor* visitor) {
-    if (node == NULL) { return; }
+    if (node == NULL || visitor->stop) { return; }
 
     inorder_internal(node->left, visitor);
     if (visitor->stop) { return; }
@@ -298,9 +299,9 @@ void inorder_traversal(struct visitor* visitor) {
 }
 
 void preorder_internal(struct bst_node* node, struct visitor* visitor) {
-    if (node == NULL) { return; }
+    if (node == NULL || visitor->stop) { return; }
 
-    if (visitor->stop) { return; }
+//    if (visitor->stop) { return; }
     visitor->stop = visitor->visit(node);
     preorder_internal(node->left, visitor);
     preorder_internal(node->right, visitor);
@@ -312,4 +313,44 @@ void preorder_traversal(struct visitor* visitor) {
     printf("preorder: ");
     preorder_internal(root, visitor);
     printf("\n\n");
+}
+
+
+
+
+int internal_tree_height(struct bst_node* node) {
+    if (node == NULL) { return 0; }
+    
+    return 1 + fmax(internal_tree_height(node->left), internal_tree_height(node->right));
+}
+
+int bst_tree_height(void) {
+    return internal_tree_height(root);
+}
+
+int tree_height(void) {
+    if (root == NULL) { return 0; }
+    
+    int height = 0;
+    int level_size = 1;
+    struct object_queue* q = object_queue_create();
+    object_queue_enqueue(q, root);
+    while (!object_queue_isEmpty(q)) {
+        struct bst_node* node = object_queue_dequeue(q);
+        level_size--;
+        if (node->left) {
+            object_queue_enqueue(q, node->left);
+        }
+        if (node->right) {
+            object_queue_enqueue(q, node->right);
+        }
+        
+        if (level_size == 0) {
+            level_size = object_queue_size(q);
+            height++;
+        }
+    }
+    object_queue_destroy(q);
+    
+    return height;
 }
