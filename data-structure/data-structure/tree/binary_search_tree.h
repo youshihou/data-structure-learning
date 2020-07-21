@@ -26,5 +26,15 @@ void bst_remove(int element);
 bool bst_contains(int element);
 void bst_print(void);
 
+void bst_preorder_traversal(void);
+void bst_inorder_traversal(void);
+void bst_postorder_traversal(void);
+void bst_levelorder_traversal(void);
+
+void levelorder_traversal(void(*)(void*));
+void postorder_traversal(void(*)(void*));
+void inorder_traversal(void(*)(void*));
+void preorder_traversal(void(*)(void*));
+
 
 #endif /* binary_search_tree_h */
