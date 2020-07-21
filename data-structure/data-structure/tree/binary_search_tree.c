@@ -258,40 +258,49 @@ void levelorder_traversal(bool(*visitor)(void*)) {
 }
 
 void postorder_internal(struct bst_node* node, bool(*visitor)(void*)) {
-    if (node == NULL || visitor == NULL) { return; }
+    if (node == NULL) { return; }
     
     postorder_internal(node->left, visitor);
     postorder_internal(node->right, visitor);
-    visitor(node);
+    if (visitor(node)) {
+     
+        return;
+    }
 }
 
 void postorder_traversal(bool(*visitor)(void*)) {
+    if (visitor == NULL) { return; }
+    
     postorder_internal(root, visitor);
     printf("\n\n");
 }
 
 void inorder_internal(struct bst_node* node, bool(*visitor)(void*)) {
-    if (node == NULL || visitor == NULL) { return; }
-    
+    if (node == NULL) { return; }
+
     inorder_internal(node->left, visitor);
     visitor(node);
     inorder_internal(node->right, visitor);
 }
 
 void inorder_traversal(bool(*visitor)(void*)) {
+    if (visitor == NULL) { return; }
+
     inorder_internal(root, visitor);
     printf("\n\n");
 }
 
 void preorder_internal(struct bst_node* node, bool(*visitor)(void*)) {
-    if (node == NULL || visitor == NULL) { return; }
-    
+    if (node == NULL) { return; }
+
     visitor(node);
     preorder_internal(node->left, visitor);
     preorder_internal(node->right, visitor);
 }
 
 void preorder_traversal(bool(*visitor)(void*)) {
+    if (visitor == NULL) { return; }
+
     preorder_internal(root, visitor);
     printf("\n\n");
 }

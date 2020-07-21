@@ -300,7 +300,7 @@ void test_cycle_deque() {
     printf("\n");
 }
 
-bool order_visitor(void* object) {
+bool levelorder_visitor(void* object) {
     struct bst_node* node = object;
     printf("%d_", node->element);
     if (node->element == 9) {
@@ -309,6 +309,37 @@ bool order_visitor(void* object) {
     
     return false;
 }
+
+bool postorder_visitor(void* object) {
+    struct bst_node* node = object;
+    printf("%d_", node->element);
+    if (node->element == 2) {
+        return true;
+    }
+    
+    return false;
+}
+
+bool inorder_visitor(void* object) {
+    struct bst_node* node = object;
+    printf("%d_", node->element);
+    if (node->element == 3) {
+        return true;
+    }
+    
+    return false;
+}
+
+bool preorder_visitor(void* object) {
+    struct bst_node* node = object;
+    printf("%d_", node->element);
+    if (node->element == 2) {
+        return true;
+    }
+    
+    return false;
+}
+
 
 void test_binary_search_tree() {
 //    int list[] = {7, 4, 9, 2, 5, 8, 11, 3, 12, 1};
@@ -320,15 +351,15 @@ void test_binary_search_tree() {
         bst_add(list[i]);
     }
     bst_print();
-//    bst_preorder_traversal();
-//    bst_inorder_traversal();
-//    bst_postorder_traversal();
-//    bst_levelorder_traversal();
+    bst_preorder_traversal();
+    bst_inorder_traversal();
+    bst_postorder_traversal();
+    bst_levelorder_traversal();
     
-    levelorder_traversal(order_visitor);
-//    postorder_traversal(order_visitor);
-//    inorder_traversal(order_visitor);
-//    preorder_traversal(order_visitor);
+    levelorder_traversal(levelorder_visitor);
+    postorder_traversal(postorder_visitor);
+    inorder_traversal(inorder_visitor);
+    preorder_traversal(preorder_visitor);
 }
 
 
