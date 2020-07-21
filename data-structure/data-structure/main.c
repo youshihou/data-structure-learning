@@ -310,7 +310,7 @@ bool levelorder_visitor(void* object) {
     return false;
 }
 
-bool postorder_visitor(void* object) {
+bool postorder_visit(void* object) {
     struct bst_node* node = object;
     printf("%d_", node->element);
     if (node->element == 2) {
@@ -320,7 +320,7 @@ bool postorder_visitor(void* object) {
     return false;
 }
 
-bool inorder_visitor(void* object) {
+bool inorder_visit(void* object) {
     struct bst_node* node = object;
     printf("%d_", node->element);
     if (node->element == 3) {
@@ -330,7 +330,7 @@ bool inorder_visitor(void* object) {
     return false;
 }
 
-bool preorder_visitor(void* object) {
+bool preorder_visit(void* object) {
     struct bst_node* node = object;
     printf("%d_", node->element);
     if (node->element == 2) {
@@ -357,9 +357,21 @@ void test_binary_search_tree() {
     bst_levelorder_traversal();
     
     levelorder_traversal(levelorder_visitor);
-    postorder_traversal(postorder_visitor);
-    inorder_traversal(inorder_visitor);
-    preorder_traversal(preorder_visitor);
+    
+    struct visitor* visitor = malloc(sizeof(struct visitor));
+    visitor->stop = false;
+    visitor->visit = postorder_visit;
+    postorder_traversal(visitor);
+    
+    visitor->stop = false;
+    visitor->visit = inorder_visit;
+    inorder_traversal(visitor);
+    
+    visitor->stop = false;
+    visitor->visit = preorder_visit;
+    preorder_traversal(visitor);
+    
+    free(visitor);
 }
 
 
