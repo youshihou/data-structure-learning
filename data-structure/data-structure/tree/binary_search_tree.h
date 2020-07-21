@@ -31,10 +31,10 @@ void bst_inorder_traversal(void);
 void bst_postorder_traversal(void);
 void bst_levelorder_traversal(void);
 
-void levelorder_traversal(void(*)(void*));
-void postorder_traversal(void(*)(void*));
-void inorder_traversal(void(*)(void*));
-void preorder_traversal(void(*)(void*));
+void levelorder_traversal(bool(*)(void*));
+void postorder_traversal(bool(*)(void*));
+void inorder_traversal(bool(*)(void*));
+void preorder_traversal(bool(*)(void*));
 
 
 #endif /* binary_search_tree_h */
