@@ -34,9 +34,18 @@ void bst_levelorder_traversal(void);
 
 
 void levelorder_traversal(bool(*)(void*));
-void postorder_traversal(bool(*)(void*));
-void inorder_traversal(bool(*)(void*));
-void preorder_traversal(bool(*)(void*));
+//void postorder_traversal(bool(*)(void*));
+//void inorder_traversal(bool(*)(void*));
+//void preorder_traversal(bool(*)(void*));
+
+struct visitor {
+    bool stop;
+    bool (*visit)(void*);
+};
+
+void postorder_traversal(struct visitor*);
+void inorder_traversal(struct visitor*);
+void preorder_traversal(struct visitor*);
 
 
 #endif /* binary_search_tree_h */
