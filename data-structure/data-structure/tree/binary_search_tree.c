@@ -60,7 +60,72 @@ int get_max_depth(struct bst_node* root) {
     return 1 + fmax(left_max, right_max);
 }
 
-void internal_bst_print() {
+
+
+// MARK: - public
+int bst_size(void) {
+    return bst_szie_;
+}
+
+bool bst_isEmpty(void) {
+    return bst_szie_ == 0;
+}
+
+void bst_clear(void) {
+    
+}
+
+void bst_add(int element) {
+    if (root == NULL) { // add the first node
+        root = malloc(sizeof(struct bst_node));
+        root->element = element;
+        root->left = NULL;
+        root->right = NULL;
+        root->parent = NULL;
+        bst_szie_++;
+        return;
+    }
+    
+    struct bst_node* parent = root;
+    struct bst_node* node = root;
+    int cmp = 0;
+    while (node) {
+        parent = node;
+        cmp = bst_compare(element, node->element);
+        if (cmp > 0) {
+            node = node->right;
+        } else if (cmp < 0) {
+            node = node->left;
+        } else {
+            node->element = element; // CARE custom object
+            return;
+        }
+    }
+    
+    struct bst_node* add = malloc(sizeof(struct bst_node));
+    add->element = element;
+    add->left = NULL;
+    add->right = NULL;
+    if (cmp > 0) { // add to parent node right
+        parent->right = add;
+    } else { // add to parent node left
+        parent->left = add;
+    }
+    bst_szie_++;
+}
+
+void bst_remove(int element) {
+    
+}
+
+bool bst_contains(int element) {
+    return false;
+}
+
+void bst_print(void) {
+//    bst_print_helper(root, 0);
+//    bst_print_internal(root, 0);
+
     int depth = get_max_depth(root);
     int last_level = 0;
     char buffer[1024];
@@ -103,74 +168,123 @@ void internal_bst_print() {
         }
         object_queue_dequeue(q);
     }
-    printf("\n\n\n");
+    printf("\n\n");
     object_queue_destroy(q);
 }
 
 
-
-
-// MARK: - public
-int bst_size(void) {
-    return bst_szie_;
-}
-
-bool bst_isEmpty(void) {
-    return bst_szie_ == 0;
-}
-
-void bst_clear(void) {
+void internal_preorder_traversal(struct bst_node* root) {
+    if (root == NULL) { return; }
     
+    printf("%d->", root->element);
+    internal_preorder_traversal(root->left);
+    internal_preorder_traversal(root->right);
 }
 
-void bst_add(int element) {
-    if (root == NULL) { // add the first node
-        root = malloc(sizeof(struct bst_node));
-        root->element = element;
-        root->left = NULL;
-        root->right = NULL;
-        root->parent = NULL;
-        bst_szie_++;
-        return;
-    }
+void bst_preorder_traversal(void) {
+    internal_preorder_traversal(root);
+    printf("\n\n");
+}
+
+void internal_inorder_traversal(struct bst_node* root) {
+    if (root == NULL) { return; }
     
-    struct bst_node* parent = root;
-    struct bst_node* node = root;
-    int cmp = 0;
-    while (node) {
-        parent = node;
-        cmp = bst_compare(element, node->element);
-        if (cmp > 0) {
-            node = node->right;
-        } else if (cmp < 0) {
-            node = node->left;
-        } else {
-            return;
+    internal_inorder_traversal(root->left);
+    printf("%d->", root->element);
+    internal_inorder_traversal(root->right);
+}
+
+void bst_inorder_traversal(void) {
+    internal_inorder_traversal(root);
+    printf("\n\n");
+}
+
+void internal_postorder_traversal(struct bst_node* root) {
+    if (root == NULL) { return; }
+    internal_postorder_traversal(root->left);
+    internal_postorder_traversal(root->right);
+    printf("%d->", root->element);
+}
+
+void bst_postorder_traversal(void) {
+    internal_postorder_traversal(root);
+    printf("\n\n");
+}
+
+void bst_levelorder_traversal(void) {
+    if (root == NULL) { return; }
+    
+    struct object_queue* q = object_queue_create();
+    object_queue_enqueue(q, root);
+    while (!object_queue_isEmpty(q)) {
+        struct bst_node* node = object_queue_dequeue(q);
+        printf("%d->", node->element);
+        if (node->left) {
+            object_queue_enqueue(q, node->left);
+        }
+        if (node->right) {
+            object_queue_enqueue(q, node->right);
         }
     }
+    object_queue_destroy(q);
+    printf("\n\n");
+}
+
+
+void levelorder_traversal(void(*visitor)(void*)) {
+    if (root == NULL || visitor == NULL) { return; }
     
-    struct bst_node* add = malloc(sizeof(struct bst_node));
-    add->element = element;
-    add->left = NULL;
-    add->right = NULL;
-    if (cmp > 0) { // add to parent node right
-        parent->right = add;
-    } else { // add to parent node left
-        parent->left = add;
+    struct object_queue* q = object_queue_create();
+    object_queue_enqueue(q, root);
+    while (!object_queue_isEmpty(q)) {
+        struct bst_node* node = object_queue_dequeue(q);
+        visitor(node);
+        if (node->left) {
+            object_queue_enqueue(q, node->left);
+        }
+        if (node->right) {
+            object_queue_enqueue(q, node->right);
+        }
     }
-    bst_szie_++;
+    object_queue_destroy(q);
+    printf("\n\n");
 }
 
-void bst_remove(int element) {
+void postorder_internal(struct bst_node* node, void(*visitor)(void*)) {
+    if (node == NULL || visitor == NULL) { return; }
     
+    postorder_internal(node->left, visitor);
+    postorder_internal(node->right, visitor);
+    visitor(node);
 }
 
-bool bst_contains(int element) {
-    return false;
+void postorder_traversal(void(*visitor)(void*)) {
+    postorder_internal(root, visitor);
+    printf("\n\n");
 }
 
-void bst_print(void) {
-//    bst_print_helper(root, 0);
-//    bst_print_internal(root, 0);
-    internal_bst_print();
+void inorder_internal(struct bst_node* node, void(*visitor)(void*)) {
+    if (node == NULL || visitor == NULL) { return; }
+    
+    inorder_internal(node->left, visitor);
+    visitor(node);
+    inorder_internal(node->right, visitor);
+}
+
+void inorder_traversal(void(*visitor)(void*)) {
+    inorder_internal(root, visitor);
+    printf("\n\n");
+}
+
+void preorder_internal(struct bst_node* node, void(*visitor)(void*)) {
+    if (node == NULL || visitor == NULL) { return; }
+    
+    visitor(node);
+    preorder_internal(node->left, visitor);
+    preorder_internal(node->right, visitor);
+}
+
+void preorder_traversal(void(*visitor)(void*)) {
+    preorder_internal(root, visitor);
+    printf("\n\n");
 }
