@@ -300,13 +300,30 @@ void test_cycle_deque() {
     printf("\n");
 }
 
+void order_visitor(void* object) {
+    struct bst_node* node = object;
+    printf("%d_", node->element);
+}
+
 void test_binary_search_tree() {
-    int list[] = {7, 4, 9, 2, 5, 8, 11, 3, 12, 1};
-    int len = 10;
+//    int list[] = {7, 4, 9, 2, 5, 8, 11, 3, 12, 1};
+//    int len = 10;
+    
+    int list[] = {7, 4, 9, 2, 1, 3, 5, 9, 8, 11, 10, 12};
+    int len = 12;
     for (int i = 0; i < len; i++) {
         bst_add(list[i]);
     }
     bst_print();
+    bst_preorder_traversal();
+    bst_inorder_traversal();
+    bst_postorder_traversal();
+    bst_levelorder_traversal();
+    
+    levelorder_traversal(order_visitor);
+    postorder_traversal(order_visitor);
+    inorder_traversal(order_visitor);
+    preorder_traversal(order_visitor);
 }
 
 
