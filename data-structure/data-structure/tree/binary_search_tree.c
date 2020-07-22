@@ -354,3 +354,65 @@ int tree_height(void) {
     
     return height;
 }
+
+
+bool tree_isComplete(void) {
+    if (root == NULL) { return false; }
+    
+    bool leaf = false;
+    struct object_queue* q = object_queue_create();
+    object_queue_enqueue(q, root);
+    while (!object_queue_isEmpty(q)) {
+        struct bst_node* node = object_queue_dequeue(q);
+        bool is_leaf = node->left == NULL && node->right == NULL;
+        bool has_twoChild = node->left && node->right;
+        if (leaf && !is_leaf) { return false; }
+        
+        if (has_twoChild) {
+            object_queue_enqueue(q, node->left);
+            object_queue_enqueue(q, node->right);
+        } else if (node->left == NULL && node->right) {
+            return false;
+        } else {
+            // (node->left != NULL && node->right == NULL) || (node->left == NULL && node->right == NULL)
+            leaf = true;
+            
+            if (node->left) { // CARE!!! MUST
+                object_queue_enqueue(q, node->left);
+            }
+        }
+    }
+    object_queue_destroy(q);
+    
+    return true;
+}
+
+bool isComplete(void) {
+    if (root == NULL) { return false; }
+    
+    bool leaf = false;
+    struct object_queue* q = object_queue_create();
+    object_queue_enqueue(q, root);
+    while (!object_queue_isEmpty(q)) {
+        struct bst_node* node = object_queue_dequeue(q);
+        bool is_leaf = node->left == NULL && node->right == NULL;
+        if (leaf && !is_leaf) { return false; }
+        
+        if (node->left) {
+            object_queue_enqueue(q, node->left);
+        } else if (node->right) {
+            // node->left == NULL && node->right != NULL
+            return false;
+        }
+        
+        if (node->right) {
+            object_queue_enqueue(q, node->right);
+        } else { // node->right = NULL
+            // (node->left != NULL && node->right == NULL) || (node->left == NULL && node->right == NULL)
+            leaf = true;
+        }
+    }
+    object_queue_destroy(q);
+    
+    return true;
+}

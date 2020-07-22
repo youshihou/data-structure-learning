@@ -345,36 +345,44 @@ void test_binary_search_tree() {
 //    int list[] = {7, 4, 9, 2, 5, 8, 11, 3, 12, 1};
 //    int len = 10;
     
-    int list[] = {7, 4, 9, 2, 1, 3, 5, 9, 8, 11, 10, 12};
-    int len = 12;
+//    int list[] = {7, 4, 9, 2, 1, 3, 5, 9, 8, 11, 10, 12};
+//    int len = 12;
+    
+    int list[] = {7, 4, 9, 2, 5};
+//    int list[] = {7, 4, 9, 2, 1};
+    int len = 5;
     for (int i = 0; i < len; i++) {
         bst_add(list[i]);
     }
     bst_print();
-    bst_preorder_traversal();
-    bst_inorder_traversal();
-    bst_postorder_traversal();
-    bst_levelorder_traversal();
+//    bst_preorder_traversal();
+//    bst_inorder_traversal();
+//    bst_postorder_traversal();
+//    bst_levelorder_traversal();
     
-    levelorder_traversal(levelorder_visitor);
-    
-    struct visitor* visitor = malloc(sizeof(struct visitor));
-    visitor->stop = false;
-    visitor->visit = postorder_visit;
-    postorder_traversal(visitor);
-    
-    visitor->stop = false;
-    visitor->visit = inorder_visit;
-    inorder_traversal(visitor);
-    
-    visitor->stop = false;
-    visitor->visit = preorder_visit;
-    preorder_traversal(visitor);
-    
-    free(visitor);
+//    levelorder_traversal(levelorder_visitor);
+//
+//    struct visitor* visitor = malloc(sizeof(struct visitor));
+//    visitor->stop = false;
+//    visitor->visit = postorder_visit;
+//    postorder_traversal(visitor);
+//
+//    visitor->stop = false;
+//    visitor->visit = inorder_visit;
+//    inorder_traversal(visitor);
+//
+//    visitor->stop = false;
+//    visitor->visit = preorder_visit;
+//    preorder_traversal(visitor);
+//
+//    free(visitor);
     
     printf("tree_height: %d\n", bst_tree_height());
-    printf("tree_height: %d\n\n", tree_height());
+    printf("tree_height: %d\n", tree_height());
+    
+    printf("tree_isComplete: %d\n", tree_isComplete());
+    printf("tree_isComplete: %d\n\n", isComplete());
+
 }
 
 
