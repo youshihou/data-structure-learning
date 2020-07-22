@@ -35,7 +35,7 @@ void object_queue_enqueue(struct object_queue* q, void* value) {
 void* object_queue_dequeue(struct object_queue* q) {
     assert(!object_queue_isEmpty(q));
     struct object_node* e = q->head;
-    struct node_depth* ret = e->value;
+    void* ret = e->value;
     q->head = e->next;
     free(e);
     return ret;
