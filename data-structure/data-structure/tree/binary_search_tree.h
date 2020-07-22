@@ -54,4 +54,8 @@ int tree_height(void);
 bool tree_isComplete(void);
 bool isComplete(void);
 
+struct bst_node* predecessor(struct bst_node*);
+struct bst_node* successor(struct bst_node*);
+
+
 #endif /* binary_search_tree_h */

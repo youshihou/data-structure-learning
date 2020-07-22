@@ -416,3 +416,51 @@ bool isComplete(void) {
     
     return true;
 }
+
+
+
+struct bst_node* predecessor(struct bst_node* node) {
+    if (node == NULL) { return NULL; }
+    
+    // from left find, left->right->right...
+    struct bst_node* p = node->left;
+    if (p) {
+        while (p->right) {
+            p = p->right;
+        }
+        return p;
+    }
+    
+    // from parent find
+    while (node->parent && node == node->parent->left) {
+        node = node->parent;
+    }
+    
+    // node->parent == NULL
+    // node == node->prent->right
+    return node->parent;
+}
+
+
+
+struct bst_node* successor(struct bst_node* node) {
+    if (node == NULL) { return NULL; }
+    
+    // from right find, right->left->left...
+    struct bst_node* s = node->right;
+    if (s) {
+        while (s->left) {
+            s = s->left;
+        }
+        return s;
+    }
+    
+    // from parent find
+    while (node->parent && node == node->parent->right) {
+        node =node->parent;
+    }
+    
+    // node->prent == NULL
+    // node == node->parent->left
+    return node->parent;
+}
