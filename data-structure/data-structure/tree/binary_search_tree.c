@@ -166,6 +166,29 @@ static void bst_print_internal(struct bst_node* root, int depth) {
 }
 #endif
 
+void padding (char ch, int n) {
+    for (int i = 0; i < n; i++) {
+        putchar (ch);
+    }
+}
+
+void structure(struct bst_node *root, int level) {
+    if (root == NULL) {
+        padding('\t', level);
+        puts( "~" );
+    } else {
+        structure(root->right, level + 1);
+        padding('\t', level);
+        printf("%d\n", root->element);
+        structure(root->left, level + 1);
+    }
+}
+
+void bst_print_internal(void) {
+    structure(root, 0);
+    printf("\n\n");
+}
+
 int get_max_depth(struct bst_node* root) {
     if (root == NULL) { return 0; }
     int left_max = get_max_depth(root->left);
@@ -176,7 +199,8 @@ int get_max_depth(struct bst_node* root) {
 void bst_print(void) {
 //    bst_print_helper(root, 0);
 //    bst_print_internal(root, 0);
-
+//    bst_print_internal();
+    
     int depth = get_max_depth(root);
     int last_level = 0;
     char buffer[1024];

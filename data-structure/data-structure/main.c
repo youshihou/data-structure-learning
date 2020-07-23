@@ -389,8 +389,8 @@ void test_binary_search_tree() {
 //    bst_remove(12);
 //    bst_remove(5);
 //    bst_remove(11);
-    bst_remove(9);
-//    bst_remove(7);
+//    bst_remove(9);
+    bst_remove(7);
     bst_print();
 }
 
