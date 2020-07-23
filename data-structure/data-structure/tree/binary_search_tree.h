@@ -25,6 +25,7 @@ void bst_add(int element);
 void bst_remove(int element);
 bool bst_contains(int element);
 void bst_print(void);
+void new_print(void);
 
 void bst_preorder_traversal(void);
 void bst_inorder_traversal(void);

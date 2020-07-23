@@ -175,7 +175,7 @@ void padding (char ch, int n) {
 void structure(struct bst_node *root, int level) {
     if (root == NULL) {
         padding('\t', level);
-        puts( "~" );
+        puts( "~    " );
     } else {
         structure(root->right, level + 1);
         padding('\t', level);
@@ -245,6 +245,37 @@ void bst_print(void) {
     }
     printf("\n\n");
     free(root_nd);
+    object_queue_destroy(q);
+}
+
+void new_print(void) {
+    int depth = get_max_depth(root);
+    int ceil_size = log2(depth + 1);
+    int pot = 0;
+    int offset = 0;
+    char buffer[1024];
+    struct object_queue* q = object_queue_create();
+    object_queue_enqueue(q, root);
+    while (object_queue_size(q)) {
+        int levels = object_queue_size(q);
+        while (levels) {
+            struct bst_node* node = object_queue_dequeue(q);
+            offset = (levels == pow(2, pot)) ? pow(2, (ceil_size - pot + 1)) : pow(2, (ceil_size - pot + 1 + 1));
+            sprintf(buffer, "%*s%d", offset, "", node->element);
+            printf("%s", buffer);
+            
+            if (node->left) {
+                object_queue_enqueue(q, node->left);
+            }
+            if (node->right) {
+                object_queue_enqueue(q, node->right);
+            }
+            levels--;
+        }
+        pot++;
+        printf("\n\n");
+    }
+    printf("\n\n");
     object_queue_destroy(q);
 }
 

@@ -356,6 +356,7 @@ void test_binary_search_tree() {
         bst_add(list[i]);
     }
     bst_print();
+    new_print();
 //    bst_preorder_traversal();
 //    bst_inorder_traversal();
 //    bst_postorder_traversal();
@@ -390,8 +391,8 @@ void test_binary_search_tree() {
 //    bst_remove(5);
 //    bst_remove(11);
 //    bst_remove(9);
-    bst_remove(7);
-    bst_print();
+//    bst_remove(7);
+//    bst_print();
 }
 
 
