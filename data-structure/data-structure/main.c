@@ -342,16 +342,16 @@ bool preorder_visit(void* object) {
 
 
 void test_binary_search_tree() {
-//    int list[] = {7, 4, 9, 2, 5, 8, 11, 3, 12, 1};
-//    int len = 10;
+    int list[] = {7, 4, 9, 2, 5, 8, 11, 3, 12, 1};
+    int len = 10;
     
 //    int list[] = {7, 4, 9, 2, 1, 3, 5, 9, 8, 11, 10, 12};
 //    int len = 12;
     
 //    int list[] = {7, 4, 9, 2, 5};
 //    int len = 5;
-    int list[] = {7, 4, 9, 2, 1};
-    int len = 5;
+//    int list[] = {7, 4, 9, 2, 1};
+//    int len = 5;
     for (int i = 0; i < len; i++) {
         bst_add(list[i]);
     }
@@ -378,12 +378,20 @@ void test_binary_search_tree() {
 //
 //    free(visitor);
     
-    printf("tree_height: %d\n", bst_tree_height());
-    printf("tree_height: %d\n", tree_height());
-    
-    printf("tree_isComplete: %d\n", tree_isComplete());
-    printf("tree_isComplete: %d\n\n", isComplete());
+//    printf("tree_height: %d\n", bst_tree_height());
+//    printf("tree_height: %d\n", tree_height());
+//
+//    printf("tree_isComplete: %d\n", tree_isComplete());
+//    printf("tree_isComplete: %d\n\n", isComplete());
 
+//    bst_remove(1);
+//    bst_remove(3);
+//    bst_remove(12);
+//    bst_remove(5);
+//    bst_remove(11);
+    bst_remove(9);
+//    bst_remove(7);
+    bst_print();
 }
 
 

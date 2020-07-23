@@ -65,6 +65,7 @@ void bst_add(int element) {
     add->element = element;
     add->left = NULL;
     add->right = NULL;
+    add->parent = parent;
     if (cmp > 0) { // add to parent node right
         parent->right = add;
     } else { // add to parent node left
@@ -73,8 +74,57 @@ void bst_add(int element) {
     bst_szie_++;
 }
 
-void bst_remove(int element) {
+struct bst_node* node(int element) {
+    struct bst_node* find = root;
+    while (find) {
+        int cmp = bst_compare(element, find->element);
+        if (cmp == 0) { return find; }
+        if (cmp > 0) {
+            find = find->right;
+        } else {
+            find = find->left;
+        }
+    }
+    return NULL;
+}
+
+void remove_node(struct bst_node* node) {
+    if (node == NULL) { return; }
     
+    bst_szie_--;
+    
+    if (node->left && node->right) { // degree is 2
+        // find successor node
+        struct bst_node* s = successor(node);
+        node->element = s->element;
+        node = s; // will remove node
+    }
+    
+    // degree is 1 or 0
+    struct bst_node* replace = node->left ?: node->right;
+    if (replace) { // node degree is 1
+        replace->parent = node->parent;
+        if (node->parent == NULL) { // node degree is 1, and is root
+            root = replace;
+        } else if (node == node->parent->left) {
+            node->parent->left = replace;
+        } else {
+            node->parent->right = replace;
+        }
+    } else if (node->parent == NULL) { // node degree is 0, and is root
+        root = NULL;
+    } else { // node degree is 0, but not root
+        if (node == node->parent->left) {
+            node->parent->left = NULL;
+        } else {
+            node->parent->right = NULL;
+        }
+    }
+    free(node);
+}
+
+void bst_remove(int element) {
+    remove_node(node(element));
 }
 
 bool bst_contains(int element) {
@@ -146,14 +196,14 @@ void bst_print(void) {
         struct node_depth* nd = (struct node_depth *)object_queue_front(q);
         if (last_level != nd->level) {
             printf("\n\n");
-            last_level = nd->level;
             offset = (1 << (depth - nd->level)) - 1;
+            last_level = nd->level;
         }
         
         if (nd->node) {
             sprintf(buffer, " %*s%d%*s", offset, " ", nd->node->element, offset, " ");
         } else {
-            sprintf(buffer, " %*s", offset << 1, " ");
+            sprintf(buffer, " %*s", offset << 1, "   ");
         }
         printf("%s", buffer);
         
@@ -170,6 +220,7 @@ void bst_print(void) {
         object_queue_dequeue(q);
     }
     printf("\n\n");
+    free(root_nd);
     object_queue_destroy(q);
 }
 
