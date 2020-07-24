@@ -261,7 +261,7 @@ void new_print(void) {
         while (levels) {
             struct bst_node* node = object_queue_dequeue(q);
             offset = (levels == pow(2, pot)) ? pow(2, (ceil_size - pot + 1)) : pow(2, (ceil_size - pot + 1 + 1));
-            sprintf(buffer, "%*s%d", offset, "", node->element);
+            sprintf(buffer, "%*s%d", offset << 1, "", node->element);
             printf("%s", buffer);
             
             if (node->left) {
