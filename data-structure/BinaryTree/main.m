@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BinaryTree.h"
+#import "BinaryTreePrintHandler.h"
 #import "BinarySearchTree.h"
 
 void test1() {
@@ -19,9 +19,9 @@ void test1() {
         [bst add:@(data[i])];
     }
     
-    [BinaryTree println:bst];
+    [BinaryTreePrintHandler println:bst];
     printf("---------------------------------\n");
-    [BinaryTree println:bst style:BinaryTreePrintStyleInorder];
+    [BinaryTreePrintHandler println:bst style:BinaryTreePrintStyleInorder];
     printf("---------------------------------\n");
 }
 
@@ -36,9 +36,9 @@ void test2() {
         [bst add:@(data[i])];
     }
     
-    [BinaryTree println:bst];
+    [BinaryTreePrintHandler println:bst];
     printf("---------------------------------\n");
-    [BinaryTree println:bst style:BinaryTreePrintStyleInorder];
+    [BinaryTreePrintHandler println:bst style:BinaryTreePrintStyleInorder];
     printf("---------------------------------\n");
 }
 
@@ -48,9 +48,9 @@ void test3() {
         [bst add:@((arc4random() % 666) + 1)];
     }
     
-    [BinaryTree println:bst];
+    [BinaryTreePrintHandler println:bst];
     printf("---------------------------------\n");
-    [BinaryTree println:bst style:BinaryTreePrintStyleInorder];
+    [BinaryTreePrintHandler println:bst style:BinaryTreePrintStyleInorder];
     printf("---------------------------------\n");
 //    NSString *str = [BinaryTree printString:bst];
 //    NSString *file = @"/Users/Ankui/Desktop/test.txt";
@@ -65,12 +65,12 @@ void test4() {
         [bst add:@(data[i])];
     }
     
-    [BinaryTree println:bst];
+    [BinaryTreePrintHandler println:bst];
     printf("---------------------------------\n");
 //    [BinaryTree println:bst style:BinaryTreePrintStyleInorder];
 //    printf("---------------------------------\n");
     [bst remove:@7];
-    [BinaryTree println:bst];
+    [BinaryTreePrintHandler println:bst];
     printf("---------------------------------\n");
     printf("%d\n\n", [bst contains:@8]);
 }

@@ -17,6 +17,7 @@
 		036FA1F924CADFBB0007FFBA /* BinaryTreeLevelOrderPrint.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA1EF24CADFBB0007FFBA /* BinaryTreeLevelOrderPrint.m */; };
 		036FA1FA24CADFBB0007FFBA /* BinaryTreePrint.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA1F024CADFBB0007FFBA /* BinaryTreePrint.m */; };
 		036FA1FC24CAE1740007FFBA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA1FB24CAE1740007FFBA /* main.m */; };
+		036FA22724CB10850007FFBA /* BinaryTreePrintHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA22624CB10850007FFBA /* BinaryTreePrintHandler.m */; };
 		0377F59E24C5C16600ADE08D /* binary_search_tree.c in Sources */ = {isa = PBXBuildFile; fileRef = 0377F59D24C5C16600ADE08D /* binary_search_tree.c */; };
 		0377F5A124C5ED5000ADE08D /* print_tree_helper.c in Sources */ = {isa = PBXBuildFile; fileRef = 0377F5A024C5ED5000ADE08D /* print_tree_helper.c */; };
 		038E9F8924C1D41F005DD7A2 /* LinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 038E9F8824C1D41E005DD7A2 /* LinkedList.c */; };
@@ -72,6 +73,8 @@
 		036FA1F224CADFBB0007FFBA /* BinaryTreeLevelOrderPrint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinaryTreeLevelOrderPrint.h; sourceTree = "<group>"; };
 		036FA1F324CADFBB0007FFBA /* BinaryTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinaryTree.h; sourceTree = "<group>"; };
 		036FA1FB24CAE1740007FFBA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		036FA22524CB10850007FFBA /* BinaryTreePrintHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BinaryTreePrintHandler.h; sourceTree = "<group>"; };
+		036FA22624CB10850007FFBA /* BinaryTreePrintHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BinaryTreePrintHandler.m; sourceTree = "<group>"; };
 		0377F59C24C5C16600ADE08D /* binary_search_tree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = binary_search_tree.h; sourceTree = "<group>"; };
 		0377F59D24C5C16600ADE08D /* binary_search_tree.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = binary_search_tree.c; sourceTree = "<group>"; };
 		0377F59F24C5ED5000ADE08D /* print_tree_helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = print_tree_helper.h; sourceTree = "<group>"; };
@@ -174,8 +177,8 @@
 			isa = PBXGroup;
 			children = (
 				036FA1E724CADFBB0007FFBA /* BinaryTreeProtocol.h */,
-				036FA1F324CADFBB0007FFBA /* BinaryTree.h */,
-				036FA1E824CADFBB0007FFBA /* BinaryTree.m */,
+				036FA22524CB10850007FFBA /* BinaryTreePrintHandler.h */,
+				036FA22624CB10850007FFBA /* BinaryTreePrintHandler.m */,
 				036FA1E924CADFBB0007FFBA /* category */,
 				036FA1EC24CADFBB0007FFBA /* print */,
 			);
@@ -207,6 +210,8 @@
 		036FA1FD24CAE1890007FFBA /* objective-c */ = {
 			isa = PBXGroup;
 			children = (
+				036FA1F324CADFBB0007FFBA /* BinaryTree.h */,
+				036FA1E824CADFBB0007FFBA /* BinaryTree.m */,
 				036FA1E424CADFBB0007FFBA /* BinarySearchTree.h */,
 				036FA1E324CADFBA0007FFBA /* BinarySearchTree.m */,
 				036FA1E624CADFBB0007FFBA /* internal */,
@@ -350,6 +355,7 @@
 				036FA1F624CADFBB0007FFBA /* BinaryTree.m in Sources */,
 				036FA1F724CADFBB0007FFBA /* NSString+Tree.m in Sources */,
 				036FA1F824CADFBB0007FFBA /* BinaryTreeInorderPrint.m in Sources */,
+				036FA22724CB10850007FFBA /* BinaryTreePrintHandler.m in Sources */,
 				036FA1F424CADFBB0007FFBA /* BinarySearchTree.m in Sources */,
 				036FA1F924CADFBB0007FFBA /* BinaryTreeLevelOrderPrint.m in Sources */,
 				036FA1FC24CAE1740007FFBA /* main.m in Sources */,
