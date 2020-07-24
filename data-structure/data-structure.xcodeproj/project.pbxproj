@@ -95,7 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				03A7605B24ACB4A500940BC7 /* common.h */,
-				0344427124BC8ECC0030765D /* List */,
+				0344427124BC8ECC0030765D /* list */,
 				038E9F9024C2EBC8005DD7A2 /* stack */,
 				038E9FA024C33539005DD7A2 /* queue */,
 				0377F59B24C5BEEA00ADE08D /* tree */,
@@ -104,7 +104,7 @@
 			path = "data-structure";
 			sourceTree = "<group>";
 		};
-		0344427124BC8ECC0030765D /* List */ = {
+		0344427124BC8ECC0030765D /* list */ = {
 			isa = PBXGroup;
 			children = (
 				0344427224BC912B0030765D /* ArrayList.h */,
@@ -118,7 +118,7 @@
 				038E9F8D24C2B98A005DD7A2 /* CycleLinkedList.h */,
 				038E9F8E24C2B98A005DD7A2 /* CycleLinkedList.c */,
 			);
-			path = List;
+			path = list;
 			sourceTree = "<group>";
 		};
 		0377F59B24C5BEEA00ADE08D /* tree */ = {
