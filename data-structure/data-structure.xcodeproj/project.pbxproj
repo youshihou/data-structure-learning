@@ -194,12 +194,12 @@
 		036FA1EC24CADFBB0007FFBA /* print */ = {
 			isa = PBXGroup;
 			children = (
-				036FA1ED24CADFBB0007FFBA /* BinaryTreeInorderPrint.m */,
 				036FA1EE24CADFBB0007FFBA /* BinaryTreePrint.h */,
-				036FA1EF24CADFBB0007FFBA /* BinaryTreeLevelOrderPrint.m */,
 				036FA1F024CADFBB0007FFBA /* BinaryTreePrint.m */,
-				036FA1F124CADFBB0007FFBA /* BinaryTreeInorderPrint.h */,
 				036FA1F224CADFBB0007FFBA /* BinaryTreeLevelOrderPrint.h */,
+				036FA1EF24CADFBB0007FFBA /* BinaryTreeLevelOrderPrint.m */,
+				036FA1F124CADFBB0007FFBA /* BinaryTreeInorderPrint.h */,
+				036FA1ED24CADFBB0007FFBA /* BinaryTreeInorderPrint.m */,
 			);
 			path = print;
 			sourceTree = "<group>";
