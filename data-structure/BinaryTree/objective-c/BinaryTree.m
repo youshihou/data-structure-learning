@@ -24,9 +24,6 @@
 @end
 
 
-@interface BinaryTree ()<BinaryTreeProtocol>
-@end
-
 @implementation BinaryTree
 + (instancetype)tree {
     return [[self alloc] init];
@@ -100,7 +97,6 @@
         TreeNode *node = queue.firstObject;
         [queue removeObjectAtIndex:0];
         if (leaf && ![node isLeaf]) { return NO; }
-        
         if (node->_left) {
             [queue addObject:node->_left];
         } else if (node->_right) {
@@ -188,6 +184,7 @@
 }
 - (id)string:(id)object {
     TreeNode *node = object;
-    return [NSString stringWithFormat:@"%@_p(%@)", node->_element, node->_parent ? node->_parent->_element : @"null"];
+    return [NSString stringWithFormat:@"%@_p(%@)",
+            node->_element, node->_parent ? node->_parent->_element : @"null"];
 }
 @end
