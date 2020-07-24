@@ -10,77 +10,95 @@
 #import "BinaryTreePrintHandler.h"
 #import "BinarySearchTree.h"
 
-void test1() {
-    int data[] = { 38, 18, 4, 69, 85, 71, 34, 36, 29, 100 };
-    int len = sizeof(data) / sizeof(int);
-    
-    BinarySearchTree *bst = [BinarySearchTree tree];
-    for (int i = 0; i < len; i++) {
-        [bst add:@(data[i])];
+bool preorder_visit(void* object) {
+    NSNumber *n = (__bridge NSNumber *)(object);
+    printf("%zd_", n.integerValue);
+    if (n.integerValue == 2) {
+        printf("\n");
+        return true;
     }
-    
-    [BinaryTreePrintHandler println:bst];
-    printf("---------------------------------\n");
-    [BinaryTreePrintHandler println:bst style:BinaryTreePrintStyleInorder];
-    printf("---------------------------------\n");
+    return false;
+}
+bool inorder_visit(void* object) {
+    NSNumber *n = (__bridge NSNumber *)(object);
+    printf("%zd_", n.integerValue);
+    if (n.integerValue == 3) {
+        printf("\n");
+        return true;
+    }
+    return false;
+}
+bool postorder_visit(void* object) {
+    NSNumber *n = (__bridge NSNumber *)(object);
+    printf("%zd_", n.integerValue);
+    if (n.integerValue == 2) {
+        printf("\n");
+        return true;
+    }
+    return false;
+}
+bool levelorder_visit(void* object) {
+    NSNumber *n = (__bridge NSNumber *)(object);
+    printf("%zd_", n.integerValue);
+    if (n.integerValue == 9) {
+        printf("\n");
+        return true;
+    }
+    return false;
 }
 
-void test2() {
-    int data[] = { 38, 18, 4, 69, 85, 71, 34, 36, 29, 100 };
-    int len = sizeof(data) / sizeof(int);
-    
-    BinarySearchTree *bst = [BinarySearchTree treeWithBlock:^int(id e1, id e2) {
-        return (int)[e2 compare:e1];
-    }];
-    for (int i = 0; i < len; i++) {
-        [bst add:@(data[i])];
-    }
-    
-    [BinaryTreePrintHandler println:bst];
-    printf("---------------------------------\n");
-    [BinaryTreePrintHandler println:bst style:BinaryTreePrintStyleInorder];
-    printf("---------------------------------\n");
-}
-
-void test3() {
-    BinarySearchTree *bst = [BinarySearchTree tree];
-    for (int i = 0; i < 20; i++) {
-        [bst add:@((arc4random() % 666) + 1)];
-    }
-    
-    [BinaryTreePrintHandler println:bst];
-    printf("---------------------------------\n");
-    [BinaryTreePrintHandler println:bst style:BinaryTreePrintStyleInorder];
-    printf("---------------------------------\n");
-//    NSString *str = [BinaryTree printString:bst];
-//    NSString *file = @"/Users/Ankui/Desktop/test.txt";
-//    [str writeToFile:file atomically:YES encoding:NSUTF8StringEncoding error:nil];
-}
-
-void test4() {
+void test() {
     int data[] = {7, 4, 9, 2, 5, 8, 11, 3, 12, 1};
     int len = sizeof(data) / sizeof(int);
     BinarySearchTree *bst = [BinarySearchTree tree];
     for (int i = 0; i < len; i++) {
         [bst add:@(data[i])];
     }
+    [BinaryTreePrintHandler println:bst];
+    printf("---------------------------------\n");
     
-    [BinaryTreePrintHandler println:bst];
+    printf("height: %zd\n", [bst height]);
+    printf("height2: %zd\n", [bst height2]);
+    printf("isComplete: %d\n", [bst isComplete]);
+    printf("contains: %d\n", [bst contains:@8]);
+
+//    [bst remove:@1];
+//    [bst remove:@3];
+//    [bst remove:@12];
+//    [bst remove:@5];
+//    [bst remove:@11];
+//    [bst remove:@9];
+//    [bst remove:@7];
+//    [BinaryTreePrintHandler println:bst];
     printf("---------------------------------\n");
-//    [BinaryTree println:bst style:BinaryTreePrintStyleInorder];
-//    printf("---------------------------------\n");
-    [bst remove:@7];
-    [BinaryTreePrintHandler println:bst];
+    
+    struct Visitor* visitor = malloc(sizeof(struct Visitor));
+    visitor->stop = false;
+    visitor->visit = preorder_visit;
+    [bst preorder:visitor];
+    printf("\n");
+
+    visitor->stop = false;
+    visitor->visit = inorder_visit;
+    [bst inorder:visitor];
+    printf("\n");
+
+    visitor->stop = false;
+    visitor->visit = postorder_visit;
+    [bst postorder:visitor];
+    printf("\n");
+    
+    visitor->stop = false;
+    visitor->visit = levelorder_visit;
+    [bst levelOrder:visitor];
     printf("---------------------------------\n");
-    printf("%d\n\n", [bst contains:@8]);
+    free(visitor);
+
 }
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-//        test1();
-//        test2();
-//        test3();
-        test4();
+        test();
     }
     return 0;
 }

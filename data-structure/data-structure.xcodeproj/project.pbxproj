@@ -210,11 +210,11 @@
 		036FA1FD24CAE1890007FFBA /* objective-c */ = {
 			isa = PBXGroup;
 			children = (
+				036FA1E624CADFBB0007FFBA /* internal */,
 				036FA1F324CADFBB0007FFBA /* BinaryTree.h */,
 				036FA1E824CADFBB0007FFBA /* BinaryTree.m */,
 				036FA1E424CADFBB0007FFBA /* BinarySearchTree.h */,
 				036FA1E324CADFBA0007FFBA /* BinarySearchTree.m */,
-				036FA1E624CADFBB0007FFBA /* internal */,
 			);
 			path = "objective-c";
 			sourceTree = "<group>";

@@ -8,26 +8,7 @@
 
 #import "BinarySearchTree.h"
 
-@interface BSTNode : NSObject {
-    @public
-    id _element;
-    BSTNode *_left;
-    BSTNode *_right;
-    __weak BSTNode *_parent;
-}
-@end
-@implementation BSTNode
-+ (instancetype)nodeWith:(id)element parent:(BSTNode *)parent {
-    BSTNode *n = [[self alloc] init];
-    n->_element = element;
-    n->_parent = parent;
-    return n;
-}
-@end
-
 @interface BinarySearchTree () {
-    NSUInteger _size;
-    BSTNode *_root;
     int(^_block)(id, id);
     id<BSTComparator> _comparator;
 }
@@ -47,29 +28,22 @@
     return bst;
 }
 
-- (NSUInteger)size {
-    return _size;
-}
-- (BOOL)isEmpty {
-    return _size == 0;
-}
-- (void)clear {
-    _root = nil;
-    _size = 0;
-}
 - (BOOL)contains:(id)element {
     return [self _findNode:element] != nil;
 }
 - (void)add:(id)element {
-    if (!element) { return; }
+    if (!element) {
+        assert("element must not be nil");
+        return;
+    }
     if (!_root) {
-        _root = [BSTNode nodeWith:element parent:nil];
+        _root = [TreeNode nodeWith:element parent:nil];
         _size++;
         return;
     }
     
-    BSTNode *parent = _root;
-    BSTNode *node = _root;
+    TreeNode *parent = _root;
+    TreeNode *node = _root;
     int cmp = 0;
     while (node) {
         parent = node;
@@ -83,7 +57,7 @@
             return;
         }
     }
-    BSTNode *add = [BSTNode nodeWith:element parent:parent];
+    TreeNode *add = [TreeNode nodeWith:element parent:parent];
     if (cmp > 0) {
         parent->_right = add;
     } else {
@@ -94,16 +68,16 @@
 - (void)remove:(id)element {
     [self _remove:[self _findNode:element]];
 }
-- (void)_remove:(BSTNode *)node {
+- (void)_remove:(TreeNode *)node {
     if (!node) { return; }
     _size--;
     if (node->_left && node->_right) {
-        BSTNode *s = [self _successor:node];
+        TreeNode *s = [self successor:node];
         node->_element = s->_element;
         node = s;
     }
     
-    BSTNode *replace = node->_left ?: node->_right;
+    TreeNode *replace = node->_left ?: node->_right;
     if (replace) {
         replace->_parent = node->_parent;
         if (!node->_parent) {
@@ -125,8 +99,8 @@
         }
     }
 }
-- (BSTNode *)_findNode:(id)element {
-    BSTNode *node = _root;
+- (TreeNode *)_findNode:(id)element {
+    TreeNode *node = _root;
     while (node) {
         int cmp = [self _compare:element e2:node->_element];
         if (cmp == 0) { return node; }
@@ -138,55 +112,9 @@
     }
     return nil;
 }
-- (BSTNode *)_predecessor:(BSTNode *)node {
-    if (!node) { return nil; }
-    BSTNode *p = _root->_left;
-    if (p) {
-        while (p->_right) {
-            p = p->_right;
-        }
-        return p;
-    }
-    
-    while (node->_parent && node == node->_parent->_left) {
-        node = node->_parent;
-    }
-    return node->_parent;
-}
-- (BSTNode *)_successor:(BSTNode *)node {
-    if (!node) { return nil; }
-    BSTNode *s = node->_right;
-    if (s) {
-        while (s->_left) {
-            s = s->_left;
-        }
-        return s;
-    }
-    
-    while (node->_parent && node == node->_parent->_right) {
-        node = node->_parent;
-    }
-    return node->_parent;
-}
 
+// MARK: - BSTComparator
 - (int)_compare:(id)e1 e2:(id)e2 {
     return _block ? _block(e1, e2) : (_comparator ? [_comparator compare:e1 with:e2] : (int)[e1 compare:e2]);
-}
-
-- (id)root {
-    return _root;
-}
-- (id)left:(id)object {
-    BSTNode *node = object;
-    return node->_left;
-}
-- (id)right:(id)object {
-    BSTNode *node = object;
-    return node->_right;
-}
-- (id)string:(id)object {
-    BSTNode *node = object;
-//    return node->_element;
-    return [NSString stringWithFormat:@"%@_p(%@)", node->_element, node->_parent ? node->_parent->_element : @"null"];
 }
 @end

@@ -6,8 +6,7 @@
 //  Copyright © 2020 Ankui. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "BinaryTreeProtocol.h"
+#import "BinaryTree.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,13 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (int)compare:(id)e1 with:(id)e2;
 @end
 
-@interface BinarySearchTree : NSObject<BinaryTreeProtocol>
+@interface BinarySearchTree : BinaryTree
 + (instancetype)tree;
 + (instancetype)treeWithComparator:(_Nullable id<BSTComparator>)comparator;
 + (instancetype)treeWithBlock:(int(^_Nullable)(id, id))block;
-- (NSUInteger)size;
-- (BOOL)isEmpty;
-- (void)clear;
 - (BOOL)contains:(id)element;
 - (void)add:(id)element;
 - (void)remove:(id)element;
