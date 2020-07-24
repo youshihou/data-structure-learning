@@ -17,7 +17,7 @@ typedef NS_ENUM(NSUInteger, BinaryTreePrintStyle) {
     BinaryTreePrintStyleInorder
 };
 
-@interface BinaryTree : BinaryTreePrint
+@interface BinaryTree : NSObject
 + (void)println:(id<BinaryTreeProtocol>)tree style:(BinaryTreePrintStyle)style;
 + (void)println:(id<BinaryTreeProtocol>)tree;
 + (void)print:(id<BinaryTreeProtocol>)tree style:(BinaryTreePrintStyle)style;
