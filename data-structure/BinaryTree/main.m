@@ -71,6 +71,8 @@ void test4() {
 //    printf("---------------------------------\n");
     [bst remove:@7];
     [BinaryTree println:bst];
+    printf("---------------------------------\n");
+    printf("%d\n\n", [bst contains:@8]);
 }
 
 int main(int argc, const char * argv[]) {

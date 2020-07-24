@@ -53,6 +53,13 @@
 - (BOOL)isEmpty {
     return _size == 0;
 }
+- (void)clear {
+    _root = nil;
+    _size = 0;
+}
+- (BOOL)contains:(id)element {
+    return [self _findNode:element] != nil;
+}
 - (void)add:(id)element {
     if (!element) { return; }
     if (!_root) {

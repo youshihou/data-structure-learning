@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)treeWithBlock:(int(^_Nullable)(id, id))block;
 - (NSUInteger)size;
 - (BOOL)isEmpty;
+- (void)clear;
+- (BOOL)contains:(id)element;
 - (void)add:(id)element;
 - (void)remove:(id)element;
 @end
