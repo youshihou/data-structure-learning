@@ -2,6 +2,7 @@
 *.d
 
 xcuserdata/
+xcshareddata/
 .DS_Store
 
 # Object files
