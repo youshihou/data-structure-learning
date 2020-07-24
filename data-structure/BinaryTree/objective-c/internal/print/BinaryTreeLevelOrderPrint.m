@@ -9,8 +9,8 @@
 #import "BinaryTreeLevelOrderPrint.h"
 #import "NSString+Tree.h"
 
-// MARK: - TreeNode begin
-@interface TreeNode : NSObject {
+// MARK: - LOPNode begin
+@interface LOPNode : NSObject {
     @public
     NSUInteger _x;
     NSUInteger _y;
@@ -18,45 +18,45 @@
     NSUInteger _height;
     NSString *_string;
     __weak id _node;
-    TreeNode *_left;
-    TreeNode *_right;
-    __weak TreeNode *_parent;
+    LOPNode *_left;
+    LOPNode *_right;
+    __weak LOPNode *_parent;
 }
 - (NSUInteger)rightBound;
 - (NSUInteger)leftBound;
 @end
 
-// MARK: - LevelInfo begin
-@interface LevelInfo : NSObject {
+// MARK: - LOPLevelInfo begin
+@interface LOPLevelInfo : NSObject {
     @public
     NSUInteger _leftX;
     NSUInteger _rightX;
 }
 @end
-@implementation LevelInfo
-+ (instancetype)levelInfoWith:(TreeNode *)left right:(TreeNode *)right {
-    LevelInfo *i = [[self alloc] init];
+@implementation LOPLevelInfo
++ (instancetype)levelInfoWith:(LOPNode *)left right:(LOPNode *)right {
+    LOPLevelInfo *i = [[self alloc] init];
     i->_leftX = [left leftBound];
     i->_rightX = [right rightBound];
     return i;
 }
 @end
-// MARK: - LevelInfo end
+// MARK: - LOPLevelInfo end
 
 
-@implementation TreeNode
+@implementation LOPNode
 static NSUInteger const TOP_LINE_SPACE = 1;
 + (instancetype)nodeWithString:(NSString *)string {
     string = !string ? @"null" : string;
     string = string.length ? string : @" ";
     
-    TreeNode *n = [[self alloc] init];
+    LOPNode *n = [[self alloc] init];
     n->_string = string;
     n->_width = string.length;
     return n;
 }
 + (instancetype)nodeWithNode:(id)node tree:(id<BinaryTreeProtocol>)tree {
-    TreeNode *n = [self nodeWithString:[[tree string:node] description]];
+    LOPNode *n = [self nodeWithString:[[tree string:node] description]];
     n->_node = node;
     return n;
 }
@@ -108,7 +108,7 @@ static NSUInteger const TOP_LINE_SPACE = 1;
         [_right translateX:deltaX];
     }
 }
-- (void)balance:(TreeNode *)left right:(TreeNode *)right {
+- (void)balance:(LOPNode *)left right:(LOPNode *)right {
     if (!left || !right) { return; }
     NSUInteger deltaLeft = _x + [left rightX];
     NSUInteger deltaRight = right->_x - [self rightX];
@@ -118,13 +118,13 @@ static NSUInteger const TOP_LINE_SPACE = 1;
     NSUInteger leftX = _x - delta - left->_width;
     [left translateX:leftX - left->_x];
 }
-- (NSUInteger)treeHeight:(TreeNode *)root {
+- (NSUInteger)treeHeight:(LOPNode *)root {
     if (!root) { return 0; }
     if (root->_height) { return root->_height; }
     root->_height = 1 + MAX([self treeHeight:root->_left], [self treeHeight:root->_right]);
     return root->_height;
 }
-- (LevelInfo *)levelInfo:(NSUInteger)level {
+- (LOPLevelInfo *)levelInfo:(NSUInteger)level {
     if (level < 0) { return nil; }
     NSUInteger levelY = _y + level;
     if (level >= [self treeHeight:self]) { return nil; }
@@ -132,7 +132,7 @@ static NSUInteger const TOP_LINE_SPACE = 1;
     NSMutableArray *queue = [NSMutableArray array];
     [queue addObject:self];
     while (queue.count) {
-        TreeNode *node = queue.firstObject;
+        LOPNode *node = queue.firstObject;
         [queue removeObjectAtIndex:0];
         if (levelY == node->_y) {
             [list addObject:node];
@@ -147,11 +147,11 @@ static NSUInteger const TOP_LINE_SPACE = 1;
             [queue addObject:node->_right];
         }
     }
-    TreeNode *left = list.firstObject;
-    TreeNode *right = list.lastObject;
-    return [LevelInfo levelInfoWith:left right:right];
+    LOPNode *left = list.firstObject;
+    LOPNode *right = list.lastObject;
+    return [LOPLevelInfo levelInfoWith:left right:right];
 }
-- (NSUInteger)minLevelSpaceToRight:(TreeNode *)right {
+- (NSUInteger)minLevelSpaceToRight:(LOPNode *)right {
     NSUInteger height = [self treeHeight:self];
     NSUInteger rightHeight = [self treeHeight:right];
     NSUInteger minSpace = NSUIntegerMax;
@@ -162,17 +162,17 @@ static NSUInteger const TOP_LINE_SPACE = 1;
     return minSpace;
 }
 @end
-// MARK: - TreeNode end
+// MARK: - LOPNode end
 
 
 
 
 
 @interface BinaryTreeLevelOrderPrint () {
-    TreeNode *_root;
+    LOPNode *_root;
     NSUInteger _maxWidth;
     NSUInteger _minX;
-    NSMutableArray<NSMutableArray<TreeNode *> *> *_nodes;
+    NSMutableArray<NSMutableArray<LOPNode *> *> *_nodes;
 }
 
 @end
@@ -183,7 +183,7 @@ static NSUInteger const MIN_SPACE = 1;
 
 + (instancetype)printWithTree:(id<BinaryTreeProtocol>)tree {
     BinaryTreeLevelOrderPrint *p = [super printWithTree:tree];
-    p->_root = [TreeNode nodeWithNode:[tree root] tree:tree];
+    p->_root = [LOPNode nodeWithNode:[tree root] tree:tree];
     p->_maxWidth = p->_root->_width;
     return p;
 }
@@ -202,7 +202,7 @@ static NSUInteger const MIN_SPACE = 1;
         }
         NSMutableArray *rowNodes = _nodes[i];
         NSMutableString *rowString = [NSMutableString string];
-        for (TreeNode *node in rowNodes) {
+        for (LOPNode *node in rowNodes) {
             NSUInteger leftSpace = node->_x - rowString.length - _minX;
             [rowString appendString:[NSString blank:leftSpace]];
             [rowString appendString:node->_string];
@@ -211,10 +211,10 @@ static NSUInteger const MIN_SPACE = 1;
     }
     return string;
 }
-- (TreeNode *)_add:(NSMutableArray *)nodes node:(id)node {
-    TreeNode *n = nil;
+- (LOPNode *)_add:(NSMutableArray *)nodes node:(id)node {
+    LOPNode *n = nil;
     if (node) {
-        n = [TreeNode nodeWithNode:node tree:self.tree];
+        n = [LOPNode nodeWithNode:node tree:self.tree];
         _maxWidth = MAX(_maxWidth, n->_width);
         [nodes addObject:n];
     } else {
@@ -231,18 +231,18 @@ static NSUInteger const MIN_SPACE = 1;
         NSMutableArray *prevRowNodes = _nodes.lastObject;
         NSMutableArray *rowNodes = [NSMutableArray array];
         BOOL notNull = NO;
-        for (TreeNode *node in prevRowNodes) {
+        for (LOPNode *node in prevRowNodes) {
             if ([node isEqual:[NSNull null]]) {
                 [rowNodes addObject:[NSNull null]];
                 [rowNodes addObject:[NSNull null]];
             } else {
-                TreeNode *left = [self _add:rowNodes node:[self.tree left:node->_node]];
+                LOPNode *left = [self _add:rowNodes node:[self.tree left:node->_node]];
                 if (left) {
                     node->_left = left;
                     left->_parent = node;
                     notNull = YES;
                 }
-                TreeNode *right = [self _add:rowNodes node:[self.tree right:node->_node]];
+                LOPNode *right = [self _add:rowNodes node:[self.tree right:node->_node]];
                 if (right) {
                     node->_right = right;
                     right->_parent = node;
@@ -274,7 +274,7 @@ static NSUInteger const MIN_SPACE = 1;
                 rowLength += nodeSpace;
             }
             rowLength += cornerSpace;
-            TreeNode *node = rowNodes[j];
+            LOPNode *node = rowNodes[j];
             if (node) {
                 NSUInteger deltaX = (_maxWidth - node->_width) >> 1;
                 node->_x = rowLength + deltaX;
@@ -291,9 +291,9 @@ static NSUInteger const MIN_SPACE = 1;
     if (rowCount < 2) { return; }
     for (int i = (int)(rowCount - 2); i >= 0; i--) {
         NSMutableArray *rowNodes = _nodes[i];
-        for (TreeNode *node in rowNodes) {
-            TreeNode *left = node->_left;
-            TreeNode *right = node->_right;
+        for (LOPNode *node in rowNodes) {
+            LOPNode *left = node->_left;
+            LOPNode *right = node->_right;
             if (!left && !right) { continue; }
             if (left && right) {
                 [node balance:left right:right];
@@ -325,18 +325,18 @@ static NSUInteger const MIN_SPACE = 1;
         }
     }
 }
-- (void)_addXLineNode:(NSMutableArray *)row parent:(TreeNode *)parent x:(NSUInteger)x {
-    TreeNode *node = [TreeNode nodeWithString:@"─"];
+- (void)_addXLineNode:(NSMutableArray *)row parent:(LOPNode *)parent x:(NSUInteger)x {
+    LOPNode *node = [LOPNode nodeWithString:@"─"];
     node->_x = x;
     node->_y = parent->_y;
     [row addObject:node];
 }
-- (TreeNode *)_addLineNode:(NSMutableArray *)row next:(NSMutableArray *)next parent:(TreeNode *)parent child:(TreeNode *)child {
+- (LOPNode *)_addLineNode:(NSMutableArray *)row next:(NSMutableArray *)next parent:(LOPNode *)parent child:(LOPNode *)child {
     if (!child) { return nil; }
-    TreeNode *top = nil;
+    LOPNode *top = nil;
     NSUInteger topX = [child topX];
     if (child == parent->_left) {
-        top = [TreeNode nodeWithString:@"┌"];
+        top = [LOPNode nodeWithString:@"┌"];
         [row addObject:top];
         for (NSUInteger x = topX + 1; x < parent->_x; x++) {
             [self _addXLineNode:row parent:parent x:x];
@@ -345,7 +345,7 @@ static NSUInteger const MIN_SPACE = 1;
         for (NSUInteger x = [parent rightX]; x < topX; x++) {
             [self _addXLineNode:row parent:parent x:x];
         }
-        top = [TreeNode nodeWithString:@"┐"];
+        top = [LOPNode nodeWithString:@"┐"];
         [row addObject:top];
     }
     top->_x = topX;
@@ -353,7 +353,7 @@ static NSUInteger const MIN_SPACE = 1;
     child->_y = parent->_y + 2;
     _minX = MIN(_minX, child->_x);
     
-    TreeNode *bottom = [TreeNode nodeWithString:@"│"];
+    LOPNode *bottom = [LOPNode nodeWithString:@"│"];
     bottom->_x = topX;
     bottom->_y = parent->_y + 1;
     [next addObject:bottom];
@@ -375,7 +375,7 @@ static NSUInteger const MIN_SPACE = 1;
         [newNodes addObject:newRowNodes];
         NSMutableArray *lineNodes = [NSMutableArray array];
         [newNodes addObject:lineNodes];
-        for (TreeNode *node in rowNodes) {
+        for (LOPNode *node in rowNodes) {
             [self _addLineNode:newRowNodes next:lineNodes parent:node child:node->_left];
             [newRowNodes addObject:node];
             [self _addLineNode:newRowNodes next:lineNodes parent:node child:node->_right];
