@@ -31,7 +31,22 @@ bool bst_isEmpty(void) {
 }
 
 void bst_clear(void) {
+    if (root == NULL) { return; }
     
+    struct object_queue *q = object_queue_create();
+    object_queue_enqueue(q, root);
+    while (!object_queue_isEmpty(q)) {
+        struct bst_node* node = object_queue_dequeue(q);
+        if (node->left) {
+            object_queue_enqueue(q, node->left);
+        }
+        if (node->right) {
+            object_queue_enqueue(q, node->right);
+        }
+        free(node);
+    }
+    object_queue_destroy(q);
+    bst_szie_ = 0;
 }
 
 void bst_add(int element) {
@@ -128,7 +143,7 @@ void bst_remove(int element) {
 }
 
 bool bst_contains(int element) {
-    return false;
+    return node(element) != NULL;
 }
 
 
