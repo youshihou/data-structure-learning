@@ -32,7 +32,7 @@ struct Visitor {
 
 
 @interface BinaryTree : NSObject <BinaryTreeProtocol> {
-//    @protected
+    @protected
     NSUInteger _size;
     TreeNode *_root;
 }

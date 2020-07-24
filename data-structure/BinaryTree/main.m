@@ -51,6 +51,9 @@ void test() {
     int data[] = {7, 4, 9, 2, 5, 8, 11, 3, 12, 1};
     int len = sizeof(data) / sizeof(int);
     BinarySearchTree *bst = [BinarySearchTree tree];
+//    BinarySearchTree *bst = [BinarySearchTree treeWithBlock:^int(id _Nonnull e1, id _Nonnull e2) {
+//        return (int)[e1 compare:e2];
+//    }];
     for (int i = 0; i < len; i++) {
         [bst add:@(data[i])];
     }

@@ -6,11 +6,11 @@
 //  Copyright © 2020 Ankui. All rights reserved.
 //
 
-#import "BinaryTree.h"
+#import "BinarySearchTree.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AVLTree : BinaryTree
+@interface AVLTree : BinarySearchTree
 
 @end
 
