@@ -201,5 +201,15 @@
     f->_parent = d;
     [self _updateHeight:d];
 }
-
+- (void)afterRemove:(TreeNode *)node {
+    while ((node = node->_parent) != nil) {
+        if ([self _isBlanceed:node]) {
+            // update height
+            [self _updateHeight:node];
+        } else {
+            // restore balance
+            [self _restoreBalance:node];
+        }
+    }
+}
 @end

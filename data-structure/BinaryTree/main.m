@@ -100,20 +100,31 @@ void testBST() {
 }
 
 void testAVLTree() {
-    int data[] = {85, 19, 69, 3, 7, 99, 95, 2, 1, 70, 44, 58, 11, 21, 14, 93, 57, 4, 56};
+//    int data[] = {85, 19, 69, 3, 7, 99, 95, 2, 1, 70, 44, 58, 11, 21, 14, 93, 57, 4, 56};
+//    int data[] = {85, 19, 69, 3, 7, 99, 95};
+    int data[] = {67, 52, 92, 96, 53, 95, 13, 63, 34, 82, 76, 54, 9, 68, 39};
     int len = sizeof(data) / sizeof(int);
     AVLTree *avl = [AVLTree tree];
     for (NSInteger i = 0; i < len; i++) {
-        printf("[%d]\n", data[i]);
+//        printf("add: [%d]\n", data[i]);
         [avl add:@(data[i])];
-        [BinaryTreePrintHandler println:avl];
-        printf("\n------------------------------------------------------------------------------------------------------------------------\n");
+//        [BinaryTreePrintHandler println:avl];
+//        printf("\n---------------------------------------------------------\n");
     }
 //    [BinaryTreePrintHandler println:avl];
-    printf("\n\n\n");
 
+//    [avl remove:@99];
+//    [avl remove:@85];
+//    [avl remove:@95];
+//    [BinaryTreePrintHandler println:avl];
     
-    
+    for (NSInteger i = 0; i < len; i++) {
+        printf("remove: [%d]\n", data[i]);
+        [avl remove:@(data[i])];
+        [BinaryTreePrintHandler println:avl];
+        printf("\n---------------------------------------------------------\n");
+    }
+    printf("\n\n\n");
 }
 
 int main(int argc, const char * argv[]) {

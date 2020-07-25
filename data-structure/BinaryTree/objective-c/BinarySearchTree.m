@@ -99,6 +99,8 @@
             node->_parent->_right = nil;
         }
     }
+
+    [self afterRemove:node];
 }
 - (TreeNode *)_findNode:(id)element {
     TreeNode *node = _root;
@@ -114,6 +116,7 @@
     return nil;
 }
 - (void)afterAdd:(TreeNode *)node {}
+- (void)afterRemove:(TreeNode *)node {}
 - (TreeNode *)createNodeWith:(id)element parent:(TreeNode * _Nullable)parent {
     return [TreeNode nodeWith:element parent:parent];
 }
@@ -130,11 +133,11 @@
 }
 - (id)left:(id)object {
     TreeNode *node = object;
-    return node->_left;
+    return node ? node->_left : nil;
 }
 - (id)right:(id)object {
     TreeNode *node = object;
-    return node->_right;
+    return node ? node->_right : nil;
 }
 - (id)string:(id)object {
     return object;
