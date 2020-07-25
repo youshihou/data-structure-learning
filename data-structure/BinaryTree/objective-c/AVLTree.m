@@ -50,7 +50,7 @@
 }
 - (void)afterAdd:(TreeNode *)node {
     while ((node = node->_parent) != nil) {
-        if ([self _isBlanceed:node]) {
+        if ([self _isBalanced:node]) {
             // update height
             [self _updateHeight:node];
         } else {
@@ -60,7 +60,7 @@
         }
     }
 }
-- (BOOL)_isBlanceed:(TreeNode *)node {
+- (BOOL)_isBalanced:(TreeNode *)node {
     return labs([((AVLNode *)node) balanceFactor]) <= 1;
 }
 - (void)_updateHeight:(TreeNode *)node {
@@ -192,7 +192,7 @@
 }
 - (void)afterRemove:(TreeNode *)node {
     while ((node = node->_parent) != nil) {
-        if ([self _isBlanceed:node]) {
+        if ([self _isBalanced:node]) {
             // update height
             [self _updateHeight:node];
         } else {
