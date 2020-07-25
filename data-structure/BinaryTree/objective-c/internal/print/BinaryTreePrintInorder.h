@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BinaryTreeInorderPrint : BinaryTreePrint
+@interface BinaryTreePrintInorder : BinaryTreePrint
 
 @end
 

@@ -6,10 +6,10 @@
 //  Copyright © 2020 Ankui. All rights reserved.
 //
 
-#import "BinaryTreeInorderPrint.h"
+#import "BinaryTreePrintInorder.h"
 #import "NSString+Tree.h"
 
-@implementation BinaryTreeInorderPrint
+@implementation BinaryTreePrintInorder
 
 static NSString *rightAppend;
 static NSString *leftAppend;

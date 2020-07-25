@@ -6,7 +6,7 @@
 //  Copyright © 2020 Ankui. All rights reserved.
 //
 
-#import "BinaryTreeLevelOrderPrint.h"
+#import "BinaryTreePrintLevelOrder.h"
 #import "NSString+Tree.h"
 
 // MARK: - LOPNode begin
@@ -168,7 +168,7 @@ static NSUInteger const TOP_LINE_SPACE = 1;
 
 
 
-@interface BinaryTreeLevelOrderPrint () {
+@interface BinaryTreePrintLevelOrder () {
     LOPNode *_root;
     NSUInteger _maxWidth;
     NSUInteger _minX;
@@ -177,12 +177,12 @@ static NSUInteger const TOP_LINE_SPACE = 1;
 
 @end
 
-@implementation BinaryTreeLevelOrderPrint
+@implementation BinaryTreePrintLevelOrder
 
 static NSUInteger const MIN_SPACE = 1;
 
 + (instancetype)printWithTree:(id<BinaryTreeProtocol>)tree {
-    BinaryTreeLevelOrderPrint *p = [super printWithTree:tree];
+    BinaryTreePrintLevelOrder *p = [super printWithTree:tree];
     p->_root = [LOPNode nodeWithNode:[tree root] tree:tree];
     p->_maxWidth = p->_root->_width;
     return p;
