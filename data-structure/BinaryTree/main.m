@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "BinaryTreePrintHandler.h"
 #import "BinarySearchTree.h"
+#import "AVLTree.h"
 
 bool preorder_visit(void* object) {
     NSNumber *n = (__bridge NSNumber *)(object);
@@ -47,14 +48,14 @@ bool levelorder_visit(void* object) {
     return false;
 }
 
-void test() {
+void testBST() {
     int data[] = {7, 4, 9, 2, 5, 8, 11, 3, 12, 1};
     int len = sizeof(data) / sizeof(int);
     BinarySearchTree *bst = [BinarySearchTree tree];
 //    BinarySearchTree *bst = [BinarySearchTree treeWithBlock:^int(id _Nonnull e1, id _Nonnull e2) {
 //        return (int)[e1 compare:e2];
 //    }];
-    for (int i = 0; i < len; i++) {
+    for (NSInteger i = 0; i < len; i++) {
         [bst add:@(data[i])];
     }
     [BinaryTreePrintHandler println:bst];
@@ -96,12 +97,26 @@ void test() {
     [bst levelOrder:visitor];
     printf("---------------------------------\n");
     free(visitor);
+}
 
+void testAVLTree() {
+    int data[] = {7, 4, 9, 2, 5, 8, 11, 3, 12, 1};
+    int len = sizeof(data) / sizeof(int);
+    AVLTree *avl = [AVLTree tree];
+    for (NSInteger i = 0; i < len; i++) {
+        [avl add:@(data[i])];
+    }
+    [BinaryTreePrintHandler println:avl];
+    printf("---------------------------------\n");
+
+    
+    
 }
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        test();
+//        testBST();
+        testAVLTree();
     }
     return 0;
 }
