@@ -16,7 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface BinarySearchTree : BinaryTree
-+ (instancetype)tree;
 + (instancetype)treeWithComparator:(_Nullable id<BSTComparator>)comparator;
 + (instancetype)treeWithBlock:(int(^_Nullable)(id, id))block;
 - (BOOL)contains:(id)element;

@@ -14,9 +14,6 @@
 }
 @end
 @implementation BinarySearchTree
-+ (instancetype)tree {
-    return [self treeWithComparator:nil];
-}
 + (instancetype)treeWithComparator:(id<BSTComparator>)comparator {
     BinarySearchTree *bst = [[self alloc] init];
     bst->_comparator = comparator;

@@ -115,7 +115,7 @@ void testAVLTree() {
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-//        testBST();
+        testBST();
         testAVLTree();
     }
     return 0;
