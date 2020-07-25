@@ -69,7 +69,7 @@
 - (void)_updateHeight:(TreeNode *)node {
     [((AVLNode *)node) updateHeight];
 }
-- (void)_restoreBalance:(TreeNode *)grand {
+- (void)_restoreBalance2:(TreeNode *)grand {
     AVLNode *parent = (AVLNode *)[((AVLNode *)grand) tallerChild];
     AVLNode *node = (AVLNode *)[parent tallerChild];
     if ([parent isLeftChild]) { // L
@@ -128,4 +128,78 @@
     [self _updateHeight:grand];
     [self _updateHeight:parent];
 }
+- (void)_restoreBalance:(TreeNode *)grand {
+    AVLNode *parent = (AVLNode *)[((AVLNode *)grand) tallerChild];
+    AVLNode *node = (AVLNode *)[parent tallerChild];
+    if ([parent isLeftChild]) { // L
+        if ([node isLeftChild]) { // LL
+            [self _rotate:grand
+                        a:node->_left b:node c:node->_right
+                        d:parent
+                        e:parent->_right f:grand g:grand->_right];
+        } else { // LR
+            [self _rotate:grand
+                        a:parent->_left b:parent c:node->_left
+                        d:node
+                        e:node->_right f:grand g:grand->_right];
+        }
+    } else { // R
+        if ([node isLeftChild]) { // RL
+            [self _rotate:grand
+                        a:grand->_left b:grand c:node->_left
+                        d:node
+                        e:node->_right f:parent g:parent->_right];
+        } else { // RR
+            [self _rotate:grand
+                        a:grand->_left b:grand c:parent->_left
+                        d:parent
+                        e:node->_left f:node g:node->_right];
+        }
+    }
+}
+- (void)_rotate:(TreeNode *)r // root
+              a:(TreeNode *)a b:(TreeNode *)b c:(TreeNode *)c
+              d:(TreeNode *)d
+              e:(TreeNode *)e f:(TreeNode *)f g:(TreeNode *)g
+{
+    // update d become the subtree's root
+    d->_parent = r->_parent;
+    if ([r isLeftChild]) {
+        r->_parent->_left = d;
+    } else if ([r isRightChild]) {
+        r->_parent->_right = d;
+    } else {
+        _root = d;
+    }
+    
+    // update a-b-c
+    b->_left = a;
+    if (a) {
+        a->_parent = b;
+    }
+    b->_right = c;
+    if (c) {
+        c->_parent = b;
+    }
+    [self _updateHeight:b];
+    
+    // update e-f-g
+    f->_left = e;
+    if (e) {
+        e->_parent = f;
+    }
+    f->_right = g;
+    if (g) {
+        g->_parent = f;
+    }
+    [self _updateHeight:f];
+    
+    // update b-d-f
+    d->_left = b;
+    b->_parent = d;
+    d->_right = f;
+    f->_parent = d;
+    [self _updateHeight:d];
+}
+
 @end
