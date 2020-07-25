@@ -12,9 +12,6 @@
     @protected
     NSUInteger _height;
 }
-- (NSInteger)balanceFactor;
-- (void)updateHeight;
-- (TreeNode *)tallerChild;
 @end
 @implementation AVLNode
 - (instancetype)init {

@@ -28,6 +28,7 @@ struct Visitor {
 - (BOOL)hasTwoChild;
 - (BOOL)isLeftChild;
 - (BOOL)isRightChild;
+- (TreeNode *)sibling;
 @end
 
 

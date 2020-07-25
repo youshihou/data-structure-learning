@@ -27,6 +27,15 @@
 - (BOOL)isRightChild {
     return _parent != nil && self == _parent->_right;
 }
+- (TreeNode *)sibling {
+    if ([self isLeftChild]) {
+        return _parent->_right;
+    }
+    if ([self isRightChild]) {
+        return _parent->_left;
+    }
+    return nil;
+}
 @end
 
 
