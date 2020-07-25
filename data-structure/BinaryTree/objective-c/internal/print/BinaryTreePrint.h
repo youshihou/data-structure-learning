@@ -6,7 +6,6 @@
 //  Copyright © 2020 Ankui. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "BinaryTreeProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN

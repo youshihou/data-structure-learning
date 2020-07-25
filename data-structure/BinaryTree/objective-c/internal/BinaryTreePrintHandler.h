@@ -7,8 +7,8 @@
 //
 
 #import "BinaryTreeProtocol.h"
-#import "BinaryTreeLevelOrderPrint.h"
-#import "BinaryTreeInorderPrint.h"
+#import "BinaryTreePrintLevelOrder.h"
+#import "BinaryTreePrintInorder.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

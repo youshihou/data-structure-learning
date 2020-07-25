@@ -9,7 +9,7 @@
 #import "BinaryTree.h"
 
 @implementation TreeNode
-+ (instancetype)nodeWith:(id)element parent:(TreeNode *)parent {
++ (instancetype)nodeWith:(id)element parent:(TreeNode * _Nullable)parent {
     TreeNode *n = [[self alloc] init];
     n->_element = element;
     n->_parent = parent;
@@ -20,6 +20,12 @@
 }
 - (BOOL)hasTwoChild {
     return _left != nil && _right != nil;
+}
+- (BOOL)isLeftChild {
+    return _parent != nil && self == _parent->_left;
+}
+- (BOOL)isRightChild {
+    return _parent != nil && self == _parent->_right;
 }
 @end
 
@@ -167,24 +173,5 @@
         node = node->_right;
     }
     return node->_parent;
-}
-
-
-// MARK: - BinaryTreeProtocol
-- (id)root {
-    return _root;
-}
-- (id)left:(id)object {
-    TreeNode *node = object;
-    return node->_left;
-}
-- (id)right:(id)object {
-    TreeNode *node = object;
-    return node->_right;
-}
-- (id)string:(id)object {
-    TreeNode *node = object;
-    return [NSString stringWithFormat:@"%@_p(%@)",
-            node->_element, node->_parent ? node->_parent->_element : @"null"];
 }
 @end

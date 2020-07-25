@@ -100,14 +100,15 @@ void testBST() {
 }
 
 void testAVLTree() {
-    int data[] = {7, 4, 9, 2, 5, 8, 11, 3, 12, 1};
+//    int data[] = {7, 4, 9, 2, 5, 8, 11, 3, 12, 1};
+    int data[] = {85, 19, 69, 3, 7, 99, 95, 2, 1, 70, 44, 58, 11, 21, 14, 93, 57, 4, 56};
     int len = sizeof(data) / sizeof(int);
     AVLTree *avl = [AVLTree tree];
     for (NSInteger i = 0; i < len; i++) {
         [avl add:@(data[i])];
     }
     [BinaryTreePrintHandler println:avl];
-    printf("---------------------------------\n");
+    printf("\n\n\n");
 
     
     
@@ -115,7 +116,7 @@ void testAVLTree() {
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        testBST();
+//        testBST();
         testAVLTree();
     }
     return 0;

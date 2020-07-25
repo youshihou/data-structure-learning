@@ -19,7 +19,7 @@
     bst->_comparator = comparator;
     return bst;
 }
-+ (instancetype)treeWithBlock:(int (^)(id, id))block {
++ (instancetype)treeWithBlock:(int (^)(id _Nonnull, id _Nonnull))block {
     BinarySearchTree *bst = [[self alloc] init];
     bst->_block = block;
     return bst;
@@ -34,8 +34,10 @@
         return;
     }
     if (!_root) {
-        _root = [TreeNode nodeWith:element parent:nil];
+//        _root = [TreeNode nodeWith:element parent:nil];
+        _root = [self createNodeWith:element parent:nil];
         _size++;
+        [self afterAdd:_root];
         return;
     }
     
@@ -54,13 +56,15 @@
             return;
         }
     }
-    TreeNode *add = [TreeNode nodeWith:element parent:parent];
+//    TreeNode *add = [TreeNode nodeWith:element parent:parent];
+    TreeNode* add = [self createNodeWith:element parent:parent];
     if (cmp > 0) {
         parent->_right = add;
     } else {
         parent->_left = add;
     }
     _size++;
+    [self afterAdd:add];
 }
 - (void)remove:(id)element {
     [self _remove:[self _findNode:element]];
@@ -109,9 +113,32 @@
     }
     return nil;
 }
+- (void)afterAdd:(TreeNode *)node {}
+- (TreeNode *)createNodeWith:(id)element parent:(TreeNode * _Nullable)parent {
+    return [TreeNode nodeWith:element parent:parent];
+}
 
 // MARK: - BSTComparator
 - (int)_compare:(id)e1 e2:(id)e2 {
     return _block ? _block(e1, e2) : (_comparator ? [_comparator compare:e1 with:e2] : (int)[e1 compare:e2]);
+}
+
+
+// MARK: - BinaryTreeProtocol
+- (id)root {
+    return _root;
+}
+- (id)left:(id)object {
+    TreeNode *node = object;
+    return node->_left;
+}
+- (id)right:(id)object {
+    TreeNode *node = object;
+    return node->_right;
+}
+- (id)string:(id)object {
+    return object;
+//    TreeNode *node = object;
+//    return [[NSString alloc] initWithFormat:@"%@_p(%@)", node->_element, node->_parent ? node->_parent->_element : @"null"];
 }
 @end

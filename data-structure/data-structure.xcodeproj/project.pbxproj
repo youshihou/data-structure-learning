@@ -13,8 +13,8 @@
 		036FA1F424CADFBB0007FFBA /* BinarySearchTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA1E324CADFBA0007FFBA /* BinarySearchTree.m */; };
 		036FA1F624CADFBB0007FFBA /* BinaryTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA1E824CADFBB0007FFBA /* BinaryTree.m */; };
 		036FA1F724CADFBB0007FFBA /* NSString+Tree.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA1EB24CADFBB0007FFBA /* NSString+Tree.m */; };
-		036FA1F824CADFBB0007FFBA /* BinaryTreeInorderPrint.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA1ED24CADFBB0007FFBA /* BinaryTreeInorderPrint.m */; };
-		036FA1F924CADFBB0007FFBA /* BinaryTreeLevelOrderPrint.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA1EF24CADFBB0007FFBA /* BinaryTreeLevelOrderPrint.m */; };
+		036FA1F824CADFBB0007FFBA /* BinaryTreePrintInorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA1ED24CADFBB0007FFBA /* BinaryTreePrintInorder.m */; };
+		036FA1F924CADFBB0007FFBA /* BinaryTreePrintLevelOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA1EF24CADFBB0007FFBA /* BinaryTreePrintLevelOrder.m */; };
 		036FA1FA24CADFBB0007FFBA /* BinaryTreePrint.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA1F024CADFBB0007FFBA /* BinaryTreePrint.m */; };
 		036FA1FC24CAE1740007FFBA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA1FB24CAE1740007FFBA /* main.m */; };
 		036FA22724CB10850007FFBA /* BinaryTreePrintHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA22624CB10850007FFBA /* BinaryTreePrintHandler.m */; };
@@ -66,12 +66,12 @@
 		036FA1E824CADFBB0007FFBA /* BinaryTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BinaryTree.m; sourceTree = "<group>"; };
 		036FA1EA24CADFBB0007FFBA /* NSString+Tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Tree.h"; sourceTree = "<group>"; };
 		036FA1EB24CADFBB0007FFBA /* NSString+Tree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Tree.m"; sourceTree = "<group>"; };
-		036FA1ED24CADFBB0007FFBA /* BinaryTreeInorderPrint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BinaryTreeInorderPrint.m; sourceTree = "<group>"; };
+		036FA1ED24CADFBB0007FFBA /* BinaryTreePrintInorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BinaryTreePrintInorder.m; sourceTree = "<group>"; };
 		036FA1EE24CADFBB0007FFBA /* BinaryTreePrint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinaryTreePrint.h; sourceTree = "<group>"; };
-		036FA1EF24CADFBB0007FFBA /* BinaryTreeLevelOrderPrint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BinaryTreeLevelOrderPrint.m; sourceTree = "<group>"; };
+		036FA1EF24CADFBB0007FFBA /* BinaryTreePrintLevelOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BinaryTreePrintLevelOrder.m; sourceTree = "<group>"; };
 		036FA1F024CADFBB0007FFBA /* BinaryTreePrint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BinaryTreePrint.m; sourceTree = "<group>"; };
-		036FA1F124CADFBB0007FFBA /* BinaryTreeInorderPrint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinaryTreeInorderPrint.h; sourceTree = "<group>"; };
-		036FA1F224CADFBB0007FFBA /* BinaryTreeLevelOrderPrint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinaryTreeLevelOrderPrint.h; sourceTree = "<group>"; };
+		036FA1F124CADFBB0007FFBA /* BinaryTreePrintInorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinaryTreePrintInorder.h; sourceTree = "<group>"; };
+		036FA1F224CADFBB0007FFBA /* BinaryTreePrintLevelOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinaryTreePrintLevelOrder.h; sourceTree = "<group>"; };
 		036FA1F324CADFBB0007FFBA /* BinaryTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinaryTree.h; sourceTree = "<group>"; };
 		036FA1FB24CAE1740007FFBA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		036FA22524CB10850007FFBA /* BinaryTreePrintHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BinaryTreePrintHandler.h; sourceTree = "<group>"; };
@@ -202,10 +202,10 @@
 			children = (
 				036FA1EE24CADFBB0007FFBA /* BinaryTreePrint.h */,
 				036FA1F024CADFBB0007FFBA /* BinaryTreePrint.m */,
-				036FA1F224CADFBB0007FFBA /* BinaryTreeLevelOrderPrint.h */,
-				036FA1EF24CADFBB0007FFBA /* BinaryTreeLevelOrderPrint.m */,
-				036FA1F124CADFBB0007FFBA /* BinaryTreeInorderPrint.h */,
-				036FA1ED24CADFBB0007FFBA /* BinaryTreeInorderPrint.m */,
+				036FA1F224CADFBB0007FFBA /* BinaryTreePrintLevelOrder.h */,
+				036FA1EF24CADFBB0007FFBA /* BinaryTreePrintLevelOrder.m */,
+				036FA1F124CADFBB0007FFBA /* BinaryTreePrintInorder.h */,
+				036FA1ED24CADFBB0007FFBA /* BinaryTreePrintInorder.m */,
 			);
 			path = print;
 			sourceTree = "<group>";
@@ -360,10 +360,10 @@
 				036FA22A24CB2C6F0007FFBA /* AVLTree.m in Sources */,
 				036FA1F624CADFBB0007FFBA /* BinaryTree.m in Sources */,
 				036FA1F724CADFBB0007FFBA /* NSString+Tree.m in Sources */,
-				036FA1F824CADFBB0007FFBA /* BinaryTreeInorderPrint.m in Sources */,
+				036FA1F824CADFBB0007FFBA /* BinaryTreePrintInorder.m in Sources */,
 				036FA22724CB10850007FFBA /* BinaryTreePrintHandler.m in Sources */,
 				036FA1F424CADFBB0007FFBA /* BinarySearchTree.m in Sources */,
-				036FA1F924CADFBB0007FFBA /* BinaryTreeLevelOrderPrint.m in Sources */,
+				036FA1F924CADFBB0007FFBA /* BinaryTreePrintLevelOrder.m in Sources */,
 				036FA1FC24CAE1740007FFBA /* main.m in Sources */,
 				036FA1FA24CADFBB0007FFBA /* BinaryTreePrint.m in Sources */,
 			);

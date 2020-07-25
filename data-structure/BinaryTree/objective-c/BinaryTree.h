@@ -6,7 +6,7 @@
 //  Copyright © 2020 Ankui. All rights reserved.
 //
 
-#import "BinaryTreeProtocol.h"
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -23,13 +23,15 @@ struct Visitor {
     TreeNode *_right;
     __weak TreeNode *_parent;
 }
-+ (instancetype)nodeWith:(id)element parent:(nullable TreeNode *)parent;
++ (instancetype)nodeWith:(id)element parent:(TreeNode * _Nullable)parent;
 - (BOOL)isLeaf;
 - (BOOL)hasTwoChild;
+- (BOOL)isLeftChild;
+- (BOOL)isRightChild;
 @end
 
 
-@interface BinaryTree : NSObject <BinaryTreeProtocol> {
+@interface BinaryTree : NSObject {
     @protected
     NSUInteger _size;
     TreeNode *_root;

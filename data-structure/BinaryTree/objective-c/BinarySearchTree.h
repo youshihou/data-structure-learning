@@ -7,6 +7,7 @@
 //
 
 #import "BinaryTree.h"
+#import "BinaryTreeProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,12 +16,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (int)compare:(id)e1 with:(id)e2;
 @end
 
-@interface BinarySearchTree : BinaryTree
-+ (instancetype)treeWithComparator:(_Nullable id<BSTComparator>)comparator;
+@interface BinarySearchTree : BinaryTree <BinaryTreeProtocol>
++ (instancetype)treeWithComparator:(id<BSTComparator> _Nullable)comparator;
 + (instancetype)treeWithBlock:(int(^_Nullable)(id, id))block;
 - (BOOL)contains:(id)element;
 - (void)add:(id)element;
 - (void)remove:(id)element;
+- (void)afterAdd:(TreeNode *)node;
+- (TreeNode *)createNodeWith:(id)element parent:(TreeNode * _Nullable)parent;
 @end
 
 NS_ASSUME_NONNULL_END

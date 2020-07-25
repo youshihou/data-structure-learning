@@ -1,5 +1,5 @@
 //
-//  BinaryTreeInorderPrint.m
+//  BinaryTreePrintInorder.m
 //  BinaryTree
 //
 //  Created by Ankui on 7/24/20.

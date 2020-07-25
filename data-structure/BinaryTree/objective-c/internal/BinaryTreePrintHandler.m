@@ -12,9 +12,9 @@
 + (BinaryTreePrint *)_printWith:(id<BinaryTreeProtocol>)tree style:(BinaryTreePrintStyle)style {
     if (!tree) { return nil; }
     if (style == BinaryTreePrintStyleLevelOrder) {
-        return [BinaryTreeLevelOrderPrint printWithTree:tree];
+        return [BinaryTreePrintLevelOrder printWithTree:tree];
     }
-    return [BinaryTreeInorderPrint printWithTree:tree];
+    return [BinaryTreePrintInorder printWithTree:tree];
 }
 + (void)println:(id<BinaryTreeProtocol>)tree style:(BinaryTreePrintStyle)style {
     [[self _printWith:tree style:style] println];

@@ -1,5 +1,5 @@
 //
-//  BinaryTreeInorderPrint.h
+//  BinaryTreePrintInorder.h
 //  BinaryTree
 //
 //  Created by Ankui on 7/24/20.
