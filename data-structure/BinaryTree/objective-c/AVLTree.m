@@ -134,33 +134,33 @@
     if ([parent isLeftChild]) { // L
         if ([node isLeftChild]) { // LL
             [self _rotate:grand
-                        a:node->_left b:node c:node->_right
+                        b:node c:node->_right
                         d:parent
-                        e:parent->_right f:grand g:grand->_right];
+                        e:parent->_right f:grand];
         } else { // LR
             [self _rotate:grand
-                        a:parent->_left b:parent c:node->_left
+                        b:parent c:node->_left
                         d:node
-                        e:node->_right f:grand g:grand->_right];
+                        e:node->_right f:grand];
         }
     } else { // R
         if ([node isLeftChild]) { // RL
             [self _rotate:grand
-                        a:grand->_left b:grand c:node->_left
+                        b:grand c:node->_left
                         d:node
-                        e:node->_right f:parent g:parent->_right];
+                        e:node->_right f:parent];
         } else { // RR
             [self _rotate:grand
-                        a:grand->_left b:grand c:parent->_left
+                        b:grand c:parent->_left
                         d:parent
-                        e:node->_left f:node g:node->_right];
+                        e:node->_left f:node];
         }
     }
 }
 - (void)_rotate:(TreeNode *)r // root
-              a:(TreeNode *)a b:(TreeNode *)b c:(TreeNode *)c
+              b:(TreeNode *)b c:(TreeNode *)c
               d:(TreeNode *)d
-              e:(TreeNode *)e f:(TreeNode *)f g:(TreeNode *)g
+              e:(TreeNode *)e f:(TreeNode *)f
 {
     // update d become the subtree's root
     d->_parent = r->_parent;
@@ -172,25 +172,17 @@
         _root = d;
     }
     
-    // update a-b-c
-    b->_left = a;
-    if (a) {
-        a->_parent = b;
-    }
+    // update b-c
     b->_right = c;
     if (c) {
         c->_parent = b;
     }
     [self _updateHeight:b];
     
-    // update e-f-g
+    // update e-f
     f->_left = e;
     if (e) {
         e->_parent = f;
-    }
-    f->_right = g;
-    if (g) {
-        g->_parent = f;
     }
     [self _updateHeight:f];
     
