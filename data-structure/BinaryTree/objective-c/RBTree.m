@@ -57,7 +57,7 @@ static const BOOL BLACK = YES;
         return;
     }
     
-    // uncel is not red, underflow
+    // uncel is not red
     if ([parent isLeftChild]) { // L
         [self _red:grand];
         if ([node isLeftChild]) { // LL
