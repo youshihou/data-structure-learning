@@ -6,21 +6,21 @@
 //  Copyright © 2020 Ankui. All rights reserved.
 //
 
-#import "BinarySearchTree.h"
+#import "BST.h"
 
-@interface BinarySearchTree () {
+@interface BST () {
     int(^_block)(id, id);
     id<BSTComparator> _comparator;
 }
 @end
-@implementation BinarySearchTree
+@implementation BST
 + (instancetype)treeWithComparator:(id<BSTComparator>)comparator {
-    BinarySearchTree *bst = [[self alloc] init];
+    BST *bst = [[self alloc] init];
     bst->_comparator = comparator;
     return bst;
 }
 + (instancetype)treeWithBlock:(int (^)(id _Nonnull, id _Nonnull))block {
-    BinarySearchTree *bst = [[self alloc] init];
+    BST *bst = [[self alloc] init];
     bst->_block = block;
     return bst;
 }
