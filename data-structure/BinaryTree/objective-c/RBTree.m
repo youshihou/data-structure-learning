@@ -47,19 +47,21 @@ static const BOOL BLACK = YES;
     if ([self _isBlack:parent]) { return; }
     
     TreeNode *uncle = [parent sibling];
-    TreeNode *grand = parent->_parent;
+//    TreeNode *grand = parent->_parent;
+    TreeNode *grand = [self _red:parent->_parent];
     // uncle is red, overflow
     if ([self _isRed:uncle]) {
         [self _black:parent];
         [self _black:uncle];
         // will grand as new add node
-        [self afterAdd:[self _red:grand]];
+//        [self afterAdd:[self _red:grand]];
+        [self afterAdd:grand];
         return;
     }
     
     // uncel is not red
     if ([parent isLeftChild]) { // L
-        [self _red:grand];
+//        [self _red:grand];
         if ([node isLeftChild]) { // LL
             [self _black:parent];
         } else { // LR
@@ -68,7 +70,7 @@ static const BOOL BLACK = YES;
         }
         [self rotateRight:grand];
     } else { // R
-        [self _red:grand];
+//        [self _red:grand];
         if ([node isLeftChild]) { // RL
             [self _black:node];
             [self rotateRight:parent];
