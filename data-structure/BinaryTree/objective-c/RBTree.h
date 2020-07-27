@@ -6,11 +6,11 @@
 //  Copyright © 2020 Ankui. All rights reserved.
 //
 
-#import "BinarySearchTree.h"
+#import "BBST.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RBTree : BinarySearchTree
+@interface RBTree : BBST
 
 @end
 

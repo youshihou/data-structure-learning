@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "BinaryTreePrintHandler.h"
-#import "BinarySearchTree.h"
+#import "BST.h"
 #import "AVLTree.h"
+#import "RBTree.h"
 
 bool preorder_visit(void* object) {
     NSNumber *n = (__bridge NSNumber *)(object);
@@ -51,11 +52,11 @@ bool levelorder_visit(void* object) {
 void testBST() {
     int data[] = {7, 4, 9, 2, 5, 8, 11, 3, 12, 1};
     int len = sizeof(data) / sizeof(int);
-    BinarySearchTree *bst = [BinarySearchTree tree];
-//    BinarySearchTree *bst = [BinarySearchTree treeWithBlock:^int(id _Nonnull e1, id _Nonnull e2) {
+    BST *bst = [BST tree];
+//    BST *bst = [BST treeWithBlock:^int(id _Nonnull e1, id _Nonnull e2) {
 //        return (int)[e1 compare:e2];
 //    }];
-    for (NSInteger i = 0; i < len; i++) {
+    for (int i = 0; i < len; i++) {
         [bst add:@(data[i])];
     }
     [BinaryTreePrintHandler println:bst];
@@ -105,7 +106,7 @@ void testAVLTree() {
     int data[] = {67, 52, 92, 96, 53, 95, 13, 63, 34, 82, 76, 54, 9, 68, 39};
     int len = sizeof(data) / sizeof(int);
     AVLTree *avl = [AVLTree tree];
-    for (NSInteger i = 0; i < len; i++) {
+    for (int i = 0; i < len; i++) {
 //        printf("add: [%d]\n", data[i]);
         [avl add:@(data[i])];
 //        [BinaryTreePrintHandler println:avl];
@@ -118,7 +119,7 @@ void testAVLTree() {
 //    [avl remove:@95];
 //    [BinaryTreePrintHandler println:avl];
     
-    for (NSInteger i = 0; i < len; i++) {
+    for (int i = 0; i < len; i++) {
         printf("remove: [%d]\n", data[i]);
         [avl remove:@(data[i])];
         [BinaryTreePrintHandler println:avl];
@@ -127,10 +128,25 @@ void testAVLTree() {
     printf("\n\n\n");
 }
 
+void testRBTree() {
+    int data[] = {55, 87, 56, 74, 96, 22, 62, 20, 70, 68, 90, 50};
+    int len = sizeof(data) / sizeof(int);
+    RBTree *rb = [RBTree tree];
+    for (int i = 0; i < len; i++) {
+        printf("add: [%d]\n", data[i]);
+        [rb add:@(data[i])];
+        [BinaryTreePrintHandler println:rb];
+        printf("---------------------------\n");
+    }
+//    [BinaryTreePrintHandler println:rb];
+//    printf("\n---------------------------\n");
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
 //        testBST();
-        testAVLTree();
+//        testAVLTree();
+        testRBTree();
     }
     return 0;
 }

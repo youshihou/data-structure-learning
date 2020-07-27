@@ -1,5 +1,5 @@
 //
-//  BST.h
+//  BinarySearchTree.h
 //  BinaryTree
 //
 //  Created by Ankui on 7/24/20.

@@ -1,5 +1,5 @@
 //
-//  BinarySearchTree.m
+//  BST.m
 //  BinaryTree
 //
 //  Created by Ankui on 7/24/20.
@@ -141,7 +141,5 @@
 }
 - (id)string:(id)object {
     return object;
-//    TreeNode *node = object;
-//    return [[NSString alloc] initWithFormat:@"%@_p(%@)", node->_element, node->_parent ? node->_parent->_element : @"null"];
 }
 @end
