@@ -140,6 +140,13 @@ void testRBTree() {
     }
 //    [BinaryTreePrintHandler println:rb];
 //    printf("\n---------------------------\n");
+    
+    for (int i = 0; i < len; i++) {
+        printf("remove: [%d]\n", data[i]);
+        [rb remove:@(data[i])];
+        [BinaryTreePrintHandler println:rb];
+        printf("\n---------------------------------------------------------\n");
+    }
 }
 
 int main(int argc, const char * argv[]) {

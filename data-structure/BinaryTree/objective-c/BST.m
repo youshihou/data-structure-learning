@@ -88,9 +88,11 @@
         } else {
             node->_parent->_right = replace;
         }
+        [self afterRemove:node replace:replace];
     }
     else if (!node->_parent) {
         _root = nil;
+        [self afterRemove:node replace:nil];
     }
     else {
         if (node == node->_parent->_left) {
@@ -98,9 +100,10 @@
         } else {
             node->_parent->_right = nil;
         }
+        [self afterRemove:node replace:nil];
     }
 
-    [self afterRemove:node];
+//    [self afterRemove:node];
 }
 - (TreeNode *)_findNode:(id)element {
     TreeNode *node = _root;
@@ -116,7 +119,7 @@
     return nil;
 }
 - (void)afterAdd:(TreeNode *)node {}
-- (void)afterRemove:(TreeNode *)node {}
+- (void)afterRemove:(TreeNode *)mode replace:(TreeNode * _Nullable)replace {}
 - (TreeNode *)createNodeWith:(id)element parent:(TreeNode * _Nullable)parent {
     return [TreeNode nodeWith:element parent:parent];
 }
