@@ -80,6 +80,82 @@ static const BOOL BLACK = YES;
         [self rotateLeft:grand];
     }
 }
+- (void)afterRemove:(TreeNode *)node {
+//    // will remove node is red
+//    if ([self _isRed:node]) { return; }
+    
+    // will remove node is red
+    // replace node will remove is red
+    if ([self _isRed:node]) {
+        [self _black:node];
+        return;
+    }
+    
+    TreeNode *parent = node->_parent;
+    // node is root
+    if (!parent) { return; }
+    
+    // will remove node is black leaf node, underflow
+    BOOL left = !parent->_left || [node isLeftChild];
+    TreeNode *sibling = left ? parent->_right : parent->_left; // CARE!!! find sibling
+    if (left) { // the removed node in left, sibling node in right
+         if ([self _isRed:sibling]) { // sibling is red
+             [self _black:sibling];
+             [self _red:parent];
+             [self rotateLeft:parent];
+             sibling = parent->_right; // CARE!!!
+         }
+         
+         // sibling node is black
+         if ([self _isBlack:sibling->_left] && [self _isBlack:sibling->_right]) {
+             // sibling node have not a red child node, so parent underflow
+             BOOL black = [self _isBlack:parent];
+             [self _black:parent];
+             [self _red:sibling];
+             if (black) {
+                 [self afterRemove:parent replace:nil];
+             }
+         } else { // sibling node at least have a red child node
+             if ([self _isBlack:sibling->_right]) { // sibling node right is black, sibling ratate
+                 [self rotateRight:sibling];
+                 sibling = parent->_right; // CARE!!!
+             }
+             [self _color:sibling color:[self _colorOf:parent]];
+             [self _black:sibling->_right];
+             [self _black:parent];
+             [self rotateLeft:parent];
+         }
+    }
+    else { // the removed node in right, sibling node in left
+        if ([self _isRed:sibling]) { // sibling is red
+            [self _black:sibling];
+            [self _red:parent];
+            [self rotateRight:parent];
+            sibling = parent->_left; // CARE!!!
+        }
+        
+        // sibling node is black
+        if ([self _isBlack:sibling->_left] && [self _isBlack:sibling->_right]) {
+            // sibling node have not a red child node, so parent underflow
+            BOOL black = [self _isBlack:parent];
+            [self _black:parent];
+            [self _red:sibling];
+            if (black) {
+                [self afterRemove:parent replace:nil];
+            }
+        } else { // sibling node at least have a red child node
+            if ([self _isBlack:sibling->_left]) { // sibling node left is black, sibling ratate
+                [self rotateLeft:sibling];
+                sibling = parent->_left; // CARE!!!
+            }
+            [self _color:sibling color:[self _colorOf:parent]];
+            [self _black:sibling->_left];
+            [self _black:parent];
+            [self rotateRight:parent];
+        }
+    }
+    
+}
 - (void)afterRemove:(TreeNode *)node replace:(TreeNode * _Nullable)replace {
     // will remove node is red
     if ([self _isRed:node]) { return; }

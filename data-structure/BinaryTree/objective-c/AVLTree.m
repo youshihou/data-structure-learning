@@ -128,7 +128,7 @@
     [self _updateHeight:f];
     [self _updateHeight:d];
 }
-- (void)afterRemove:(TreeNode *)node replace:(TreeNode * _Nullable)replace {
+- (void)afterRemove:(TreeNode *)node {
     while ((node = node->_parent) != nil) {
         if ([self _isBalanced:node]) {
             // update height

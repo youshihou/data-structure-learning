@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)add:(id)element;
 - (void)remove:(id)element;
 - (void)afterAdd:(TreeNode *)node;
-- (void)afterRemove:(TreeNode *)mode replace:(TreeNode * _Nullable)replace;
+- (void)afterRemove:(TreeNode *)mode;
 - (TreeNode *)createNodeWith:(id)element parent:(TreeNode * _Nullable)parent;
 @end
 
