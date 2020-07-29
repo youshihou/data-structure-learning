@@ -45,7 +45,6 @@
 }
 - (void)traversal:(struct Visitor *)visitor {
     if (visitor == NULL) { return; }
-    
     [_tree inorder:visitor];
 }
 @end
