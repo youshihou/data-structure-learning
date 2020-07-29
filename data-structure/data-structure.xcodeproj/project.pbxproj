@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		030900B424D1A0EB009C3DEE /* TreeSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 030900B324D1A0EB009C3DEE /* TreeSet.m */; };
 		0335DF1124AB8DE400507ACF /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 0335DF1024AB8DE400507ACF /* main.c */; };
 		0344427024BC8EC50030765D /* SingleLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 0344426F24BC8EC50030765D /* SingleLinkedList.c */; };
 		0344427424BC912B0030765D /* ArrayList.c in Sources */ = {isa = PBXBuildFile; fileRef = 0344427324BC912B0030765D /* ArrayList.c */; };
@@ -55,6 +56,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		030900B224D1A0EB009C3DEE /* TreeSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TreeSet.h; sourceTree = "<group>"; };
+		030900B324D1A0EB009C3DEE /* TreeSet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TreeSet.m; sourceTree = "<group>"; };
 		0335DF0D24AB8DE400507ACF /* data-structure */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "data-structure"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0335DF1024AB8DE400507ACF /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		0344426E24BC8EC50030765D /* SingleLinkedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SingleLinkedList.h; sourceTree = "<group>"; };
@@ -125,6 +128,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		030900B124D19F50009C3DEE /* set */ = {
+			isa = PBXGroup;
+			children = (
+				030900B224D1A0EB009C3DEE /* TreeSet.h */,
+				030900B324D1A0EB009C3DEE /* TreeSet.m */,
+			);
+			path = set;
+			sourceTree = "<group>";
+		};
+		030900B524D1A0FA009C3DEE /* tree */ = {
+			isa = PBXGroup;
+			children = (
+				036FA1F324CADFBB0007FFBA /* BinaryTree.h */,
+				036FA1E824CADFBB0007FFBA /* BinaryTree.m */,
+				036FA1E424CADFBB0007FFBA /* BST.h */,
+				036FA1E324CADFBA0007FFBA /* BST.m */,
+				0386E61124CF061F0033B08F /* BBST.h */,
+				0386E61224CF061F0033B08F /* BBST.m */,
+				036FA22824CB2C6F0007FFBA /* AVLTree.h */,
+				036FA22924CB2C6F0007FFBA /* AVLTree.m */,
+				03A9FC6F24CC79BA00FB7304 /* RBTree.h */,
+				03A9FC7024CC79BA00FB7304 /* RBTree.m */,
+			);
+			path = tree;
+			sourceTree = "<group>";
+		};
 		0335DF0424AB8DE400507ACF = {
 			isa = PBXGroup;
 			children = (
@@ -220,16 +249,8 @@
 			isa = PBXGroup;
 			children = (
 				036FA1E624CADFBB0007FFBA /* internal */,
-				036FA1F324CADFBB0007FFBA /* BinaryTree.h */,
-				036FA1E824CADFBB0007FFBA /* BinaryTree.m */,
-				036FA1E424CADFBB0007FFBA /* BST.h */,
-				036FA1E324CADFBA0007FFBA /* BST.m */,
-				0386E61124CF061F0033B08F /* BBST.h */,
-				0386E61224CF061F0033B08F /* BBST.m */,
-				036FA22824CB2C6F0007FFBA /* AVLTree.h */,
-				036FA22924CB2C6F0007FFBA /* AVLTree.m */,
-				03A9FC6F24CC79BA00FB7304 /* RBTree.h */,
-				03A9FC7024CC79BA00FB7304 /* RBTree.m */,
+				030900B524D1A0FA009C3DEE /* tree */,
+				030900B124D19F50009C3DEE /* set */,
 			);
 			path = "objective-c";
 			sourceTree = "<group>";
@@ -367,6 +388,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				030900B424D1A0EB009C3DEE /* TreeSet.m in Sources */,
 				0386E61324CF061F0033B08F /* BBST.m in Sources */,
 				036FA22A24CB2C6F0007FFBA /* AVLTree.m in Sources */,
 				036FA1F624CADFBB0007FFBA /* BinaryTree.m in Sources */,

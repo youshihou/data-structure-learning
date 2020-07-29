@@ -11,6 +11,7 @@
 #import "BST.h"
 #import "AVLTree.h"
 #import "RBTree.h"
+#import "TreeSet.h"
 
 bool preorder_visit(void* object) {
     NSNumber *n = (__bridge NSNumber *)(object);
@@ -49,7 +50,7 @@ bool levelorder_visit(void* object) {
     return false;
 }
 
-void testBST() {
+void testBST(void) {
     int data[] = {7, 4, 9, 2, 5, 8, 11, 3, 12, 1};
     int len = sizeof(data) / sizeof(int);
     BST *bst = [BST tree];
@@ -100,7 +101,7 @@ void testBST() {
     free(visitor);
 }
 
-void testAVLTree() {
+void testAVLTree(void) {
 //    int data[] = {85, 19, 69, 3, 7, 99, 95, 2, 1, 70, 44, 58, 11, 21, 14, 93, 57, 4, 56};
 //    int data[] = {85, 19, 69, 3, 7, 99, 95};
     int data[] = {67, 52, 92, 96, 53, 95, 13, 63, 34, 82, 76, 54, 9, 68, 39};
@@ -128,7 +129,7 @@ void testAVLTree() {
     printf("\n\n\n");
 }
 
-void testRBTree() {
+void testRBTree(void) {
     int data[] = {55, 87, 56, 74, 96, 22, 62, 20, 70, 68, 90, 50};
     int len = sizeof(data) / sizeof(int);
     RBTree *rb = [RBTree tree];
@@ -149,11 +150,31 @@ void testRBTree() {
     }
 }
 
+void testTreeSet(void) {
+    TreeSet *set = [TreeSet set];
+    [set add:@12];
+    [set add:@10];
+    [set add:@11];
+    [set add:@9];
+    [set add:@10];
+    [set add:@11];
+    [set add:@12];
+    [set add:@7];
+    [set add:@10];
+
+    struct Visitor* visitor = malloc(sizeof(struct Visitor));
+    visitor->stop = false;
+    visitor->visit = preorder_visit;
+    [set traversal:visitor];
+    printf("\n");
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
 //        testBST();
 //        testAVLTree();
-        testRBTree();
+//        testRBTree();
+        testTreeSet();
     }
     return 0;
 }
