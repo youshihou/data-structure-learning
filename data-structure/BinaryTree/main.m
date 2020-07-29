@@ -12,6 +12,7 @@
 #import "AVLTree.h"
 #import "RBTree.h"
 #import "TreeSet.h"
+#import "TreeMap.h"
 
 bool preorder_visit(void* object) {
     NSNumber *n = (__bridge NSNumber *)(object);
@@ -164,8 +165,35 @@ void testTreeSet(void) {
 
     struct Visitor* visitor = malloc(sizeof(struct Visitor));
     visitor->stop = false;
-    visitor->visit = preorder_visit;
+    visitor->visit = inorder_visit;
     [set traversal:visitor];
+    free(visitor);
+    printf("\n");
+}
+
+bool tree_map_visit(void* k, void* v) {
+    NSString *key = (__bridge NSString *)(k);
+    NSNumber *value = (__bridge NSNumber *)(v);
+    printf("%s_%s\n", key.UTF8String, value.stringValue.UTF8String);
+    if ([key isEqualToString:@"stop"]) {
+        printf("\n");
+        return true;
+    }
+    return false;
+}
+
+void testTreeMap(void) {
+    TreeMap *map = [TreeMap map];
+    [map put:@"c" value:@2];
+    [map put:@"a" value:@5];
+    [map put:@"b" value:@6];
+    [map put:@"a" value:@8];
+
+    struct MapVisitor* visitor = malloc(sizeof(struct MapVisitor));
+    visitor->stop = false;
+    visitor->visit = tree_map_visit;
+    [map traversal:visitor];
+    free(visitor);
     printf("\n");
 }
 
@@ -174,7 +202,8 @@ int main(int argc, const char * argv[]) {
 //        testBST();
 //        testAVLTree();
 //        testRBTree();
-        testTreeSet();
+//        testTreeSet();
+        testTreeMap();
     }
     return 0;
 }

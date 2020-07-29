@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)set;
 //+ (instancetype)setWithComparator:(id<BSTComparator> _Nullable)comparator;
 //+ (instancetype)setWithBlock:(int(^_Nullable)(id, id))block;
-- (NSInteger)size;
+- (NSUInteger)size;
 - (BOOL)isEmpty;
 - (void)clear;
 - (BOOL)contains:(id)element;

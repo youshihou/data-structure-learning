@@ -113,7 +113,7 @@ static const BOOL BLACK = YES;
              [self _black:parent];
              [self _red:sibling];
              if (black) {
-                 [self afterRemove:parent replace:nil];
+                 [self afterRemove:parent];
              }
          } else { // sibling node at least have a red child node
              if ([self _isBlack:sibling->_right]) { // sibling node right is black, sibling ratate
@@ -141,7 +141,7 @@ static const BOOL BLACK = YES;
             [self _black:parent];
             [self _red:sibling];
             if (black) {
-                [self afterRemove:parent replace:nil];
+                [self afterRemove:parent];
             }
         } else { // sibling node at least have a red child node
             if ([self _isBlack:sibling->_left]) { // sibling node left is black, sibling ratate

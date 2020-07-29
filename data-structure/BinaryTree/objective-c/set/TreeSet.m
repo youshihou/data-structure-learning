@@ -37,7 +37,7 @@
 //    return set;
 //}
 
-- (NSInteger)size {
+- (NSUInteger)size {
     return [_tree size];
 }
 - (BOOL)isEmpty {
