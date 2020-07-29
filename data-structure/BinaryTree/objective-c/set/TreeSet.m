@@ -9,6 +9,8 @@
 #import "TreeSet.h"
 
 @interface TreeSet () {
+//    int(^_block)(id, id);
+//    id<BSTComparator> _comparator;
     RBTree* _tree;
 }
 @end
@@ -24,6 +26,16 @@
 + (instancetype)set {
     return [[self alloc] init];
 }
+//+ (instancetype)setWithComparator:(id<BSTComparator>)comparator {
+//    TreeSet *set = [TreeSet set];
+//    set->_comparator = comparator;
+//    return set;
+//}
+//+ (instancetype)setWithBlock:(int (^)(id _Nonnull, id _Nonnull))block {
+//    TreeSet *set = [TreeSet set];
+//    set->_block = block;
+//    return set;
+//}
 
 - (NSInteger)size {
     return [_tree size];

@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TreeSet : NSObject
 + (instancetype)set;
+//+ (instancetype)setWithComparator:(id<BSTComparator> _Nullable)comparator;
+//+ (instancetype)setWithBlock:(int(^_Nullable)(id, id))block;
 - (NSInteger)size;
 - (BOOL)isEmpty;
 - (void)clear;
