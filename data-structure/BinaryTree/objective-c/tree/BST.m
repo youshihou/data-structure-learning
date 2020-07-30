@@ -122,8 +122,6 @@
 - (TreeNode *)createNodeWith:(id)element parent:(TreeNode * _Nullable)parent {
     return [TreeNode nodeWith:element parent:parent];
 }
-
-// MARK: - BSTComparator
 - (int)_compare:(id)e1 e2:(id)e2 {
     return _block ? _block(e1, e2) : (_comparator ? [_comparator compare:e1 with:e2] : (int)[e1 compare:e2]);
 }

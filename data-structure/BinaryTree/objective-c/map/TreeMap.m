@@ -398,6 +398,9 @@ static const BOOL BLACK = YES;
     visitor->stop = visitor->visit((__bridge void * _Nonnull)(node->_key), (__bridge void * _Nonnull)(node->_value));
     [self _traversal:node->_right visitor:visitor];
 }
+- (int)_compare:(id)k1 k2:(id)k2 {
+    return _block ? _block(k1, k2) : (_comparator ? [_comparator compare:k1 with:k2] : (int)[k1 compare:k2]);
+}
 
 - (TMNode *)_color:(TMNode *)node color:(BOOL)color {
     if (!node) { return node; }
@@ -418,10 +421,5 @@ static const BOOL BLACK = YES;
 }
 - (BOOL)_isBlack:(TMNode *)node {
     return [self _colorOf:node] == BLACK;
-}
-
-// MARK: - TreeMapComparator
-- (int)_compare:(id)k1 k2:(id)k2 {
-    return _block ? _block(k1, k2) : (_comparator ? [_comparator compare:k1 with:k2] : (int)[k1 compare:k2]);
 }
 @end
