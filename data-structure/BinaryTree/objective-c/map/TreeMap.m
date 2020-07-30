@@ -307,7 +307,7 @@ static const BOOL BLACK = YES;
     }
     else if (!node->_parent) {
         _root = nil;
-        [self _afterRemove:node];
+//        [self _afterRemove:node];
     }
     else {
         if (node == node->_parent->_left) {
