@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)contains:(id)element;
 - (void)add:(id)element;
 - (void)remove:(id)element;
-- (void)traversal:(struct Visitor *)visitor;;
+- (void)traversal:(struct Visitor *)visitor;
 @end
 
 NS_ASSUME_NONNULL_END

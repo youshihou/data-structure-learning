@@ -33,6 +33,7 @@
 		038E9FB024C4033A005DD7A2 /* cycle_queue.c in Sources */ = {isa = PBXBuildFile; fileRef = 038E9FAF24C4033A005DD7A2 /* cycle_queue.c */; };
 		038E9FB324C40ECA005DD7A2 /* cycle_deque.c in Sources */ = {isa = PBXBuildFile; fileRef = 038E9FB224C40ECA005DD7A2 /* cycle_deque.c */; };
 		03A9FC7124CC79BA00FB7304 /* RBTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A9FC7024CC79BA00FB7304 /* RBTree.m */; };
+		03ED976424D2FE1C00E28FF8 /* TreeMapSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 03ED976324D2FE1C00E28FF8 /* TreeMapSet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -111,6 +112,8 @@
 		03A7605B24ACB4A500940BC7 /* common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
 		03A9FC6F24CC79BA00FB7304 /* RBTree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RBTree.h; sourceTree = "<group>"; };
 		03A9FC7024CC79BA00FB7304 /* RBTree.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBTree.m; sourceTree = "<group>"; };
+		03ED976224D2FE1C00E28FF8 /* TreeMapSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TreeMapSet.h; sourceTree = "<group>"; };
+		03ED976324D2FE1C00E28FF8 /* TreeMapSet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TreeMapSet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +165,8 @@
 			children = (
 				030900BE24D1B273009C3DEE /* TreeMap.h */,
 				030900BF24D1B273009C3DEE /* TreeMap.m */,
+				03ED976224D2FE1C00E28FF8 /* TreeMapSet.h */,
+				03ED976324D2FE1C00E28FF8 /* TreeMapSet.m */,
 			);
 			path = map;
 			sourceTree = "<group>";
@@ -406,6 +411,7 @@
 				036FA22A24CB2C6F0007FFBA /* AVLTree.m in Sources */,
 				036FA1F624CADFBB0007FFBA /* BinaryTree.m in Sources */,
 				036FA1F724CADFBB0007FFBA /* NSString+Tree.m in Sources */,
+				03ED976424D2FE1C00E28FF8 /* TreeMapSet.m in Sources */,
 				036FA1F824CADFBB0007FFBA /* BinaryTreePrintInorder.m in Sources */,
 				036FA22724CB10850007FFBA /* BinaryTreePrintHandler.m in Sources */,
 				03A9FC7124CC79BA00FB7304 /* RBTree.m in Sources */,

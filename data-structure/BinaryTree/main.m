@@ -13,6 +13,7 @@
 #import "RBTree.h"
 #import "TreeSet.h"
 #import "TreeMap.h"
+#import "TreeMapSet.h"
 
 bool preorder_visit(void* object) {
     NSNumber *n = (__bridge NSNumber *)(object);
@@ -197,13 +198,31 @@ void testTreeMap(void) {
     printf("\n");
 }
 
+void testTreeMapSet(void) {
+    TreeMapSet *set = [TreeMapSet set];
+    [set add:@"c"];
+    [set add:@"a"];
+    [set add:@"b"];
+    [set add:@"a"];
+    [set add:@"b"];
+    [set add:@"c"];
+
+    struct MapVisitor* visitor = malloc(sizeof(struct MapVisitor));
+    visitor->stop = false;
+    visitor->visit = tree_map_visit;
+    [set traversal:visitor];
+    free(visitor);
+    printf("\n");
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
 //        testBST();
 //        testAVLTree();
 //        testRBTree();
 //        testTreeSet();
-        testTreeMap();
+//        testTreeMap();
+        testTreeMapSet();
     }
     return 0;
 }

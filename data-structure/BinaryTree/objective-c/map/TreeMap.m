@@ -86,7 +86,7 @@ static const BOOL BLACK = YES;
     _root = nil;
     _size = 0;
 }
-- (id)put:(id)key value:(id)value{
+- (id)put:(id)key value:(id _Nullable)value {
     if (!key) {
         assert("key must not be nil");
         return nil;

@@ -29,7 +29,7 @@ struct MapVisitor {
 - (NSUInteger)size;
 - (BOOL)isEmpty;
 - (void)clear;
-- (id)put:(id)key value:(id)value;
+- (id)put:(id)key value:(id _Nullable)value;
 - (id)get:(id)key;
 - (id)remove:(id)key;
 - (BOOL)containsKey:(id)key;
