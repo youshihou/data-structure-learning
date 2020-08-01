@@ -170,6 +170,7 @@ static const NSUInteger DEFAULT_CAPACITY = (1 << 4);
             id old = node->_value;
             node->_key = key;
             node->_value = value;
+            node->_hash = h1;
             return old;
         }
     } while (node);
@@ -408,6 +409,7 @@ static const NSUInteger DEFAULT_CAPACITY = (1 << 4);
         HashNode *s = [self _successor:node];
         node->_key = s->_key;
         node->_value = s->_value;
+        node->_hash = s->_hash; // CARE!!!
         node = s;
     }
     
