@@ -14,6 +14,7 @@
 #import "TreeSet.h"
 #import "TreeMap.h"
 #import "TreeMapSet.h"
+#import "HashMap.h"
 
 bool preorder_visit(void* object) {
     NSNumber *n = (__bridge NSNumber *)(object);
@@ -215,6 +216,124 @@ void testTreeMapSet(void) {
     printf("\n");
 }
 
+
+@interface Person : NSObject {
+    @public
+    NSNumber *_age;
+    NSNumber *_height;
+    NSString *_name;
+}
+@end
+@implementation Person
+- (NSUInteger)hash {
+    NSUInteger hashCode = [_age hash];
+    hashCode = hashCode * 31 + [_height hash];
+    hashCode = hashCode * 31 + (_name.length ? [_name hash] : 0);
+    return hashCode;
+}
+- (BOOL)isEqual:(id)object {
+    if (self == object) { return YES; }
+    if (self.class != [object class]) { return NO; }
+    
+    Person *o = (Person *)object;
+    if (![_age isEqualToNumber:o->_age]) {
+        return NO;
+    }
+    if (![_height isEqualToNumber:o->_height]) {
+        return NO;
+    }
+    if (![_name isEqualToString:o->_name]) {
+        return NO;
+    }
+    return YES;
+}
+@end
+
+@interface TestKey : NSObject {
+    @public
+    NSNumber *_value;
+}
+@end
+@implementation TestKey
+- (NSUInteger)hash {
+    return _value.integerValue / 20;
+}
+- (BOOL)isEqual:(id)object {
+    if (self == object) { return YES; }
+    if (self.class != [object class]) { return NO; }
+    TestKey *o = (TestKey *)object;
+    return [_value isEqualToNumber:o->_value];
+}
+- (NSString *)description {
+    return [NSString stringWithFormat:@"v(%@)", _value];
+}
+@end
+
+
+bool hash_map_visit(void* k, void* v) {
+    id key = (__bridge id)(k);
+    id value = (__bridge id)(v);
+    NSLog(@"%@ - %@", key, value);
+    return false;
+}
+
+void testHashMap(void) {
+    Person *p1 = [[Person alloc] init];
+    p1->_age = @10;
+    p1->_height = @(1.67f);
+    p1->_name = @"jack";
+    
+    Person *p2 = [[Person alloc] init];
+    p2->_age = @10;
+    p2->_height = @(1.67f);
+    p2->_name = @"jack";
+
+    HashMap *map = [HashMap map];
+    [map put:p1 value:@1];
+    [map put:p2 value:@2];
+    [map put:@"jack" value:@3];
+    [map put:@"rose" value:@4];
+    [map put:@"jack" value:@5];
+    [map put:nil value:@6];
+    printf("%zd\n", [map size]);
+//    printf("jack: %zd\n", [[map get:@"jack"] integerValue]);
+//    printf("rose: %zd\n", [[map get:@"rose"] integerValue]);
+//    printf("nil: %zd\n", [[map get:nil] integerValue]);
+//    printf("p1: %zd\n", [[map get:p1] integerValue]);
+    
+//    printf("%zd\n", [[map remove:@"jack"] integerValue]);
+//    printf("%zd\n", [map size]);
+//    NSLog(@"jack: %@", [map get:@"jack"]);
+    
+    printf("%d\n", [map containsKey:p1]);
+    printf("%d\n", [map containsKey:nil]);
+    printf("%d\n", [map containsValue:@6]);
+    printf("%d\n", [map containsValue:@1]);
+
+    
+//    struct HashMapVisitor* v = malloc(sizeof(struct HashMapVisitor));
+//    v->stop = false;
+//    v->visit = hash_map_visit;
+//    [map traversal:v];
+//    free(v);
+//    printf("\n");
+}
+
+void testHashMap2(void) {
+    HashMap *map = [HashMap map];
+    for (NSUInteger i = 0; i < 19; i++) {
+        NSNumber *value = @(i);
+        TestKey *key = [[TestKey alloc] init];
+        key->_value = value;
+        [map put:key value:value];
+    }
+    NSLog(@"%zd", [map size]);
+    TestKey *key = [[TestKey alloc] init];
+    key->_value = @1;
+    NSLog(@"%@", [map get:key]);
+}
+
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
 //        testBST();
@@ -222,7 +341,9 @@ int main(int argc, const char * argv[]) {
 //        testRBTree();
 //        testTreeSet();
 //        testTreeMap();
-        testTreeMapSet();
+//        testTreeMapSet();
+//        testHashMap();
+        testHashMap2();
     }
     return 0;
 }

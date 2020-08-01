@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 struct MapVisitor {
     bool stop;
-    bool (*visit)(void *, void*);
+    bool (*visit)(void*, void*);
 };
 
 

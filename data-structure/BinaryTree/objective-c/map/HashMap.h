@@ -10,8 +10,22 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HashMap : NSObject
+struct HashMapVisitor {
+    bool stop;
+    bool (*visit)(void*, void*);
+};
 
+@interface HashMap : NSObject
++ (instancetype)map;
+- (NSUInteger)size;
+- (BOOL)isEmpty;
+- (void)clear;
+- (id)put:(id _Nullable)key value:(id _Nullable)value;
+- (id)get:(id _Nullable)key;
+- (id)remove:(id)key;
+- (BOOL)containsKey:(id _Nullable)key;
+- (BOOL)containsValue:(id)value;
+- (void)traversal:(struct HashMapVisitor *)visitor;
 @end
 
 NS_ASSUME_NONNULL_END
