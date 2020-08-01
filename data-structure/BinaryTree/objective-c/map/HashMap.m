@@ -143,7 +143,7 @@ static const NSUInteger DEFAULT_CAPACITY = (1 << 4);
             cmp = 1;
         } else if (h1 < h2) {
             cmp = -1;
-        } else if ([key isEqual:k2]) {
+        } else if (key == nil ? k2 == nil : [key isEqual:k2]) {
             cmp = 0;
         } else if (key && k2 &&
                    [key class] == [k2 class] &&
@@ -205,7 +205,7 @@ static const NSUInteger DEFAULT_CAPACITY = (1 << 4);
         while (queue.count) {
             HashNode *node = queue.firstObject;
             [queue removeObjectAtIndex:0];
-            if ([node->_value isEqual:value]) {
+            if (value == nil ? node->_value == nil : [node->_value isEqual:value]) {
                 return YES;
             }
             if (node->_left) {
@@ -278,7 +278,7 @@ static const NSUInteger DEFAULT_CAPACITY = (1 << 4);
             node = node->_right;
         } else if (h1 < h2) {
             node = node->_left;
-        } else if ([k1 isEqual:k2]) {
+        } else if (k1 == nil ? k2 == nil : [k1 isEqual:k2]) {
             return node;
         } else if (k1 && k2 &&
                    [k1 class] == [k2 class] &&

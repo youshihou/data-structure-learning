@@ -250,7 +250,7 @@ void testTreeMapSet(void) {
 @end
 
 @interface TestKey : NSObject {
-    @public
+    @protected
     NSNumber *_value;
 }
 @end
@@ -262,7 +262,7 @@ void testTreeMapSet(void) {
     return self;
 }
 - (NSUInteger)hash {
-    return _value.integerValue / 20;
+    return _value.integerValue / 10;
 }
 - (BOOL)isEqual:(id)object {
     if (self == object) { return YES; }
@@ -274,6 +274,30 @@ void testTreeMapSet(void) {
     return [NSString stringWithFormat:@"v(%@)", _value];
 }
 @end
+@interface SubKey1 : TestKey
+@end
+@interface SubKey2 : TestKey
+@end
+@implementation SubKey2
+- (BOOL)isEqual:(id)object {
+    if (self == object) { return YES; }
+    if ([object class] != SubKey1.class && [object class] != SubKey2.class) {
+        return NO;
+    }
+    TestKey *o = (TestKey *)object;
+    return [_value isEqualToNumber:o->_value];
+}
+@end
+@implementation SubKey1
+- (BOOL)isEqual:(id)object {
+    if (self == object) { return YES; }
+    if ([object class] != SubKey1.class && [object class] != SubKey2.class) {
+        return NO;
+    }
+    TestKey *o = (TestKey *)object;
+    return [_value isEqualToNumber:o->_value];
+}
+@end
 
 
 bool hash_map_visit(void* k, void* v) {
@@ -283,7 +307,8 @@ bool hash_map_visit(void* k, void* v) {
     return false;
 }
 
-void testHashMap(void) {
+void testHashMap() {
+    HashMap *map = [HashMap map];
     Person *p1 = [[Person alloc] init];
     p1->_age = @10;
     p1->_height = @(1.67f);
@@ -294,7 +319,6 @@ void testHashMap(void) {
     p2->_height = @(1.67f);
     p2->_name = @"jack";
 
-    HashMap *map = [HashMap map];
     [map put:p1 value:@1];
     [map put:p2 value:@2];
     [map put:@"jack" value:@3];
@@ -325,7 +349,7 @@ void testHashMap(void) {
     printf("\n");
 }
 
-void testHashMap2(void) {
+void testHashMap2() {
     HashMap *map = [HashMap map];
     for (NSUInteger i = 0; i < 19; i++) {
         NSNumber *value = @(i);
@@ -343,6 +367,112 @@ void testHashMap2(void) {
     assert([[map get:key] integerValue] == 18);
 }
 
+void testHashMap3() {
+    HashMap *map = [HashMap map];
+//    SubKey1 *k1 = [[SubKey1 alloc] initWithValue:@1];
+//    [map put:k1 value:@1];
+//    SubKey2 *k2 = [[SubKey2 alloc] initWithValue:@1];
+//    [map put:k2 value:@2];
+//    printf("%zd\n", [map size]);
+    for (int i = 1; i <= 20; i++) {
+        NSNumber *v = @(i);
+        TestKey *k = [[TestKey alloc] initWithValue:v];
+        [map put:k value:v];
+    }
+    for (int i = 5; i <= 7; i++) {
+        TestKey *k = [[TestKey alloc] initWithValue:@(i)];
+        [map put:k value:@(i + 5)];
+    }
+    assert([map size] == 20);
+    TestKey *k = [[TestKey alloc] initWithValue:@4];
+    assert([[map get:k] integerValue] == 4);
+    k = [[TestKey alloc] initWithValue:@5];
+    assert([[map get:k] integerValue] == 10);
+    k = [[TestKey alloc] initWithValue:@6];
+    assert([[map get:k] integerValue] == 11);
+    k = [[TestKey alloc] initWithValue:@7];
+    assert([[map get:k] integerValue] == 12);
+    k = [[TestKey alloc] initWithValue:@8];
+    assert([[map get:k] integerValue] == 8);
+}
+
+void testHashMap4() {
+    HashMap *map = [HashMap map];
+    [map put:nil value:@1];
+    [map put:[[NSObject alloc] init] value:@2];
+    [map put:@"jack" value:@3];
+    [map put:@10 value:@4];
+    [map put:[[NSObject alloc] init] value:@5];
+    [map put:@"jack" value:@6];
+    [map put:@10 value:@7];
+    [map put:nil value:@8];
+    [map put:@10 value:nil];
+    assert([map size] == 5);
+    assert([[map get:nil] integerValue] == 8);
+    assert([[map get:@"jack"] integerValue] == 6);
+    assert([map get:@10] == nil);
+    assert([map get:[[NSObject alloc] init]] == nil);
+    assert([map containsKey:@10]);
+    assert([map containsKey:nil]);
+    assert([map containsValue:nil]);
+    assert([map containsValue:@1] == false);
+}
+
+void testHashMap5() {
+    HashMap *map = [HashMap map];
+    [map put:@"jack" value:@1];
+    [map put:@"rose" value:@2];
+    [map put:@"jim" value:@3];
+    [map put:@"jake" value:@4];
+    for (int i = 1; i <= 10; i++) {
+        NSNumber *v = @(i);
+        NSString *s = [NSString stringWithFormat:@"test%d", i];
+        [map put:s value:v];
+        TestKey *k = [[TestKey alloc] initWithValue:v];
+        [map put:k value:v];
+    }
+    for (int i = 5; i <= 7; i++) {
+        TestKey *k = [[TestKey alloc] initWithValue:@(i)];
+        assert([[map remove:k] integerValue] == i);
+    }
+    for (int i = 1; i <= 3; i++) {
+        TestKey *k = [[TestKey alloc] initWithValue:@(i)];
+        [map put:k value:@(i + 5)];
+    }
+    assert([map size] == 21);
+    TestKey *k = [[TestKey alloc] initWithValue:@1];
+    assert([[map get:k] integerValue] == 6);
+    k = [[TestKey alloc] initWithValue:@2];
+    assert([[map get:k] integerValue] == 7);
+    k = [[TestKey alloc] initWithValue:@3];
+    assert([[map get:k] integerValue] == 8);
+    k = [[TestKey alloc] initWithValue:@4];
+    assert([[map get:k] integerValue] == 4);
+    k = [[TestKey alloc] initWithValue:@5];
+    assert([map get:k] == nil);
+    k = [[TestKey alloc] initWithValue:@6];
+    assert([map get:k] == nil);
+    k = [[TestKey alloc] initWithValue:@7];
+    assert([map get:k] == nil);
+    k = [[TestKey alloc] initWithValue:@8];
+    assert([[map get:k] integerValue] == 8);
+}
+
+void testHashMap6() {
+    HashMap *map = [HashMap map];
+    for (int i = 1; i <= 20; i++) {
+        NSNumber *v = @(i);
+        SubKey1 *k = [[SubKey1 alloc] initWithValue:v];
+        [map put:k value:v];
+    }
+    SubKey2 *k2 = [[SubKey2 alloc] initWithValue:@1];
+    [map put:k2 value:@5];
+    SubKey1 *k1 = [[SubKey1 alloc] initWithValue:@1];
+    assert([[map get:k1] integerValue] == 5);
+    k2 = [[SubKey2 alloc] initWithValue:@1];
+    assert([[map get:k2] integerValue] == 5);
+    assert([map size] == 20);
+}
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -352,8 +482,13 @@ int main(int argc, const char * argv[]) {
 //        testTreeSet();
 //        testTreeMap();
 //        testTreeMapSet();
+        
 //        testHashMap();
         testHashMap2();
+        testHashMap3();
+        testHashMap4();
+        testHashMap5();
+        testHashMap6();
     }
     return 0;
 }
