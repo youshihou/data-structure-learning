@@ -147,18 +147,17 @@ static const NSUInteger DEFAULT_CAPACITY = (1 << 4);
             cmp = 0;
         } else if (key && k2 &&
                    [key class] == [k2 class] &&
-                   [key respondsToSelector:@selector(compare:)])
-        {
-            cmp = [key compare:k2];
+                   [key respondsToSelector:@selector(compare:)] &&
+                   (cmp = [key compare:k2] != 0)) {
         } else if (searched) {
-            cmp = &key - &k2;
+            cmp = &key - &k2; // think!!!
         } else {
             if ((node->_left && (result = [self _node:node->_left key:key])) ||
                 (node->_right && (result = [self _node:node->_right key:key]))) {
                 node = result; // CARE!!!
                 cmp = 0;
             } else {
-                cmp = &key - &k2;
+                cmp = &key - &k2; //think!!!
                 searched = YES;
             }
         }
@@ -240,7 +239,6 @@ static const NSUInteger DEFAULT_CAPACITY = (1 << 4);
         }
     }
 }
-
 - (void)print {
     if (_size == 0) { return; }
     for (NSUInteger i = 0; i < _table.count; i++) {
@@ -252,34 +250,6 @@ static const NSUInteger DEFAULT_CAPACITY = (1 << 4);
         printf("----------------------------------------------\n");
     }
 }
-
-//- (NSInteger)_compare:(id)k1 k2:(id)k2 h1:(NSUInteger)h1 h2:(NSUInteger)h2 {
-//    // compare hash
-//    NSInteger result = h1 - h2;
-//    if (result != 0) { return result; }
-//    
-//    // compare equals
-//    if ([k1 isEqual:k2]) { return 0; }
-//    
-//    // hash equal, but not equals
-//    // compare class name
-//    if (k1 && k2) {
-//        NSString *k1ClsName = NSStringFromClass([k1 class]);
-//        NSString *k2ClsName = NSStringFromClass([k2 class]);
-//        result = [k1ClsName compare:k2ClsName];
-//        if (result != 0) { return result; }
-//       
-//        // same type, and comparable
-//        if ([k1 respondsToSelector:@selector(compare:)]) {
-//            return [k1 compare:k2];
-//        }
-//    }
-//    
-//    // same type, hash equals, but not comparable
-//    // k1 != nil, k2 = nil
-//    // k1 = nil, k2 != nil
-//    return &k1 - &k2;;
-//}
 
 - (NSUInteger)_index:(id)key {
     if (!key) { return 0; }
@@ -300,6 +270,7 @@ static const NSUInteger DEFAULT_CAPACITY = (1 << 4);
 - (HashNode *)_node:(HashNode *)node key:(id)k1 {
     HashNode *result = nil;
     NSUInteger h1 = [k1 hash];
+    NSInteger cmp = 0;
     while (node) {
         id k2 = node->_key;
         NSUInteger h2 = node->_hash;
@@ -311,16 +282,9 @@ static const NSUInteger DEFAULT_CAPACITY = (1 << 4);
             return node;
         } else if (k1 && k2 &&
                    [k1 class] == [k2 class] &&
-                   [k1 respondsToSelector:@selector(compare:)])
-        {
-            NSInteger cmp = [k1 compare:k2];
-            if (cmp > 0) {
-                node = node->_right;
-            } else if (cmp < 0) {
-                node = node->_left;
-            } else {
-                return node;
-            }
+                   [k1 respondsToSelector:@selector(compare:)] &&
+                   (cmp = [k1 compare:k2] != 0)) {
+            node = cmp > 0 ? node->_right : node->_left;
         } else if (node->_right && (result = [self _node:node->_right key:k1])) {
             return result;
         } else {
@@ -329,9 +293,6 @@ static const NSUInteger DEFAULT_CAPACITY = (1 << 4);
     }
     return nil;
 }
-
-
-
 - (void)_afterPut:(HashNode *)node {
     HashNode *parent = node->_parent;
     
