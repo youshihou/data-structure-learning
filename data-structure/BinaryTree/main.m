@@ -255,6 +255,12 @@ void testTreeMapSet(void) {
 }
 @end
 @implementation TestKey
+- (instancetype)initWithValue:(NSNumber *)value {
+    if (self = [super init]) {
+        _value = value;
+    }
+    return self;
+}
 - (NSUInteger)hash {
     return _value.integerValue / 20;
 }
@@ -323,15 +329,18 @@ void testHashMap2(void) {
     HashMap *map = [HashMap map];
     for (NSUInteger i = 0; i < 19; i++) {
         NSNumber *value = @(i);
-        TestKey *key = [[TestKey alloc] init];
-        key->_value = value;
+        TestKey *key = [[TestKey alloc] initWithValue:value];
         [map put:key value:value];
     }
-    NSLog(@"%zd", [map size]);
-    TestKey *key = [[TestKey alloc] init];
-    key->_value = @1;
-    NSLog(@"%@", [map get:key]);
-    [map print];
+    TestKey *key = [[TestKey alloc] initWithValue:@4];
+    [map put:key value:@100];
+//    NSLog(@"%zd", [map size]);
+//    NSLog(@"%@", [map get:key]);
+//    [map print];
+    assert([map size] == 19);
+    assert([[map get:key] integerValue] == 100);
+    key = [[TestKey alloc] initWithValue:@18];
+    assert([[map get:key] integerValue] == 18);
 }
 
 
