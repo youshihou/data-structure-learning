@@ -134,6 +134,7 @@ static const NSUInteger DEFAULT_CAPACITY = (1 << 4);
     NSInteger cmp = 0;
     NSUInteger h1 = [key hash];
     HashNode *result = nil;
+    BOOL searched = NO;
     do {
         parent = node;
         id k2 = node->_key;
@@ -149,6 +150,8 @@ static const NSUInteger DEFAULT_CAPACITY = (1 << 4);
                    [key respondsToSelector:@selector(compare:)])
         {
             cmp = [key compare:k2];
+        } else if (searched) {
+            cmp = &key - &k2;
         } else {
             if ((node->_left && (result = [self _node:node->_left key:key])) ||
                 (node->_right && (result = [self _node:node->_right key:key]))) {
@@ -156,6 +159,7 @@ static const NSUInteger DEFAULT_CAPACITY = (1 << 4);
                 cmp = 0;
             } else {
                 cmp = &key - &k2;
+                searched = YES;
             }
         }
                 
@@ -319,10 +323,8 @@ static const NSUInteger DEFAULT_CAPACITY = (1 << 4);
             }
         } else if (node->_right && (result = [self _node:node->_right key:k1])) {
             return result;
-        } else if (node->_left && (result = [self _node:node->_left key:k1])) {
-            return result;
         } else {
-            return nil;
+            node = node->_left;
         }
     }
     return nil;
