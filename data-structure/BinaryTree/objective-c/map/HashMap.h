@@ -25,7 +25,7 @@ struct HashMapVisitor {
 - (id)remove:(id)key;
 - (BOOL)containsKey:(id _Nullable)key;
 - (BOOL)containsValue:(id _Nullable)value;
-- (void)traversal:(struct HashMapVisitor *)visitor;
+- (void)traversal:(struct HashMapVisitor * _Nullable)visitor;
 - (void)print;
 @end
 
