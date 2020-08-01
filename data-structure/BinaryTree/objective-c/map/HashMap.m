@@ -48,16 +48,16 @@ static const BOOL BLACK = YES;
     return nil;
 }
 - (NSString *)description {
-    return [NSString stringWithFormat:@"Node_%@_%@", _key, _value];
+    return [NSString stringWithFormat:@"HashNode_%@_%@", _key, _value];
 }
 @end
 
 
-@interface ValueTree : NSObject <BinaryTreeProtocol> {
+@interface HashNodeTree : NSObject <BinaryTreeProtocol> {
     HashNode *_root;
 }
 @end
-@implementation ValueTree
+@implementation HashNodeTree
 - (instancetype)initWithRoot:(HashNode *)root {
     if (self = [super init]) {
         _root = root;
@@ -246,7 +246,7 @@ static const NSUInteger DEFAULT_CAPACITY = (1 << 4);
         printf("[index = %zd]\n", i);
         HashNode *root = _table[i];
         if (!root || [root isKindOfClass:NSNull.class]) { continue; }
-        ValueTree *tree = [[ValueTree alloc] initWithRoot:root];
+        HashNodeTree *tree = [[HashNodeTree alloc] initWithRoot:root];
         [BinaryTreePrintHandler println:tree];
         printf("----------------------------------------------\n");
     }
