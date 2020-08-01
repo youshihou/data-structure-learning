@@ -311,12 +311,12 @@ void testHashMap(void) {
     printf("%d\n", [map containsValue:@1]);
 
     
-//    struct HashMapVisitor* v = malloc(sizeof(struct HashMapVisitor));
-//    v->stop = false;
-//    v->visit = hash_map_visit;
-//    [map traversal:v];
-//    free(v);
-//    printf("\n");
+    struct HashMapVisitor* v = malloc(sizeof(struct HashMapVisitor));
+    v->stop = false;
+    v->visit = hash_map_visit;
+    [map traversal:v];
+    free(v);
+    printf("\n");
 }
 
 void testHashMap2(void) {
@@ -331,6 +331,7 @@ void testHashMap2(void) {
     TestKey *key = [[TestKey alloc] init];
     key->_value = @1;
     NSLog(@"%@", [map get:key]);
+    [map print];
 }
 
 

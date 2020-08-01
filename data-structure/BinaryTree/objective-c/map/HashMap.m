@@ -7,6 +7,7 @@
 //
 
 #import "HashMap.h"
+#import "BinaryTreePrintHandler.h"
 
 static const BOOL RED = NO;
 static const BOOL BLACK = YES;
@@ -45,6 +46,38 @@ static const BOOL BLACK = YES;
         return _parent->_left;
     }
     return nil;
+}
+- (NSString *)description {
+    return [NSString stringWithFormat:@"Node_%@_%@", _key, _value];
+}
+@end
+
+
+@interface ValueTree : NSObject <BinaryTreeProtocol> {
+    HashNode *_root;
+}
+@end
+@implementation ValueTree
+- (instancetype)initWithRoot:(HashNode *)root {
+    if (self = [super init]) {
+        _root = root;
+    }
+    return self;
+}
+// MARK: - BinaryTreeProtocol
+- (id)root {
+    return _root;
+}
+- (id)left:(id)object {
+    HashNode *node = object;
+    return node ? node->_left : nil;
+}
+- (id)right:(id)object {
+    HashNode *node = object;
+    return node ? node->_right : nil;
+}
+- (id)string:(id)object {
+    return object;
 }
 @end
 
@@ -142,7 +175,7 @@ static const NSUInteger DEFAULT_CAPACITY = (1 << 4);
     NSMutableArray *queue = [NSMutableArray array];
     for (NSUInteger i = 0; i < _table.count; i++) {
         HashNode *root = _table[i];
-        if ([root isKindOfClass:NSNull.class]) { continue; }
+        if (!root || [root isKindOfClass:NSNull.class]) { continue; }
         [queue addObject:root];
         while (queue.count) {
             HashNode *node = queue.firstObject;
@@ -165,7 +198,7 @@ static const NSUInteger DEFAULT_CAPACITY = (1 << 4);
     NSMutableArray *queue = [NSMutableArray array];
     for (NSUInteger i = 0; i < _table.count; i++) {
         HashNode *root = _table[i];
-        if ([root isKindOfClass:NSNull.class]) { continue; }
+        if (!root || [root isKindOfClass:NSNull.class]) { continue; }
         [queue addObject:root];
         while (queue.count) {
             HashNode *node = queue.firstObject;
@@ -179,6 +212,18 @@ static const NSUInteger DEFAULT_CAPACITY = (1 << 4);
                 [queue addObject:node->_right];
             }
         }
+    }
+}
+
+- (void)print {
+    if (_size == 0) { return; }
+    for (NSUInteger i = 0; i < _table.count; i++) {
+        printf("[index = %zd]\n", i);
+        HashNode *root = _table[i];
+        if (!root || [root isKindOfClass:NSNull.class]) { continue; }
+        ValueTree *tree = [[ValueTree alloc] initWithRoot:root];
+        [BinaryTreePrintHandler println:tree];
+        printf("----------------------------------------------\n");
     }
 }
 
@@ -207,9 +252,7 @@ static const NSUInteger DEFAULT_CAPACITY = (1 << 4);
     // same type, hash equals, but not comparable
     // k1 != nil, k2 = nil
     // k1 = nil, k2 != nil
-    Class k1Cls = [k1 class];
-    Class k2Cls = [k2 class];
-    return [k1Cls hash] - [k2Cls hash];;
+    return &k1 - &k2;;
 }
 
 - (NSUInteger)_index:(id)key {
@@ -225,7 +268,7 @@ static const NSUInteger DEFAULT_CAPACITY = (1 << 4);
     HashNode *node = _table[index];
     NSInteger cmp = 0;
     NSUInteger h1 = [key hash];
-    while (![node isKindOfClass:NSNull.class]) {
+    while (node && ![node isKindOfClass:NSNull.class]) {
         cmp = [self _compare:key k2:node->_key h1:h1 h2:node->_hash];
         if (cmp == 0) { return node; }
         if (cmp > 0) {

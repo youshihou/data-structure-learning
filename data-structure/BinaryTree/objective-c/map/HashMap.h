@@ -26,6 +26,7 @@ struct HashMapVisitor {
 - (BOOL)containsKey:(id _Nullable)key;
 - (BOOL)containsValue:(id)value;
 - (void)traversal:(struct HashMapVisitor *)visitor;
+- (void)print;
 @end
 
 NS_ASSUME_NONNULL_END
