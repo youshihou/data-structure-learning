@@ -146,13 +146,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		030900B124D19F50009C3DEE /* treeset */ = {
+		030900B124D19F50009C3DEE /* tree-set */ = {
 			isa = PBXGroup;
 			children = (
 				030900B224D1A0EB009C3DEE /* TreeSet.h */,
 				030900B324D1A0EB009C3DEE /* TreeSet.m */,
 			);
-			path = treeset;
+			path = "tree-set";
 			sourceTree = "<group>";
 		};
 		030900B524D1A0FA009C3DEE /* tree */ = {
@@ -172,7 +172,7 @@
 			path = tree;
 			sourceTree = "<group>";
 		};
-		030900BD24D1B244009C3DEE /* treemap */ = {
+		030900BD24D1B244009C3DEE /* tree-map */ = {
 			isa = PBXGroup;
 			children = (
 				030900BE24D1B273009C3DEE /* TreeMap.h */,
@@ -180,7 +180,7 @@
 				03ED976224D2FE1C00E28FF8 /* TreeMapSet.h */,
 				03ED976324D2FE1C00E28FF8 /* TreeMapSet.m */,
 			);
-			path = treemap;
+			path = "tree-map";
 			sourceTree = "<group>";
 		};
 		0335DF0424AB8DE400507ACF = {
@@ -279,9 +279,10 @@
 			children = (
 				036FA1E624CADFBB0007FFBA /* internal */,
 				030900B524D1A0FA009C3DEE /* tree */,
-				030900B124D19F50009C3DEE /* treeset */,
-				030900BD24D1B244009C3DEE /* treemap */,
-				03E1906624D66AC600DBFEC8 /* hashmap */,
+				030900B124D19F50009C3DEE /* tree-set */,
+				030900BD24D1B244009C3DEE /* tree-map */,
+				03E1906624D66AC600DBFEC8 /* hash-map */,
+				039DF37A24D69A8800FCB384 /* linked-hash-map */,
 			);
 			path = "objective-c";
 			sourceTree = "<group>";
@@ -321,19 +322,26 @@
 			path = queue;
 			sourceTree = "<group>";
 		};
-		03E1906624D66AC600DBFEC8 /* hashmap */ = {
+		039DF37A24D69A8800FCB384 /* linked-hash-map */ = {
+			isa = PBXGroup;
+			children = (
+				03E1906724D6878400DBFEC8 /* LinkedHashMap.h */,
+				03E1906824D6878400DBFEC8 /* LinkedHashMap.m */,
+				039DF37724D6997400FCB384 /* LinkedHashSet.h */,
+				039DF37824D6997400FCB384 /* LinkedHashSet.m */,
+			);
+			path = "linked-hash-map";
+			sourceTree = "<group>";
+		};
+		03E1906624D66AC600DBFEC8 /* hash-map */ = {
 			isa = PBXGroup;
 			children = (
 				03E1905024D45A6E00DBFEC8 /* HashMap.h */,
 				03E1905124D45A6E00DBFEC8 /* HashMap.m */,
 				039DF37424D697BF00FCB384 /* HashSet.h */,
 				039DF37524D697BF00FCB384 /* HashSet.m */,
-				03E1906724D6878400DBFEC8 /* LinkedHashMap.h */,
-				03E1906824D6878400DBFEC8 /* LinkedHashMap.m */,
-				039DF37724D6997400FCB384 /* LinkedHashSet.h */,
-				039DF37824D6997400FCB384 /* LinkedHashSet.m */,
 			);
-			path = hashmap;
+			path = "hash-map";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

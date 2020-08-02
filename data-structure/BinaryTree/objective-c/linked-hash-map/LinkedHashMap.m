@@ -15,7 +15,6 @@
 }
 @end
 @implementation LinkedHashNode
-
 @end
 
 
@@ -23,8 +22,8 @@
     LinkedHashNode *_first;
     LinkedHashNode *_last;
 }
-
 @end
+
 @implementation LinkedHashMap
 - (void)clear {
     [super clear];
