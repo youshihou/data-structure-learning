@@ -63,8 +63,7 @@ static const NSUInteger DEFAULT_CAPACITY = 10;
 }
 - (id)get {
     [self _emptyCheck];
-    
-    return nil;
+    return _elements.firstObject;
 }
 - (id)remove {
     return nil;

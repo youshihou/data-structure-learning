@@ -17,6 +17,7 @@
 #include "cycle_queue.h"
 #include "cycle_deque.h"
 #include "binary_search_tree.h"
+#include "binary_heap.h"
 
 void test_array_list() {
     al_createList_();
@@ -391,6 +392,16 @@ void test_binary_search_tree() {
 }
 
 
+void test_binary_heap(void) {
+    create_heap();
+    heap_add(68);
+    heap_add(72);
+    heap_add(43);
+    heap_add(50);
+    heap_add(38);
+    heap_get();
+}
+
 int main(int argc, const char * argv[]) {
 #if 0
     test_array_list();
@@ -407,7 +418,9 @@ int main(int argc, const char * argv[]) {
     test_cycle_deque();
 #endif
     
-    test_binary_search_tree();
+//    test_binary_search_tree();
+    
+    test_binary_heap();
 
     return 0;
 }

@@ -35,6 +35,7 @@
 		039DF37624D697BF00FCB384 /* HashSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 039DF37524D697BF00FCB384 /* HashSet.m */; };
 		039DF37924D6997400FCB384 /* LinkedHashSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 039DF37824D6997400FCB384 /* LinkedHashSet.m */; };
 		039DF37E24D6F39700FCB384 /* BinaryHeap.m in Sources */ = {isa = PBXBuildFile; fileRef = 039DF37D24D6F39700FCB384 /* BinaryHeap.m */; };
+		039DF38624D702CA00FCB384 /* binary_heap.c in Sources */ = {isa = PBXBuildFile; fileRef = 039DF38424D702CA00FCB384 /* binary_heap.c */; };
 		03A9FC7124CC79BA00FB7304 /* RBTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A9FC7024CC79BA00FB7304 /* RBTree.m */; };
 		03E1905224D45A6E00DBFEC8 /* HashMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E1905124D45A6E00DBFEC8 /* HashMap.m */; };
 		03E1906924D6878400DBFEC8 /* LinkedHashMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E1906824D6878400DBFEC8 /* LinkedHashMap.m */; };
@@ -120,6 +121,8 @@
 		039DF37824D6997400FCB384 /* LinkedHashSet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinkedHashSet.m; sourceTree = "<group>"; };
 		039DF37C24D6F39700FCB384 /* BinaryHeap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BinaryHeap.h; sourceTree = "<group>"; };
 		039DF37D24D6F39700FCB384 /* BinaryHeap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BinaryHeap.m; sourceTree = "<group>"; };
+		039DF38424D702CA00FCB384 /* binary_heap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = binary_heap.c; sourceTree = "<group>"; };
+		039DF38524D702CA00FCB384 /* binary_heap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = binary_heap.h; sourceTree = "<group>"; };
 		03A7605B24ACB4A500940BC7 /* common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
 		03A9FC6F24CC79BA00FB7304 /* RBTree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RBTree.h; sourceTree = "<group>"; };
 		03A9FC7024CC79BA00FB7304 /* RBTree.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBTree.m; sourceTree = "<group>"; };
@@ -212,6 +215,7 @@
 				038E9F9024C2EBC8005DD7A2 /* stack */,
 				038E9FA024C33539005DD7A2 /* queue */,
 				0377F59B24C5BEEA00ADE08D /* tree */,
+				039DF38324D702B300FCB384 /* heap */,
 				0335DF1024AB8DE400507ACF /* main.c */,
 			);
 			path = "data-structure";
@@ -346,6 +350,15 @@
 			path = heap;
 			sourceTree = "<group>";
 		};
+		039DF38324D702B300FCB384 /* heap */ = {
+			isa = PBXGroup;
+			children = (
+				039DF38524D702CA00FCB384 /* binary_heap.h */,
+				039DF38424D702CA00FCB384 /* binary_heap.c */,
+			);
+			path = heap;
+			sourceTree = "<group>";
+		};
 		03E1906624D66AC600DBFEC8 /* hash-map */ = {
 			isa = PBXGroup;
 			children = (
@@ -439,6 +452,7 @@
 				0344427424BC912B0030765D /* ArrayList.c in Sources */,
 				0377F5A124C5ED5000ADE08D /* print_tree_helper.c in Sources */,
 				0377F59E24C5C16600ADE08D /* binary_search_tree.c in Sources */,
+				039DF38624D702CA00FCB384 /* binary_heap.c in Sources */,
 				038E9F8924C1D41F005DD7A2 /* LinkedList.c in Sources */,
 				0344427024BC8EC50030765D /* SingleLinkedList.c in Sources */,
 				038E9F8F24C2B98A005DD7A2 /* CycleLinkedList.c in Sources */,
