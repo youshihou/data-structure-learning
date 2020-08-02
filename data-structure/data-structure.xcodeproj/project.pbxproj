@@ -32,6 +32,7 @@
 		038E9FA924C3DED7005DD7A2 /* deque.c in Sources */ = {isa = PBXBuildFile; fileRef = 038E9FA824C3DED7005DD7A2 /* deque.c */; };
 		038E9FB024C4033A005DD7A2 /* cycle_queue.c in Sources */ = {isa = PBXBuildFile; fileRef = 038E9FAF24C4033A005DD7A2 /* cycle_queue.c */; };
 		038E9FB324C40ECA005DD7A2 /* cycle_deque.c in Sources */ = {isa = PBXBuildFile; fileRef = 038E9FB224C40ECA005DD7A2 /* cycle_deque.c */; };
+		039DF37624D697BF00FCB384 /* HashSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 039DF37524D697BF00FCB384 /* HashSet.m */; };
 		03A9FC7124CC79BA00FB7304 /* RBTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A9FC7024CC79BA00FB7304 /* RBTree.m */; };
 		03E1905224D45A6E00DBFEC8 /* HashMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E1905124D45A6E00DBFEC8 /* HashMap.m */; };
 		03E1906924D6878400DBFEC8 /* LinkedHashMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E1906824D6878400DBFEC8 /* LinkedHashMap.m */; };
@@ -111,6 +112,8 @@
 		038E9FAF24C4033A005DD7A2 /* cycle_queue.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cycle_queue.c; sourceTree = "<group>"; };
 		038E9FB124C40ECA005DD7A2 /* cycle_deque.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cycle_deque.h; sourceTree = "<group>"; };
 		038E9FB224C40ECA005DD7A2 /* cycle_deque.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cycle_deque.c; sourceTree = "<group>"; };
+		039DF37424D697BF00FCB384 /* HashSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HashSet.h; sourceTree = "<group>"; };
+		039DF37524D697BF00FCB384 /* HashSet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HashSet.m; sourceTree = "<group>"; };
 		03A7605B24ACB4A500940BC7 /* common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
 		03A9FC6F24CC79BA00FB7304 /* RBTree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RBTree.h; sourceTree = "<group>"; };
 		03A9FC7024CC79BA00FB7304 /* RBTree.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBTree.m; sourceTree = "<group>"; };
@@ -322,6 +325,8 @@
 				03E1905124D45A6E00DBFEC8 /* HashMap.m */,
 				03E1906724D6878400DBFEC8 /* LinkedHashMap.h */,
 				03E1906824D6878400DBFEC8 /* LinkedHashMap.m */,
+				039DF37424D697BF00FCB384 /* HashSet.h */,
+				039DF37524D697BF00FCB384 /* HashSet.m */,
 			);
 			path = hashmap;
 			sourceTree = "<group>";
@@ -436,6 +441,7 @@
 				036FA22724CB10850007FFBA /* BinaryTreePrintHandler.m in Sources */,
 				03A9FC7124CC79BA00FB7304 /* RBTree.m in Sources */,
 				036FA1F424CADFBB0007FFBA /* BST.m in Sources */,
+				039DF37624D697BF00FCB384 /* HashSet.m in Sources */,
 				030900C024D1B273009C3DEE /* TreeMap.m in Sources */,
 				036FA1F924CADFBB0007FFBA /* BinaryTreePrintLevelOrder.m in Sources */,
 				036FA1FC24CAE1740007FFBA /* main.m in Sources */,
