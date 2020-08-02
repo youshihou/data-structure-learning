@@ -12,19 +12,8 @@
 static const BOOL RED = NO;
 static const BOOL BLACK = YES;
 
-@interface HashNode : NSObject {
-    @public
-    id _key;
-    id _value;
-    NSUInteger _hash;
-    HashNode *_left;
-    HashNode *_right;
-    __weak HashNode *_parent;
-    BOOL _color;
-}
-@end
 @implementation HashNode
-+ (instancetype)nodeWithKey:(id)key value:(id)value parent:(HashNode * _Nullable)parent {
++ (instancetype)nodeWithKey:(id)key value:(id)value parent:(HashNode *)parent {
     HashNode *n = [[self alloc] init];
     n->_key = key;
     n->_value = value;
@@ -126,10 +115,11 @@ static const float DEFAULT_LOAD_FACTOR = 0.75;
     NSUInteger index = [self _index:key];
     HashNode *root = _table[index];
     if ([root isKindOfClass:NSNull.class]) {
-        root = [HashNode nodeWithKey:key value:value parent:nil];
+//        root = [HashNode nodeWithKey:key value:value parent:nil];
+        root = [self createNode:key value:value parent:nil];
         _table[index] = root;
         _size++;
-        [self _afterPut:root];
+        [self _fixAfterPut:root];
         return nil;
     }
     
@@ -179,14 +169,15 @@ static const float DEFAULT_LOAD_FACTOR = 0.75;
         }
     } while (node);
 
-    HashNode *add = [HashNode nodeWithKey:key value:value parent:parent];
+//    HashNode *add = [HashNode nodeWithKey:key value:value parent:parent];
+    HashNode *add = [self createNode:key value:value parent:parent];
     if (cmp > 0) {
         parent->_right = add;
     } else {
         parent->_left = add;
     }
     _size++;
-    [self _afterPut:add];
+    [self _fixAfterPut:add];
     return nil;
 }
 - (id)get:(id)key {
@@ -256,6 +247,11 @@ static const float DEFAULT_LOAD_FACTOR = 0.75;
     }
 }
 
+- (HashNode *)createNode:(id)key value:(id)value parent:(HashNode *)parent {
+    return [HashNode nodeWithKey:key value:value parent:parent];
+}
+- (void)afterRemove:(HashNode *)node will:(HashNode *)will {}
+
 - (void)_resize {
     if (_size / _capacity <= DEFAULT_LOAD_FACTOR) { return; }
     
@@ -296,7 +292,7 @@ static const float DEFAULT_LOAD_FACTOR = 0.75;
     if ([root isKindOfClass:NSNull.class]) {
         root = new;
         _table[index] = root;
-        [self _afterPut:root];
+        [self _fixAfterPut:root];
         return;
     }
     
@@ -335,7 +331,7 @@ static const float DEFAULT_LOAD_FACTOR = 0.75;
         parent->_left = new;
     }
     
-    [self _afterPut:new];
+    [self _fixAfterPut:new];
 }
 - (NSUInteger)_hash:(id)key {
     if (!key) { return 0; }
@@ -382,7 +378,7 @@ static const float DEFAULT_LOAD_FACTOR = 0.75;
     }
     return nil;
 }
-- (void)_afterPut:(HashNode *)node {
+- (void)_fixAfterPut:(HashNode *)node {
     HashNode *parent = node->_parent;
     
     // root
@@ -401,7 +397,7 @@ static const float DEFAULT_LOAD_FACTOR = 0.75;
         [self _black:parent];
         [self _black:uncle];
         // will grand as new add node
-        [self _afterPut:grand];
+        [self _fixAfterPut:grand];
         return;
     }
     
@@ -492,6 +488,8 @@ static const float DEFAULT_LOAD_FACTOR = 0.75;
     if (!node) { return nil; }
     id old = node->_value;
     
+    HashNode *will = node;
+    
     _size--;
     if (node->_left && node->_right) {
         HashNode *s = [self _successor:node];
@@ -512,10 +510,9 @@ static const float DEFAULT_LOAD_FACTOR = 0.75;
         } else {
             node->_parent->_right = replace;
         }
-        [self _afterRemove:replace];
+        [self _fixAfterRemove:replace];
     }
     else if (!node->_parent) {
-//        _table[index] = nil;
         [_table removeObjectAtIndex:index];
     }
     else {
@@ -524,11 +521,13 @@ static const float DEFAULT_LOAD_FACTOR = 0.75;
         } else {
             node->_parent->_right = nil;
         }
-        [self _afterRemove:node];
+        [self _fixAfterRemove:node];
     }
+    
+    [self afterRemove:node will:will];
     return old;
 }
-- (void)_afterRemove:(HashNode *)node {
+- (void)_fixAfterRemove:(HashNode *)node {
     // will remove node is red
     // replace node will remove is red
     if ([self _isRed:node]) {
@@ -558,7 +557,7 @@ static const float DEFAULT_LOAD_FACTOR = 0.75;
              [self _black:parent];
              [self _red:sibling];
              if (black) {
-                 [self _afterRemove:parent];
+                 [self _fixAfterRemove:parent];
              }
          } else { // sibling node at least have a red child node
              if ([self _isBlack:sibling->_right]) { // sibling node right is black, sibling ratate
@@ -586,7 +585,7 @@ static const float DEFAULT_LOAD_FACTOR = 0.75;
             [self _black:parent];
             [self _red:sibling];
             if (black) {
-                [self _afterRemove:parent];
+                [self _fixAfterRemove:parent];
             }
         } else { // sibling node at least have a red child node
             if ([self _isBlack:sibling->_left]) { // sibling node left is black, sibling ratate

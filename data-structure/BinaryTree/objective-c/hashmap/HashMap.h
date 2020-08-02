@@ -15,6 +15,21 @@ struct HashMapVisitor {
     bool (*visit)(void*, void*);
 };
 
+
+@interface HashNode : NSObject {
+    @public
+    id _key;
+    id _value;
+    NSUInteger _hash;
+    HashNode *_left;
+    HashNode *_right;
+    __weak HashNode *_parent;
+    BOOL _color;
+}
++ (instancetype)nodeWithKey:(id)key value:(id)value parent:(HashNode * _Nullable)parent;
+@end
+
+
 @interface HashMap : NSObject
 + (instancetype)map;
 - (NSUInteger)size;
@@ -27,6 +42,9 @@ struct HashMapVisitor {
 - (BOOL)containsValue:(id _Nullable)value;
 - (void)traversal:(struct HashMapVisitor * _Nullable)visitor;
 - (void)print;
+
+- (HashNode *)createNode:(id)key value:(id)value parent:(HashNode * _Nullable)parent;
+- (void)afterRemove:(HashNode *)node will:(HashNode *)will;
 @end
 
 NS_ASSUME_NONNULL_END

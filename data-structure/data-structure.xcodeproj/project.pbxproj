@@ -34,6 +34,7 @@
 		038E9FB324C40ECA005DD7A2 /* cycle_deque.c in Sources */ = {isa = PBXBuildFile; fileRef = 038E9FB224C40ECA005DD7A2 /* cycle_deque.c */; };
 		03A9FC7124CC79BA00FB7304 /* RBTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A9FC7024CC79BA00FB7304 /* RBTree.m */; };
 		03E1905224D45A6E00DBFEC8 /* HashMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E1905124D45A6E00DBFEC8 /* HashMap.m */; };
+		03E1906924D6878400DBFEC8 /* LinkedHashMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E1906824D6878400DBFEC8 /* LinkedHashMap.m */; };
 		03ED976424D2FE1C00E28FF8 /* TreeMapSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 03ED976324D2FE1C00E28FF8 /* TreeMapSet.m */; };
 /* End PBXBuildFile section */
 
@@ -115,6 +116,8 @@
 		03A9FC7024CC79BA00FB7304 /* RBTree.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBTree.m; sourceTree = "<group>"; };
 		03E1905024D45A6E00DBFEC8 /* HashMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HashMap.h; sourceTree = "<group>"; };
 		03E1905124D45A6E00DBFEC8 /* HashMap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HashMap.m; sourceTree = "<group>"; };
+		03E1906724D6878400DBFEC8 /* LinkedHashMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkedHashMap.h; sourceTree = "<group>"; };
+		03E1906824D6878400DBFEC8 /* LinkedHashMap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinkedHashMap.m; sourceTree = "<group>"; };
 		03ED976224D2FE1C00E28FF8 /* TreeMapSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TreeMapSet.h; sourceTree = "<group>"; };
 		03ED976324D2FE1C00E28FF8 /* TreeMapSet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TreeMapSet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -317,6 +320,8 @@
 			children = (
 				03E1905024D45A6E00DBFEC8 /* HashMap.h */,
 				03E1905124D45A6E00DBFEC8 /* HashMap.m */,
+				03E1906724D6878400DBFEC8 /* LinkedHashMap.h */,
+				03E1906824D6878400DBFEC8 /* LinkedHashMap.m */,
 			);
 			path = hashmap;
 			sourceTree = "<group>";
@@ -422,6 +427,7 @@
 				030900B424D1A0EB009C3DEE /* TreeSet.m in Sources */,
 				0386E61324CF061F0033B08F /* BBST.m in Sources */,
 				036FA22A24CB2C6F0007FFBA /* AVLTree.m in Sources */,
+				03E1906924D6878400DBFEC8 /* LinkedHashMap.m in Sources */,
 				036FA1F624CADFBB0007FFBA /* BinaryTree.m in Sources */,
 				036FA1F724CADFBB0007FFBA /* NSString+Tree.m in Sources */,
 				03ED976424D2FE1C00E28FF8 /* TreeMapSet.m in Sources */,

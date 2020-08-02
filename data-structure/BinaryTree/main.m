@@ -15,6 +15,7 @@
 #import "TreeMap.h"
 #import "TreeMapSet.h"
 #import "HashMap.h"
+#import "LinkedHashMap.h"
 
 bool preorder_visit(void* object) {
     NSNumber *n = (__bridge NSNumber *)(object);
@@ -307,8 +308,7 @@ bool hash_map_visit(void* k, void* v) {
     return false;
 }
 
-void testHashMap() {
-    HashMap *map = [HashMap map];
+void testHashMap(HashMap *map) {
     Person *p1 = [[Person alloc] init];
     p1->_age = @10;
     p1->_height = @(1.67f);
@@ -346,11 +346,9 @@ void testHashMap() {
     v->visit = hash_map_visit;
     [map traversal:v];
     free(v);
-    printf("\n");
 }
 
-void testHashMap2() {
-    HashMap *map = [HashMap map];
+void testHashMap2(HashMap *map) {
     for (NSUInteger i = 0; i < 19; i++) {
         NSNumber *value = @(i);
         TestKey *key = [[TestKey alloc] initWithValue:value];
@@ -367,8 +365,7 @@ void testHashMap2() {
     assert([[map get:key] integerValue] == 18);
 }
 
-void testHashMap3() {
-    HashMap *map = [HashMap map];
+void testHashMap3(HashMap *map) {
 //    SubKey1 *k1 = [[SubKey1 alloc] initWithValue:@1];
 //    [map put:k1 value:@1];
 //    SubKey2 *k2 = [[SubKey2 alloc] initWithValue:@1];
@@ -396,8 +393,7 @@ void testHashMap3() {
     assert([[map get:k] integerValue] == 8);
 }
 
-void testHashMap4() {
-    HashMap *map = [HashMap map];
+void testHashMap4(HashMap *map) {
     [map put:nil value:@1];
     [map put:[[NSObject alloc] init] value:@2];
     [map put:@"jack" value:@3];
@@ -418,8 +414,7 @@ void testHashMap4() {
     assert([map containsValue:@1] == false);
 }
 
-void testHashMap5() {
-    HashMap *map = [HashMap map];
+void testHashMap5(HashMap *map) {
     [map put:@"jack" value:@1];
     [map put:@"rose" value:@2];
     [map put:@"jim" value:@3];
@@ -456,10 +451,15 @@ void testHashMap5() {
     assert([map get:k] == nil);
     k = [[TestKey alloc] initWithValue:@8];
     assert([[map get:k] integerValue] == 8);
+    
+    struct HashMapVisitor* v = malloc(sizeof(struct HashMapVisitor));
+    v->stop = false;
+    v->visit = hash_map_visit;
+    [map traversal:v];
+    free(v);
 }
 
-void testHashMap6() {
-    HashMap *map = [HashMap map];
+void testHashMap6(HashMap *map) {
     for (int i = 1; i <= 20; i++) {
         NSNumber *v = @(i);
         SubKey1 *k = [[SubKey1 alloc] initWithValue:v];
@@ -475,6 +475,53 @@ void testHashMap6() {
     [map print];
 }
 
+void testLinkedHashMap(LinkedHashMap *map) {
+    [map put:@"jack" value:@1];
+    [map put:@"rose" value:@2];
+    [map put:@"jim" value:@3];
+    [map put:@"jake" value:@4];
+    [map remove:@"jack"];
+    [map remove:@"jim"];
+    for (int i = 1; i <= 10; i++) {
+        NSNumber *v = @(i);
+        NSString *s = [NSString stringWithFormat:@"test%d", i];
+        [map put:s value:v];
+        TestKey *k = [[TestKey alloc] initWithValue:v];
+        [map put:k value:v];
+    }
+    for (int i = 5; i <= 7; i++) {
+        TestKey *k = [[TestKey alloc] initWithValue:@(i)];
+        assert([[map remove:k] integerValue] == i);
+    }
+    for (int i = 1; i <= 3; i++) {
+        TestKey *k = [[TestKey alloc] initWithValue:@(i)];
+        [map put:k value:@(i + 5)];
+    }
+    assert([map size] == 19);
+    TestKey *k = [[TestKey alloc] initWithValue:@1];
+    assert([[map get:k] integerValue] == 6);
+    k = [[TestKey alloc] initWithValue:@2];
+    assert([[map get:k] integerValue] == 7);
+    k = [[TestKey alloc] initWithValue:@3];
+    assert([[map get:k] integerValue] == 8);
+    k = [[TestKey alloc] initWithValue:@4];
+    assert([[map get:k] integerValue] == 4);
+    k = [[TestKey alloc] initWithValue:@5];
+    assert([map get:k] == nil);
+    k = [[TestKey alloc] initWithValue:@6];
+    assert([map get:k] == nil);
+    k = [[TestKey alloc] initWithValue:@7];
+    assert([map get:k] == nil);
+    k = [[TestKey alloc] initWithValue:@8];
+    assert([[map get:k] integerValue] == 8);
+    
+    struct HashMapVisitor* v = malloc(sizeof(struct HashMapVisitor));
+    v->stop = false;
+    v->visit = hash_map_visit;
+    [map traversal:v];
+    free(v);
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
 //        testBST();
@@ -484,12 +531,21 @@ int main(int argc, const char * argv[]) {
 //        testTreeMap();
 //        testTreeMapSet();
         
-//        testHashMap();
-        testHashMap2();
-        testHashMap3();
-        testHashMap4();
-        testHashMap5();
-        testHashMap6();
+//        testHashMap([HashMap map]);
+//        testHashMap2([HashMap map]);
+//        testHashMap3([HashMap map]);
+//        testHashMap4([HashMap map]);
+//        testHashMap5([HashMap map]);
+//        testHashMap6([HashMap map]);
+//
+//        testHashMap([LinkedHashMap map]);
+//        testHashMap2([LinkedHashMap map]);
+//        testHashMap3([LinkedHashMap map]);
+//        testHashMap4([LinkedHashMap map]);
+//        testHashMap5([LinkedHashMap map]);
+//        testHashMap6([LinkedHashMap map]);
+        
+        testLinkedHashMap([LinkedHashMap map]);
     }
     return 0;
 }
