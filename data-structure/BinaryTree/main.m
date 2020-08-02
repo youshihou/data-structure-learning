@@ -472,6 +472,7 @@ void testHashMap6() {
     k2 = [[SubKey2 alloc] initWithValue:@1];
     assert([[map get:k2] integerValue] == 5);
     assert([map size] == 20);
+    [map print];
 }
 
 int main(int argc, const char * argv[]) {

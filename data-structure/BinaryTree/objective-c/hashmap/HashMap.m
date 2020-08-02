@@ -93,6 +93,7 @@ static const BOOL BLACK = YES;
 @implementation HashMap
 
 static const NSUInteger DEFAULT_CAPACITY = (1 << 4);
+static const float DEFAULT_LOAD_FACTOR = 0.75;
 
 - (instancetype)init {
     self = [super init];
@@ -120,6 +121,8 @@ static const NSUInteger DEFAULT_CAPACITY = (1 << 4);
     _size = 0;
 }
 - (id)put:(id)key value:(id)value {
+    [self _resize];
+    
     NSUInteger index = [self _index:key];
     HashNode *root = _table[index];
     if ([root isKindOfClass:NSNull.class]) {
@@ -251,6 +254,88 @@ static const NSUInteger DEFAULT_CAPACITY = (1 << 4);
         [BinaryTreePrintHandler println:tree];
         printf("----------------------------------------------\n");
     }
+}
+
+- (void)_resize {
+    if (_size / _capacity <= DEFAULT_LOAD_FACTOR) { return; }
+    
+    _capacity = _capacity << 1;
+    NSMutableArray *oldTable = [NSMutableArray arrayWithArray:_table];
+    _table = [NSMutableArray arrayWithCapacity:_capacity];
+    for (NSUInteger i = 0; i < _capacity; i++) {
+        [_table addObject:[NSNull null]];
+    }
+
+    NSMutableArray *queue = [NSMutableArray array];
+    for (NSUInteger i = 0; i < oldTable.count; i++) {
+        HashNode *root = oldTable[i];
+        if (root && ![root isKindOfClass:NSNull.class]) {
+            [queue addObject:root];
+            while (queue.count) {
+                HashNode *node = queue.firstObject;
+                [queue removeObjectAtIndex:0];
+                if (node->_left) {
+                    [queue addObject:node->_left];
+                }
+                if (node->_right) {
+                    [queue addObject:node->_right];
+                }
+                [self _moveNode:node];
+            }
+        }
+    }
+}
+- (void)_moveNode:(HashNode *)new {
+    new->_parent = nil;
+    new->_left = nil;
+    new->_right = nil;
+    new->_color = RED; // CARE!!!
+    
+    NSUInteger index = [self _indexOf:new];
+    HashNode *root = _table[index];
+    if ([root isKindOfClass:NSNull.class]) {
+        root = new;
+        _table[index] = root;
+        [self _afterPut:root];
+        return;
+    }
+    
+    HashNode *parent = root;
+    HashNode *node = root;
+    NSInteger cmp = 0;
+    id key = new->_key;
+    NSUInteger h1 = [self _hash:key];
+    do {
+        parent = node;
+        id k2 = node->_key;
+        NSUInteger h2 = node->_hash;
+        if (h1 > h2) {
+            cmp = 1;
+        } else if (h1 < h2) {
+            cmp = -1;
+        } else if (key && k2 &&
+                   [key class] == [k2 class] &&
+                   [key respondsToSelector:@selector(compare:)] &&
+                   (cmp = [key compare:k2] != 0)) {
+        } else {
+            cmp = &key - &k2;
+        }
+                
+        if (cmp > 0) {
+            node = node->_right;
+        } else if (cmp < 0) {
+            node = node->_left;
+        }
+    } while (node);
+
+    new->_parent = parent;
+    if (cmp > 0) {
+        parent->_right = new;
+    } else {
+        parent->_left = new;
+    }
+    
+    [self _afterPut:new];
 }
 
 - (NSUInteger)_hash:(id)key {
