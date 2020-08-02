@@ -137,13 +137,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		030900B124D19F50009C3DEE /* set */ = {
+		030900B124D19F50009C3DEE /* treeset */ = {
 			isa = PBXGroup;
 			children = (
 				030900B224D1A0EB009C3DEE /* TreeSet.h */,
 				030900B324D1A0EB009C3DEE /* TreeSet.m */,
 			);
-			path = set;
+			path = treeset;
 			sourceTree = "<group>";
 		};
 		030900B524D1A0FA009C3DEE /* tree */ = {
@@ -163,17 +163,15 @@
 			path = tree;
 			sourceTree = "<group>";
 		};
-		030900BD24D1B244009C3DEE /* map */ = {
+		030900BD24D1B244009C3DEE /* treemap */ = {
 			isa = PBXGroup;
 			children = (
 				030900BE24D1B273009C3DEE /* TreeMap.h */,
 				030900BF24D1B273009C3DEE /* TreeMap.m */,
 				03ED976224D2FE1C00E28FF8 /* TreeMapSet.h */,
 				03ED976324D2FE1C00E28FF8 /* TreeMapSet.m */,
-				03E1905024D45A6E00DBFEC8 /* HashMap.h */,
-				03E1905124D45A6E00DBFEC8 /* HashMap.m */,
 			);
-			path = map;
+			path = treemap;
 			sourceTree = "<group>";
 		};
 		0335DF0424AB8DE400507ACF = {
@@ -272,8 +270,9 @@
 			children = (
 				036FA1E624CADFBB0007FFBA /* internal */,
 				030900B524D1A0FA009C3DEE /* tree */,
-				030900B124D19F50009C3DEE /* set */,
-				030900BD24D1B244009C3DEE /* map */,
+				030900B124D19F50009C3DEE /* treeset */,
+				030900BD24D1B244009C3DEE /* treemap */,
+				03E1906624D66AC600DBFEC8 /* hashmap */,
 			);
 			path = "objective-c";
 			sourceTree = "<group>";
@@ -311,6 +310,15 @@
 				038E9FB224C40ECA005DD7A2 /* cycle_deque.c */,
 			);
 			path = queue;
+			sourceTree = "<group>";
+		};
+		03E1906624D66AC600DBFEC8 /* hashmap */ = {
+			isa = PBXGroup;
+			children = (
+				03E1905024D45A6E00DBFEC8 /* HashMap.h */,
+				03E1905124D45A6E00DBFEC8 /* HashMap.m */,
+			);
+			path = hashmap;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
