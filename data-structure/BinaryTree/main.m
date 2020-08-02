@@ -16,6 +16,7 @@
 #import "TreeMapSet.h"
 #import "HashMap.h"
 #import "LinkedHashMap.h"
+#import "BinaryHeap.h"
 
 bool preorder_visit(void* object) {
     NSNumber *n = (__bridge NSNumber *)(object);
@@ -522,6 +523,20 @@ void testLinkedHashMap(LinkedHashMap *map) {
     free(v);
 }
 
+void testBinaryHeap(void) {
+    BinaryHeap *heap = [BinaryHeap heap];
+    [heap add:@68];
+    [heap add:@72];
+    [heap add:@43];
+    [heap add:@50];
+    [heap add:@38];
+//    [heap add:@];
+//    [heap add:@68];
+//    [heap add:@68];
+
+    [heap print];
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
 //        testBST();
@@ -545,7 +560,9 @@ int main(int argc, const char * argv[]) {
 //        testHashMap5([LinkedHashMap map]);
 //        testHashMap6([LinkedHashMap map]);
         
-        testLinkedHashMap([LinkedHashMap map]);
+//        testLinkedHashMap([LinkedHashMap map]);
+        
+        testBinaryHeap();
     }
     return 0;
 }
