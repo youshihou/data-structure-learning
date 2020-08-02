@@ -28,7 +28,8 @@ static const BOOL BLACK = YES;
     HashNode *n = [[self alloc] init];
     n->_key = key;
     n->_value = value;
-    n->_hash = [key hash];
+    NSUInteger hash = key ? [key hash] : 0;
+    n->_hash = hash ^ (hash >> 16);
     n->_parent = parent;
     return n;
 }
@@ -132,7 +133,7 @@ static const NSUInteger DEFAULT_CAPACITY = (1 << 4);
     HashNode *parent = root;
     HashNode *node = root;
     NSInteger cmp = 0;
-    NSUInteger h1 = [key hash];
+    NSUInteger h1 = [self _hash:key];
     HashNode *result = nil;
     BOOL searched = NO;
     do {
@@ -252,13 +253,16 @@ static const NSUInteger DEFAULT_CAPACITY = (1 << 4);
     }
 }
 
-- (NSUInteger)_index:(id)key {
+- (NSUInteger)_hash:(id)key {
     if (!key) { return 0; }
     NSUInteger hash = [key hash];
-    return (hash ^ (hash >> 16)) & (_capacity - 1);
+    return hash ^ (hash >> 16);
+}
+- (NSUInteger)_index:(id)key {
+    return [self _hash:key] & (_capacity - 1);
 }
 - (NSUInteger)_indexOf:(HashNode *)node {
-    return (node->_hash ^ (node->_hash >> 16)) & (_capacity - 1);
+    return node->_hash & (_capacity - 1);
 }
 - (HashNode *)_node:(id)key {
     NSUInteger index = [self _index:key];
@@ -270,7 +274,7 @@ static const NSUInteger DEFAULT_CAPACITY = (1 << 4);
 }
 - (HashNode *)_node:(HashNode *)node key:(id)k1 {
     HashNode *result = nil;
-    NSUInteger h1 = [k1 hash];
+    NSUInteger h1 = [self _hash:k1];
     NSInteger cmp = 0;
     while (node) {
         id k2 = node->_key;
