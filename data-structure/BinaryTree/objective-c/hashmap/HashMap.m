@@ -337,7 +337,6 @@ static const float DEFAULT_LOAD_FACTOR = 0.75;
     
     [self _afterPut:new];
 }
-
 - (NSUInteger)_hash:(id)key {
     if (!key) { return 0; }
     NSUInteger hash = [key hash];
