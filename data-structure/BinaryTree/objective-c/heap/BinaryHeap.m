@@ -52,7 +52,16 @@ static const NSUInteger DEFAULT_CAPACITY = 10;
     return top;
 }
 - (id)replace:(id)element {
-    return nil;
+    [self _elementCheck:element];
+    id top = _elements.firstObject;
+    if (_size == 0) {
+        _elements[0] = element;
+        _size++;
+    } else {
+        _elements[0] = element;
+        [self _siftDown:0];
+    }
+    return top;
 }
 - (void)print {
     [BinaryTreePrintHandler println:self];

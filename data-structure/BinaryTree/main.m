@@ -533,7 +533,8 @@ void testBinaryHeap(void) {
     [heap add:@10];
     [heap add:@90];
     [heap add:@65];
-    [heap remove];
+//    [heap remove];
+    NSLog(@"%@", [heap replace:@70]);
     [heap print];
 }
 
