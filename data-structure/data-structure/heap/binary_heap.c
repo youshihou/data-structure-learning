@@ -34,12 +34,21 @@ void heap_sift_up(int index) {
     while (index > 0) {
         int pIndex = (index - 1) >> 1;
         int p = heap_elements[pIndex];
-        if (e <= p) { return; }
-        int tmp = heap_elements[index];
-        heap_elements[index] = heap_elements[pIndex];
-        heap_elements[pIndex] = tmp;
+        if (e <= p) { break;; }
+        heap_elements[index] = p;
         index = pIndex;
     }
+    heap_elements[index] = e;
+    
+//    while (index > 0) {
+//        int pIndex = (index - 1) >> 1;
+//        int p = heap_elements[pIndex];
+//        if (e <= p) { return; }
+//        int tmp = heap_elements[index];
+//        heap_elements[index] = heap_elements[pIndex];
+//        heap_elements[pIndex] = tmp;
+//        index = pIndex;
+//    }
 }
 
 
