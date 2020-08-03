@@ -11,11 +11,8 @@
 
 
 @interface BinaryHeap () <BinaryTreeProtocol> {
-    NSUInteger _size;
     NSUInteger _capacity;
     NSMutableArray *_elements;
-    NSInteger(^_block)(id, id);
-    id<BinaryHeapComparator> _comparator;
 }
 @end
 
@@ -29,26 +26,6 @@ static const NSUInteger DEFAULT_CAPACITY = 10;
         _elements = [NSMutableArray arrayWithCapacity:DEFAULT_CAPACITY];
     }
     return self;
-}
-+ (instancetype)heap {
-    return [[self alloc] init];
-}
-+ (instancetype)heapWithComparator:(id<BinaryHeapComparator>)comparator {
-    BinaryHeap *heap = [BinaryHeap heap];
-    heap->_comparator = comparator;
-    return heap;
-}
-+ (instancetype)heapWithBlock:(NSInteger (^)(id _Nullable, id _Nullable))block {
-    BinaryHeap *heap = [BinaryHeap heap];
-    heap->_block = block;
-    return heap;
-}
-
-- (NSUInteger)size {
-    return _size;
-}
-- (BOOL)isEmpty {
-    return _size == 0;
 }
 - (void)clear {
     if (_size == 0) { return; }
@@ -80,23 +57,11 @@ static const NSUInteger DEFAULT_CAPACITY = 10;
     while (index > 0) {
         NSUInteger pIndex = (index - 1) >> 1;
         id p = _elements[pIndex];
-        if ([self _compare:e e2:p] <= 0) { break;; }
-        
+        if ([self compare:e e2:p] <= 0) { break;; }
         _elements[index] = p;
         index = pIndex; // CARE!!!
     }
     _elements[index] = e;
-
-//    while (index > 0) {
-//        NSUInteger pIndex = (index - 1) >> 1;
-//        id p = _elements[pIndex];
-//        if ([self _compare:e e2:p] <= 0) { return; }
-//
-//        id tmp = _elements[index];
-//        _elements[index] = _elements[pIndex];
-//        _elements[pIndex] = tmp;
-//        index = pIndex; // CARE!!!
-//    }
 }
 
 - (void)_ensureCapacity:(NSInteger)capacity {
@@ -117,9 +82,6 @@ static const NSUInteger DEFAULT_CAPACITY = 10;
     if (!element) {
         assert("element msut not be nil");
     }
-}
-- (NSInteger)_compare:(id)e1 e2:(id)e2 {
-    return _block ? _block(e1, e2) : (_comparator ? [_comparator compare:e1 with:e2] : (NSInteger)[e1 compare:e2]);
 }
 
 
