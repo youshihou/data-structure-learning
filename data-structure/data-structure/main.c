@@ -399,7 +399,6 @@ void test_binary_heap(void) {
     heap_add(43);
     heap_add(50);
     heap_add(38);
-    heap_get();
 }
 
 int main(int argc, const char * argv[]) {
