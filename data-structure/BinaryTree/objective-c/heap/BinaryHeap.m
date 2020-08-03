@@ -80,13 +80,23 @@ static const NSUInteger DEFAULT_CAPACITY = 10;
     while (index > 0) {
         NSUInteger pIndex = (index - 1) >> 1;
         id p = _elements[pIndex];
-        if ([self _compare:e e2:p] <= 0) { return; }
+        if ([self _compare:e e2:p] <= 0) { break;; }
         
-        id tmp = _elements[index];
-        _elements[index] = _elements[pIndex];
-        _elements[pIndex] = tmp;
+        _elements[index] = p;
         index = pIndex; // CARE!!!
     }
+    _elements[index] = e;
+
+//    while (index > 0) {
+//        NSUInteger pIndex = (index - 1) >> 1;
+//        id p = _elements[pIndex];
+//        if ([self _compare:e e2:p] <= 0) { return; }
+//
+//        id tmp = _elements[index];
+//        _elements[index] = _elements[pIndex];
+//        _elements[pIndex] = tmp;
+//        index = pIndex; // CARE!!!
+//    }
 }
 
 - (void)_ensureCapacity:(NSInteger)capacity {
