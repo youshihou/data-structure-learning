@@ -50,6 +50,22 @@ void heap_sift_up(int index) {
 //        index = pIndex;
 //    }
 }
+void heap_sift_down(int index) {
+    int e = heap_elements[index];
+    int half = heap_size_ >> 1;
+    while (index < half) {
+        int lIndex = (index << 1) + 1;
+        int left = heap_elements[lIndex];
+        int rIndex = lIndex + 1;
+        if (rIndex < heap_size_ && heap_elements[rIndex] > left) {
+            left = heap_elements[lIndex = rIndex];
+        }
+        if (e >= left) { break; }
+        heap_elements[index] = left;
+        index = lIndex;
+    }
+    heap_elements[index] = e;
+}
 
 
 void create_heap(void) {
@@ -77,8 +93,23 @@ int heap_get(void) {
     return heap_elements[0];
 }
 int heap_remove(void) {
-    return 0;
+    heap_empty_check();
+    int top = heap_elements[0];
+    int lastIndex = --heap_size_;
+    heap_elements[0] = heap_elements[lastIndex];
+    heap_elements[lastIndex] = -1;
+    heap_sift_down(0);
+    return top;
 }
 int heap_replace(int element) {
-    return 0;
+    int top = -1;
+    if (heap_size_ == 0) {
+        heap_elements[0] = element;
+        heap_size_++;
+    } else {
+        top = heap_elements[0];
+        heap_elements[0] = element;
+        heap_sift_down(0);
+    }
+    return top;
 }
