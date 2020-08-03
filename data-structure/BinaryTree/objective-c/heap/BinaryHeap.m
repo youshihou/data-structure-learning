@@ -43,7 +43,13 @@ static const NSUInteger DEFAULT_CAPACITY = 10;
     return _elements.firstObject;
 }
 - (id)remove {
-    return nil;
+    [self _emptyCheck];
+    id top = _elements.firstObject;
+    _elements[0] = _elements[_size - 1];
+    _size--;
+    [_elements removeLastObject];
+    [self _siftDown:0];
+    return top;
 }
 - (id)replace:(id)element {
     return nil;
@@ -52,18 +58,33 @@ static const NSUInteger DEFAULT_CAPACITY = 10;
     [BinaryTreePrintHandler println:self];
 }
 
+- (void)_siftDown:(NSUInteger)index {
+    id element = _elements[index];
+    NSUInteger half = _size >> 1;
+    while (index < half) {
+        NSUInteger lIndex = (index << 1) + 1;
+        id left = _elements[lIndex];
+        NSUInteger rIndex = lIndex + 1;
+        if (rIndex < _size && [self compare:_elements[rIndex] e2:left] > 0) {
+            left = _elements[lIndex = rIndex];
+        }
+        if ([self compare:element e2:left] >= 0) { break; }
+        _elements[index] = left;
+        index = lIndex; // CARE!!!
+    }
+    _elements[index] = element;
+}
 - (void)_siftUp:(NSUInteger)index {
-    id e = _elements[index];
+    id element = _elements[index];
     while (index > 0) {
         NSUInteger pIndex = (index - 1) >> 1;
-        id p = _elements[pIndex];
-        if ([self compare:e e2:p] <= 0) { break;; }
-        _elements[index] = p;
+        id parent = _elements[pIndex];
+        if ([self compare:element e2:parent] <= 0) { break; }
+        _elements[index] = parent;
         index = pIndex; // CARE!!!
     }
-    _elements[index] = e;
+    _elements[index] = element;
 }
-
 - (void)_ensureCapacity:(NSInteger)capacity {
     if (_capacity >= capacity) { return; }
     _capacity = _capacity + (_capacity >> 1);
