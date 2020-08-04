@@ -562,6 +562,24 @@ void testBinaryHeap3(void) {
     [heap print];
 }
 
+void testBinaryHeap4(void) {
+    BinaryHeap *heap = [BinaryHeap heapWithBlock:^NSInteger(id _Nullable e1, id _Nullable e2) {
+        return [e2 compare:e1];
+    }];
+    int data[] = {51, 30, 39, 92, 74, 25, 16, 93, 91, 19, 54, 47, 73, 62, 76, 63, 35, 18, 90, 6, 65, 49, 3, 26, 61, 21, 48};
+    int len = sizeof(data) / sizeof(int);
+    int k = 5;
+    for (int i = 0; i < len; i++) { // n
+        if ([heap size] < k) {
+            [heap add:@(data[i])]; // logk
+        } else if (data[i] > [[heap get] integerValue]) {
+            [heap replace:@(data[i])]; // logk
+        }
+    }
+    // nlogk
+    [heap print];
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
 //        testBST();
@@ -588,8 +606,9 @@ int main(int argc, const char * argv[]) {
 //        testLinkedHashMap([LinkedHashMap map]);
         
 //        testBinaryHeap();
-        testBinaryHeap2();
-        testBinaryHeap3();
+//        testBinaryHeap2();
+//        testBinaryHeap3();
+        testBinaryHeap4();
     }
     return 0;
 }
