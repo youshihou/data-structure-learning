@@ -96,6 +96,7 @@ static const NSUInteger DEFAULT_CAPACITY = 10;
 }
 - (void)print {
     [BinaryTreePrintHandler println:self];
+    printf("\n-----------------------------\n");
 }
 
 - (void)_heapify {
