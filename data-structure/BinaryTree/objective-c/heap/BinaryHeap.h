@@ -11,6 +11,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BinaryHeap : Heap
++ (instancetype)heapWithArray:(NSArray *)array;
++ (instancetype)heapWithArray:(NSArray *)array comparator:(id<HeapComparator> _Nullable)comparator;
++ (instancetype)heapWithArray:(NSArray *)array block:(NSInteger(^)(id _Nullable, id _Nullable))block;
 - (void)clear;
 - (void)add:(id)element;
 - (id)get;

@@ -19,12 +19,12 @@
     return [[self alloc] init];
 }
 + (instancetype)heapWithComparator:(id<HeapComparator>)comparator {
-    Heap *heap = [Heap heap];
+    Heap *heap = [self heap];
     heap->_comparator = comparator;
     return heap;
 }
 + (instancetype)heapWithBlock:(NSInteger (^)(id _Nullable, id _Nullable))block {
-    Heap *heap = [Heap heap];
+    Heap *heap = [self heap];
     heap->_block = block;
     return heap;
 }

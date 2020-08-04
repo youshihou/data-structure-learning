@@ -27,6 +27,37 @@ static const NSUInteger DEFAULT_CAPACITY = 10;
     }
     return self;
 }
+
++ (instancetype)heapWithArray:(NSArray *)array {
+    BinaryHeap *heap = [self heapWithArray:array comparator:nil];
+    return heap;
+}
++ (instancetype)heapWithArray:(NSArray *)array comparator:(id<HeapComparator> _Nullable)comparator {
+    BinaryHeap *heap = [BinaryHeap heapWithComparator:comparator];
+    if (array.count) {
+        heap->_size = array.count;
+        NSUInteger capacity = MAX(heap->_capacity, array.count);
+        heap->_elements = [NSMutableArray arrayWithCapacity:capacity];
+        for (NSUInteger i = 0; i < array.count; i++) {
+            [heap->_elements addObject:array[i]];
+        }
+        [heap _heapify];
+    }
+    return heap;
+}
++ (instancetype)heapWithArray:(NSArray *)array block:(NSInteger (^)(id _Nullable, id _Nullable))block {
+    BinaryHeap *heap = [BinaryHeap heapWithBlock:block];
+    if (array.count) {
+        heap->_size = array.count;
+        NSUInteger capacity = MAX(heap->_capacity, array.count);
+        heap->_elements = [NSMutableArray arrayWithCapacity:capacity];
+        for (NSUInteger i = 0; i < array.count; i++) {
+            [heap->_elements addObject:array[i]];
+        }
+        [heap _heapify];
+    }
+    return heap;
+}
 - (void)clear {
     if (_size == 0) { return; }
     [_elements removeAllObjects];
@@ -65,6 +96,16 @@ static const NSUInteger DEFAULT_CAPACITY = 10;
 }
 - (void)print {
     [BinaryTreePrintHandler println:self];
+}
+
+- (void)_heapify {
+//    for (NSUInteger i = 0; i < _size; i++) {
+//        [self _siftUp:i];
+//    }
+    
+    for (NSInteger i = (_size >> 1) - 1; i >= 0; i--) {
+        [self _siftDown:i];
+    }
 }
 
 - (void)_siftDown:(NSUInteger)index {

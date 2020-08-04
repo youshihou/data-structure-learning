@@ -538,6 +538,17 @@ void testBinaryHeap(void) {
     [heap print];
 }
 
+void testBinaryHeap2(void) {
+    int data[] = {88, 44, 53, 41, 16, 6, 70, 18, 85, 98, 81, 23, 36, 43, 37};
+    int len = sizeof(data) / sizeof(int);
+    NSMutableArray *array = [NSMutableArray array];
+    for (int i = 0; i < len; i++) {
+        [array addObject:@(data[i])];
+    }
+    BinaryHeap *heap = [BinaryHeap heapWithArray:array];
+    [heap print];
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
 //        testBST();
@@ -563,7 +574,8 @@ int main(int argc, const char * argv[]) {
         
 //        testLinkedHashMap([LinkedHashMap map]);
         
-        testBinaryHeap();
+//        testBinaryHeap();
+        testBinaryHeap2();
     }
     return 0;
 }
