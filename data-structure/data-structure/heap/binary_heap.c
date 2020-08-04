@@ -67,6 +67,31 @@ void heap_sift_down(int index) {
     heap_elements[index] = e;
 }
 
+void heap_heapify(void) {
+//    for (int i = 1; i < heap_size_; i++) {
+//        heap_sift_up(i);
+//    }
+    
+    for (int i = (heap_size_ >> 1) - 1; i >= 0; i--) {
+        heap_sift_down(i);
+    }
+}
+
+
+void create_heap_list(int* arr, int size) {
+    if (size == 0) {
+        heap_capacity = DEFAULT_CAPACITY;
+        heap_elements = malloc(sizeof(int) * heap_capacity);
+    } else {
+        heap_size_ = size;
+        heap_capacity = fmax(DEFAULT_CAPACITY, size);
+        heap_elements = malloc(sizeof(int) * heap_capacity);
+        for (int i = 0; i < size; i++) {
+            heap_elements[i] = arr[i];
+        }
+        heap_heapify();
+    }
+}
 
 void create_heap(void) {
     heap_capacity = DEFAULT_CAPACITY;

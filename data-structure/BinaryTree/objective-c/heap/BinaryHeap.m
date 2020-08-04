@@ -49,8 +49,8 @@ static const NSUInteger DEFAULT_CAPACITY = 10;
     BinaryHeap *heap = [BinaryHeap heapWithBlock:block];
     if (array.count) {
         heap->_size = array.count;
-        NSUInteger capacity = MAX(heap->_capacity, array.count);
-        heap->_elements = [NSMutableArray arrayWithCapacity:capacity];
+        heap->_capacity = MAX(heap->_capacity, array.count);
+        heap->_elements = [NSMutableArray arrayWithCapacity:heap->_capacity];
         for (NSUInteger i = 0; i < array.count; i++) {
             [heap->_elements addObject:array[i]];
         }

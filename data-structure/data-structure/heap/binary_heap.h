@@ -11,6 +11,7 @@
 
 #include "common.h"
 
+void create_heap_list(int*, int);
 void create_heap(void);
 int heap_size(void);
 bool heap_isEmpty(void);

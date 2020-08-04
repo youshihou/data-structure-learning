@@ -406,6 +406,13 @@ void test_binary_heap(void) {
     heap_replace(70);
 }
 
+void test_binary_heap2(void) {
+    int data[] = {88, 44, 53, 41, 16, 6, 70, 18, 85, 98, 81, 23, 36, 43, 37};
+    int len = sizeof(data) / sizeof(int);
+    create_heap_list(data, len);
+    heap_get();
+}
+
 int main(int argc, const char * argv[]) {
 #if 0
     test_array_list();
@@ -424,7 +431,9 @@ int main(int argc, const char * argv[]) {
     
 //    test_binary_search_tree();
     
-    test_binary_heap();
-
+//    test_binary_heap();
+    test_binary_heap2();
+    
+    
     return 0;
 }
