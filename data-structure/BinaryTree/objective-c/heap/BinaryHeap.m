@@ -110,6 +110,7 @@ static const NSUInteger DEFAULT_CAPACITY = 10;
 }
 
 - (void)_siftDown:(NSUInteger)index {
+    if (_elements.count == 0) { return; }
     id element = _elements[index];
     NSUInteger half = _size >> 1;
     while (index < half) {

@@ -17,6 +17,7 @@
 #import "HashMap.h"
 #import "LinkedHashMap.h"
 #import "BinaryHeap.h"
+#import "PriorityQueue.h"
 
 bool preorder_visit(void* object) {
     NSNumber *n = (__bridge NSNumber *)(object);
@@ -580,6 +581,48 @@ void testBinaryHeap4(void) {
     [heap print];
 }
 
+@interface TestPerson : NSObject {
+    @public
+    NSString *_name;
+    NSNumber *_age;
+}
+@end
+@implementation TestPerson
+- (NSComparisonResult)compare:(id)other {
+    TestPerson *p = other;
+    return _age.integerValue - p->_age.integerValue;
+}
+- (NSString *)description {
+    return [NSString stringWithFormat:@"TestPerson [name = %@, age =%zd]", _name, _age.integerValue];
+}
+@end
+void testPriorityQueue(void) {
+//    PriorityQueue *queue = [PriorityQueue queueWithBlock:^NSInteger(id _Nullable e1, id _Nullable e2) {
+//        return [e1 compare:e2];
+//    }];
+    PriorityQueue *queue = [PriorityQueue queue];
+    TestPerson *p = [[TestPerson alloc] init];
+    p->_name = @"jack";
+    p->_age = @2;
+    [queue enQueue:p];
+    p = [[TestPerson alloc] init];
+    p->_name = @"rose";
+    p->_age = @10;
+    [queue enQueue:p];
+    p = [[TestPerson alloc] init];
+    p->_name = @"jake";
+    p->_age = @5;
+    [queue enQueue:p];
+    p = [[TestPerson alloc] init];
+    p->_name = @"james";
+    p->_age = @15;
+    [queue enQueue:p];
+
+    while (!queue.isEmpty) {
+        NSLog(@"%@", [queue deQueue]);
+    }
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
 //        testBST();
@@ -608,7 +651,8 @@ int main(int argc, const char * argv[]) {
 //        testBinaryHeap();
 //        testBinaryHeap2();
 //        testBinaryHeap3();
-        testBinaryHeap4();
+//        testBinaryHeap4();
+        testPriorityQueue();
     }
     return 0;
 }

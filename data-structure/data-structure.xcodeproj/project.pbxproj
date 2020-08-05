@@ -12,6 +12,7 @@
 		0335DF1124AB8DE400507ACF /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 0335DF1024AB8DE400507ACF /* main.c */; };
 		0344427024BC8EC50030765D /* SingleLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 0344426F24BC8EC50030765D /* SingleLinkedList.c */; };
 		0344427424BC912B0030765D /* ArrayList.c in Sources */ = {isa = PBXBuildFile; fileRef = 0344427324BC912B0030765D /* ArrayList.c */; };
+		035C081824DAF3C400D201B0 /* PriorityQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 035C081724DAF3C400D201B0 /* PriorityQueue.m */; };
 		036FA1F424CADFBB0007FFBA /* BST.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA1E324CADFBA0007FFBA /* BST.m */; };
 		036FA1F624CADFBB0007FFBA /* BinaryTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA1E824CADFBB0007FFBA /* BinaryTree.m */; };
 		036FA1F724CADFBB0007FFBA /* NSString+Tree.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA1EB24CADFBB0007FFBA /* NSString+Tree.m */; };
@@ -75,6 +76,8 @@
 		0344426F24BC8EC50030765D /* SingleLinkedList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SingleLinkedList.c; sourceTree = "<group>"; };
 		0344427224BC912B0030765D /* ArrayList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArrayList.h; sourceTree = "<group>"; };
 		0344427324BC912B0030765D /* ArrayList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ArrayList.c; sourceTree = "<group>"; };
+		035C081624DAF3C400D201B0 /* PriorityQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PriorityQueue.h; sourceTree = "<group>"; };
+		035C081724DAF3C400D201B0 /* PriorityQueue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PriorityQueue.m; sourceTree = "<group>"; };
 		036FA1DC24CADF970007FFBA /* BinaryTree */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BinaryTree; sourceTree = BUILT_PRODUCTS_DIR; };
 		036FA1E324CADFBA0007FFBA /* BST.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BST.m; sourceTree = "<group>"; };
 		036FA1E424CADFBB0007FFBA /* BST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BST.h; sourceTree = "<group>"; };
@@ -241,6 +244,15 @@
 			path = list;
 			sourceTree = "<group>";
 		};
+		035C081224DAF37900D201B0 /* queue */ = {
+			isa = PBXGroup;
+			children = (
+				035C081624DAF3C400D201B0 /* PriorityQueue.h */,
+				035C081724DAF3C400D201B0 /* PriorityQueue.m */,
+			);
+			path = queue;
+			sourceTree = "<group>";
+		};
 		036FA1DD24CADF970007FFBA /* BinaryTree */ = {
 			isa = PBXGroup;
 			children = (
@@ -351,6 +363,7 @@
 				03C84D3924D853CD002E7576 /* Heap.m */,
 				039DF37C24D6F39700FCB384 /* BinaryHeap.h */,
 				039DF37D24D6F39700FCB384 /* BinaryHeap.m */,
+				035C081224DAF37900D201B0 /* queue */,
 			);
 			path = heap;
 			sourceTree = "<group>";
@@ -484,6 +497,7 @@
 				03ED976424D2FE1C00E28FF8 /* TreeMapSet.m in Sources */,
 				03E1905224D45A6E00DBFEC8 /* HashMap.m in Sources */,
 				036FA1F824CADFBB0007FFBA /* BinaryTreePrintInorder.m in Sources */,
+				035C081824DAF3C400D201B0 /* PriorityQueue.m in Sources */,
 				036FA22724CB10850007FFBA /* BinaryTreePrintHandler.m in Sources */,
 				039DF37E24D6F39700FCB384 /* BinaryHeap.m in Sources */,
 				03A9FC7124CC79BA00FB7304 /* RBTree.m in Sources */,
