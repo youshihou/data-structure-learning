@@ -18,6 +18,7 @@
 #import "LinkedHashMap.h"
 #import "BinaryHeap.h"
 #import "PriorityQueue.h"
+#import "Trie.h"
 
 bool preorder_visit(void* object) {
     NSNumber *n = (__bridge NSNumber *)(object);
@@ -623,6 +624,27 @@ void testPriorityQueue(void) {
     }
 }
 
+void testTrie(void) {
+    Trie *trie = [Trie trie];
+    [trie addKey:@"cat" value:@1];
+    [trie addKey:@"dog" value:@2];
+    [trie addKey:@"catalog" value:@3];
+    [trie addKey:@"cast" value:@4];
+    [trie addKey:@"哈哈哈" value:@5];
+    assert([trie size] == 5);
+//    assert([trie starsWith:@"c"]);
+//    assert([trie starsWith:@"ca"]);
+//    assert([trie starsWith:@"cat"]);
+//    assert([trie starsWith:@"cata"]);
+    assert([[trie get:@"哈哈哈"] integerValue] == 5);
+//    assert([[trie remove:@"cat"] integerValue] == 1);
+//    assert([[trie remove:@"catalog"] integerValue] == 3);
+//    assert([[trie remove:@"cast"] integerValue] == 4);
+//    assert([trie size] == 2);
+//    assert([trie starsWith:@"do"]);
+//    assert(![trie starsWith:@"c"]);
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
 //        testBST();
@@ -652,7 +674,9 @@ int main(int argc, const char * argv[]) {
 //        testBinaryHeap2();
 //        testBinaryHeap3();
 //        testBinaryHeap4();
-        testPriorityQueue();
+//        testPriorityQueue();
+        
+        testTrie();
     }
     return 0;
 }

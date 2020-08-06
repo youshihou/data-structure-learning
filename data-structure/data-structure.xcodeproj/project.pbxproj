@@ -13,6 +13,7 @@
 		0344427024BC8EC50030765D /* SingleLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 0344426F24BC8EC50030765D /* SingleLinkedList.c */; };
 		0344427424BC912B0030765D /* ArrayList.c in Sources */ = {isa = PBXBuildFile; fileRef = 0344427324BC912B0030765D /* ArrayList.c */; };
 		035C081824DAF3C400D201B0 /* PriorityQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 035C081724DAF3C400D201B0 /* PriorityQueue.m */; };
+		035F706B24DC37E8000D649A /* Trie.m in Sources */ = {isa = PBXBuildFile; fileRef = 035F706A24DC37E8000D649A /* Trie.m */; };
 		036FA1F424CADFBB0007FFBA /* BST.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA1E324CADFBA0007FFBA /* BST.m */; };
 		036FA1F624CADFBB0007FFBA /* BinaryTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA1E824CADFBB0007FFBA /* BinaryTree.m */; };
 		036FA1F724CADFBB0007FFBA /* NSString+Tree.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA1EB24CADFBB0007FFBA /* NSString+Tree.m */; };
@@ -78,6 +79,8 @@
 		0344427324BC912B0030765D /* ArrayList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ArrayList.c; sourceTree = "<group>"; };
 		035C081624DAF3C400D201B0 /* PriorityQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PriorityQueue.h; sourceTree = "<group>"; };
 		035C081724DAF3C400D201B0 /* PriorityQueue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PriorityQueue.m; sourceTree = "<group>"; };
+		035F706924DC37E8000D649A /* Trie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Trie.h; sourceTree = "<group>"; };
+		035F706A24DC37E8000D649A /* Trie.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Trie.m; sourceTree = "<group>"; };
 		036FA1DC24CADF970007FFBA /* BinaryTree */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BinaryTree; sourceTree = BUILT_PRODUCTS_DIR; };
 		036FA1E324CADFBA0007FFBA /* BST.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BST.m; sourceTree = "<group>"; };
 		036FA1E424CADFBB0007FFBA /* BST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BST.h; sourceTree = "<group>"; };
@@ -253,6 +256,15 @@
 			path = queue;
 			sourceTree = "<group>";
 		};
+		035F706824DC377E000D649A /* trie */ = {
+			isa = PBXGroup;
+			children = (
+				035F706924DC37E8000D649A /* Trie.h */,
+				035F706A24DC37E8000D649A /* Trie.m */,
+			);
+			path = trie;
+			sourceTree = "<group>";
+		};
 		036FA1DD24CADF970007FFBA /* BinaryTree */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,6 +318,7 @@
 				03E1906624D66AC600DBFEC8 /* hash-map */,
 				039DF37A24D69A8800FCB384 /* linked-hash-map */,
 				039DF37B24D6F35B00FCB384 /* heap */,
+				035F706824DC377E000D649A /* trie */,
 			);
 			path = "objective-c";
 			sourceTree = "<group>";
@@ -504,6 +517,7 @@
 				036FA1F424CADFBB0007FFBA /* BST.m in Sources */,
 				039DF37624D697BF00FCB384 /* HashSet.m in Sources */,
 				03C84D3A24D853CD002E7576 /* Heap.m in Sources */,
+				035F706B24DC37E8000D649A /* Trie.m in Sources */,
 				030900C024D1B273009C3DEE /* TreeMap.m in Sources */,
 				036FA1F924CADFBB0007FFBA /* BinaryTreePrintLevelOrder.m in Sources */,
 				036FA1FC24CAE1740007FFBA /* main.m in Sources */,
