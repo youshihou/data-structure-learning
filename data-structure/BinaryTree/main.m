@@ -632,10 +632,11 @@ void testTrie(void) {
     [trie addKey:@"cast" value:@4];
     [trie addKey:@"哈哈哈" value:@5];
     assert([trie size] == 5);
-//    assert([trie starsWith:@"c"]);
-//    assert([trie starsWith:@"ca"]);
-//    assert([trie starsWith:@"cat"]);
-//    assert([trie starsWith:@"cata"]);
+    assert([trie starsWith:@"c"]);
+    assert([trie starsWith:@"ca"]);
+    assert([trie starsWith:@"cat"]);
+    assert([trie starsWith:@"cata"]);
+    assert(![trie starsWith:@"hehe"]);
     assert([[trie get:@"哈哈哈"] integerValue] == 5);
 //    assert([[trie remove:@"cat"] integerValue] == 1);
 //    assert([[trie remove:@"catalog"] integerValue] == 3);
@@ -647,34 +648,36 @@ void testTrie(void) {
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-//        testBST();
-//        testAVLTree();
-//        testRBTree();
-//        testTreeSet();
-//        testTreeMap();
-//        testTreeMapSet();
+#if 0
+        testBST();
+        testAVLTree();
+        testRBTree();
+        testTreeSet();
+        testTreeMap();
+        testTreeMapSet();
         
-//        testHashMap([HashMap map]);
-//        testHashMap2([HashMap map]);
-//        testHashMap3([HashMap map]);
-//        testHashMap4([HashMap map]);
-//        testHashMap5([HashMap map]);
-//        testHashMap6([HashMap map]);
-//
-//        testHashMap([LinkedHashMap map]);
-//        testHashMap2([LinkedHashMap map]);
-//        testHashMap3([LinkedHashMap map]);
-//        testHashMap4([LinkedHashMap map]);
-//        testHashMap5([LinkedHashMap map]);
-//        testHashMap6([LinkedHashMap map]);
+        testHashMap([HashMap map]);
+        testHashMap2([HashMap map]);
+        testHashMap3([HashMap map]);
+        testHashMap4([HashMap map]);
+        testHashMap5([HashMap map]);
+        testHashMap6([HashMap map]);
+
+        testHashMap([LinkedHashMap map]);
+        testHashMap2([LinkedHashMap map]);
+        testHashMap3([LinkedHashMap map]);
+        testHashMap4([LinkedHashMap map]);
+        testHashMap5([LinkedHashMap map]);
+        testHashMap6([LinkedHashMap map]);
         
-//        testLinkedHashMap([LinkedHashMap map]);
+        testLinkedHashMap([LinkedHashMap map]);
         
-//        testBinaryHeap();
-//        testBinaryHeap2();
-//        testBinaryHeap3();
-//        testBinaryHeap4();
-//        testPriorityQueue();
+        testBinaryHeap();
+        testBinaryHeap2();
+        testBinaryHeap3();
+        testBinaryHeap4();
+        testPriorityQueue();
+#endif
         
         testTrie();
     }

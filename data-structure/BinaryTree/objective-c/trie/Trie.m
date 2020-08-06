@@ -91,7 +91,17 @@
     return nil;
 }
 - (BOOL)starsWith:(NSString *)prefix {
-    return NO;
+    [self _keyCheck:prefix];
+    
+    TrieNode *node = _root;
+    NSUInteger len = prefix.length;
+    for (NSUInteger i = 0; i < len; i++) {
+        unichar c = [prefix characterAtIndex:i];
+        NSString *k = [NSString stringWithCharacters:&c length:1];
+        node = [node getChild][k];
+        if (!node) { return NO; }
+    }
+    return YES;
 }
 
 
