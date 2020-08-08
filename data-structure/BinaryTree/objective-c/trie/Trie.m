@@ -103,7 +103,7 @@
         if (node->_character.length) {
             [parent->_child removeObjectForKey:node->_character];
         }
-        if (parent->_child.count) { break; }
+        if (parent->_word || parent->_child.count) { break; }
         node = parent;
     }
     
