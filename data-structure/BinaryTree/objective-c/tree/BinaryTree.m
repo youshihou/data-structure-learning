@@ -54,55 +54,6 @@
     _size = 0;
 }
 
-- (void)preorder:(struct Visitor *)visitor {
-    if (visitor == NULL) { return; }
-    [self _preorder:_root visitor:visitor];
-}
-- (void)_preorder:(TreeNode *)node visitor:(struct Visitor *)visitor {
-    if (!node || visitor->stop) { return; }
-    visitor->stop = visitor->visit((__bridge void * _Nonnull)(node->_element));
-    [self _preorder:node->_left visitor:visitor];
-    [self _preorder:node->_right visitor:visitor];
-}
-- (void)inorder:(struct Visitor *)visitor {
-    if (visitor == NULL) { return; }
-    [self _inorder:_root visitor:visitor];
-}
-- (void)_inorder:(TreeNode *)node visitor:(struct Visitor *)visitor {
-    if (!node || visitor->stop) { return; }
-    [self _inorder:node->_left visitor:visitor];
-    if (visitor->stop) { return; }
-    visitor->stop = visitor->visit((__bridge void * _Nonnull)(node->_element));
-    [self _inorder:node->_right visitor:visitor];
-}
-- (void)postorder:(struct Visitor *)visitor {
-    if (visitor == NULL) { return; }
-    [self _postorder:_root visitor:visitor];
-}
-- (void)_postorder:(TreeNode *)node visitor:(struct Visitor *)visitor {
-    if (!node || visitor->stop) { return; }
-    [self _postorder:node->_left visitor:visitor];
-    [self _postorder:node->_right visitor:visitor];
-    if (visitor->stop) { return; }
-    visitor->stop = visitor->visit((__bridge void * _Nonnull)(node->_element));
-}
-- (void)levelOrder:(struct Visitor *)visitor {
-    if (!_root || visitor->stop) { return; }
-    NSMutableArray *queue = [NSMutableArray array];
-    [queue addObject:_root];
-    while (queue.count) {
-        TreeNode *node = queue.firstObject;
-        [queue removeObjectAtIndex:0];
-        bool stop = visitor->visit((__bridge void * _Nonnull)(node->_element));
-        if (stop) { return; }
-        if (node->_left) {
-            [queue addObject:node->_left];
-        }
-        if (node->_right) {
-            [queue addObject:node->_right];
-        }
-    }
-}
 - (BOOL)isComplete {
     if (!_root) { return NO; }
     BOOL leaf = NO;
@@ -183,17 +134,79 @@
     }
     return node->_parent;
 }
-
+- (void)preorder:(struct Visitor *)visitor {
+    if (visitor == NULL) { return; }
+    [self _preorder:_root visitor:visitor];
+}
+- (void)_preorder:(TreeNode *)node visitor:(struct Visitor *)visitor {
+    if (!node || visitor->stop) { return; }
+    visitor->stop = visitor->visit((__bridge void * _Nonnull)(node->_element));
+    [self _preorder:node->_left visitor:visitor];
+    [self _preorder:node->_right visitor:visitor];
+}
+- (void)inorder:(struct Visitor *)visitor {
+    if (visitor == NULL) { return; }
+    [self _inorder:_root visitor:visitor];
+}
+- (void)_inorder:(TreeNode *)node visitor:(struct Visitor *)visitor {
+    if (!node || visitor->stop) { return; }
+    [self _inorder:node->_left visitor:visitor];
+    if (visitor->stop) { return; }
+    visitor->stop = visitor->visit((__bridge void * _Nonnull)(node->_element));
+    [self _inorder:node->_right visitor:visitor];
+}
+- (void)postorder:(struct Visitor *)visitor {
+    if (visitor == NULL) { return; }
+    [self _postorder:_root visitor:visitor];
+}
+- (void)_postorder:(TreeNode *)node visitor:(struct Visitor *)visitor {
+    if (!node || visitor->stop) { return; }
+    [self _postorder:node->_left visitor:visitor];
+    [self _postorder:node->_right visitor:visitor];
+    if (visitor->stop) { return; }
+    visitor->stop = visitor->visit((__bridge void * _Nonnull)(node->_element));
+}
+- (void)levelOrder:(struct Visitor *)visitor {
+    if (!_root || visitor->stop) { return; }
+    NSMutableArray *queue = [NSMutableArray array];
+    [queue addObject:_root];
+    while (queue.count) {
+        TreeNode *node = queue.firstObject;
+        [queue removeObjectAtIndex:0];
+        bool stop = visitor->visit((__bridge void * _Nonnull)(node->_element));
+        if (stop) { return; }
+        if (node->_left) {
+            [queue addObject:node->_left];
+        }
+        if (node->_right) {
+            [queue addObject:node->_right];
+        }
+    }
+}
 
 - (void)preorder_new:(struct Visitor *)visitor {
     if (!_root || visitor->stop) { return; }
-    
+    NSMutableArray *stack = [NSMutableArray array];
+    [stack addObject:_root];
+    while (stack.count) {
+        TreeNode *top = stack.lastObject;
+        [stack removeLastObject];
+        if (visitor->visit((__bridge void * _Nonnull)(top->_element))) { return; }
+        if (top->_right) {
+            [stack addObject:top->_right];
+        }
+        if (top->_left) {
+            [stack addObject:top->_left];
+        }
+    }
+}
+- (void)preorder_new2:(struct Visitor *)visitor {
+    if (!_root || visitor->stop) { return; }
     TreeNode *node = _root;
     NSMutableArray *stack = [NSMutableArray array];
     while (YES) {
         if (node) {
-            if (visitor->stop) { return; }
-            visitor->stop = visitor->visit((__bridge void * _Nonnull)(node->_element));
+            if (visitor->visit((__bridge void * _Nonnull)(node->_element))) { return; }
             if (node->_right) {
                 [stack addObject:node->_right];
             }
@@ -208,7 +221,6 @@
 }
 - (void)inorder_new:(struct Visitor *)visitor {
     if (!_root || visitor->stop) { return; }
-
     TreeNode *node = _root;
     NSMutableArray *stack = [NSMutableArray array];
     while (YES) {
@@ -220,15 +232,13 @@
         } else {
             node = stack.lastObject;
             [stack removeLastObject];
-            if (visitor->stop) { return; }
-            visitor->stop = visitor->visit((__bridge void * _Nonnull)(node->_element));
+            if (visitor->visit((__bridge void * _Nonnull)(node->_element))) { return; }
             node = node->_right;
         }
     }
 }
 - (void)postorder_new:(struct Visitor *)visitor {
     if (!_root || visitor->stop) { return; }
-
     TreeNode *prev = nil;
     NSMutableArray *stack = [NSMutableArray array];
     [stack addObject:_root];
@@ -237,8 +247,7 @@
         if ([top isLeaf] || (prev && prev->_parent == top)) {
             prev = stack.lastObject;
             [stack removeLastObject];
-            if (visitor->stop) { return; }
-            visitor->stop = visitor->visit((__bridge void * _Nonnull)(prev->_element));
+            if (visitor->visit((__bridge void * _Nonnull)(prev->_element))) { return; }
         } else {
             if (top->_right) {
                 [stack addObject:top->_right];

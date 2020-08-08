@@ -650,6 +650,10 @@ void testTrie(void) {
 bool bst_visit(void* object) {
     NSNumber *n = (__bridge NSNumber *)(object);
     printf("%zd_", n.integerValue);
+//    if (n.integerValue == 8) {
+//        printf("\n");
+//        return true;
+//    }
     return false;
 }
 void testBinarySearchTree(void) {

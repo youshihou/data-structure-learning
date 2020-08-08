@@ -42,15 +42,15 @@ struct Visitor {
 - (BOOL)isEmpty;
 - (void)clear;
 
-- (void)preorder:(struct Visitor *)visitor;
-- (void)inorder:(struct Visitor *)visitor;
-- (void)postorder:(struct Visitor *)visitor;
-- (void)levelOrder:(struct Visitor *)visitor;
 - (BOOL)isComplete;
 - (NSUInteger)height;
 - (NSUInteger)height2;
 - (TreeNode *)predcessor:(TreeNode *)node;
 - (TreeNode *)successor:(TreeNode *)node;
+- (void)preorder:(struct Visitor *)visitor;
+- (void)inorder:(struct Visitor *)visitor;
+- (void)postorder:(struct Visitor *)visitor;
+- (void)levelOrder:(struct Visitor *)visitor;
 
 - (void)preorder_new:(struct Visitor *)visitor;
 - (void)inorder_new:(struct Visitor *)visitor;
