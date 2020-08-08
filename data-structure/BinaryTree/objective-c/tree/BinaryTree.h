@@ -52,6 +52,9 @@ struct Visitor {
 - (TreeNode *)predcessor:(TreeNode *)node;
 - (TreeNode *)successor:(TreeNode *)node;
 
+- (void)preorder_new:(struct Visitor *)visitor;
+- (void)inorder_new:(struct Visitor *)visitor;
+- (void)postorder_new:(struct Visitor *)visitor;
 @end
 
 NS_ASSUME_NONNULL_END

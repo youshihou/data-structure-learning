@@ -183,4 +183,36 @@
     }
     return node->_parent;
 }
+
+
+- (void)preorder_new:(struct Visitor *)visitor {
+    if (!_root || visitor->stop) { return; }
+    
+    TreeNode *node = _root;
+    NSMutableArray *stack = [NSMutableArray array];
+    while (YES) {
+        if (node) {
+            if (visitor->stop) { return; }
+            visitor->stop = visitor->visit((__bridge void * _Nonnull)(node->_element));
+            if (node->_right) {
+                [stack addObject:node->_right];
+            }
+            node = node->_left;
+        } else if (stack.count == 0) {
+            return;
+        } else {
+            node = stack.lastObject;
+            [stack removeLastObject];
+        }
+    }
+}
+- (void)inorder_new:(struct Visitor *)visitor {
+    if (!_root || visitor->stop) { return; }
+
+}
+- (void)postorder_new:(struct Visitor *)visitor {
+    if (!_root || visitor->stop) { return; }
+
+}
+
 @end

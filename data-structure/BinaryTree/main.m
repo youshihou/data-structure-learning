@@ -647,6 +647,37 @@ void testTrie(void) {
 //    assert(![trie starsWith:@"c"]); // ERROE!!! why???
 }
 
+bool bst_visit(void* object) {
+    NSNumber *n = (__bridge NSNumber *)(object);
+    printf("%zd_", n.integerValue);
+    return false;
+}
+void testBinarySearchTree(void) {
+    int data[] = {7, 4, 9, 2, 5, 8, 11};
+    int len = sizeof(data) / sizeof(data[0]);
+    BST *bst = [BST tree];
+    for (int i = 0; i < len; i++) {
+        [bst add:@(data[i])];
+    }
+    
+    struct Visitor* v = malloc(sizeof(struct Visitor));
+    v->stop = false;
+    v->visit = bst_visit;
+    [bst preorder_new:v];
+    printf("\n");
+    
+    v->stop = false;
+    v->visit = bst_visit;
+    [bst inorder_new:v];
+    printf("\n");
+    
+    v->stop = false;
+    v->visit = bst_visit;
+    [bst postorder_new:v];
+    printf("\n");
+    free(v);
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
 #if 0
@@ -678,9 +709,11 @@ int main(int argc, const char * argv[]) {
         testBinaryHeap3();
         testBinaryHeap4();
         testPriorityQueue();
-#endif
-        
         testTrie();
+#endif
+
+        testBinarySearchTree();
+        
     }
     return 0;
 }
