@@ -638,11 +638,12 @@ void testTrie(void) {
     assert([trie starsWith:@"cata"]);
     assert(![trie starsWith:@"hehe"]);
     assert([[trie get:@"哈哈哈"] integerValue] == 5);
-//    assert([[trie remove:@"cat"] integerValue] == 1);
-//    assert([[trie remove:@"catalog"] integerValue] == 3);
-//    assert([[trie remove:@"cast"] integerValue] == 4);
-//    assert([trie size] == 2);
-//    assert([trie starsWith:@"do"]);
+    assert([[trie remove:@"cat"] integerValue] == 1);
+    assert([[trie remove:@"catalog"] integerValue] == 3);
+    assert([[trie remove:@"cast"] integerValue] == 4);
+    assert([trie size] == 2);
+    assert([trie starsWith:@"哈"]);
+    assert([trie starsWith:@"do"]);
 //    assert(![trie starsWith:@"c"]);
 }
 

@@ -10,12 +10,19 @@
 
 @interface TrieNode : NSObject {
     @public
+    TrieNode *_parent;
     NSMutableDictionary<NSString *, TrieNode *> *_child;
+    NSString *_character;
     id _value;
     BOOL _word;
 }
 @end
 @implementation TrieNode
++ (instancetype)nodeWithParent:(TrieNode *)parent {
+    TrieNode *node = [[self alloc] init];
+    node->_parent = parent;
+    return node;
+}
 @end
 
 @interface Trie () {
@@ -35,7 +42,6 @@
     return _size == 0;
 }
 - (void)clear {
-    if (_size == 0) { return; }
     _size = 0;
     _root = nil;
 }
@@ -51,7 +57,7 @@
 - (id)addKey:(NSString *)key value:(id)value {
     [self _keyCheck:key];
     if (!_root) {
-        _root = [[TrieNode alloc] init];
+        _root = [TrieNode nodeWithParent:nil];
     }
     
     TrieNode *node = _root;
@@ -59,10 +65,11 @@
     for (NSUInteger i = 0; i < len; i++) {
         unichar c = [key characterAtIndex:i];
         NSString *k = [NSString stringWithCharacters:&c length:1];
-        BOOL empty = node->_child == nil;
+        BOOL empty = node->_child.count == 0;
         TrieNode *childNode = empty ? nil : node->_child[k];
         if (!childNode) {
-            childNode = [[TrieNode alloc] init];
+            childNode = [TrieNode nodeWithParent:node];
+            node->_character = k;
             node->_child = empty ? [NSMutableDictionary dictionary] : node->_child;
             node->_child[k] = childNode;
         }
@@ -81,7 +88,26 @@
     return nil;    
 }
 - (id)remove:(NSString *)key {
-    return nil;
+    TrieNode *node = [self _node:key];
+    if (!node || !node->_word) { return nil; }
+    _size--;
+    id old = node->_value;
+    if (node->_child && node->_child.count) {
+        node->_word = NO;
+        node->_value = nil;
+        return old;
+    }
+    
+    TrieNode *parent = nil;
+    while ((parent = node->_parent) != nil) {
+        if (node->_character.length) {
+            [parent->_child removeObjectForKey:node->_character];
+        }
+        if (parent->_child.count) { break; }
+        node = parent;
+    }
+    
+    return old;
 }
 - (BOOL)starsWith:(NSString *)prefix {
     return [self _node:prefix] != nil;
