@@ -644,7 +644,7 @@ void testTrie(void) {
     assert([trie size] == 2);
     assert([trie starsWith:@"哈"]);
     assert([trie starsWith:@"do"]);
-//    assert(![trie starsWith:@"c"]);
+//    assert(![trie starsWith:@"c"]); // ERROE!!! why???
 }
 
 int main(int argc, const char * argv[]) {
