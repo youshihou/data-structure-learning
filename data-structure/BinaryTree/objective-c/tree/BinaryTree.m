@@ -229,6 +229,25 @@
 - (void)postorder_new:(struct Visitor *)visitor {
     if (!_root || visitor->stop) { return; }
 
+    TreeNode *prev = nil;
+    NSMutableArray *stack = [NSMutableArray array];
+    [stack addObject:_root];
+    while (stack.count) {
+        TreeNode *top = stack.lastObject;
+        if ([top isLeaf] || (prev && prev->_parent == top)) {
+            prev = stack.lastObject;
+            [stack removeLastObject];
+            if (visitor->stop) { return; }
+            visitor->stop = visitor->visit((__bridge void * _Nonnull)(prev->_element));
+        } else {
+            if (top->_right) {
+                [stack addObject:top->_right];
+            }
+            if (top->_left) {
+                [stack addObject:top->_left];
+            }
+        }
+    }
 }
 
 @end
