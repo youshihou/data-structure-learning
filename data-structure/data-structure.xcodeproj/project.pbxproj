@@ -26,6 +26,8 @@
 		0377F59E24C5C16600ADE08D /* binary_search_tree.c in Sources */ = {isa = PBXBuildFile; fileRef = 0377F59D24C5C16600ADE08D /* binary_search_tree.c */; };
 		0377F5A124C5ED5000ADE08D /* print_tree_helper.c in Sources */ = {isa = PBXBuildFile; fileRef = 0377F5A024C5ED5000ADE08D /* print_tree_helper.c */; };
 		038047F424E0257D0088FC50 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 038047F324E0257D0088FC50 /* main.m */; };
+		038047FA24E0271B0088FC50 /* LinkedList.m in Sources */ = {isa = PBXBuildFile; fileRef = 038047F924E0271B0088FC50 /* LinkedList.m */; };
+		038047FE24E02E840088FC50 /* List.m in Sources */ = {isa = PBXBuildFile; fileRef = 038047FD24E02E840088FC50 /* List.m */; };
 		0386E61324CF061F0033B08F /* BBST.m in Sources */ = {isa = PBXBuildFile; fileRef = 0386E61224CF061F0033B08F /* BBST.m */; };
 		038E9F8924C1D41F005DD7A2 /* LinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 038E9F8824C1D41E005DD7A2 /* LinkedList.c */; };
 		038E9F8C24C298D4005DD7A2 /* SingleCycleLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 038E9F8B24C298D4005DD7A2 /* SingleCycleLinkedList.c */; };
@@ -116,6 +118,11 @@
 		0377F5A024C5ED5000ADE08D /* print_tree_helper.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = print_tree_helper.c; sourceTree = "<group>"; };
 		038047F124E0257D0088FC50 /* LinkedList */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LinkedList; sourceTree = BUILT_PRODUCTS_DIR; };
 		038047F324E0257D0088FC50 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		038047F824E0271B0088FC50 /* LinkedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkedList.h; sourceTree = "<group>"; };
+		038047F924E0271B0088FC50 /* LinkedList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinkedList.m; sourceTree = "<group>"; };
+		038047FB24E02B1B0088FC50 /* ListProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListProtocol.h; sourceTree = "<group>"; };
+		038047FC24E02E840088FC50 /* List.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = List.h; sourceTree = "<group>"; };
+		038047FD24E02E840088FC50 /* List.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = List.m; sourceTree = "<group>"; };
 		0386E61124CF061F0033B08F /* BBST.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BBST.h; sourceTree = "<group>"; };
 		0386E61224CF061F0033B08F /* BBST.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BBST.m; sourceTree = "<group>"; };
 		038E9F8724C1D41E005DD7A2 /* LinkedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkedList.h; sourceTree = "<group>"; };
@@ -350,9 +357,22 @@
 		038047F224E0257D0088FC50 /* LinkedList */ = {
 			isa = PBXGroup;
 			children = (
+				038047FF24E037450088FC50 /* List */,
+				038047F824E0271B0088FC50 /* LinkedList.h */,
+				038047F924E0271B0088FC50 /* LinkedList.m */,
 				038047F324E0257D0088FC50 /* main.m */,
 			);
 			path = LinkedList;
+			sourceTree = "<group>";
+		};
+		038047FF24E037450088FC50 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				038047FB24E02B1B0088FC50 /* ListProtocol.h */,
+				038047FC24E02E840088FC50 /* List.h */,
+				038047FD24E02E840088FC50 /* List.m */,
+			);
+			path = List;
 			sourceTree = "<group>";
 		};
 		038E9F9024C2EBC8005DD7A2 /* stack */ = {
@@ -571,6 +591,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				038047FE24E02E840088FC50 /* List.m in Sources */,
+				038047FA24E0271B0088FC50 /* LinkedList.m in Sources */,
 				038047F424E0257D0088FC50 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

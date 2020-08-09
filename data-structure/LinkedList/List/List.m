@@ -9,6 +9,9 @@
 #import "List.h"
 
 @implementation List
++ (instancetype)list {
+    return [[self alloc] init];
+}
 
 - (void)outOfBounds:(NSUInteger)index {
     NSLog(@"Index: %zd, Size: %zd", index, _size);

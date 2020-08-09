@@ -16,6 +16,7 @@ static const NSInteger ELEMENT_NOT_FOUND = -1;
     @protected
     NSUInteger _size;
 }
++ (instancetype)list;
 
 - (void)outOfBounds:(NSUInteger)index;
 - (void)rangeCheck:(NSUInteger)index;

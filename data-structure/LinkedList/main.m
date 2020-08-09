@@ -7,11 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LinkedList.h"
+
+void testLinkedList(void) {
+    LinkedList *list = [LinkedList list];
+    [list add:@20];
+    [list add:0 element:@10];
+    [list add:@30];
+    [list add:[list size] element:@40];
+    [list remove:1];
+    NSLog(@"%@", list);
+}
+
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
+        testLinkedList();
+        
     }
     return 0;
 }
