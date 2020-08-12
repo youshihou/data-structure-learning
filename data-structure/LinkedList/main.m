@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "LinkedList.h"
+#import "VirtualLinkedList.h"
 
 void testLinkedList(void) {
     LinkedList *list = [LinkedList list];
+//    VirtualLinkedList *list = [VirtualLinkedList list];
     [list add:@20];
     [list add:0 element:@10];
     [list add:@30];

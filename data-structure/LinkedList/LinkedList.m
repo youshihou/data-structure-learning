@@ -8,12 +8,6 @@
 
 #import "LinkedList.h"
 
-@interface ListNode : NSObject {
-    @public
-    id _element;
-    ListNode *_next;
-}
-@end
 @implementation ListNode
 + (instancetype)nodeWithElement:(id)element next:(ListNode *)next {
     ListNode *node = [[self alloc] init];
