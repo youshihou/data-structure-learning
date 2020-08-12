@@ -45,7 +45,6 @@
 		03C84D3A24D853CD002E7576 /* Heap.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C84D3924D853CD002E7576 /* Heap.m */; };
 		03E1905224D45A6E00DBFEC8 /* HashMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E1905124D45A6E00DBFEC8 /* HashMap.m */; };
 		03E1906924D6878400DBFEC8 /* LinkedHashMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E1906824D6878400DBFEC8 /* LinkedHashMap.m */; };
-		03E738B224E422C5007B4D93 /* VirtualLinkedList.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E738B124E422C5007B4D93 /* VirtualLinkedList.m */; };
 		03ED976424D2FE1C00E28FF8 /* TreeMapSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 03ED976324D2FE1C00E28FF8 /* TreeMapSet.m */; };
 /* End PBXBuildFile section */
 
@@ -159,8 +158,6 @@
 		03E1905124D45A6E00DBFEC8 /* HashMap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HashMap.m; sourceTree = "<group>"; };
 		03E1906724D6878400DBFEC8 /* LinkedHashMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkedHashMap.h; sourceTree = "<group>"; };
 		03E1906824D6878400DBFEC8 /* LinkedHashMap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinkedHashMap.m; sourceTree = "<group>"; };
-		03E738B024E422C5007B4D93 /* VirtualLinkedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VirtualLinkedList.h; sourceTree = "<group>"; };
-		03E738B124E422C5007B4D93 /* VirtualLinkedList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VirtualLinkedList.m; sourceTree = "<group>"; };
 		03ED976224D2FE1C00E28FF8 /* TreeMapSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TreeMapSet.h; sourceTree = "<group>"; };
 		03ED976324D2FE1C00E28FF8 /* TreeMapSet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TreeMapSet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -363,8 +360,6 @@
 				038047FF24E037450088FC50 /* List */,
 				038047F824E0271B0088FC50 /* LinkedList.h */,
 				038047F924E0271B0088FC50 /* LinkedList.m */,
-				03E738B024E422C5007B4D93 /* VirtualLinkedList.h */,
-				03E738B124E422C5007B4D93 /* VirtualLinkedList.m */,
 				038047F324E0257D0088FC50 /* main.m */,
 			);
 			path = LinkedList;
@@ -596,7 +591,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03E738B224E422C5007B4D93 /* VirtualLinkedList.m in Sources */,
 				038047FE24E02E840088FC50 /* List.m in Sources */,
 				038047FA24E0271B0088FC50 /* LinkedList.m in Sources */,
 				038047F424E0257D0088FC50 /* main.m in Sources */,

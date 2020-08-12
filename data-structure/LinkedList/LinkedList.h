@@ -10,15 +10,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ListNode : NSObject {
-    @public
-    id _element;
-    ListNode *_next;
-}
-+ (instancetype)nodeWithElement:(id _Nullable)element next:(ListNode * _Nullable)next;
+@interface LinkedList : List 
+
 @end
 
-@interface LinkedList : List 
+
+@interface VirtualLinkedList : List
 
 @end
 
