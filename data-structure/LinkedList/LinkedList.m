@@ -59,6 +59,8 @@
     return old;
 }
 - (void)add:(NSUInteger)index element:(id)element {
+    [self rangeCheckForAdd:index];
+    
     if (index == 0) {
         ListNode *add = [ListNode nodeWithElement:element next:_first];
         _first = add;
@@ -70,6 +72,8 @@
     _size++;
 }
 - (id)remove:(NSUInteger)index {
+    [self rangeCheck:index];
+    
     ListNode *node = _first;
     if (index == 0) {
         _first = _first->_next;
