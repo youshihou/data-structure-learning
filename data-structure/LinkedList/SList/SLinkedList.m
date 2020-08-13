@@ -21,6 +21,9 @@
     node->_next = next;
     return node;
 }
+- (void)dealloc {
+    NSLog(@"%s - %@", __func__, _element);
+}
 @end
 
 
@@ -117,13 +120,15 @@
 @implementation VirtualSLinkedList
 - (NSString *)description {
     NSMutableString *s = [NSMutableString stringWithFormat:@"size = %zd, [", _size];
-    ListNode *node = _first->_next;
-    for (NSUInteger i = 0; i < _size; i++) {
-        if (i != 0) {
-            [s appendString:@", "];
+    if (_first) {
+        ListNode *node = _first->_next;
+        for (NSUInteger i = 0; i < _size; i++) {
+            if (i != 0) {
+                [s appendString:@", "];
+            }
+            [s appendFormat:@"%@", node->_element];
+            node = node->_next;
         }
-        [s appendFormat:@"%@", node->_element];
-        node = node->_next;
     }
     [s appendString:@"]"];
     return s;
@@ -165,7 +170,7 @@
     return node->_element;
 }
 - (NSUInteger)indexOf:(id)element {
-    ListNode *node = _first;
+    ListNode *node = _first->_next;
     for (NSUInteger i = 0; i < _size; i++) {
         if (node->_element == element) { return i; }
         node = node->_next;

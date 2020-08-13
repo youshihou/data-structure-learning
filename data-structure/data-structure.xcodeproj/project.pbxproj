@@ -12,6 +12,7 @@
 		0335DF1124AB8DE400507ACF /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 0335DF1024AB8DE400507ACF /* main.c */; };
 		0344427024BC8EC50030765D /* SingleLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 0344426F24BC8EC50030765D /* SingleLinkedList.c */; };
 		0344427424BC912B0030765D /* ArrayList.c in Sources */ = {isa = PBXBuildFile; fileRef = 0344427324BC912B0030765D /* ArrayList.c */; };
+		034BDEE524E56158002CC739 /* DLinkedList.m in Sources */ = {isa = PBXBuildFile; fileRef = 034BDEE424E56158002CC739 /* DLinkedList.m */; };
 		035C081824DAF3C400D201B0 /* PriorityQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 035C081724DAF3C400D201B0 /* PriorityQueue.m */; };
 		035F706B24DC37E8000D649A /* Trie.m in Sources */ = {isa = PBXBuildFile; fileRef = 035F706A24DC37E8000D649A /* Trie.m */; };
 		036FA1F424CADFBB0007FFBA /* BST.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA1E324CADFBA0007FFBA /* BST.m */; };
@@ -89,6 +90,8 @@
 		0344426F24BC8EC50030765D /* SingleLinkedList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SingleLinkedList.c; sourceTree = "<group>"; };
 		0344427224BC912B0030765D /* ArrayList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArrayList.h; sourceTree = "<group>"; };
 		0344427324BC912B0030765D /* ArrayList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ArrayList.c; sourceTree = "<group>"; };
+		034BDEE324E56158002CC739 /* DLinkedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLinkedList.h; sourceTree = "<group>"; };
+		034BDEE424E56158002CC739 /* DLinkedList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLinkedList.m; sourceTree = "<group>"; };
 		035C081624DAF3C400D201B0 /* PriorityQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PriorityQueue.h; sourceTree = "<group>"; };
 		035C081724DAF3C400D201B0 /* PriorityQueue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PriorityQueue.m; sourceTree = "<group>"; };
 		035F706924DC37E8000D649A /* Trie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Trie.h; sourceTree = "<group>"; };
@@ -275,6 +278,15 @@
 			path = list;
 			sourceTree = "<group>";
 		};
+		034BDEE224E5613B002CC739 /* DList */ = {
+			isa = PBXGroup;
+			children = (
+				034BDEE324E56158002CC739 /* DLinkedList.h */,
+				034BDEE424E56158002CC739 /* DLinkedList.m */,
+			);
+			path = DList;
+			sourceTree = "<group>";
+		};
 		035C081224DAF37900D201B0 /* queue */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,6 +371,7 @@
 			children = (
 				038047FF24E037450088FC50 /* List */,
 				03E0686F24E55E800022893A /* SList */,
+				034BDEE224E5613B002CC739 /* DList */,
 				038047F324E0257D0088FC50 /* main.m */,
 			);
 			path = LinkedList;
@@ -602,6 +615,7 @@
 				038047FE24E02E840088FC50 /* List.m in Sources */,
 				038047FA24E0271B0088FC50 /* SLinkedList.m in Sources */,
 				038047F424E0257D0088FC50 /* main.m in Sources */,
+				034BDEE524E56158002CC739 /* DLinkedList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
