@@ -1,5 +1,5 @@
 //
-//  LinkedList.h
+//  SLinkedList.h
 //  LinkedList
 //
 //  Created by Ankui on 8/9/20.
@@ -10,12 +10,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LinkedList : List 
+@interface SLinkedList : List 
 
 @end
 
 
-@interface VirtualLinkedList : List
+@interface VirtualSLinkedList : List
 
 @end
 

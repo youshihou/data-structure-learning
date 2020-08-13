@@ -1,12 +1,12 @@
 //
-//  LinkedList.m
+//  SLinkedList.m
 //  LinkedList
 //
 //  Created by Ankui on 8/9/20.
 //  Copyright © 2020 Ankui. All rights reserved.
 //
 
-#import "LinkedList.h"
+#import "SLinkedList.h"
 
 @interface ListNode : NSObject {
     @public
@@ -24,11 +24,11 @@
 @end
 
 
-@interface LinkedList () {
+@interface SLinkedList () {
     ListNode *_first;
 }
 @end
-@implementation LinkedList
+@implementation SLinkedList
 - (NSString *)description {
     NSMutableString *s = [NSMutableString stringWithFormat:@"size = %zd, [", _size];
     ListNode *node = _first;
@@ -110,11 +110,11 @@
 
 
 
-@interface VirtualLinkedList () {
+@interface VirtualSLinkedList () {
     ListNode *_first;
 }
 @end
-@implementation VirtualLinkedList
+@implementation VirtualSLinkedList
 - (NSString *)description {
     NSMutableString *s = [NSMutableString stringWithFormat:@"size = %zd, [", _size];
     ListNode *node = _first->_next;
@@ -129,7 +129,7 @@
     return s;
 }
 + (instancetype)list {
-    VirtualLinkedList *list = [[self alloc] init];
+    VirtualSLinkedList *list = [[self alloc] init];
     list->_first = [ListNode nodeWithElement:nil next:nil];
     return list;
 }
