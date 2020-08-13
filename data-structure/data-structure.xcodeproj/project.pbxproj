@@ -278,13 +278,13 @@
 			path = list;
 			sourceTree = "<group>";
 		};
-		034BDEE224E5613B002CC739 /* DList */ = {
+		034BDEE224E5613B002CC739 /* DoubleList */ = {
 			isa = PBXGroup;
 			children = (
 				034BDEE324E56158002CC739 /* DLinkedList.h */,
 				034BDEE424E56158002CC739 /* DLinkedList.m */,
 			);
-			path = DList;
+			path = DoubleList;
 			sourceTree = "<group>";
 		};
 		035C081224DAF37900D201B0 /* queue */ = {
@@ -370,8 +370,8 @@
 			isa = PBXGroup;
 			children = (
 				038047FF24E037450088FC50 /* List */,
-				03E0686F24E55E800022893A /* SList */,
-				034BDEE224E5613B002CC739 /* DList */,
+				03E0686F24E55E800022893A /* SingleList */,
+				034BDEE224E5613B002CC739 /* DoubleList */,
 				038047F324E0257D0088FC50 /* main.m */,
 			);
 			path = LinkedList;
@@ -443,13 +443,13 @@
 			path = heap;
 			sourceTree = "<group>";
 		};
-		03E0686F24E55E800022893A /* SList */ = {
+		03E0686F24E55E800022893A /* SingleList */ = {
 			isa = PBXGroup;
 			children = (
 				038047F824E0271B0088FC50 /* SLinkedList.h */,
 				038047F924E0271B0088FC50 /* SLinkedList.m */,
 			);
-			path = SList;
+			path = SingleList;
 			sourceTree = "<group>";
 		};
 		03E1906624D66AC600DBFEC8 /* hash-map */ = {
