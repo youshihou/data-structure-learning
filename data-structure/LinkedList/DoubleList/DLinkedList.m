@@ -69,8 +69,10 @@
 - (void)clear {
     DListNode *node = _first;
     while (node) {
-        node->_prev = nil; // CARE!!!
-        node = node->_next;
+        DListNode *next = node->_next;
+        node->_prev = nil;
+        node->_next = nil;
+        node = next;
     }
     _size = 0;
     _first = nil;
