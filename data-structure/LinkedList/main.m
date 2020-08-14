@@ -48,7 +48,9 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
 //        testSLinkedList([SLinkedList list]);
 //        testSLinkedList([VirtualSLinkedList list]);
-        testDLinkedList([DLinkedList list]);
+//        testDLinkedList([DLinkedList list]);
+        testDLinkedList([CircleSLinkedList list]);
+
     }
     return 0;
 }
