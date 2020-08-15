@@ -14,4 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+
+@interface CircleDLinkedList : List
+
+@end
+
 NS_ASSUME_NONNULL_END

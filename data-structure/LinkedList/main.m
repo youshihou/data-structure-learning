@@ -49,8 +49,8 @@ int main(int argc, const char * argv[]) {
 //        testSLinkedList([SLinkedList list]);
 //        testSLinkedList([VirtualSLinkedList list]);
 //        testDLinkedList([DLinkedList list]);
-        testDLinkedList([CircleSLinkedList list]);
-
+//        testDLinkedList([CircleSLinkedList list]);
+        testDLinkedList([CircleDLinkedList list]);
     }
     return 0;
 }
