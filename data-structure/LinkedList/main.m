@@ -44,13 +44,29 @@ void testDLinkedList(List *list) {
     NSLog(@"%@", list);
 }
 
+void testJoseohus(void) {
+    CircleDLinkedList *list = [CircleDLinkedList list];
+    for (NSUInteger i = 1; i <= 8; i++) {
+        [list add:@(i)];
+    }
+    NSLog(@"%@", list);
+    [list reset];
+    while (![list isEmpty]) {
+        [list next];
+        [list next];
+        id e = [list remove];
+        NSLog(@"%@", e);
+    }
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
 //        testSLinkedList([SLinkedList list]);
 //        testSLinkedList([VirtualSLinkedList list]);
 //        testDLinkedList([DLinkedList list]);
 //        testDLinkedList([CircleSLinkedList list]);
-        testDLinkedList([CircleDLinkedList list]);
+//        testDLinkedList([CircleDLinkedList list]);
+        testJoseohus();
     }
     return 0;
 }

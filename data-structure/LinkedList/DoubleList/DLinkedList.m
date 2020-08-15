@@ -176,6 +176,7 @@
 @interface CircleDLinkedList () {
     DListNode *_first;
     DListNode *_last;
+    DListNode *_current;
 }
 @end
 @implementation CircleDLinkedList
@@ -192,6 +193,27 @@
     [s appendString:@"]"];
     return s;
 }
+
+- (void)reset {
+    _current = _first;
+}
+- (id)next {
+    if (!_current) { return nil; }
+    _current = _current->_next;
+    return _current->_element;
+}
+- (id)remove {
+    if (!_current) { return nil; }
+    DListNode *next = _current->_next;
+    id element = [self _remove:_current];
+    if (_size == 0) {
+        _current = nil;
+    } else {
+        _current = next;
+    }
+    return element;
+}
+
 
 
 // MARK: - ListProtocol
@@ -220,7 +242,7 @@
     [self rangeCheckForAdd:index];
     if (index == _size) {
         DListNode *oldLast = _last;
-        DListNode *add = [DListNode nodeWith:oldLast element:element next:nil];
+        DListNode *add = [DListNode nodeWith:oldLast element:element next:_first];
         _last = add;
         if (!oldLast) { // add the first node
             _first = _last;
@@ -244,26 +266,8 @@
 }
 - (id)remove:(NSUInteger)index {
     [self rangeCheck:index];
-    
-    DListNode *node = _first;
-    if (_size == 1) {
-        _first = nil;
-        _last = nil;
-    } else {
-        node = [self _node:index];
-        DListNode *prev = node->_prev;
-        DListNode *next = node->_next;
-        prev->_next = next;
-        next->_prev = prev;
-        if (node == _first) { // index == 0
-            _first = next;
-        }
-        if (node == _last) { // index == _size - 1
-            _last = prev;
-        }
-    }
-    _size--;
-    return node->_element;
+    DListNode *node = [self _node:index];
+    return [self _remove:node];
 }
 - (NSUInteger)indexOf:(id)element {
     DListNode *node = _first;
@@ -289,5 +293,24 @@
         }
         return node;
     }
+}
+- (id)_remove:(DListNode *)node {
+    if (_size == 1) {
+        _first = nil;
+        _last = nil;
+    } else {
+        DListNode *prev = node->_prev;
+        DListNode *next = node->_next;
+        prev->_next = next;
+        next->_prev = prev;
+        if (node == _first) { // index == 0
+            _first = next;
+        }
+        if (node == _last) { // index == _size - 1
+            _last = prev;
+        }
+    }
+    _size--;
+    return node->_element;
 }
 @end
