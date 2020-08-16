@@ -11,6 +11,7 @@
 #import "SelectionSort.h"
 #import "HeapSort.h"
 #import "InsertionSort.h"
+#import "BinarySearch.h"
 
 void testSorts(NSArray *arrray, NSArray<Sort *> *sorts) {
     for (Sort *sort in sorts) {
@@ -32,6 +33,14 @@ void testSorts(NSArray *arrray, NSArray<Sort *> *sorts) {
     }
 }
 
+void testBinarySearch(void) {
+    NSArray *array = @[@2, @4, @6, @8, @10];
+    assert([BinarySearch indexOf:array value:@4] == 1);
+    assert([BinarySearch indexOf:array value:@2] == 0);
+    assert([BinarySearch indexOf:array value:@10] == 4);
+    assert([BinarySearch indexOf:array value:@56] == -1);
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         NSMutableArray *array = [NSMutableArray array];
@@ -49,7 +58,9 @@ int main(int argc, const char * argv[]) {
             [HeapSort sort],
             [InsertionSort sort],
         ];
-        testSorts(array, sorts);
+//        testSorts(array, sorts);
+        
+        testBinarySearch();
     }
     return 0;
 }
