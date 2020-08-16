@@ -9,5 +9,7 @@
 #import "MergeSort.h"
 
 @implementation MergeSort
-
+- (void)sorting {
+    
+}
 @end

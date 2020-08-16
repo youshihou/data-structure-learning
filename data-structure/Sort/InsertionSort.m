@@ -13,7 +13,7 @@
     for (NSUInteger begin = 1; begin < _array.count; begin++) {
         id e = _array[begin];
         NSInteger index = [self _search:begin];
-        for (NSUInteger i = begin; i > index; i--) {
+        for (NSInteger i = begin; i > index; i--) {
             _array[i] = _array[i - 1];
         }
 //        for (NSInteger i = begin - 1; i >= index; i--) { // CARE!!! i MUST be NSInteger NOT NSUInteger
@@ -22,7 +22,7 @@
         _array[index] = e;
     }
 }
-- (NSUInteger)_search:(NSUInteger)index {
+- (NSInteger)_search:(NSUInteger)index {
     NSUInteger begin = 0;
     NSUInteger end = index;
     while (begin < end) {
