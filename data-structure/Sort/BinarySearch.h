@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BinarySearch : NSObject
 + (NSInteger)indexOf:(NSArray *)array value:(id)value;
++ (NSInteger)search:(NSArray *)array value:(id)value;
 @end
 
 NS_ASSUME_NONNULL_END

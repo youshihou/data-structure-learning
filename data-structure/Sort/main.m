@@ -39,6 +39,12 @@ void testBinarySearch(void) {
     assert([BinarySearch indexOf:array value:@2] == 0);
     assert([BinarySearch indexOf:array value:@10] == 4);
     assert([BinarySearch indexOf:array value:@56] == -1);
+    
+    array = @[@2, @4, @8, @8, @8, @12, @14];
+    assert([BinarySearch search:array value:@5] == 2);
+    assert([BinarySearch search:array value:@1] == 0);
+    assert([BinarySearch search:array value:@15] == 7);
+    assert([BinarySearch search:array value:@8] == 5);
 }
 
 int main(int argc, const char * argv[]) {

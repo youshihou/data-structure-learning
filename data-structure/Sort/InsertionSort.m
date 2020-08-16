@@ -10,6 +10,13 @@
 
 @implementation InsertionSort
 - (void)sorting {
+    
+}
+@end
+
+
+@implementation InsertionSort1
+- (void)sorting {
     for (NSUInteger begin = 1; begin < _array.count; begin++) {
         NSUInteger cur = begin;
         id e = _array[cur];
@@ -20,11 +27,6 @@
         _array[cur] = e;
     }
 }
-@end
-
-
-@implementation InsertionSort1
-
 @end
 
 
