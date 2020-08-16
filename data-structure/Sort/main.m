@@ -12,6 +12,7 @@
 #import "HeapSort.h"
 #import "InsertionSort.h"
 #import "BinarySearch.h"
+#import "MergeSort.h"
 
 void testSorts(NSArray *arrray, NSArray<Sort *> *sorts) {
     for (Sort *sort in sorts) {
@@ -50,7 +51,7 @@ void testBinarySearch(void) {
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         NSMutableArray *array = [NSMutableArray array];
-        NSUInteger max = 100;
+        NSUInteger max = 10000;
         for (NSUInteger i = 0; i < max; i++) {
             int n = arc4random() % max;
             NSNumber *number = [NSNumber numberWithInt:n];
@@ -63,6 +64,7 @@ int main(int argc, const char * argv[]) {
             [SelectionSort sort],
             [HeapSort sort],
             [InsertionSort sort],
+            [MergeSort sort],
         ];
         testSorts(array, sorts);
 //        testBinarySearch();
