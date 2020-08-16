@@ -1,5 +1,5 @@
 //
-//  Insertion.h
+//  InsertionSort.h
 //  Sort
 //
 //  Created by Ankui on 8/16/20.
@@ -11,6 +11,14 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface InsertionSort : Sort
+
+@end
+
+@interface InsertionSort1 : Sort
+
+@end
+
+@interface InsertionSort2 : Sort
 
 @end
 

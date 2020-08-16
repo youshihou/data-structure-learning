@@ -10,10 +10,13 @@
 #import "BubbleSort.h"
 #import "SelectionSort.h"
 #import "HeapSort.h"
+#import "InsertionSort.h"
 
 void testSorts(NSArray *arrray, NSArray<Sort *> *sorts) {
     for (Sort *sort in sorts) {
-        [sort sort:[arrray mutableCopy]];
+        NSMutableArray *list = [arrray mutableCopy];
+        [sort sort:list];
+        assert([sort isAscOrder]);
     }
     
     NSArray *sorteds = [sorts sortedArrayUsingComparator:^NSComparisonResult(Sort *obj1, Sort *obj2) {
@@ -32,7 +35,7 @@ void testSorts(NSArray *arrray, NSArray<Sort *> *sorts) {
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         NSMutableArray *array = [NSMutableArray array];
-        NSUInteger max = 1000;
+        NSUInteger max = 100;
         for (NSUInteger i = 0; i < max; i++) {
             int n = arc4random() % max;
             NSNumber *number = [NSNumber numberWithInt:n];
@@ -40,10 +43,11 @@ int main(int argc, const char * argv[]) {
         }
         NSArray *sorts = @[
             [BubbleSort sort],
-            [BubbleSort2 sort],
-            [BubbleSort3 sort],
+//            [BubbleSort2 sort],
+//            [BubbleSort3 sort],
             [SelectionSort sort],
             [HeapSort sort],
+            [InsertionSort sort],
         ];
         testSorts(array, sorts);
     }

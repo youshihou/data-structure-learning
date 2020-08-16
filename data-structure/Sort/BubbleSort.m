@@ -11,20 +11,17 @@
 @implementation BubbleSort
 - (void)sorting {
     for (NSInteger end = _array.count - 1; end > 0; end--) {
+        NSUInteger sortedIdx = 1;
         for (NSUInteger begin = 1; begin <= end; begin++) {
             if ([self cmp:begin with:begin - 1] < 0) {
                 [self swap:begin with:begin - 1];
+                sortedIdx = begin;
             }
         }
+        end = sortedIdx;
     }
 }
 @end
-
-
-
-
-
-
 
 
 @implementation BubbleSort2
@@ -43,23 +40,14 @@
 @end
 
 
-
-
-
-
-
-
 @implementation BubbleSort3
 - (void)sorting {
     for (NSInteger end = _array.count - 1; end > 0; end--) {
-        NSUInteger sortedIdx = 1;
         for (NSUInteger begin = 1; begin <= end; begin++) {
             if ([self cmp:begin with:begin - 1] < 0) {
                 [self swap:begin with:begin - 1];
-                sortedIdx = begin;
             }
         }
-        end = sortedIdx;
     }
 }
 @end

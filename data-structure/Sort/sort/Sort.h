@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSInteger)cmp:(NSUInteger)i1 with:(NSUInteger)i2;
 - (NSInteger)cmpElement:(id)e1 with:(id)e2;
 - (void)swap:(NSUInteger)i1 with:(NSUInteger)i2;
+- (BOOL)isAscOrder;
 @end
 
 NS_ASSUME_NONNULL_END

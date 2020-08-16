@@ -84,4 +84,12 @@
     _array[i1] = _array[i2];
     _array[i2] = tmp;
 }
+- (BOOL)isAscOrder {
+    for (NSUInteger i = 1; i < _array.count; i++) {
+        if ([_array[i - 1] compare:_array[i]] > 0) {
+            return NO;
+        }
+    }
+    return YES;
+}
 @end
