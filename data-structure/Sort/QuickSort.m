@@ -9,5 +9,7 @@
 #import "QuickSort.h"
 
 @implementation QuickSort
-
+- (void)sorting {
+    
+}
 @end
