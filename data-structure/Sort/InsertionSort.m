@@ -10,7 +10,30 @@
 
 @implementation InsertionSort
 - (void)sorting {
-    
+    for (NSUInteger begin = 1; begin < _array.count; begin++) {
+        id e = _array[begin];
+        NSInteger index = [self _search:begin];
+        for (NSUInteger i = begin; i > index; i--) {
+            _array[i] = _array[i - 1];
+        }
+//        for (NSInteger i = begin - 1; i >= index; i--) { // CARE!!! i MUST be NSInteger NOT NSUInteger
+//            _array[i + 1] = _array[i];
+//        }
+        _array[index] = e;
+    }
+}
+- (NSUInteger)_search:(NSUInteger)index {
+    NSUInteger begin = 0;
+    NSUInteger end = index;
+    while (begin < end) {
+        NSUInteger mid = (begin + end) >> 1;
+        if ([self cmpElement:_array[index] with:_array[mid]] < 0) {
+            end = mid;
+        } else {
+            begin = mid + 1;
+        }
+    }
+    return begin;
 }
 @end
 

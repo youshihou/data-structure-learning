@@ -64,9 +64,8 @@ int main(int argc, const char * argv[]) {
             [HeapSort sort],
             [InsertionSort sort],
         ];
-//        testSorts(array, sorts);
-        
-        testBinarySearch();
+        testSorts(array, sorts);
+//        testBinarySearch();
     }
     return 0;
 }
