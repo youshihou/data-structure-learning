@@ -8,24 +8,39 @@
 
 #import "Sort.h"
 
-@interface Sort () {
-    NSUInteger _cmpCount;
-    NSUInteger _swapCount;
-}
-@end
-
 @implementation Sort
-+ (instancetype)sort:(NSMutableArray *)array {
-    if (array.count == 0) { return nil; }
-    Sort *s = [[self alloc] init];
-    s->_array = array;
-    return s;
++ (instancetype)sort {
+    return [[self alloc] init];
 }
-- (void)sort {}
+- (NSString *)description {
+    NSString *time = [[NSString alloc] initWithFormat:@"time: %fs(%f)ms", _time, _time * 1000.0];
+    NSString *cmp = [[NSString alloc] initWithFormat:@"cmp: %@", [self _numberString:_cmpCount]];
+    NSString *swap = [[NSString alloc] initWithFormat:@"swap: %@", [self _numberString:_swapCount]];
+    NSString *name = NSStringFromClass(self.class);
+    NSString *line = @"---------------------------------------------------------------------------";
+    return [[NSString alloc] initWithFormat:@"\n[%@]\n%@\t\t%@\t\t%@\n%@", name, time, cmp, swap, line];
+}
+- (NSString *)_numberString:(NSUInteger)number {
+    if (number < 10000) { return [NSString stringWithFormat:@"%zd", number]; }
+    if (number < 100000000) { return [NSString stringWithFormat:@"%.2f万", number / 10000.0]; }
+    return [NSString stringWithFormat:@"%.2f", number / 100000000.0];
+}
 
+- (void)sort:(NSMutableArray *)array {
+    if (array.count == 0) { return; }
+    _array = array;
+    CFTimeInterval begin = CFAbsoluteTimeGetCurrent();
+    [self sorting];
+    _time = CFAbsoluteTimeGetCurrent() - begin;
+}
+- (void)sorting {}
 - (NSInteger)cmp:(NSUInteger)i1 with:(NSUInteger)i2 {
     _cmpCount++;
     return [_array[i1] integerValue] - [_array[i2] integerValue];
+}
+- (NSInteger)cmpElement:(id)e1 with:(id)e2 {
+    _cmpCount++;
+    return [e1 integerValue] - [e2 integerValue];
 }
 - (void)swap:(NSUInteger)i1 with:(NSUInteger)i2 {
     _swapCount++;

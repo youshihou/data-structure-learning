@@ -42,6 +42,11 @@
 		039DF37924D6997400FCB384 /* LinkedHashSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 039DF37824D6997400FCB384 /* LinkedHashSet.m */; };
 		039DF37E24D6F39700FCB384 /* BinaryHeap.m in Sources */ = {isa = PBXBuildFile; fileRef = 039DF37D24D6F39700FCB384 /* BinaryHeap.m */; };
 		039DF38624D702CA00FCB384 /* binary_heap.c in Sources */ = {isa = PBXBuildFile; fileRef = 039DF38424D702CA00FCB384 /* binary_heap.c */; };
+		03A8337224E8E44100471BF7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A8337124E8E44100471BF7 /* main.m */; };
+		03A8337824E8E46700471BF7 /* Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A8337724E8E46700471BF7 /* Sort.m */; };
+		03A8337B24E8E68D00471BF7 /* SelectionSort.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A8337A24E8E68D00471BF7 /* SelectionSort.m */; };
+		03A8337E24E8E79C00471BF7 /* BubbleSort.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A8337D24E8E79C00471BF7 /* BubbleSort.m */; };
+		03A8338124E8EA0D00471BF7 /* HeapSort.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A8338024E8EA0D00471BF7 /* HeapSort.m */; };
 		03A9FC7124CC79BA00FB7304 /* RBTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A9FC7024CC79BA00FB7304 /* RBTree.m */; };
 		03C84D3A24D853CD002E7576 /* Heap.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C84D3924D853CD002E7576 /* Heap.m */; };
 		03E1905224D45A6E00DBFEC8 /* HashMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E1905124D45A6E00DBFEC8 /* HashMap.m */; };
@@ -69,6 +74,15 @@
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 		038047EF24E0257D0088FC50 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		03A8336D24E8E44100471BF7 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -153,6 +167,16 @@
 		039DF38424D702CA00FCB384 /* binary_heap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = binary_heap.c; sourceTree = "<group>"; };
 		039DF38524D702CA00FCB384 /* binary_heap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = binary_heap.h; sourceTree = "<group>"; };
 		03A7605B24ACB4A500940BC7 /* common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+		03A8336F24E8E44100471BF7 /* Sort */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Sort; sourceTree = BUILT_PRODUCTS_DIR; };
+		03A8337124E8E44100471BF7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		03A8337624E8E46700471BF7 /* Sort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sort.h; sourceTree = "<group>"; };
+		03A8337724E8E46700471BF7 /* Sort.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Sort.m; sourceTree = "<group>"; };
+		03A8337924E8E68D00471BF7 /* SelectionSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectionSort.h; sourceTree = "<group>"; };
+		03A8337A24E8E68D00471BF7 /* SelectionSort.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectionSort.m; sourceTree = "<group>"; };
+		03A8337C24E8E79C00471BF7 /* BubbleSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BubbleSort.h; sourceTree = "<group>"; };
+		03A8337D24E8E79C00471BF7 /* BubbleSort.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BubbleSort.m; sourceTree = "<group>"; };
+		03A8337F24E8EA0D00471BF7 /* HeapSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeapSort.h; sourceTree = "<group>"; };
+		03A8338024E8EA0D00471BF7 /* HeapSort.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeapSort.m; sourceTree = "<group>"; };
 		03A9FC6F24CC79BA00FB7304 /* RBTree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RBTree.h; sourceTree = "<group>"; };
 		03A9FC7024CC79BA00FB7304 /* RBTree.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBTree.m; sourceTree = "<group>"; };
 		03C84D3824D853CD002E7576 /* Heap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Heap.h; sourceTree = "<group>"; };
@@ -181,6 +205,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		038047EE24E0257D0088FC50 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03A8336C24E8E44100471BF7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -233,6 +264,7 @@
 				0335DF0F24AB8DE400507ACF /* data-structure */,
 				036FA1DD24CADF970007FFBA /* BinaryTree */,
 				038047F224E0257D0088FC50 /* LinkedList */,
+				03A8337024E8E44100471BF7 /* Sort */,
 				0335DF0E24AB8DE400507ACF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -243,6 +275,7 @@
 				0335DF0D24AB8DE400507ACF /* data-structure */,
 				036FA1DC24CADF970007FFBA /* BinaryTree */,
 				038047F124E0257D0088FC50 /* LinkedList */,
+				03A8336F24E8E44100471BF7 /* Sort */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -278,13 +311,13 @@
 			path = list;
 			sourceTree = "<group>";
 		};
-		034BDEE224E5613B002CC739 /* DoubleList */ = {
+		034BDEE224E5613B002CC739 /* double-list */ = {
 			isa = PBXGroup;
 			children = (
 				034BDEE324E56158002CC739 /* DLinkedList.h */,
 				034BDEE424E56158002CC739 /* DLinkedList.m */,
 			);
-			path = DoubleList;
+			path = "double-list";
 			sourceTree = "<group>";
 		};
 		035C081224DAF37900D201B0 /* queue */ = {
@@ -369,22 +402,22 @@
 		038047F224E0257D0088FC50 /* LinkedList */ = {
 			isa = PBXGroup;
 			children = (
-				038047FF24E037450088FC50 /* List */,
-				03E0686F24E55E800022893A /* SingleList */,
-				034BDEE224E5613B002CC739 /* DoubleList */,
+				038047FF24E037450088FC50 /* list */,
+				03E0686F24E55E800022893A /* single-list */,
+				034BDEE224E5613B002CC739 /* double-list */,
 				038047F324E0257D0088FC50 /* main.m */,
 			);
 			path = LinkedList;
 			sourceTree = "<group>";
 		};
-		038047FF24E037450088FC50 /* List */ = {
+		038047FF24E037450088FC50 /* list */ = {
 			isa = PBXGroup;
 			children = (
 				038047FB24E02B1B0088FC50 /* ListProtocol.h */,
 				038047FC24E02E840088FC50 /* List.h */,
 				038047FD24E02E840088FC50 /* List.m */,
 			);
-			path = List;
+			path = list;
 			sourceTree = "<group>";
 		};
 		038E9F9024C2EBC8005DD7A2 /* stack */ = {
@@ -443,13 +476,37 @@
 			path = heap;
 			sourceTree = "<group>";
 		};
-		03E0686F24E55E800022893A /* SingleList */ = {
+		03A8337024E8E44100471BF7 /* Sort */ = {
+			isa = PBXGroup;
+			children = (
+				03A8338224E8EA3500471BF7 /* sort */,
+				03A8337C24E8E79C00471BF7 /* BubbleSort.h */,
+				03A8337D24E8E79C00471BF7 /* BubbleSort.m */,
+				03A8337924E8E68D00471BF7 /* SelectionSort.h */,
+				03A8337A24E8E68D00471BF7 /* SelectionSort.m */,
+				03A8337F24E8EA0D00471BF7 /* HeapSort.h */,
+				03A8338024E8EA0D00471BF7 /* HeapSort.m */,
+				03A8337124E8E44100471BF7 /* main.m */,
+			);
+			path = Sort;
+			sourceTree = "<group>";
+		};
+		03A8338224E8EA3500471BF7 /* sort */ = {
+			isa = PBXGroup;
+			children = (
+				03A8337624E8E46700471BF7 /* Sort.h */,
+				03A8337724E8E46700471BF7 /* Sort.m */,
+			);
+			path = sort;
+			sourceTree = "<group>";
+		};
+		03E0686F24E55E800022893A /* single-list */ = {
 			isa = PBXGroup;
 			children = (
 				038047F824E0271B0088FC50 /* SLinkedList.h */,
 				038047F924E0271B0088FC50 /* SLinkedList.m */,
 			);
-			path = SingleList;
+			path = "single-list";
 			sourceTree = "<group>";
 		};
 		03E1906624D66AC600DBFEC8 /* hash-map */ = {
@@ -517,6 +574,23 @@
 			productReference = 038047F124E0257D0088FC50 /* LinkedList */;
 			productType = "com.apple.product-type.tool";
 		};
+		03A8336E24E8E44100471BF7 /* Sort */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03A8337524E8E44100471BF7 /* Build configuration list for PBXNativeTarget "Sort" */;
+			buildPhases = (
+				03A8336B24E8E44100471BF7 /* Sources */,
+				03A8336C24E8E44100471BF7 /* Frameworks */,
+				03A8336D24E8E44100471BF7 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Sort;
+			productName = Sort;
+			productReference = 03A8336F24E8E44100471BF7 /* Sort */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -533,6 +607,9 @@
 						CreatedOnToolsVersion = 11.6;
 					};
 					038047F024E0257D0088FC50 = {
+						CreatedOnToolsVersion = 11.6;
+					};
+					03A8336E24E8E44100471BF7 = {
 						CreatedOnToolsVersion = 11.6;
 					};
 				};
@@ -553,6 +630,7 @@
 				0335DF0C24AB8DE400507ACF /* data-structure */,
 				036FA1DB24CADF970007FFBA /* BinaryTree */,
 				038047F024E0257D0088FC50 /* LinkedList */,
+				03A8336E24E8E44100471BF7 /* Sort */,
 			);
 		};
 /* End PBXProject section */
@@ -616,6 +694,18 @@
 				038047FA24E0271B0088FC50 /* SLinkedList.m in Sources */,
 				038047F424E0257D0088FC50 /* main.m in Sources */,
 				034BDEE524E56158002CC739 /* DLinkedList.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03A8336B24E8E44100471BF7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03A8337B24E8E68D00471BF7 /* SelectionSort.m in Sources */,
+				03A8338124E8EA0D00471BF7 /* HeapSort.m in Sources */,
+				03A8337224E8E44100471BF7 /* main.m in Sources */,
+				03A8337824E8E46700471BF7 /* Sort.m in Sources */,
+				03A8337E24E8E79C00471BF7 /* BubbleSort.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -781,6 +871,22 @@
 			};
 			name = Release;
 		};
+		03A8337324E8E44100471BF7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		03A8337424E8E44100471BF7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -816,6 +922,15 @@
 			buildConfigurations = (
 				038047F624E0257D0088FC50 /* Debug */,
 				038047F724E0257D0088FC50 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03A8337524E8E44100471BF7 /* Build configuration list for PBXNativeTarget "Sort" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03A8337324E8E44100471BF7 /* Debug */,
+				03A8337424E8E44100471BF7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

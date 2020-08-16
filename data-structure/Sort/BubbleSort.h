@@ -14,4 +14,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@interface BubbleSort2 : Sort
+
+@end
+
+@interface BubbleSort3 : Sort
+
+@end
+
 NS_ASSUME_NONNULL_END
