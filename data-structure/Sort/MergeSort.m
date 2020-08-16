@@ -32,10 +32,8 @@
     [self _merge:begin mid:mid end:end];
 }
 - (void)_merge:(NSInteger)begin mid:(NSInteger)mid end:(NSInteger)end {
-    NSInteger li = 0;
-    NSInteger le = mid - begin;
-    NSInteger ri = mid;
-    NSInteger re = end;
+    NSInteger li = 0, le = mid - begin;
+    NSInteger ri = mid, re = end;
     NSInteger ai = begin; // CARE!!! is begin NOT 0
     for (NSInteger i = li; i < le; i++) { // CARE!!! i = li NOT i = 0
         _left[i] = _array[begin + i]; // CARE!!! is begin + i NOT i
@@ -48,6 +46,5 @@
             _array[ai++] = _left[li++];
         }
     }
-    
 }
 @end

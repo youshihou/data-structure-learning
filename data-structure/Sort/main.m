@@ -51,7 +51,7 @@ void testBinarySearch(void) {
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         NSMutableArray *array = [NSMutableArray array];
-        NSUInteger max = 10000;
+        NSUInteger max = 100;
         for (NSUInteger i = 0; i < max; i++) {
             int n = arc4random() % max;
             NSNumber *number = [NSNumber numberWithInt:n];
