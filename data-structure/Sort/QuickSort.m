@@ -25,7 +25,7 @@
     end--;
     while (begin < end) {
         while (begin < end) {
-            if ([self cmpElement:pivot with:_array[end]] < 0) {
+            if ([self cmpElement:pivot with:_array[end]] < 0) { // CARE!!! is < NOT <=
                 end--;
             } else {
                 _array[begin++] = _array[end];
@@ -33,7 +33,7 @@
             }
         }
         while (begin < end) {
-            if ([self cmpElement:pivot with:_array[begin]] > 0) { // CARE!!! >
+            if ([self cmpElement:pivot with:_array[begin]] > 0) { // CARE!!! is > NOT >=
                 begin++;
             } else {
                 _array[end--] = _array[begin];
