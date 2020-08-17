@@ -19,6 +19,8 @@
     [self _sort:mid + 1 end:end];
 }
 - (NSInteger)_pivotIndex:(NSInteger)begin end:(NSInteger)end {
+    NSInteger index = begin + arc4random() % (end - begin);
+    [self swap:begin with:index];
     id pivot = _array[begin];
     end--;
     while (begin < end) {
