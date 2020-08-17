@@ -35,7 +35,7 @@
     NSInteger li = 0, le = mid - begin;
     NSInteger ri = mid, re = end;
     NSInteger ai = begin; // CARE!!! is begin NOT 0
-    for (NSInteger i = li; i < le; i++) { // CARE!!! i = li NOT i = 0
+    for (NSInteger i = li; i < le; i++) { 
         _left[i] = _array[begin + i]; // CARE!!! is begin + i NOT i
     }
     
