@@ -52,19 +52,19 @@ void testBinarySearch(void) {
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         NSMutableArray *array = [NSMutableArray array];
-        NSUInteger max = 100;
+        NSUInteger max = 20000;
         for (NSUInteger i = 0; i < max; i++) {
             int n = arc4random() % max;
             NSNumber *number = [NSNumber numberWithInt:n];
             [array addObject:number];
         }
         NSArray *sorts = @[
-            [BubbleSort sort],
+//            [BubbleSort sort],
 //            [BubbleSort2 sort],
 //            [BubbleSort3 sort],
-            [SelectionSort sort],
+//            [SelectionSort sort],
             [HeapSort sort],
-            [InsertionSort sort],
+//            [InsertionSort sort],
             [MergeSort sort],
             [QuickSort sort],
         ];
