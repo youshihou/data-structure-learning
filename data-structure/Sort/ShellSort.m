@@ -10,8 +10,7 @@
 
 @implementation ShellSort
 - (void)sorting {
-    NSArray *steps = [self _steps2];
-    NSLog(@"%@", steps);
+    NSArray *steps = [self _steps];
     for (NSNumber *s in steps) {
         [self _sort:s.integerValue];
     }
