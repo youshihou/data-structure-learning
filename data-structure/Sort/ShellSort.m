@@ -51,7 +51,6 @@
         [array insertObject:@(step) atIndex:0];
         k++;
     }
-    
     return [array copy];
 }
 @end
