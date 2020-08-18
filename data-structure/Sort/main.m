@@ -14,6 +14,7 @@
 #import "BinarySearch.h"
 #import "MergeSort.h"
 #import "QuickSort.h"
+#import "ShellSort.h"
 
 void testSorts(NSArray *arrray, NSArray<Sort *> *sorts) {
     for (Sort *sort in sorts) {
@@ -67,6 +68,7 @@ int main(int argc, const char * argv[]) {
 //            [InsertionSort sort],
             [MergeSort sort],
             [QuickSort sort],
+            [ShellSort sort],
         ];
         testSorts(array, sorts);
 //        testBinarySearch();
