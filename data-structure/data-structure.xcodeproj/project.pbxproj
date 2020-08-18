@@ -24,6 +24,7 @@
 		036FA1FC24CAE1740007FFBA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA1FB24CAE1740007FFBA /* main.m */; };
 		036FA22724CB10850007FFBA /* BinaryTreePrintHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA22624CB10850007FFBA /* BinaryTreePrintHandler.m */; };
 		036FA22A24CB2C6F0007FFBA /* AVLTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA22924CB2C6F0007FFBA /* AVLTree.m */; };
+		03752B0824EC0EB2001D892E /* ShellSort.m in Sources */ = {isa = PBXBuildFile; fileRef = 03752B0724EC0EB2001D892E /* ShellSort.m */; };
 		0377F59E24C5C16600ADE08D /* binary_search_tree.c in Sources */ = {isa = PBXBuildFile; fileRef = 0377F59D24C5C16600ADE08D /* binary_search_tree.c */; };
 		0377F5A124C5ED5000ADE08D /* print_tree_helper.c in Sources */ = {isa = PBXBuildFile; fileRef = 0377F5A024C5ED5000ADE08D /* print_tree_helper.c */; };
 		038047F424E0257D0088FC50 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 038047F324E0257D0088FC50 /* main.m */; };
@@ -133,6 +134,8 @@
 		036FA22624CB10850007FFBA /* BinaryTreePrintHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BinaryTreePrintHandler.m; sourceTree = "<group>"; };
 		036FA22824CB2C6F0007FFBA /* AVLTree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVLTree.h; sourceTree = "<group>"; };
 		036FA22924CB2C6F0007FFBA /* AVLTree.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AVLTree.m; sourceTree = "<group>"; };
+		03752B0624EC0EB2001D892E /* ShellSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShellSort.h; sourceTree = "<group>"; };
+		03752B0724EC0EB2001D892E /* ShellSort.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShellSort.m; sourceTree = "<group>"; };
 		0377F59C24C5C16600ADE08D /* binary_search_tree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = binary_search_tree.h; sourceTree = "<group>"; };
 		0377F59D24C5C16600ADE08D /* binary_search_tree.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = binary_search_tree.c; sourceTree = "<group>"; };
 		0377F59F24C5ED5000ADE08D /* print_tree_helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = print_tree_helper.h; sourceTree = "<group>"; };
@@ -506,6 +509,8 @@
 				03A8338A24E961ED00471BF7 /* MergeSort.m */,
 				03A8338C24E97F0E00471BF7 /* QuickSort.h */,
 				03A8338D24E97F0E00471BF7 /* QuickSort.m */,
+				03752B0624EC0EB2001D892E /* ShellSort.h */,
+				03752B0724EC0EB2001D892E /* ShellSort.m */,
 				03A8337124E8E44100471BF7 /* main.m */,
 			);
 			path = Sort;
@@ -723,6 +728,7 @@
 			files = (
 				03A8337B24E8E68D00471BF7 /* SelectionSort.m in Sources */,
 				03A8338824E9389B00471BF7 /* BinarySearch.m in Sources */,
+				03752B0824EC0EB2001D892E /* ShellSort.m in Sources */,
 				03A8338124E8EA0D00471BF7 /* HeapSort.m in Sources */,
 				03A8337224E8E44100471BF7 /* main.m in Sources */,
 				03A8338E24E97F0E00471BF7 /* QuickSort.m in Sources */,

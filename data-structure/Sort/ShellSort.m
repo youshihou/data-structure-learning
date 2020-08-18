@@ -9,5 +9,7 @@
 #import "ShellSort.h"
 
 @implementation ShellSort
-
+- (void)sorting {
+    
+}
 @end
