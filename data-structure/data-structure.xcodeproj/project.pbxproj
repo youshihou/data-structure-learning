@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0304241024ED68AD003A6A81 /* CountingSort.m in Sources */ = {isa = PBXBuildFile; fileRef = 0304240F24ED68AD003A6A81 /* CountingSort.m */; };
 		030900B424D1A0EB009C3DEE /* TreeSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 030900B324D1A0EB009C3DEE /* TreeSet.m */; };
 		030900C024D1B273009C3DEE /* TreeMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 030900BF24D1B273009C3DEE /* TreeMap.m */; };
 		0335DF1124AB8DE400507ACF /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 0335DF1024AB8DE400507ACF /* main.c */; };
@@ -99,6 +100,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0304240E24ED68AD003A6A81 /* CountingSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CountingSort.h; sourceTree = "<group>"; };
+		0304240F24ED68AD003A6A81 /* CountingSort.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CountingSort.m; sourceTree = "<group>"; };
 		030900B224D1A0EB009C3DEE /* TreeSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TreeSet.h; sourceTree = "<group>"; };
 		030900B324D1A0EB009C3DEE /* TreeSet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TreeSet.m; sourceTree = "<group>"; };
 		030900BE24D1B273009C3DEE /* TreeMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TreeMap.h; sourceTree = "<group>"; };
@@ -236,6 +239,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0304240C24ED687C003A6A81 /* cmp */ = {
+			isa = PBXGroup;
+			children = (
+				03A8337C24E8E79C00471BF7 /* BubbleSort.h */,
+				03A8337D24E8E79C00471BF7 /* BubbleSort.m */,
+				03A8337924E8E68D00471BF7 /* SelectionSort.h */,
+				03A8337A24E8E68D00471BF7 /* SelectionSort.m */,
+				03A8337F24E8EA0D00471BF7 /* HeapSort.h */,
+				03A8338024E8EA0D00471BF7 /* HeapSort.m */,
+				03A8338324E9201600471BF7 /* InsertionSort.h */,
+				03A8338424E9201600471BF7 /* InsertionSort.m */,
+				03A8338624E9389B00471BF7 /* BinarySearch.h */,
+				03A8338724E9389B00471BF7 /* BinarySearch.m */,
+				03A8338924E961ED00471BF7 /* MergeSort.h */,
+				03A8338A24E961ED00471BF7 /* MergeSort.m */,
+				03A8338C24E97F0E00471BF7 /* QuickSort.h */,
+				03A8338D24E97F0E00471BF7 /* QuickSort.m */,
+				03752B0624EC0EB2001D892E /* ShellSort.h */,
+				03752B0724EC0EB2001D892E /* ShellSort.m */,
+			);
+			path = cmp;
+			sourceTree = "<group>";
+		};
+		0304240D24ED6884003A6A81 /* count */ = {
+			isa = PBXGroup;
+			children = (
+				0304240E24ED68AD003A6A81 /* CountingSort.h */,
+				0304240F24ED68AD003A6A81 /* CountingSort.m */,
+			);
+			path = count;
+			sourceTree = "<group>";
+		};
 		030900B124D19F50009C3DEE /* tree-set */ = {
 			isa = PBXGroup;
 			children = (
@@ -495,22 +530,8 @@
 			isa = PBXGroup;
 			children = (
 				03A8338224E8EA3500471BF7 /* sort */,
-				03A8337C24E8E79C00471BF7 /* BubbleSort.h */,
-				03A8337D24E8E79C00471BF7 /* BubbleSort.m */,
-				03A8337924E8E68D00471BF7 /* SelectionSort.h */,
-				03A8337A24E8E68D00471BF7 /* SelectionSort.m */,
-				03A8337F24E8EA0D00471BF7 /* HeapSort.h */,
-				03A8338024E8EA0D00471BF7 /* HeapSort.m */,
-				03A8338324E9201600471BF7 /* InsertionSort.h */,
-				03A8338424E9201600471BF7 /* InsertionSort.m */,
-				03A8338624E9389B00471BF7 /* BinarySearch.h */,
-				03A8338724E9389B00471BF7 /* BinarySearch.m */,
-				03A8338924E961ED00471BF7 /* MergeSort.h */,
-				03A8338A24E961ED00471BF7 /* MergeSort.m */,
-				03A8338C24E97F0E00471BF7 /* QuickSort.h */,
-				03A8338D24E97F0E00471BF7 /* QuickSort.m */,
-				03752B0624EC0EB2001D892E /* ShellSort.h */,
-				03752B0724EC0EB2001D892E /* ShellSort.m */,
+				0304240C24ED687C003A6A81 /* cmp */,
+				0304240D24ED6884003A6A81 /* count */,
 				03A8337124E8E44100471BF7 /* main.m */,
 			);
 			path = Sort;
@@ -732,6 +753,7 @@
 				03A8338124E8EA0D00471BF7 /* HeapSort.m in Sources */,
 				03A8337224E8E44100471BF7 /* main.m in Sources */,
 				03A8338E24E97F0E00471BF7 /* QuickSort.m in Sources */,
+				0304241024ED68AD003A6A81 /* CountingSort.m in Sources */,
 				03A8338524E9201600471BF7 /* InsertionSort.m in Sources */,
 				03A8337824E8E46700471BF7 /* Sort.m in Sources */,
 				03A8338B24E961ED00471BF7 /* MergeSort.m in Sources */,
