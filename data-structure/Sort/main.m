@@ -15,6 +15,7 @@
 #import "MergeSort.h"
 #import "QuickSort.h"
 #import "ShellSort.h"
+#import "CountingSort.h"
 
 void testSorts(NSArray *arrray, NSArray<Sort *> *sorts) {
     for (Sort *sort in sorts) {
@@ -53,12 +54,13 @@ void testBinarySearch(void) {
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         NSMutableArray *array = [NSMutableArray array];
-        NSUInteger max = 20000;
-        for (NSUInteger i = 0; i < max; i++) {
-            int n = arc4random() % max;
-            NSNumber *number = [NSNumber numberWithInt:n];
-            [array addObject:number];
-        }
+//        NSUInteger max = 20000;
+//        for (NSUInteger i = 0; i < max; i++) {
+//            int n = arc4random() % max;
+//            NSNumber *number = [NSNumber numberWithInt:n];
+//            [array addObject:number];
+//        }
+        array = [@[@7, @3, @5, @8, @6, @7, @4, @5] mutableCopy];
         NSArray *sorts = @[
 //            [BubbleSort sort],
 //            [BubbleSort2 sort],
@@ -69,6 +71,7 @@ int main(int argc, const char * argv[]) {
             [MergeSort sort],
             [QuickSort sort],
             [ShellSort sort],
+            [CountingSort sort],
         ];
         testSorts(array, sorts);
 //        testBinarySearch();
