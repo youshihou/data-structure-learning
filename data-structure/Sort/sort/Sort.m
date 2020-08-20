@@ -42,7 +42,7 @@
     return [NSString stringWithFormat:@"%.2f亿", number / 100000000.0];
 }
 - (BOOL)_isStable {
-    if ([NSStringFromClass(self.class) isEqualToString:@"CountingSort"]) { return NO; }
+    if ([NSStringFromClass(self.class) isEqualToString:@"CountingSort"]) { return YES; }
     if ([NSStringFromClass(self.class) isEqualToString:@"ShellSort"]) { return NO; }
     NSUInteger count = 20;
     NSMutableArray *array = [NSMutableArray array];
