@@ -61,6 +61,8 @@ int main(int argc, const char * argv[]) {
             NSNumber *number = [NSNumber numberWithInt:n];
             [array addObject:number];
         }
+//        array = [@[@7, @3, @5, @8, @6, @7, @4, @5] mutableCopy];
+//        array = [@[@126, @69, @593, @23, @6, @89, @54, @8] mutableCopy];
         NSArray *sorts = @[
 //            [BubbleSort sort],
 //            [BubbleSort2 sort],

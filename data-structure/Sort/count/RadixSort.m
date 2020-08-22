@@ -54,4 +54,43 @@
     _array = result;
 }
 
+
+- (void)sorting2 {
+    NSInteger count = _array.count;
+    NSInteger max = [_array.firstObject integerValue];
+    for (NSInteger i = 0; i < count; i++) {
+        NSInteger value = [_array[i] integerValue];
+        if (max < value) {
+            max = value;
+        }
+    }
+
+    NSInteger len = 10;
+    NSMutableArray *buckets = [NSMutableArray arrayWithCapacity:len];
+    for (NSInteger i = 0; i < len; i++) {
+        NSMutableArray *arr = [NSMutableArray arrayWithCapacity:count];
+        for (NSInteger i = 0; i < count; i++) {
+            [arr addObject:[NSNull null]];
+        }
+        [buckets addObject:arr];
+    }
+    
+    for (NSInteger divider = 1; divider <= max; divider *= 10) {
+        for (NSInteger i = 0; i < count; i++) {
+            NSInteger no = [_array[i] integerValue] / divider % 10;
+            NSMutableArray *arr = buckets[no];
+            NSInteger idx = [arr indexOfObject:arr.lastObject];
+            buckets[no][idx] = _array[i];
+        }
+        NSInteger idx = 0;
+        for (NSInteger i = 0; i < len; i++) {
+            NSMutableArray *arr = buckets[i];
+            NSInteger size = [arr indexOfObject:[NSNull null]];
+            for (NSInteger j = 0; j < size; j++) {
+                _array[idx++] = buckets[i][j];
+                buckets[i][j] = [NSNull null];
+            }
+        }
+    }
+}
 @end
