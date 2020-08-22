@@ -9,5 +9,7 @@
 #import "BucketSort.h"
 
 @implementation BucketSort
-
+- (void)sorting {
+    
+}
 @end
