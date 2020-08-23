@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "QuickFind.h"
+#import "QuickUnion.h"
 
-void testUnionFind(void) {
+void testQuickFind(void) {
     QuickFind *qf = [[QuickFind alloc] initWithCapacity:12];
     [qf unionWith:@0 v2:@1];
     [qf unionWith:@0 v2:@3];
@@ -31,9 +32,33 @@ void testUnionFind(void) {
     assert([qf isSameWith:@2 v2:@7] == true);
 }
 
+void testQuickUnion(void) {
+    QuickUnion *qu = [[QuickUnion alloc] initWithCapacity:12];
+    [qu unionWith:@0 v2:@1];
+    [qu unionWith:@0 v2:@3];
+    [qu unionWith:@0 v2:@4];
+    [qu unionWith:@2 v2:@3];
+    [qu unionWith:@2 v2:@5];
+    
+    [qu unionWith:@6 v2:@7];
+    
+    [qu unionWith:@8 v2:@10];
+    [qu unionWith:@9 v2:@10];
+    [qu unionWith:@9 v2:@11];
+    
+    assert([qu isSameWith:@0 v2:@6] == false);
+    assert([qu isSameWith:@0 v2:@5] == true);
+    assert([qu isSameWith:@2 v2:@7] == false);
+
+    [qu unionWith:@4 v2:@6];
+    assert([qu isSameWith:@2 v2:@7] == true);
+}
+
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        testUnionFind();
+        testQuickFind();
+        testQuickUnion();
     }
     return 0;
 }
