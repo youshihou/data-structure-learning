@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0304241024ED68AD003A6A81 /* CountingSort.m in Sources */ = {isa = PBXBuildFile; fileRef = 0304240F24ED68AD003A6A81 /* CountingSort.m */; };
 		03074F5324F0E437003B12AD /* BucketSort.m in Sources */ = {isa = PBXBuildFile; fileRef = 03074F5224F0E437003B12AD /* BucketSort.m */; };
+		03074F5B24F2918B003B12AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03074F5A24F2918B003B12AD /* main.m */; };
 		030900B424D1A0EB009C3DEE /* TreeSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 030900B324D1A0EB009C3DEE /* TreeSet.m */; };
 		030900C024D1B273009C3DEE /* TreeMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 030900BF24D1B273009C3DEE /* TreeMap.m */; };
 		0335DF1124AB8DE400507ACF /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 0335DF1024AB8DE400507ACF /* main.c */; };
@@ -63,6 +64,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		03074F5624F2918B003B12AD /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		0335DF0B24AB8DE400507ACF /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -106,6 +116,8 @@
 		0304240F24ED68AD003A6A81 /* CountingSort.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CountingSort.m; sourceTree = "<group>"; };
 		03074F5124F0E437003B12AD /* BucketSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BucketSort.h; sourceTree = "<group>"; };
 		03074F5224F0E437003B12AD /* BucketSort.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BucketSort.m; sourceTree = "<group>"; };
+		03074F5824F2918B003B12AD /* UnionFind */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = UnionFind; sourceTree = BUILT_PRODUCTS_DIR; };
+		03074F5A24F2918B003B12AD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		030900B224D1A0EB009C3DEE /* TreeSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TreeSet.h; sourceTree = "<group>"; };
 		030900B324D1A0EB009C3DEE /* TreeSet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TreeSet.m; sourceTree = "<group>"; };
 		030900BE24D1B273009C3DEE /* TreeMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TreeMap.h; sourceTree = "<group>"; };
@@ -214,6 +226,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		03074F5524F2918B003B12AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0335DF0A24AB8DE400507ACF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -281,6 +300,14 @@
 			path = count;
 			sourceTree = "<group>";
 		};
+		03074F5924F2918B003B12AD /* UnionFind */ = {
+			isa = PBXGroup;
+			children = (
+				03074F5A24F2918B003B12AD /* main.m */,
+			);
+			path = UnionFind;
+			sourceTree = "<group>";
+		};
 		030900B124D19F50009C3DEE /* tree-set */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,6 +352,7 @@
 				036FA1DD24CADF970007FFBA /* BinaryTree */,
 				038047F224E0257D0088FC50 /* LinkedList */,
 				03A8337024E8E44100471BF7 /* Sort */,
+				03074F5924F2918B003B12AD /* UnionFind */,
 				0335DF0E24AB8DE400507ACF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -336,6 +364,7 @@
 				036FA1DC24CADF970007FFBA /* BinaryTree */,
 				038047F124E0257D0088FC50 /* LinkedList */,
 				03A8336F24E8E44100471BF7 /* Sort */,
+				03074F5824F2918B003B12AD /* UnionFind */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -579,6 +608,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		03074F5724F2918B003B12AD /* UnionFind */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03074F5E24F2918B003B12AD /* Build configuration list for PBXNativeTarget "UnionFind" */;
+			buildPhases = (
+				03074F5424F2918B003B12AD /* Sources */,
+				03074F5524F2918B003B12AD /* Frameworks */,
+				03074F5624F2918B003B12AD /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UnionFind;
+			productName = UnionFind;
+			productReference = 03074F5824F2918B003B12AD /* UnionFind */;
+			productType = "com.apple.product-type.tool";
+		};
 		0335DF0C24AB8DE400507ACF /* data-structure */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0335DF1424AB8DE400507ACF /* Build configuration list for PBXNativeTarget "data-structure" */;
@@ -656,6 +702,9 @@
 				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = Ankui;
 				TargetAttributes = {
+					03074F5724F2918B003B12AD = {
+						CreatedOnToolsVersion = 11.6;
+					};
 					0335DF0C24AB8DE400507ACF = {
 						CreatedOnToolsVersion = 11.5;
 					};
@@ -687,11 +736,20 @@
 				036FA1DB24CADF970007FFBA /* BinaryTree */,
 				038047F024E0257D0088FC50 /* LinkedList */,
 				03A8336E24E8E44100471BF7 /* Sort */,
+				03074F5724F2918B003B12AD /* UnionFind */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		03074F5424F2918B003B12AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03074F5B24F2918B003B12AD /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0335DF0924AB8DE400507ACF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -776,6 +834,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		03074F5C24F2918B003B12AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		03074F5D24F2918B003B12AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		0335DF1224AB8DE400507ACF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -954,6 +1028,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		03074F5E24F2918B003B12AD /* Build configuration list for PBXNativeTarget "UnionFind" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03074F5C24F2918B003B12AD /* Debug */,
+				03074F5D24F2918B003B12AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		0335DF0824AB8DE400507ACF /* Build configuration list for PBXProject "data-structure" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
