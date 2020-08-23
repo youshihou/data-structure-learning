@@ -25,6 +25,10 @@ void testUnionFind(void) {
     
     assert([uf isSameWith:@0 v2:@6] == false);
     assert([uf isSameWith:@0 v2:@5] == true);
+    assert([uf isSameWith:@2 v2:@7] == false);
+
+    [uf unionWith:@4 v2:@6];
+    assert([uf isSameWith:@2 v2:@7] == true);
 }
 
 int main(int argc, const char * argv[]) {
