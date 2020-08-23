@@ -27,7 +27,6 @@ void testQuickFind(void) {
     assert([qf isSameWith:@0 v2:@6] == false);
     assert([qf isSameWith:@0 v2:@5] == true);
     assert([qf isSameWith:@2 v2:@7] == false);
-
     [qf unionWith:@4 v2:@6];
     assert([qf isSameWith:@2 v2:@7] == true);
 }
@@ -49,7 +48,6 @@ void testQuickUnion(void) {
     assert([qu isSameWith:@0 v2:@6] == false);
     assert([qu isSameWith:@0 v2:@5] == true);
     assert([qu isSameWith:@2 v2:@7] == false);
-
     [qu unionWith:@4 v2:@6];
     assert([qu isSameWith:@2 v2:@7] == true);
 }
