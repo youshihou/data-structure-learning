@@ -23,7 +23,6 @@
     }
     return self;
 }
-
 - (void)unionWith:(id)v1 v2:(id)v2 {
     NSInteger p1 = [[self find:v1] integerValue];
     NSInteger p2 = [[self find:v2] integerValue];
