@@ -6,11 +6,11 @@
 //  Copyright © 2020 Ankui. All rights reserved.
 //
 
-#import "UnionFind.h"
+#import "QuickUnion.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface QuickUnionSize : UnionFind
+@interface QuickUnionSize : QuickUnion
 
 @end
 

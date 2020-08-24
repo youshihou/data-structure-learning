@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "QuickFind.h"
 #import "QuickUnion.h"
+#import "QuickUnionSize.h"
 
 void testQuickFind(void) {
     QuickFind *qf = [[QuickFind alloc] initWithCapacity:12];
@@ -32,7 +33,7 @@ void testQuickFind(void) {
 }
 
 void testQuickUnion(void) {
-    QuickUnion *qu = [[QuickUnion alloc] initWithCapacity:12];
+    QuickUnion *qu = [[QuickUnionSize alloc] initWithCapacity:12];
     [qu unionWith:@0 v2:@1];
     [qu unionWith:@0 v2:@3];
     [qu unionWith:@0 v2:@4];
@@ -55,7 +56,7 @@ void testQuickUnion(void) {
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        testQuickFind();
+//        testQuickFind();
         testQuickUnion();
     }
     return 0;
