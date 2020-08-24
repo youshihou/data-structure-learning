@@ -14,27 +14,7 @@
 #import "QuickUnionRank.h"
 #import "QuickUnionRankPathCompression.h"
 
-void testUnionFind(UnionFind *uf) {
-    [uf unionWith:@0 v2:@1];
-    [uf unionWith:@0 v2:@3];
-    [uf unionWith:@0 v2:@4];
-    [uf unionWith:@2 v2:@3];
-    [uf unionWith:@2 v2:@5];
-    
-    [uf unionWith:@6 v2:@7];
-    
-    [uf unionWith:@8 v2:@10];
-    [uf unionWith:@9 v2:@10];
-    [uf unionWith:@9 v2:@11];
-    
-    assert([uf isSameWith:@0 v2:@6] == false);
-    assert([uf isSameWith:@0 v2:@5] == true);
-    assert([uf isSameWith:@2 v2:@7] == false);
-    [uf unionWith:@4 v2:@6];
-    assert([uf isSameWith:@2 v2:@7] == true);
-}
-
-void testUnionFindTime(UnionFind *uf, NSInteger count) {
+void testUnionFind(UnionFind *uf, NSInteger count) {
     CFTimeInterval begin = CFAbsoluteTimeGetCurrent();
     for (NSInteger i = 0; i < count; i++) {
         NSInteger v1 = arc4random() % count;
@@ -55,18 +35,12 @@ void testUnionFindTime(UnionFind *uf, NSInteger count) {
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        testUnionFind([[QuickFind alloc] initWithCapacity:12]);
-        testUnionFind([[QuickUnion alloc] initWithCapacity:12]);
-        testUnionFind([[QuickUnionSize alloc] initWithCapacity:12]);
-        testUnionFind([[QuickUnionRank alloc] initWithCapacity:12]);
-        testUnionFind([[QuickUnionRankPathCompression alloc] initWithCapacity:12]);
-
-        NSInteger count = 10000;
-        testUnionFindTime([[QuickFind alloc] initWithCapacity:count], count);
-        testUnionFindTime([[QuickUnion alloc] initWithCapacity:count], count);
-        testUnionFindTime([[QuickUnionSize alloc] initWithCapacity:count], count);
-        testUnionFindTime([[QuickUnionRank alloc] initWithCapacity:count], count);
-        testUnionFindTime([[QuickUnionRankPathCompression alloc] initWithCapacity:count], count);
+        NSInteger count = 100000;
+//        testUnionFind([[QuickFind alloc] initWithCapacity:count], count);
+//        testUnionFind([[QuickUnion alloc] initWithCapacity:count], count);
+//        testUnionFind([[QuickUnionSize alloc] initWithCapacity:count], count);
+        testUnionFind([[QuickUnionRank alloc] initWithCapacity:count], count);
+        testUnionFind([[QuickUnionRankPathCompression alloc] initWithCapacity:count], count);
     }
     return 0;
 }

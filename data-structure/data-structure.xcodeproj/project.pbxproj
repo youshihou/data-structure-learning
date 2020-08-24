@@ -22,6 +22,7 @@
 		035A799324F3E74600DE65CC /* QuickUnionSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 035A799224F3E74600DE65CC /* QuickUnionSize.m */; };
 		035A799624F3F46000DE65CC /* QuickUnionRank.m in Sources */ = {isa = PBXBuildFile; fileRef = 035A799524F3F46000DE65CC /* QuickUnionRank.m */; };
 		035A799924F3F6B000DE65CC /* QuickUnionRankPathCompression.m in Sources */ = {isa = PBXBuildFile; fileRef = 035A799824F3F6B000DE65CC /* QuickUnionRankPathCompression.m */; };
+		035A799C24F3FA5E00DE65CC /* QuickUnionRankPathSpliting.m in Sources */ = {isa = PBXBuildFile; fileRef = 035A799B24F3FA5E00DE65CC /* QuickUnionRankPathSpliting.m */; };
 		035C081824DAF3C400D201B0 /* PriorityQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 035C081724DAF3C400D201B0 /* PriorityQueue.m */; };
 		035F706B24DC37E8000D649A /* Trie.m in Sources */ = {isa = PBXBuildFile; fileRef = 035F706A24DC37E8000D649A /* Trie.m */; };
 		036FA1F424CADFBB0007FFBA /* BST.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA1E324CADFBA0007FFBA /* BST.m */; };
@@ -148,6 +149,8 @@
 		035A799524F3F46000DE65CC /* QuickUnionRank.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuickUnionRank.m; sourceTree = "<group>"; };
 		035A799724F3F6B000DE65CC /* QuickUnionRankPathCompression.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuickUnionRankPathCompression.h; sourceTree = "<group>"; };
 		035A799824F3F6B000DE65CC /* QuickUnionRankPathCompression.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuickUnionRankPathCompression.m; sourceTree = "<group>"; };
+		035A799A24F3FA5E00DE65CC /* QuickUnionRankPathSpliting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuickUnionRankPathSpliting.h; sourceTree = "<group>"; };
+		035A799B24F3FA5E00DE65CC /* QuickUnionRankPathSpliting.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuickUnionRankPathSpliting.m; sourceTree = "<group>"; };
 		035C081624DAF3C400D201B0 /* PriorityQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PriorityQueue.h; sourceTree = "<group>"; };
 		035C081724DAF3C400D201B0 /* PriorityQueue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PriorityQueue.m; sourceTree = "<group>"; };
 		035F706924DC37E8000D649A /* Trie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Trie.h; sourceTree = "<group>"; };
@@ -358,6 +361,8 @@
 				035A799524F3F46000DE65CC /* QuickUnionRank.m */,
 				035A799724F3F6B000DE65CC /* QuickUnionRankPathCompression.h */,
 				035A799824F3F6B000DE65CC /* QuickUnionRankPathCompression.m */,
+				035A799A24F3FA5E00DE65CC /* QuickUnionRankPathSpliting.h */,
+				035A799B24F3FA5E00DE65CC /* QuickUnionRankPathSpliting.m */,
 			);
 			path = "quick-union";
 			sourceTree = "<group>";
@@ -800,6 +805,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				035A799C24F3FA5E00DE65CC /* QuickUnionRankPathSpliting.m in Sources */,
 				03074F6124F294E8003B12AD /* UnionFind.m in Sources */,
 				035A799624F3F46000DE65CC /* QuickUnionRank.m in Sources */,
 				035A799324F3E74600DE65CC /* QuickUnionSize.m in Sources */,
