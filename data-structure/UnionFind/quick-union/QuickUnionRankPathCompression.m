@@ -9,5 +9,12 @@
 #import "QuickUnionRankPathCompression.h"
 
 @implementation QuickUnionRankPathCompression
-
+- (id)find:(id)value {
+    NSInteger v = [value integerValue];
+    [self rangeCheck:v];
+    if ([_parents[v] integerValue] != v) {
+        _parents[v] = [self find:_parents[v]];
+    }
+    return _parents[v];
+}
 @end
