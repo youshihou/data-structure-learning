@@ -12,6 +12,7 @@
 #import "QuickUnion.h"
 #import "QuickUnionSize.h"
 #import "QuickUnionRank.h"
+#import "QuickUnionRankPathCompression.h"
 
 void testUnionFind(UnionFind *uf) {
     [uf unionWith:@0 v2:@1];
@@ -58,12 +59,14 @@ int main(int argc, const char * argv[]) {
         testUnionFind([[QuickUnion alloc] initWithCapacity:12]);
         testUnionFind([[QuickUnionSize alloc] initWithCapacity:12]);
         testUnionFind([[QuickUnionRank alloc] initWithCapacity:12]);
+        testUnionFind([[QuickUnionRankPathCompression alloc] initWithCapacity:12]);
 
         NSInteger count = 10000;
         testUnionFindTime([[QuickFind alloc] initWithCapacity:count], count);
         testUnionFindTime([[QuickUnion alloc] initWithCapacity:count], count);
         testUnionFindTime([[QuickUnionSize alloc] initWithCapacity:count], count);
         testUnionFindTime([[QuickUnionRank alloc] initWithCapacity:count], count);
+        testUnionFindTime([[QuickUnionRankPathCompression alloc] initWithCapacity:count], count);
     }
     return 0;
 }
