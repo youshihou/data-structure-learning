@@ -7,57 +7,60 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UnionFind.h"
 #import "QuickFind.h"
 #import "QuickUnion.h"
 #import "QuickUnionSize.h"
 
-void testQuickFind(void) {
-    QuickFind *qf = [[QuickFind alloc] initWithCapacity:12];
-    [qf unionWith:@0 v2:@1];
-    [qf unionWith:@0 v2:@3];
-    [qf unionWith:@0 v2:@4];
-    [qf unionWith:@2 v2:@3];
-    [qf unionWith:@2 v2:@5];
+void testUnionFind(UnionFind *uf) {
+    [uf unionWith:@0 v2:@1];
+    [uf unionWith:@0 v2:@3];
+    [uf unionWith:@0 v2:@4];
+    [uf unionWith:@2 v2:@3];
+    [uf unionWith:@2 v2:@5];
     
-    [qf unionWith:@6 v2:@7];
+    [uf unionWith:@6 v2:@7];
     
-    [qf unionWith:@8 v2:@10];
-    [qf unionWith:@9 v2:@10];
-    [qf unionWith:@9 v2:@11];
+    [uf unionWith:@8 v2:@10];
+    [uf unionWith:@9 v2:@10];
+    [uf unionWith:@9 v2:@11];
     
-    assert([qf isSameWith:@0 v2:@6] == false);
-    assert([qf isSameWith:@0 v2:@5] == true);
-    assert([qf isSameWith:@2 v2:@7] == false);
-    [qf unionWith:@4 v2:@6];
-    assert([qf isSameWith:@2 v2:@7] == true);
+    assert([uf isSameWith:@0 v2:@6] == false);
+    assert([uf isSameWith:@0 v2:@5] == true);
+    assert([uf isSameWith:@2 v2:@7] == false);
+    [uf unionWith:@4 v2:@6];
+    assert([uf isSameWith:@2 v2:@7] == true);
 }
 
-void testQuickUnion(void) {
-    QuickUnion *qu = [[QuickUnionSize alloc] initWithCapacity:12];
-    [qu unionWith:@0 v2:@1];
-    [qu unionWith:@0 v2:@3];
-    [qu unionWith:@0 v2:@4];
-    [qu unionWith:@2 v2:@3];
-    [qu unionWith:@2 v2:@5];
-    
-    [qu unionWith:@6 v2:@7];
-    
-    [qu unionWith:@8 v2:@10];
-    [qu unionWith:@9 v2:@10];
-    [qu unionWith:@9 v2:@11];
-    
-    assert([qu isSameWith:@0 v2:@6] == false);
-    assert([qu isSameWith:@0 v2:@5] == true);
-    assert([qu isSameWith:@2 v2:@7] == false);
-    [qu unionWith:@4 v2:@6];
-    assert([qu isSameWith:@2 v2:@7] == true);
+void testUnionFindTime(UnionFind *uf, NSInteger count) {
+    CFTimeInterval begin = CFAbsoluteTimeGetCurrent();
+    for (NSInteger i = 0; i < count; i++) {
+        NSInteger v1 = arc4random() % count;
+        NSInteger v2 = arc4random() % count;
+        [uf unionWith:@(v1) v2:@(v2)];
+    }
+    for (NSInteger i = 0; i < count; i++) {
+        NSInteger v1 = arc4random() % count;
+        NSInteger v2 = arc4random() % count;
+        [uf isSameWith:@(v1) v2:@(v2)];
+    }
+    CFTimeInterval end = CFAbsoluteTimeGetCurrent();
+    NSString *time = [[NSString alloc] initWithFormat:@"time:  %fs(%f)ms", end - begin, (end - begin) * 1000.0];
+    NSString *name = NSStringFromClass(uf.class);
+    NSString *line = @"---------------------------------------------------------";
+    NSLog(@"\n[%@]\nbegin: %f\nend:   %f\n%@\n%@", name, begin, end, time, line);
 }
-
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-//        testQuickFind();
-        testQuickUnion();
+//        testUnionFind([[QuickFind alloc] initWithCapacity:12]);
+//        testUnionFind([[QuickUnion alloc] initWithCapacity:12]);
+//        testUnionFind([[QuickUnionSize alloc] initWithCapacity:12]);
+        
+        NSInteger count = 10000;
+        testUnionFindTime([[QuickFind alloc] initWithCapacity:count], count);
+        testUnionFindTime([[QuickUnion alloc] initWithCapacity:count], count);
+        testUnionFindTime([[QuickUnionSize alloc] initWithCapacity:count], count);
     }
     return 0;
 }
