@@ -13,6 +13,7 @@
 #import "QuickUnionSize.h"
 #import "QuickUnionRank.h"
 #import "QuickUnionRankPathCompression.h"
+#import "QuickUnionRankPathSpliting.h"
 
 void testUnionFind(UnionFind *uf, NSInteger count) {
     CFTimeInterval begin = CFAbsoluteTimeGetCurrent();
@@ -35,12 +36,14 @@ void testUnionFind(UnionFind *uf, NSInteger count) {
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        NSInteger count = 100000;
+        NSInteger count = 10000;
 //        testUnionFind([[QuickFind alloc] initWithCapacity:count], count);
 //        testUnionFind([[QuickUnion alloc] initWithCapacity:count], count);
 //        testUnionFind([[QuickUnionSize alloc] initWithCapacity:count], count);
         testUnionFind([[QuickUnionRank alloc] initWithCapacity:count], count);
         testUnionFind([[QuickUnionRankPathCompression alloc] initWithCapacity:count], count);
+        testUnionFind([[QuickUnionRankPathSpliting alloc] initWithCapacity:count], count);
+        
     }
     return 0;
 }
