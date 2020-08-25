@@ -19,16 +19,19 @@
     }
     return self;
 }
+
+- (void)rangeCheck:(NSInteger)value {
+    if (value < 0 || value >= _parents.count) {
+        assert("value is out of bounds");
+    }
+}
+
+// MARK: - UnionFindProtocol
 - (id)find:(id)value {
     return nil;
 }
 - (void)unionWith:(id)v1 v2:(id)v2 {}
 - (BOOL)isSameWith:(id)v1 v2:(id)v2 {
     return [[self find:v1] integerValue] == [[self find:v2] integerValue];
-}
-- (void)rangeCheck:(NSInteger)value {
-    if (value < 0 || value >= _parents.count) {
-        assert("value is out of bounds");
-    }
 }
 @end

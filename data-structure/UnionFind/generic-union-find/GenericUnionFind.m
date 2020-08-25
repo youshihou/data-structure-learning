@@ -47,12 +47,13 @@
 + (instancetype)unionFind {
     return [[self alloc] init];
 }
-
 - (void)makeSet:(id)value {
     if (!value) { return; }
     if ([[_nodes allKeys] containsObject:value]) { return; }
     _nodes[value] = [UFNode nodeWith:value];
 }
+
+// MARK: - UnionFindProtocol
 - (id)find:(id)value {
     UFNode *node = [self _node:value];
     return node ? node->_value : nil;

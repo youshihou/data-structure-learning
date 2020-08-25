@@ -11,7 +11,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol UnionFindProtocol <NSObject>
-
+- (id)find:(id)value;
+- (void)unionWith:(id)v1 v2:(id)v2;
+- (BOOL)isSameWith:(id)v1 v2:(id)v2;
 @end
 
 NS_ASSUME_NONNULL_END

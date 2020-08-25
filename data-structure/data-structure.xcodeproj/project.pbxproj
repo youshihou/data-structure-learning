@@ -193,6 +193,7 @@
 		038047FD24E02E840088FC50 /* List.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = List.m; sourceTree = "<group>"; };
 		0384F1C324F52F0100A55BC3 /* GenericUnionFind.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenericUnionFind.h; sourceTree = "<group>"; };
 		0384F1C424F52F0100A55BC3 /* GenericUnionFind.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GenericUnionFind.m; sourceTree = "<group>"; };
+		0384F1C624F5454000A55BC3 /* UnionFindProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnionFindProtocol.h; sourceTree = "<group>"; };
 		0386E61124CF061F0033B08F /* BBST.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BBST.h; sourceTree = "<group>"; };
 		0386E61224CF061F0033B08F /* BBST.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BBST.m; sourceTree = "<group>"; };
 		038E9F8724C1D41E005DD7A2 /* LinkedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkedList.h; sourceTree = "<group>"; };
@@ -342,6 +343,7 @@
 		03074F6524F29A2B003B12AD /* union-find */ = {
 			isa = PBXGroup;
 			children = (
+				0384F1C624F5454000A55BC3 /* UnionFindProtocol.h */,
 				03074F5F24F294E8003B12AD /* UnionFind.h */,
 				03074F6024F294E8003B12AD /* UnionFind.m */,
 			);

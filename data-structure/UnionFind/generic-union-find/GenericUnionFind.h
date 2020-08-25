@@ -6,16 +6,13 @@
 //  Copyright © 2020 Ankui. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "UnionFindProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GenericUnionFind : NSObject
+@interface GenericUnionFind : NSObject <UnionFindProtocol>
 + (instancetype)unionFind;
 - (void)makeSet:(id)value;
-- (id)find:(id)value;
-- (void)unionWith:(id)v1 v2:(id)v2;
-- (BOOL)isSameWith:(id)v1 v2:(id)v2;
 @end
 
 NS_ASSUME_NONNULL_END

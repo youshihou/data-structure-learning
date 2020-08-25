@@ -109,10 +109,45 @@ void testGenericUF(void) {
     assert([uf isSameWith:s2 v2:s3]);
 }
 
+void testGenericUnionFind(id<UnionFindProtocol> uf, NSInteger count) {
+    CFTimeInterval begin = CFAbsoluteTimeGetCurrent();
+    for (NSInteger i = 0; i < count; i++) {
+        NSInteger v1 = arc4random() % count;
+        NSInteger v2 = arc4random() % count;
+        [uf unionWith:@(v1) v2:@(v2)];
+    }
+    for (NSInteger i = 0; i < count; i++) {
+        NSInteger v1 = arc4random() % count;
+        NSInteger v2 = arc4random() % count;
+        [uf isSameWith:@(v1) v2:@(v2)];
+    }
+    CFTimeInterval end = CFAbsoluteTimeGetCurrent();
+    NSString *time = [[NSString alloc] initWithFormat:@"time:  %fs(%f)ms", end - begin, (end - begin) * 1000.0];
+    NSString *name = NSStringFromClass(uf.class);
+    NSString *line = @"---------------------------------------------------------";
+    NSLog(@"\n[%@]\nbegin: %f\nend:   %f\n%@\n%@", name, begin, end, time, line);
+}
+
+void testGUF(void) {
+    NSInteger count = 10000;
+    testGenericUnionFind([[QuickUnionRank alloc] initWithCapacity:count], count);
+    testGenericUnionFind([[QuickUnionRankPathCompression alloc] initWithCapacity:count], count);
+    testGenericUnionFind([[QuickUnionRankPathSpliting alloc] initWithCapacity:count], count);
+    testGenericUnionFind([[QuickUnionRankPathHalving alloc] initWithCapacity:count], count);
+    
+    GenericUnionFind *guf = [GenericUnionFind unionFind];
+    for (NSInteger i = 0; i < count; i++) {
+        [guf makeSet:@(i)];
+    }
+    testGenericUnionFind(guf, count);
+}
+
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
 //        testUF();
-        testGenericUF();
+//        testGenericUF();
+        testGUF();
     }
     return 0;
 }
