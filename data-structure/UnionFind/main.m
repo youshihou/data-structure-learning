@@ -105,6 +105,8 @@ void testGenericUF(void) {
     assert([uf isSameWith:s1 v2:s2]);
     assert([uf isSameWith:s3 v2:s4]);
     assert(![uf isSameWith:s1 v2:s3]);
+    [uf unionWith:s1 v2:s4];
+    assert([uf isSameWith:s2 v2:s3]);
 }
 
 int main(int argc, const char * argv[]) {
