@@ -41,6 +41,7 @@
 		038047F424E0257D0088FC50 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 038047F324E0257D0088FC50 /* main.m */; };
 		038047FA24E0271B0088FC50 /* SLinkedList.m in Sources */ = {isa = PBXBuildFile; fileRef = 038047F924E0271B0088FC50 /* SLinkedList.m */; };
 		038047FE24E02E840088FC50 /* List.m in Sources */ = {isa = PBXBuildFile; fileRef = 038047FD24E02E840088FC50 /* List.m */; };
+		0384F1C524F52F0100A55BC3 /* GenericUnionFind.m in Sources */ = {isa = PBXBuildFile; fileRef = 0384F1C424F52F0100A55BC3 /* GenericUnionFind.m */; };
 		0386E61324CF061F0033B08F /* BBST.m in Sources */ = {isa = PBXBuildFile; fileRef = 0386E61224CF061F0033B08F /* BBST.m */; };
 		038E9F8924C1D41F005DD7A2 /* LinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 038E9F8824C1D41E005DD7A2 /* LinkedList.c */; };
 		038E9F8C24C298D4005DD7A2 /* SingleCycleLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 038E9F8B24C298D4005DD7A2 /* SingleCycleLinkedList.c */; };
@@ -190,6 +191,8 @@
 		038047FB24E02B1B0088FC50 /* ListProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListProtocol.h; sourceTree = "<group>"; };
 		038047FC24E02E840088FC50 /* List.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = List.h; sourceTree = "<group>"; };
 		038047FD24E02E840088FC50 /* List.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = List.m; sourceTree = "<group>"; };
+		0384F1C324F52F0100A55BC3 /* GenericUnionFind.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenericUnionFind.h; sourceTree = "<group>"; };
+		0384F1C424F52F0100A55BC3 /* GenericUnionFind.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GenericUnionFind.m; sourceTree = "<group>"; };
 		0386E61124CF061F0033B08F /* BBST.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BBST.h; sourceTree = "<group>"; };
 		0386E61224CF061F0033B08F /* BBST.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BBST.m; sourceTree = "<group>"; };
 		038E9F8724C1D41E005DD7A2 /* LinkedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkedList.h; sourceTree = "<group>"; };
@@ -330,6 +333,7 @@
 				03074F6524F29A2B003B12AD /* union-find */,
 				03074F6924F29BFD003B12AD /* quick-find */,
 				03074F6A24F29C0D003B12AD /* quick-union */,
+				0384F1C224F52EC200A55BC3 /* generic-union-find */,
 				03074F5A24F2918B003B12AD /* main.m */,
 			);
 			path = UnionFind;
@@ -573,6 +577,15 @@
 			path = list;
 			sourceTree = "<group>";
 		};
+		0384F1C224F52EC200A55BC3 /* generic-union-find */ = {
+			isa = PBXGroup;
+			children = (
+				0384F1C324F52F0100A55BC3 /* GenericUnionFind.h */,
+				0384F1C424F52F0100A55BC3 /* GenericUnionFind.m */,
+			);
+			path = "generic-union-find";
+			sourceTree = "<group>";
+		};
 		038E9F9024C2EBC8005DD7A2 /* stack */ = {
 			isa = PBXGroup;
 			children = (
@@ -814,6 +827,7 @@
 				03074F6124F294E8003B12AD /* UnionFind.m in Sources */,
 				035A799624F3F46000DE65CC /* QuickUnionRank.m in Sources */,
 				035A799324F3E74600DE65CC /* QuickUnionSize.m in Sources */,
+				0384F1C524F52F0100A55BC3 /* GenericUnionFind.m in Sources */,
 				035A799F24F3FBD400DE65CC /* QuickUnionRankPathHalving.m in Sources */,
 				03074F6824F29BE1003B12AD /* QuickUnion.m in Sources */,
 				035A799924F3F6B000DE65CC /* QuickUnionRankPathCompression.m in Sources */,
