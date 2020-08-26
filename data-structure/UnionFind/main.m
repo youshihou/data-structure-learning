@@ -143,47 +143,11 @@ void testGUF(void) {
 }
 
 
-@interface Person : NSObject
-@property (nonatomic, copy) NSString *name;
-@end
-@implementation Person
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        NSNotificationCenter *__weak center = [NSNotificationCenter defaultCenter];
-        id __block token = [center addObserverForName:@"Person" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
-            [self test];
-            [center removeObserver:token];
-        }];
-    }
-    return self;
-}
-- (void)test {
-    NSLog(@"%s", __func__);
-}
-- (void)dealloc {
-    NSLog(@"%s", __func__);
-}
-@end
-
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
 //        testUF();
 //        testGenericUF();
-//        testGUF();
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"Person" object:nil];
-        
-        Person *p = [[Person alloc] init];
-        p.name = @"zhangsan";
-//        NSArray *a = @[p];
-//        NSArray *b = [a copy];
-//        NSArray *c = [a mutableCopy];
-//
-//        Person *p2 = [c firstObject];
-//        p2.name = @"lisi";
-//        NSLog(@"----");
-        
+        testGUF();
     }
     return 0;
 }
