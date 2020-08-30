@@ -413,6 +413,63 @@ void test_binary_heap2(void) {
     heap_get();
 }
 
+struct ListNode *createList() {
+    struct ListNode *list = NULL;
+    struct ListNode *head = malloc(sizeof(struct ListNode));
+    head->prev = NULL;
+    head->next = NULL;
+    head->element = 1;
+    list = head;
+    for (int i = 2; i <= 4; i++) {
+        struct ListNode *add = malloc(sizeof(struct ListNode));
+        add->prev = NULL;
+        add->next = NULL;
+        add->element = i;
+        list->next = add;
+        add->prev = list;
+        list = list->next;
+    }
+    return head;
+}
+struct ListNode *reverseList(struct ListNode *head) {
+//    struct ListNode *prev = NULL;
+//    struct ListNode *next = NULL;
+//    while (head) {
+//        next = head->next;
+//        head->next = prev;
+//        head->prev = next;
+//        prev = head;
+//        head = next;
+//    }
+//    return prev;
+    
+    
+    struct ListNode *tmp = NULL;
+    struct ListNode *cur = head;
+    while (cur) {
+        tmp = cur->prev;
+        cur->prev = cur->next;
+        cur->next = tmp;
+        cur = cur->prev; // CARE!!!
+    }
+    if (tmp) {
+        head = tmp->prev; // CARE!!!
+    }
+    return head;
+}
+void print(struct ListNode *head) {
+    struct ListNode *cur = head;
+    while (cur) {
+        if (cur->next) {
+            printf("%d->", cur->element);
+        } else {
+            printf("%d\n", cur->element);
+        }
+        cur = cur->next;
+    }
+}
+
+
 int main(int argc, const char * argv[]) {
 #if 0
     test_array_list();
@@ -432,8 +489,13 @@ int main(int argc, const char * argv[]) {
 //    test_binary_search_tree();
     
 //    test_binary_heap();
-    test_binary_heap2();
+//    test_binary_heap2();
     
+    struct ListNode *head = createList();
+    print(head);
+    printf("---------------\n");
+    head = reverseList(head);
+    print(head);
     
     return 0;
 }
