@@ -101,10 +101,13 @@
         NSLog(@"%@", key);
         Vertex *v = obj;
         NSLog(@"out-----------");
-        NSLog(@"%@", v->_outEdges);
+        if (v->_outEdges.count) {
+            NSLog(@"%@", v->_outEdges);
+        }
         NSLog(@"in------------");
-        NSLog(@"%@", v->_inEdges);
-
+        if (v->_inEdges.count) {
+            NSLog(@"%@", v->_inEdges);
+        }
     }];
     [_edges enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
         NSLog(@"%@", obj);
