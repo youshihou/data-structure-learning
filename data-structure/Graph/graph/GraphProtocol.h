@@ -11,7 +11,14 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol GraphProtocol <NSObject>
-
+@required
+- (NSInteger)edgesSize;
+- (NSInteger)verticesSize;
+- (void)addVertex:(id)value;
+- (void)addEdge:(id)from to:(id)to;
+- (void)addEdge:(id)from to:(id)to weight:(id _Nullable)weight;
+- (void)removeVertex:(id)value;
+- (void)removeEdge:(id)from to:(id)to;
 @end
 
 NS_ASSUME_NONNULL_END

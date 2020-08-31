@@ -6,16 +6,19 @@
 //  Copyright © 2020 Ankui. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "GraphProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class Edge;
+
 @interface Vertex : NSObject {
     @public
-    NSMutableSet *_inEdges;
-    NSMutableSet *_outEdges;
     id _value;
+    NSMutableSet<Edge *> *_inEdges;
+    NSMutableSet<Edge *> *_outEdges;
 }
++ (instancetype)vertexWith:(id)value;
 @end
 
 @interface Edge : NSObject {
@@ -24,10 +27,12 @@ NS_ASSUME_NONNULL_BEGIN
     Vertex *_to;
     id _weight;
 }
++ (instancetype)edgeWith:(id)from to:(id)to;
 @end
 
-@interface ListGraph : NSObject
-
+@interface ListGraph : NSObject <GraphProtocol>
++ (instancetype)graph;
+- (void)print;
 @end
 
 NS_ASSUME_NONNULL_END
