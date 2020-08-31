@@ -1,5 +1,5 @@
 //
-//  Graph.h
+//  ListGraph.h
 //  Graph
 //
 //  Created by Ankui on 8/31/20.

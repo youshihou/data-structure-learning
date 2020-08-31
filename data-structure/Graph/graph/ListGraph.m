@@ -1,5 +1,5 @@
 //
-//  Graph.m
+//  ListGraph.m
 //  Graph
 //
 //  Created by Ankui on 8/31/20.
