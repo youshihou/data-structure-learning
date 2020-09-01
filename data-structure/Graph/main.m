@@ -17,7 +17,8 @@ int main(int argc, const char * argv[]) {
         [graph addEdge:@"V2" to:@"V3" weight:@5];
         [graph addEdge:@"V3" to:@"V4" weight:@1];
         [graph addEdge:@"V0" to:@"V4" weight:@6];
-        [graph removeEdge:@"V0" to:@"V4"];
+//        [graph removeEdge:@"V0" to:@"V4"];
+        [graph removeVertex:@"V0"];
         [graph print];
     }
     return 0;

@@ -101,6 +101,7 @@
 }
 
 - (void)print {
+    NSLog(@"[Vertex]:------------------------------");
     [_vertices enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         NSLog(@"%@", key);
         Vertex *v = obj;
@@ -109,8 +110,9 @@
         NSLog(@"in------------");
         NSLog(@"%@", v->_inEdges);
     }];
+    NSLog(@"[Edge]:------------------------------");
     [_edges enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
-//        NSLog(@"%@", obj);
+        NSLog(@"%@", obj);
     }];
 }
 
@@ -169,6 +171,19 @@
     }
 }
 - (void)removeVertex:(nonnull id)value {
+    if (!value) { return; }
+    Vertex *vertex = _vertices[value];
+    if (!vertex) { return; }
+    [vertex->_outEdges enumerateObjectsUsingBlock:^(Edge *obj, BOOL *stop) {
+        [obj->_to->_inEdges removeObject:obj];
+        [_edges removeObject:obj];
+    }];
+    [vertex->_inEdges enumerateObjectsUsingBlock:^(Edge *obj, BOOL *stop) {
+        [obj->_from->_outEdges removeObject:obj];
+        [_edges removeObject:obj];
+    }];
+    [_vertices removeObjectForKey:value];
+    
     
 }
 @end
