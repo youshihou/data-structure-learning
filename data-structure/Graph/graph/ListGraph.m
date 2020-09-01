@@ -26,9 +26,11 @@
 - (BOOL)isEqual:(id)other {
     if (other == self) {
         return YES;
-    } else if (![super isEqual:other]) {
-        return NO;
-    } else {
+    }
+//    else if (![super isEqual:other]) {
+//        return NO;
+//    }
+    else {
         Vertex *v = (Vertex *)other;
         return [_value isEqual:v->_value];
     }
@@ -59,9 +61,11 @@
 - (BOOL)isEqual:(id)other {
     if (other == self) {
         return YES;
-    } else if (![super isEqual:other]) {
-        return NO;
-    } else {
+    }
+//    else if (![super isEqual:other]) {
+//        return NO;
+//    }
+    else {
         Edge *e = (Edge *)other;
         return [_from isEqual:e->_from] && [_to isEqual:e->_to];
     }
@@ -101,16 +105,12 @@
         NSLog(@"%@", key);
         Vertex *v = obj;
         NSLog(@"out-----------");
-        if (v->_outEdges.count) {
-            NSLog(@"%@", v->_outEdges);
-        }
+        NSLog(@"%@", v->_outEdges);
         NSLog(@"in------------");
-        if (v->_inEdges.count) {
-            NSLog(@"%@", v->_inEdges);
-        }
+        NSLog(@"%@", v->_inEdges);
     }];
     [_edges enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
-        NSLog(@"%@", obj);
+//        NSLog(@"%@", obj);
     }];
 }
 
@@ -155,7 +155,18 @@
     [_edges addObject:edge];
 }
 - (void)removeEdge:(nonnull id)from to:(nonnull id)to {
-    
+    if (!from) { return; }
+    Vertex *fromVertex = _vertices[from];
+    if (!fromVertex) { return; }
+    if (!to) { return; }
+    Vertex *toVertex = _vertices[to];
+    if (!toVertex) { return; }
+    Edge *edge = [Edge edgeWith:fromVertex to:toVertex];
+    if ([fromVertex->_outEdges containsObject:edge]) {
+        [fromVertex->_outEdges removeObject:edge];
+        [toVertex->_inEdges removeObject:edge];
+        [_edges removeObject:edge];
+    }
 }
 - (void)removeVertex:(nonnull id)value {
     
