@@ -19,6 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)addEdge:(id)from to:(id)to weight:(id _Nullable)weight;
 - (void)removeVertex:(id)value;
 - (void)removeEdge:(id)from to:(id)to;
+
+@optional
+- (void)bfs:(id)begin;
 @end
 
 NS_ASSUME_NONNULL_END

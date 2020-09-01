@@ -183,7 +183,26 @@
         [_edges removeObject:obj];
     }];
     [_vertices removeObjectForKey:value];
-    
-    
+}
+
+- (void)bfs:(id)begin {
+    if (!begin) { return; }
+    Vertex *vertex = _vertices[begin];
+    if (!vertex) { return; }
+    NSMutableSet *visited = [NSMutableSet set];
+    NSMutableArray *queue = [NSMutableArray array];
+    [queue addObject:vertex];
+    [visited addObject:vertex];
+    while (queue.count) {
+        Vertex *v = queue.firstObject;
+        [queue removeObjectAtIndex:0];
+        NSLog(@"%@", v->_value);
+        for (Edge *e in v->_outEdges) {
+            if (e->_to && ![visited containsObject:e->_to]) {
+                [queue addObject:e->_to];
+                [visited addObject:e->_to];
+            }
+        }
+    }
 }
 @end

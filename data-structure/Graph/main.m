@@ -17,8 +17,9 @@ void testListGraph(void) {
     [graph addEdge:@"V3" to:@"V4" weight:@1];
     [graph addEdge:@"V0" to:@"V4" weight:@6];
 //    [graph removeEdge:@"V0" to:@"V4"];
-    [graph removeVertex:@"V0"];
-    [graph print];
+//    [graph removeVertex:@"V0"];
+//    [graph print];
+    [graph bfs:@"V1"];
 }
 void testListGraph2(void) {
     ListGraph *graph = [ListGraph graph];
@@ -41,8 +42,9 @@ void testListGraph2(void) {
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-//        testListGraph();
-        testListGraph2();
+        testListGraph();
+//        testListGraph2();
+        
     }
     return 0;
 }
