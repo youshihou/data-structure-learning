@@ -8,7 +8,7 @@
 
 #import "ListGraph.h"
 
-void testListGraph(void) {
+void testDirectedListGraph(void) {
     ListGraph *graph = [ListGraph graph];
     [graph addEdge:@"V1" to:@"V0" weight:@9];
     [graph addEdge:@"V1" to:@"V2" weight:@3];
@@ -21,7 +21,7 @@ void testListGraph(void) {
 //    [graph print];
     [graph bfs:@"V1"];
 }
-void testListGraph2(void) {
+void testUndirectedListGraph(void) {
     ListGraph *graph = [ListGraph graph];
     [graph addEdge:@"V0" to:@"V1"];
     [graph addEdge:@"V1" to:@"V0"];
@@ -41,7 +41,6 @@ void testListGraph2(void) {
 }
 
 @interface GraphData : NSObject
-
 @end
 @implementation GraphData
 + (NSArray *)BFS_01 {
@@ -85,6 +84,7 @@ void testListGraph2(void) {
 }
 @end
 
+
 ListGraph* testDirectedGraph(NSArray *data) {
     ListGraph *graph = [ListGraph graph];
     for (NSArray *list in data) {
@@ -118,7 +118,6 @@ ListGraph* testUndirectedGraph(NSArray *data) {
     }
     return graph;
 }
-
 void testBfs() {
 //    ListGraph *graph = testUndirectedGraph([GraphData BFS_01]);
 //    [graph bfs:@"A"];
@@ -128,8 +127,8 @@ void testBfs() {
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-//        testListGraph();
-//        testListGraph2();
+//        testDirectedListGraph();
+//        testUndirectedListGraph();
         testBfs();
     }
     return 0;
