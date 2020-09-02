@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class Edge;
 
-@interface Vertex : NSObject {
+@interface Vertex : NSObject <NSCopying> {
     @public
     id _value;
     NSMutableSet<Edge *> *_inEdges;

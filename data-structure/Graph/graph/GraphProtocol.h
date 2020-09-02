@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @optional
 - (void)bfs:(id)begin visitor:(id<VisitorProtocol>)visitor;
 - (void)dfs:(id)begin visitor:(id<VisitorProtocol>)visitor;
+- (NSArray *)topologicalSort;
 @end
 
 NS_ASSUME_NONNULL_END

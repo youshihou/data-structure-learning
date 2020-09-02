@@ -98,6 +98,17 @@ void testUndirectedListGraph(void) {
              @[@"f", @"c"],
     ];
 }
++ (NSArray *)TOPO {
+    return @[@[@0, @2],
+             @[@1, @0],
+             @[@2, @5],
+             @[@2, @6],
+             @[@3, @1], @[@3, @5], @[@3, @7],
+             @[@5, @7],
+             @[@6, @4],
+             @[@7, @6],
+    ];
+}
 @end
 
 
@@ -164,13 +175,19 @@ void testDfs(void) {
     GraphVisitor *v = [GraphVisitor visitor];
     [graph dfs:@"a" visitor:v];
 }
+void testTopo(void) {
+    ListGraph *graph = testDirectedGraph([GraphData TOPO]);
+    NSArray *list = [graph topologicalSort];
+    NSLog(@"%@", list);
+}
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
 //        testDirectedListGraph();
 //        testUndirectedListGraph();
 //        testBfs();
-        testDfs();
+//        testDfs();
+        testTopo();
     }
     return 0;
 }

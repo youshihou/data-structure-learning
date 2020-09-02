@@ -23,6 +23,14 @@
     return v;
 }
 
+- (nonnull id)copyWithZone:(nullable NSZone *)zone {
+    Vertex *v = [self.class allocWithZone:zone];
+    v->_value = _value;
+    v->_inEdges = _inEdges;
+    v->_outEdges = _outEdges;
+    return v;
+}
+
 - (BOOL)isEqual:(id)other {
     if (other == self) {
         return YES;
@@ -50,7 +58,8 @@
     e->_to = to;
     return e;
 }
-//- (id)copyWithZone:(nullable NSZone *)zone {
+
+//- (nonnull id)copyWithZone:(nullable NSZone *)zone {
 //    Edge *e = [[self.class allocWithZone:zone] init];
 //    e->_from = _from;
 //    e->_to = _to;
@@ -298,5 +307,39 @@
             break;
         }
     }
+}
+- (NSArray *)topologicalSort {
+    NSMutableArray *list = [NSMutableArray array];
+    NSMutableArray *queue = [NSMutableArray array];
+    NSMutableDictionary *ins = [NSMutableDictionary dictionary];
+    [_vertices enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        if (obj) {
+            Vertex *v = obj;
+            NSInteger count = v->_inEdges.count;
+            if (count == 0) {
+                [queue addObject:v];
+            } else {
+                ins[v] = @(count);
+            }
+        }
+    }];
+    while (queue.count) {
+        Vertex *v = queue.firstObject;
+        [queue removeObjectAtIndex:0];
+        if (v->_value) {
+            [list addObject:v->_value];
+        }
+        for (Edge *e in v->_outEdges) {
+            if (e->_to) {
+                NSInteger toIn = [ins[e->_to] integerValue] - 1;
+                if (toIn == 0) {
+                    [queue addObject:e->_to];
+                } else {
+                    ins[e->_to] = @(toIn);
+                }
+            }
+        }
+    }
+    return [list copy];
 }
 @end
