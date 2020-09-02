@@ -11,7 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol VisitorProtocol <NSObject>
-
+@required
+- (BOOL)visit:(id)value;
 @end
 
 NS_ASSUME_NONNULL_END

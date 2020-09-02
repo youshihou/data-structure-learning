@@ -259,6 +259,7 @@
 		03A9FC7024CC79BA00FB7304 /* RBTree.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBTree.m; sourceTree = "<group>"; };
 		03BBFF7124EEC8A9008F7695 /* RadixSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RadixSort.h; sourceTree = "<group>"; };
 		03BBFF7224EEC8A9008F7695 /* RadixSort.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RadixSort.m; sourceTree = "<group>"; };
+		03C062C224FFCE020003EA1D /* VisitorProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VisitorProtocol.h; sourceTree = "<group>"; };
 		03C84D3824D853CD002E7576 /* Heap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Heap.h; sourceTree = "<group>"; };
 		03C84D3924D853CD002E7576 /* Heap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Heap.m; sourceTree = "<group>"; };
 		03E1905024D45A6E00DBFEC8 /* HashMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HashMap.h; sourceTree = "<group>"; };
@@ -450,6 +451,7 @@
 		030E0F3A24FD1E0F009201CA /* graph */ = {
 			isa = PBXGroup;
 			children = (
+				03C062C224FFCE020003EA1D /* VisitorProtocol.h */,
 				030E0F3B24FD1F56009201CA /* GraphProtocol.h */,
 				030E0F3C24FD1FA2009201CA /* ListGraph.h */,
 				030E0F3D24FD1FA2009201CA /* ListGraph.m */,

@@ -33,6 +33,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ListGraph : NSObject <GraphProtocol>
 + (instancetype)graph;
 - (void)print;
+
+
+- (void)bfs:(id)begin;
+- (void)dfs:(id)begin;
+- (void)dfs1:(id)begin;
 @end
 
 NS_ASSUME_NONNULL_END

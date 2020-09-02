@@ -185,6 +185,58 @@
     [_vertices removeObjectForKey:value];
 }
 
+
+- (void)bfs:(id)begin visitor:(id<VisitorProtocol>)visitor {
+    if (!visitor) { return; }
+    if (!begin) { return; }
+    Vertex *vertex = _vertices[begin];
+    if (!vertex) { return; }
+    NSMutableSet *visited = [NSMutableSet set];
+    NSMutableArray *queue = [NSMutableArray array];
+    [queue addObject:vertex];
+    [visited addObject:vertex];
+    while (queue.count) {
+        Vertex *v = queue.firstObject;
+        [queue removeObjectAtIndex:0];
+        if ([visitor visit:v->_value]) { return; }
+        for (Edge *e in v->_outEdges) {
+            if (e->_to && ![visited containsObject:e->_to]) {
+                [queue addObject:e->_to];
+                [visited addObject:e->_to];
+            }
+        }
+    }
+}
+- (void)dfs:(id)begin visitor:(id<VisitorProtocol>)visitor {
+    if (!visitor) { return; }
+    if (!begin) { return; }
+    Vertex *vertex = _vertices[begin];
+    if (!vertex) { return; }
+    NSMutableSet *visited = [NSMutableSet set];
+    NSMutableArray *stack = [NSMutableArray array];
+    [stack addObject:vertex];
+    [visited addObject:vertex];
+    if ([visitor visit:vertex->_value]) { return; }
+    while (stack.count) {
+        Vertex *v = stack.lastObject;
+        [stack removeLastObject];
+        for (Edge *e in v->_outEdges) {
+            if ([visited containsObject:e->_to]) { continue; } // CARE!!!
+           
+            if (e->_from) {
+                [stack addObject:e->_from];
+            }
+            if (e->_to) {
+                [stack addObject:e->_to];
+                [visited addObject:e->_to];
+                if ([visitor visit:e->_to->_value]) { return; }
+            }
+            break;
+        }
+    }
+}
+
+
 - (void)bfs:(id)begin {
     if (!begin) { return; }
     Vertex *vertex = _vertices[begin];

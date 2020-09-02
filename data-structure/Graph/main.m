@@ -134,17 +134,35 @@ ListGraph* testUndirectedGraph(NSArray *data) {
     }
     return graph;
 }
+
+@interface GraphVisitor : NSObject <VisitorProtocol>
+@end
+@implementation GraphVisitor
++ (instancetype)visitor {
+    return [[self alloc] init];
+}
+// MARK: - VisitorProtocol
+- (BOOL)visit:(id)value {
+    NSLog(@"%@", value);
+    return [value isEqual:@2];
+}
+@end
+
 void testBfs(void) {
 //    ListGraph *graph = testUndirectedGraph([GraphData BFS_01]);
 //    [graph bfs:@"A"];
     ListGraph *graph = testDirectedGraph([GraphData BFS_02]);
-    [graph bfs:@5];
+//    [graph bfs:@5];
+    GraphVisitor *v = [GraphVisitor visitor];
+    [graph bfs:@0 visitor:v];
 }
 void testDfs(void) {
 //    ListGraph *graph = testUndirectedGraph([GraphData DFS_01]);
 //    [graph dfs:@1];
     ListGraph *graph = testDirectedGraph([GraphData DFS_02]);
-    [graph dfs:@"c"];
+//    [graph dfs:@"c"];
+    GraphVisitor *v = [GraphVisitor visitor];
+    [graph dfs:@"a" visitor:v];
 }
 
 int main(int argc, const char * argv[]) {

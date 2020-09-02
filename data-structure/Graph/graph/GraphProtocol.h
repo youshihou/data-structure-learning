@@ -6,7 +6,7 @@
 //  Copyright © 2020 Ankui. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "VisitorProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -21,8 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeEdge:(id)from to:(id)to;
 
 @optional
-- (void)bfs:(id)begin;
-- (void)dfs:(id)begin;
+- (void)bfs:(id)begin visitor:(id<VisitorProtocol>)visitor;
+- (void)dfs:(id)begin visitor:(id<VisitorProtocol>)visitor;
 @end
 
 NS_ASSUME_NONNULL_END
