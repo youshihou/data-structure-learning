@@ -205,7 +205,7 @@
         }
     }
 }
-- (void)dfs:(id)begin {
+- (void)dfs1:(id)begin {
     if (!begin) { return; }
     Vertex *vertex = _vertices[begin];
     if (!vertex) { return; }
@@ -217,6 +217,33 @@
     for (Edge *e in vertex->_outEdges) {
         if (e->_to && ![visited containsObject:e->_to]) {
             [self _dfs:e->_to visited:visited];
+        }
+    }
+}
+- (void)dfs:(id)begin {
+    if (!begin) { return; }
+    Vertex *vertex = _vertices[begin];
+    if (!vertex) { return; }
+    NSMutableSet *visited = [NSMutableSet set];
+    NSMutableArray *stack = [NSMutableArray array];
+    [stack addObject:vertex];
+    [visited addObject:vertex];
+    NSLog(@"%@", vertex->_value);
+    while (stack.count) {
+        Vertex *v = stack.lastObject;
+        [stack removeLastObject];
+        for (Edge *e in v->_outEdges) {
+            if ([visited containsObject:e->_to]) { continue; } // CARE!!!
+           
+            if (e->_from) {
+                [stack addObject:e->_from];
+            }
+            if (e->_to) {
+                [stack addObject:e->_to];
+                [visited addObject:e->_to];
+                NSLog(@"%@", e->_to->_value);
+            }
+            break;
         }
     }
 }
