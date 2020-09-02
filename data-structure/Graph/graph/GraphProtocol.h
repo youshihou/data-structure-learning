@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @optional
 - (void)bfs:(id)begin;
+- (void)dfs:(id)begin;
 @end
 
 NS_ASSUME_NONNULL_END

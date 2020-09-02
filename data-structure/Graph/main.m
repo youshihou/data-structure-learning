@@ -82,6 +82,22 @@ void testUndirectedListGraph(void) {
              @[@7, @6],
     ];
 }
++ (NSArray *)DFS_01 {
+    return @[@[@0, @1],
+             @[@1, @3], @[@1, @5], @[@1, @6], @[@1, @2],
+             @[@2, @4],
+             @[@3, @7],
+    ];
+}
++ (NSArray *)DFS_02 {
+    return @[@[@"a", @"b"], @[@"a", @"e"],
+             @[@"b", @"e"],
+             @[@"c", @"b"],
+             @[@"d", @"a"],
+             @[@"e", @"c"], @[@"e", @"f"],
+             @[@"f", @"c"],
+    ];
+}
 @end
 
 
@@ -118,18 +134,25 @@ ListGraph* testUndirectedGraph(NSArray *data) {
     }
     return graph;
 }
-void testBfs() {
+void testBfs(void) {
 //    ListGraph *graph = testUndirectedGraph([GraphData BFS_01]);
 //    [graph bfs:@"A"];
     ListGraph *graph = testDirectedGraph([GraphData BFS_02]);
     [graph bfs:@5];
+}
+void testDfs(void) {
+//    ListGraph *graph = testUndirectedGraph([GraphData DFS_01]);
+//    [graph dfs:@1];
+    ListGraph *graph = testDirectedGraph([GraphData DFS_02]);
+    [graph dfs:@"c"];
 }
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
 //        testDirectedListGraph();
 //        testUndirectedListGraph();
-        testBfs();
+//        testBfs();
+        testDfs();
     }
     return 0;
 }

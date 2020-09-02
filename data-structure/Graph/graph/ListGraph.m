@@ -205,4 +205,19 @@
         }
     }
 }
+- (void)dfs:(id)begin {
+    if (!begin) { return; }
+    Vertex *vertex = _vertices[begin];
+    if (!vertex) { return; }
+    [self _dfs:vertex visited:[NSMutableSet set]];
+}
+- (void)_dfs:(Vertex *)vertex visited:(NSMutableSet *)visited {
+    NSLog(@"%@", vertex->_value);
+    [visited addObject:vertex];
+    for (Edge *e in vertex->_outEdges) {
+        if (e->_to && ![visited containsObject:e->_to]) {
+            [self _dfs:e->_to visited:visited];
+        }
+    }
+}
 @end
