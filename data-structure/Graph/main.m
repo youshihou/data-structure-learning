@@ -144,7 +144,7 @@ void testDfs(void) {
 //    ListGraph *graph = testUndirectedGraph([GraphData DFS_01]);
 //    [graph dfs:@1];
     ListGraph *graph = testDirectedGraph([GraphData DFS_02]);
-    [graph dfs:@"c"];
+    [graph dfs:@"a"];
 }
 
 int main(int argc, const char * argv[]) {
