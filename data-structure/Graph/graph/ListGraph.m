@@ -7,6 +7,7 @@
 //
 
 #import "ListGraph.h"
+#import "MinHeap.h"
 
 @implementation Vertex
 - (instancetype)init {
@@ -34,11 +35,7 @@
 - (BOOL)isEqual:(id)other {
     if (other == self) {
         return YES;
-    }
-//    else if (![super isEqual:other]) {
-//        return NO;
-//    }
-    else {
+    } else {
         Vertex *v = (Vertex *)other;
         return [_value isEqual:v->_value];
     }
@@ -50,6 +47,7 @@
     return [NSString stringWithFormat:@"%@", _value ?: @"null"];
 }
 @end
+
 
 @implementation Edge
 + (instancetype)edgeWith:(id)from to:(id)to {
@@ -67,14 +65,14 @@
 //    return e;
 //}
 
+- (EdgeInfo *)info {
+    return [EdgeInfo infoWith:_from->_value to:_to->_value weight:_weight];
+}
+
 - (BOOL)isEqual:(id)other {
     if (other == self) {
         return YES;
-    }
-//    else if (![super isEqual:other]) {
-//        return NO;
-//    }
-    else {
+    } else {
         Edge *e = (Edge *)other;
         return [_from isEqual:e->_from] && [_to isEqual:e->_to];
     }
@@ -90,12 +88,32 @@
 @end
 
 
-@interface ListGraph () {
-    NSMutableDictionary *_vertices;
-    NSMutableSet *_edges;
+@interface EdgeInfo () {
+    id _from;
+    id _to;
+    id _weight;
+}
+@end
+@implementation EdgeInfo
++ (instancetype)infoWith:(id)from to:(id)to weight:(id)weight {
+    EdgeInfo *i = [[self alloc] init];
+    i->_from = from;
+    i->_to = to;
+    i->_weight = weight;
+    return i;
+}
+- (NSString *)description {
+    return [NSString stringWithFormat:@"EdgeInfo[from = %@, to = %@, weight = %@]", _from, _to, _weight];
 }
 @end
 
+
+@interface ListGraph () {
+    NSMutableDictionary *_vertices;
+    NSMutableSet *_edges;
+    id<WeightManagerProtocol> _weightManager;
+}
+@end
 @implementation ListGraph
 - (instancetype)init {
     self = [super init];
@@ -107,6 +125,11 @@
 }
 + (instancetype)graph {
     return [[self alloc] init];
+}
++ (instancetype)graphWith:(id<WeightManagerProtocol>)manager {
+    ListGraph *graph = [self graph];
+    graph->_weightManager = manager;
+    return graph;
 }
 
 - (void)print {
@@ -341,5 +364,36 @@
         }
     }
     return [list copy];
+}
+- (NSSet *)mst {
+    return [self _prim];
+}
+- (NSSet *)_prim {
+    if (_vertices.allValues.count == 0) { return nil; }
+    NSMutableSet *set = [NSMutableSet set];
+    Vertex *v = _vertices.allValues.firstObject;
+    NSMutableSet *added = [NSMutableSet set];
+    [added addObject:v];
+    MinHeap *heap = [MinHeap heapWithSet:v->_outEdges block:^NSInteger(Edge * _Nullable e1, Edge * _Nullable e2) {
+        return [self->_weightManager copare:e2->_weight with:e1->_weight]; // CARE!!!
+    }];
+    NSInteger size = _vertices.count - 1;
+    while (!heap.isEmpty && set.count < size) {
+        Edge *edge = [heap remove];
+        if ([added containsObject:edge->_to]) { continue; }
+        EdgeInfo *info = [edge info];
+        if (info) {
+            [set addObject:info];
+        }
+        if (edge->_to) {
+            [added addObject:edge->_to];
+            [heap addAllSet:edge->_to->_outEdges];
+        }
+    }
+    
+    return [set copy];
+}
+- (NSSet *)_kruskal {
+    return nil;
 }
 @end
