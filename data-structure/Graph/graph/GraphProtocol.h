@@ -7,6 +7,7 @@
 //
 
 #import "VisitorProtocol.h"
+#import "WeightManagerProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -24,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)bfs:(id)begin visitor:(id<VisitorProtocol>)visitor;
 - (void)dfs:(id)begin visitor:(id<VisitorProtocol>)visitor;
 - (NSArray *)topologicalSort;
+- (NSSet *)mst;
 @end
 
 NS_ASSUME_NONNULL_END
