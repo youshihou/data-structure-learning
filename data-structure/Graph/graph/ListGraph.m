@@ -377,8 +377,11 @@
     MinHeap *heap = [MinHeap heapWithSet:v->_outEdges block:^NSInteger(Edge * _Nullable e1, Edge * _Nullable e2) {
         return [self->_weightManager copare:e2->_weight with:e1->_weight]; // CARE!!!
     }];
-    NSInteger size = _vertices.count - 1;
-    while (!heap.isEmpty && set.count < size) {
+    
+//    NSInteger size = _vertices.count - 1;
+//    while (!heap.isEmpty && set.count < size) {
+    NSInteger count = _vertices.count;
+    while (!heap.isEmpty && added.count < count) {
         Edge *edge = [heap remove];
         if ([added containsObject:edge->_to]) { continue; }
         EdgeInfo *info = [edge info];
