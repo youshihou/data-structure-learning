@@ -109,8 +109,37 @@ void testUndirectedListGraph(void) {
              @[@7, @6],
     ];
 }
++ (NSArray *)MST_01 {
+    return @[@[@0, @2, @2], @[@0, @4, @7],
+             @[@1, @2, @3], @[@1, @5, @1], @[@1, @6, @7],
+             @[@2, @4, @4], @[@2, @5, @3], @[@2, @6, @6],
+             @[@3, @7, @9],
+             @[@4, @6, @8],
+             @[@5, @6, @4], @[@5, @7, @5],
+    ];
+}
++ (NSArray *)MST_02 {
+    return @[@[@"A", @"B", @17], @[@"A", @"F", @1], @[@"A", @"E", @16],
+             @[@"B", @"C", @6], @[@"B", @"D", @5], @[@"B", @"F", @11],
+             @[@"C", @"D", @10],
+             @[@"D", @"E", @4], @[@"D", @"F", @14],
+             @[@"E", @"F", @33],
+    ];
+}
 @end
 
+
+
+@interface GraphWeightManager : NSObject <WeightManagerProtocol>
+@end
+@implementation GraphWeightManager
+- (NSInteger)copare:(nonnull id)e1 with:(nonnull id)e2 {
+    return [e1 compare:e2];
+}
+- (nonnull id)add:(nonnull id)e1 with:(nonnull id)e2 {
+    return @([e1 integerValue] + [e2 integerValue]);
+}
+@end
 
 ListGraph* testDirectedGraph(NSArray *data) {
     ListGraph *graph = [ListGraph graph];
@@ -126,7 +155,9 @@ ListGraph* testDirectedGraph(NSArray *data) {
     return graph;
 }
 ListGraph* testUndirectedGraph(NSArray *data) {
-    ListGraph *graph = [ListGraph graph];
+//    ListGraph *graph = [ListGraph graph];
+    GraphWeightManager *manager = [[GraphWeightManager alloc] init];
+    ListGraph *graph = [ListGraph graphWith:manager];
     for (NSArray *list in data) {
         if (list.count == 1) {
             [graph addVertex:list.firstObject];
@@ -159,6 +190,7 @@ ListGraph* testUndirectedGraph(NSArray *data) {
 }
 @end
 
+
 void testBfs(void) {
 //    ListGraph *graph = testUndirectedGraph([GraphData BFS_01]);
 //    [graph bfs:@"A"];
@@ -180,6 +212,13 @@ void testTopo(void) {
     NSArray *list = [graph topologicalSort];
     NSLog(@"%@", list);
 }
+void testMst(void) {
+    ListGraph *graph = testUndirectedGraph([GraphData MST_01]);
+    NSSet *set = [graph mst];
+    for (EdgeInfo *i in set) {
+        NSLog(@"%@", i);
+    }
+}
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -187,7 +226,8 @@ int main(int argc, const char * argv[]) {
 //        testUndirectedListGraph();
 //        testBfs();
 //        testDfs();
-        testTopo();
+//        testTopo();
+        testMst();
     }
     return 0;
 }
