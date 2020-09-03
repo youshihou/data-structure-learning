@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)vertexWith:(id)value;
 @end
 
+
 @interface Edge : NSObject {
     @public
     Vertex *_from;
@@ -30,8 +31,15 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)edgeWith:(id)from to:(id)to;
 @end
 
+
+@interface EdgeInfo : NSObject 
++ (instancetype)infoWith:(id)from to:(id)to weight:(id)weight;
+@end
+
+
 @interface ListGraph : NSObject <GraphProtocol>
 + (instancetype)graph;
++ (instancetype)graphWith:(id<WeightManagerProtocol>)manager;
 - (void)print;
 
 
