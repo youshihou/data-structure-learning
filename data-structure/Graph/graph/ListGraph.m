@@ -8,6 +8,7 @@
 
 #import "ListGraph.h"
 #import "MinHeap.h"
+#import "UnionFind.h"
 
 @implementation Vertex
 - (instancetype)init {
@@ -17,6 +18,9 @@
         _outEdges = [NSMutableSet set];
     }
     return self;
+}
+- (void)dealloc {
+    NSLog(@"%s", __func__);
 }
 + (instancetype)vertexWith:(id)value {
     Vertex *v = [[self alloc] init];
@@ -50,6 +54,9 @@
 
 
 @implementation Edge
+- (void)dealloc {
+    NSLog(@"%s", __func__);
+}
 + (instancetype)edgeWith:(id)from to:(id)to {
     Edge *e = [[self alloc] init];
     e->_from = from;
@@ -95,6 +102,9 @@
 }
 @end
 @implementation EdgeInfo
+- (void)dealloc {
+    NSLog(@"%s", __func__);
+}
 + (instancetype)infoWith:(id)from to:(id)to weight:(id)weight {
     EdgeInfo *i = [[self alloc] init];
     i->_from = from;
@@ -122,6 +132,9 @@
         _edges = [NSMutableSet set];
     }
     return self;
+}
+- (void)dealloc {
+    NSLog(@"%s", __func__);
 }
 + (instancetype)graph {
     return [[self alloc] init];
@@ -366,7 +379,7 @@
     return [list copy];
 }
 - (NSSet *)mst {
-    return [self _prim];
+    return [self _kruskal];//[self _prim];
 }
 - (NSSet *)_prim {
     if (_vertices.allValues.count == 0) { return nil; }
@@ -393,10 +406,28 @@
             [heap addAllSet:edge->_to->_outEdges];
         }
     }
-    
     return [set copy];
 }
 - (NSSet *)_kruskal {
-    return nil;
+    if (_vertices.count == 0) { return nil; }
+    UnionFind *uf = [UnionFind unionFind];
+    [_vertices enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        [uf makeSet:obj];
+    }];
+    MinHeap *heap = [MinHeap heapWithSet:_edges block:^NSInteger(Edge * _Nullable e1, Edge * _Nullable e2) {
+        return [self->_weightManager copare:e2->_weight with:e1->_weight];
+    }];
+    NSMutableSet *set = [NSMutableSet set];
+    NSInteger size = _vertices.count - 1;
+    while (!heap.isEmpty && set.count < size) {
+        Edge *edge = [heap remove];
+        if ([uf isSameWith:edge->_from v2:edge->_to]) { continue; }
+        EdgeInfo *info = [edge info];
+        if (info) {
+            [set addObject:info];
+        }
+        [uf unionWith:edge->_from v2:edge->_to];
+    }
+    return [set copy];
 }
 @end
