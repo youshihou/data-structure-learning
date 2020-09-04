@@ -15,7 +15,6 @@
     NSMutableArray *_elements;
 }
 @end
-
 @implementation MinHeap
 
 static const NSUInteger DEFAULT_CAPACITY = 10;

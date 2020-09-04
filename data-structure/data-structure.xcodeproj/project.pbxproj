@@ -58,6 +58,7 @@
 		039DF37924D6997400FCB384 /* LinkedHashSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 039DF37824D6997400FCB384 /* LinkedHashSet.m */; };
 		039DF37E24D6F39700FCB384 /* BinaryHeap.m in Sources */ = {isa = PBXBuildFile; fileRef = 039DF37D24D6F39700FCB384 /* BinaryHeap.m */; };
 		039DF38624D702CA00FCB384 /* binary_heap.c in Sources */ = {isa = PBXBuildFile; fileRef = 039DF38424D702CA00FCB384 /* binary_heap.c */; };
+		03A318C725027A6A003B61B2 /* UnionFind.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A318C625027A6A003B61B2 /* UnionFind.m */; };
 		03A8337224E8E44100471BF7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A8337124E8E44100471BF7 /* main.m */; };
 		03A8337824E8E46700471BF7 /* Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A8337724E8E46700471BF7 /* Sort.m */; };
 		03A8337B24E8E68D00471BF7 /* SelectionSort.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A8337A24E8E68D00471BF7 /* SelectionSort.m */; };
@@ -240,6 +241,8 @@
 		039DF37D24D6F39700FCB384 /* BinaryHeap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BinaryHeap.m; sourceTree = "<group>"; };
 		039DF38424D702CA00FCB384 /* binary_heap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = binary_heap.c; sourceTree = "<group>"; };
 		039DF38524D702CA00FCB384 /* binary_heap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = binary_heap.h; sourceTree = "<group>"; };
+		03A318C525027A6A003B61B2 /* UnionFind.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnionFind.h; sourceTree = "<group>"; };
+		03A318C625027A6A003B61B2 /* UnionFind.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnionFind.m; sourceTree = "<group>"; };
 		03A7605B24ACB4A500940BC7 /* common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
 		03A8336F24E8E44100471BF7 /* Sort */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Sort; sourceTree = BUILT_PRODUCTS_DIR; };
 		03A8337124E8E44100471BF7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -460,6 +463,8 @@
 				030E0F3B24FD1F56009201CA /* GraphProtocol.h */,
 				035435082501238F00632C30 /* MinHeap.h */,
 				035435092501238F00632C30 /* MinHeap.m */,
+				03A318C525027A6A003B61B2 /* UnionFind.h */,
+				03A318C625027A6A003B61B2 /* UnionFind.m */,
 				030E0F3C24FD1FA2009201CA /* ListGraph.h */,
 				030E0F3D24FD1FA2009201CA /* ListGraph.m */,
 			);
@@ -916,6 +921,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03A318C725027A6A003B61B2 /* UnionFind.m in Sources */,
 				0354350A2501238F00632C30 /* MinHeap.m in Sources */,
 				030E0F3E24FD1FA2009201CA /* ListGraph.m in Sources */,
 				030E0F3624FD1DFF009201CA /* main.m in Sources */,
