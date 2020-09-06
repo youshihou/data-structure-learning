@@ -232,7 +232,10 @@ void testSp(void) {
 //    ListGraph *graph = testDirectedGraph([GraphData SP]);
     ListGraph *graph = testUndirectedGraph([GraphData SP]);
     NSDictionary *sp = [graph shortestPath:@"A"];
-    NSLog(@"%@", sp);
+//    NSLog(@"%@", sp);
+    [sp enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        NSLog(@"%@ - %@", key, obj);
+    }];
 }
 
 int main(int argc, const char * argv[]) {

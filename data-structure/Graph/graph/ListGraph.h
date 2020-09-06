@@ -37,6 +37,15 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
+@interface PathInfo : NSObject {
+    @public
+    id _weight;
+    NSMutableArray *_edgeInfos;
+}
++ (instancetype)path;
+@end
+
+
 @interface ListGraph : NSObject <GraphProtocol>
 + (instancetype)graph;
 + (instancetype)graphWith:(id<WeightManagerProtocol>)manager;

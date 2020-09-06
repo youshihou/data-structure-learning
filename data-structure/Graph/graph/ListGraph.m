@@ -113,7 +113,27 @@
     return i;
 }
 - (NSString *)description {
-    return [NSString stringWithFormat:@"EdgeInfo[from = %@, to = %@, weight = %@]", _from, _to, _weight];
+    return [NSString stringWithFormat:@"EdgeInfo [from = %@, to = %@, weight = %@]", _from, _to, _weight];
+}
+@end
+
+
+@implementation PathInfo
+- (void)dealloc {
+    NSLog(@"%s", __func__);
+}
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _edgeInfos = [NSMutableArray array];
+    }
+    return self;
+}
++ (instancetype)path {
+    return [[self alloc] init];
+}
+- (NSString *)description {
+    return [NSString stringWithFormat:@"PathInfo [weight = %@, edgeInfos = %@]", _weight, _edgeInfos];
 }
 @end
 
@@ -431,7 +451,7 @@
     }
     return [set copy];
 }
-- (NSDictionary *)shortestPath:(id)begin {
+- (NSDictionary *)shortestPath1:(id)begin {
     if (!begin) { return nil; }
     Vertex *vertex = _vertices[begin];
     if (!vertex) { return nil; }
@@ -466,18 +486,72 @@
             }            
         }
     }
-    [selected removeObjectForKey:vertex];
+    [selected removeObjectForKey:begin];
     return [selected copy];
 }
-- (Vertex *)_getMinPath:(NSDictionary<Vertex *, id> *)paths {
+- (NSDictionary *)shortestPath:(id)begin {
+    if (!begin) { return nil; }
+    Vertex *vertex = _vertices[begin];
+    if (!vertex) { return nil; }
+    NSMutableDictionary<id, PathInfo *> *selected = [NSMutableDictionary dictionary];
+    NSMutableDictionary<Vertex *, PathInfo *> *paths = [NSMutableDictionary dictionary];
+    for (Edge *edge in vertex->_outEdges) {
+        if (edge->_to) {
+            PathInfo *path = [PathInfo path];
+            path->_weight = edge->_weight;
+            EdgeInfo *info = [edge info];
+            if (info) {
+                [path->_edgeInfos addObject:info];
+            }
+            paths[edge->_to] = path;
+        }
+    }
+    while (paths.count) {
+        Vertex *minVertext = [self _getMinPath:paths];
+        id key = minVertext->_value;
+        PathInfo *value = nil;
+        if (key) {
+            value = paths[minVertext];
+            if (value) {
+                selected[key] = value;
+            }
+        }
+        [paths removeObjectForKey:minVertext];
+        for (Edge *edge in minVertext->_outEdges) {
+            if (edge->_to) {
+                if (edge->_to->_value) {
+                    if ([selected.allKeys containsObject:edge->_to->_value]) { continue; }
+                }
+                id newWeight = [_weightManager add:value->_weight with:edge->_weight];
+                PathInfo *oldPath = paths[edge->_to];
+                if (!oldPath || [_weightManager compare:newWeight with:oldPath->_weight] < 0) {
+                    PathInfo *path = [PathInfo path];
+                    path->_weight = newWeight;
+                    [path->_edgeInfos addObjectsFromArray:value->_edgeInfos];
+                    EdgeInfo *info = [edge info];
+                    if (info) {
+                        [path->_edgeInfos addObject:info];
+                    }
+                    paths[edge->_to] = path;
+                }
+            }
+        }
+    }
+    [selected removeObjectForKey:begin];
+    return [selected copy];
+}
+
+- (Vertex *)_getMinPath:(NSDictionary<Vertex *, PathInfo *> *)paths {
     __block Vertex *minVertex = nil;
-    __block id minWeight = nil;
-    [paths enumerateKeysAndObjectsUsingBlock:^(Vertex *key, id obj, BOOL *stop) {
-        if (!minWeight || [_weightManager compare:obj with:minWeight] < 0) {
-            minWeight = obj;
+    __block PathInfo * minWeight = nil;
+    [paths enumerateKeysAndObjectsUsingBlock:^(Vertex *key, PathInfo *obj, BOOL *stop) {
+        if (!minWeight || [_weightManager compare:obj->_weight with:minWeight->_weight] < 0) {
             minVertex = key;
+            minWeight = obj;
         }
     }];
     return minVertex;
 }
+
+
 @end
