@@ -490,6 +490,9 @@
     return [selected copy];
 }
 - (NSDictionary *)shortestPath:(id)begin {
+    return [self _dijkstra:begin];
+}
+- (NSDictionary *)_dijkstra:(id)begin {
     if (!begin) { return nil; }
     Vertex *vertex = _vertices[begin];
     if (!vertex) { return nil; }
