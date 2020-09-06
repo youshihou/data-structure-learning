@@ -524,16 +524,17 @@
                 }
                 id newWeight = [_weightManager add:value->_weight with:edge->_weight];
                 PathInfo *oldPath = paths[edge->_to];
-                if (!oldPath || [_weightManager compare:newWeight with:oldPath->_weight] < 0) {
-                    PathInfo *path = [PathInfo path];
-                    path->_weight = newWeight;
-                    [path->_edgeInfos addObjectsFromArray:value->_edgeInfos];
-                    EdgeInfo *info = [edge info];
-                    if (info) {
-                        [path->_edgeInfos addObject:info];
-                    }
-                    paths[edge->_to] = path;
+                if (oldPath && [_weightManager compare:newWeight with:oldPath->_weight] >= 0) { continue; }
+                if (oldPath) {
+                    [oldPath->_edgeInfos removeAllObjects];
+                } else {
+                    oldPath = [PathInfo path];
+                    paths[edge->_to] = oldPath;
                 }
+                oldPath->_weight = newWeight;
+                [oldPath->_edgeInfos addObjectsFromArray:value->_edgeInfos];
+                EdgeInfo *info = [edge info];
+                if (info) { [oldPath->_edgeInfos addObject:info]; }
             }
         }
     }
