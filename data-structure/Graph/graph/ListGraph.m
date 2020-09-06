@@ -379,7 +379,8 @@
     return [list copy];
 }
 - (NSSet *)mst {
-    return [self _kruskal];//[self _prim];
+//    return [self _kruskal];//[self _prim];
+    return arc4random() ? [self _prim] : [self _kruskal];
 }
 - (NSSet *)_prim {
     if (_vertices.allValues.count == 0) { return nil; }
@@ -429,5 +430,14 @@
         [uf unionWith:edge->_from v2:edge->_to];
     }
     return [set copy];
+}
+- (NSDictionary *)shortestPath:(id)begin {
+    if (!begin) { return nil; }
+    Vertex *vertex = _vertices[begin];
+    if (!vertex) { return nil; }
+    NSMutableDictionary *paths = [NSMutableDictionary dictionary];
+    
+    
+    return [paths copy];
 }
 @end

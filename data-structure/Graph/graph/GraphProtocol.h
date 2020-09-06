@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)dfs:(id)begin visitor:(id<VisitorProtocol>)visitor;
 - (NSArray *)topologicalSort;
 - (NSSet *)mst;
+- (NSDictionary *)shortestPath:(id)begin;
 @end
 
 NS_ASSUME_NONNULL_END
