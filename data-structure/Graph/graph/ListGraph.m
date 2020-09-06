@@ -508,40 +508,23 @@
     }
     while (paths.count) {
         Vertex *minVertext = [self _getMinPath:paths];
-        id key = minVertext->_value;
         PathInfo *value = nil;
-        if (key) {
-            value = paths[minVertext];
-            if (value) {
-                selected[key] = value;
-            }
-        }
+        if (minVertext) { value = paths[minVertext]; }
+        id key = minVertext->_value;
+        if (key) { selected[key] = value; }
         [paths removeObjectForKey:minVertext];
         for (Edge *edge in minVertext->_outEdges) {
             if (edge->_to) {
                 if (edge->_to->_value) {
                     if ([selected.allKeys containsObject:edge->_to->_value]) { continue; }
                 }
-                id newWeight = [_weightManager add:value->_weight with:edge->_weight];
-                PathInfo *oldPath = paths[edge->_to];
-                if (oldPath && [_weightManager compare:newWeight with:oldPath->_weight] >= 0) { continue; }
-                if (oldPath) {
-                    [oldPath->_edgeInfos removeAllObjects];
-                } else {
-                    oldPath = [PathInfo path];
-                    paths[edge->_to] = oldPath;
-                }
-                oldPath->_weight = newWeight;
-                [oldPath->_edgeInfos addObjectsFromArray:value->_edgeInfos];
-                EdgeInfo *info = [edge info];
-                if (info) { [oldPath->_edgeInfos addObject:info]; }
+                [self _relax:edge fromPath:value paths:paths];
             }
         }
     }
     [selected removeObjectForKey:begin];
     return [selected copy];
 }
-
 - (Vertex *)_getMinPath:(NSDictionary<Vertex *, PathInfo *> *)paths {
     __block Vertex *minVertex = nil;
     __block PathInfo * minWeight = nil;
@@ -553,6 +536,20 @@
     }];
     return minVertex;
 }
-
+- (void)_relax:(Edge *)edge fromPath:(PathInfo *)fromPath paths:(NSMutableDictionary<Vertex *, PathInfo *> *)paths {
+    id newWeight = [_weightManager add:fromPath->_weight with:edge->_weight];
+    PathInfo *oldPath = paths[edge->_to];
+    if (oldPath && [_weightManager compare:newWeight with:oldPath->_weight] >= 0) { return;; }
+    if (oldPath) {
+        [oldPath->_edgeInfos removeAllObjects];
+    } else {
+        oldPath = [PathInfo path];
+        paths[edge->_to] = oldPath;
+    }
+    oldPath->_weight = newWeight;
+    [oldPath->_edgeInfos addObjectsFromArray:fromPath->_edgeInfos];
+    EdgeInfo *info = [edge info];
+    if (info) { [oldPath->_edgeInfos addObject:info]; }
+}
 
 @end
