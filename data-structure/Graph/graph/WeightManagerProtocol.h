@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol WeightManagerProtocol <NSObject>
 @required
-- (NSInteger)copare:(id)e1 with:(id)e2;
+- (NSInteger)compare:(id)e1 with:(id)e2;
 - (id)add:(id)e1 with:(id)e2;
 @end
 

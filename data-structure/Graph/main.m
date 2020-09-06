@@ -126,6 +126,13 @@ void testUndirectedListGraph(void) {
              @[@"E", @"F", @33],
     ];
 }
++ (NSArray *)SP {
+    return @[@[@"A", @"B", @10], @[@"A", @"D", @30], @[@"A", @"E", @100],
+             @[@"B", @"C", @50],
+             @[@"C", @"E", @10],
+             @[@"D", @"C", @20], @[@"D", @"E", @60],
+    ];
+}
 @end
 
 
@@ -133,7 +140,7 @@ void testUndirectedListGraph(void) {
 @interface GraphWeightManager : NSObject <WeightManagerProtocol>
 @end
 @implementation GraphWeightManager
-- (NSInteger)copare:(nonnull id)e1 with:(nonnull id)e2 {
+- (NSInteger)compare:(nonnull id)e1 with:(nonnull id)e2 {
     return [e1 compare:e2];
 }
 - (nonnull id)add:(nonnull id)e1 with:(nonnull id)e2 {
@@ -142,7 +149,9 @@ void testUndirectedListGraph(void) {
 @end
 
 ListGraph* testDirectedGraph(NSArray *data) {
-    ListGraph *graph = [ListGraph graph];
+//    ListGraph *graph = [ListGraph graph];
+    GraphWeightManager *manager = [[GraphWeightManager alloc] init];
+    ListGraph *graph = [ListGraph graphWith:manager];
     for (NSArray *list in data) {
         if (list.count == 1) {
             [graph addVertex:list.firstObject];
@@ -219,6 +228,12 @@ void testMst(void) {
         NSLog(@"%@", i);
     }
 }
+void testSp(void) {
+//    ListGraph *graph = testDirectedGraph([GraphData SP]);
+    ListGraph *graph = testUndirectedGraph([GraphData SP]);
+    NSDictionary *sp = [graph shortestPath:@"A"];
+    NSLog(@"%@", sp);
+}
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -227,7 +242,8 @@ int main(int argc, const char * argv[]) {
 //        testBfs();
 //        testDfs();
 //        testTopo();
-        testMst();
+//        testMst();
+        testSp();
     }
     return 0;
 }

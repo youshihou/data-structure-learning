@@ -389,7 +389,7 @@
     NSMutableSet *added = [NSMutableSet set];
     [added addObject:v];
     MinHeap *heap = [MinHeap heapWithSet:v->_outEdges block:^NSInteger(Edge * _Nullable e1, Edge * _Nullable e2) {
-        return [self->_weightManager copare:e2->_weight with:e1->_weight]; // CARE!!!
+        return [self->_weightManager compare:e2->_weight with:e1->_weight]; // CARE!!!
     }];
     
 //    NSInteger size = _vertices.count - 1;
@@ -416,7 +416,7 @@
         [uf makeSet:obj];
     }];
     MinHeap *heap = [MinHeap heapWithSet:_edges block:^NSInteger(Edge * _Nullable e1, Edge * _Nullable e2) {
-        return [self->_weightManager copare:e2->_weight with:e1->_weight];
+        return [self->_weightManager compare:e2->_weight with:e1->_weight];
     }];
     NSMutableSet *set = [NSMutableSet set];
     NSInteger size = _vertices.count - 1;
@@ -435,9 +435,49 @@
     if (!begin) { return nil; }
     Vertex *vertex = _vertices[begin];
     if (!vertex) { return nil; }
+    NSMutableDictionary *selected = [NSMutableDictionary dictionary];
     NSMutableDictionary *paths = [NSMutableDictionary dictionary];
-    
-    
-    return [paths copy];
+    for (Edge *edge in vertex->_outEdges) {
+        if (edge->_to) {
+            paths[edge->_to] = edge->_weight;
+        }
+    }
+    while (paths.count) {
+        Vertex *minVertext = [self _getMinPath:paths];
+        id key = minVertext->_value;
+        id value = nil;
+        if (key) {
+            value = paths[minVertext];
+            if (value) {
+                selected[key] = value;
+            }
+        }
+        [paths removeObjectForKey:minVertext];
+        for (Edge *edge in minVertext->_outEdges) {
+            if (edge->_to) {
+                if (edge->_to->_value) {
+                    if ([selected.allKeys containsObject:edge->_to->_value]) { continue; }
+                }
+                id new = [_weightManager add:value with:edge->_weight];
+                id old = paths[edge->_to];
+                if (!old || [_weightManager compare:new with:old] < 0) {
+                    paths[edge->_to] = new;
+                }
+            }            
+        }
+    }
+    [selected removeObjectForKey:vertex];
+    return [selected copy];
+}
+- (Vertex *)_getMinPath:(NSDictionary<Vertex *, id> *)paths {
+    __block Vertex *minVertex = nil;
+    __block id minWeight = nil;
+    [paths enumerateKeysAndObjectsUsingBlock:^(Vertex *key, id obj, BOOL *stop) {
+        if (!minWeight || [_weightManager compare:obj with:minWeight] < 0) {
+            minWeight = obj;
+            minVertex = key;
+        }
+    }];
+    return minVertex;
 }
 @end
