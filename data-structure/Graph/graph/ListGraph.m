@@ -573,13 +573,25 @@
             }
         }
     }
+
+    for (Edge *edge in _edges) {
+        if (edge->_from->_value) {
+            PathInfo *fromPath = selected[edge->_from->_value];
+            if (!fromPath) { continue; }
+            if ([self _relaxForBellmanFold:edge fromPath:fromPath paths:selected]) {
+                NSLog(@"have negative weight ring");
+                return nil;
+            }
+        }
+    }
+
     [selected removeObjectForKey:begin];
     return [selected copy];
 }
-- (void)_relaxForBellmanFold:(Edge *)edge fromPath:(PathInfo *)fromPath paths:(NSMutableDictionary<id, PathInfo *> *)paths {
+- (BOOL)_relaxForBellmanFold:(Edge *)edge fromPath:(PathInfo *)fromPath paths:(NSMutableDictionary<id, PathInfo *> *)paths {
     id newWeight = [_weightManager add:fromPath->_weight with:edge->_weight];
     PathInfo *oldPath = paths[edge->_to->_value];
-    if (oldPath && [_weightManager compare:newWeight with:oldPath->_weight] >= 0) { return;; }
+    if (oldPath && [_weightManager compare:newWeight with:oldPath->_weight] >= 0) { return NO; }
     if (oldPath) {
         [oldPath->_edgeInfos removeAllObjects];
     } else {
@@ -590,7 +602,6 @@
     [oldPath->_edgeInfos addObjectsFromArray:fromPath->_edgeInfos];
     EdgeInfo *info = [edge info];
     if (info) { [oldPath->_edgeInfos addObject:info]; }
+    return YES;
 }
-
-
 @end

@@ -133,6 +133,19 @@ void testUndirectedListGraph(void) {
              @[@"D", @"C", @20], @[@"D", @"E", @60],
     ];
 }
++ (NSArray *)NEGATIVE_WEIGHT1 {
+    return @[@[@"A", @"B", @-1], @[@"A", @"C", @4],
+             @[@"B", @"C", @3], @[@"B", @"D", @2], @[@"B", @"E", @2],
+             @[@"D", @"B", @1], @[@"D", @"C", @5],
+             @[@"E", @"D", @-3],
+    ];
+}
++ (NSArray *)NEGATIVE_WEIGHT2 {
+    return @[@[@0, @1, @-1],
+             @[@1, @2, @7],
+             @[@1, @0, @-2],
+    ];
+}
 @end
 
 
@@ -233,9 +246,11 @@ void testMst(void) {
 }
 void testSp(void) {
 //    ListGraph *graph = testDirectedGraph([GraphData SP]);
-    ListGraph *graph = testUndirectedGraph([GraphData SP]);
-    NSDictionary *sp = [graph shortestPath:@"A"];
-//    NSLog(@"%@", sp);
+//    ListGraph *graph = testUndirectedGraph([GraphData SP]);
+//    ListGraph *graph = testDirectedGraph([GraphData NEGATIVE_WEIGHT1]);
+//    NSDictionary *sp = [graph shortestPath:@"A"];
+    ListGraph *graph = testDirectedGraph([GraphData NEGATIVE_WEIGHT2]);
+    NSDictionary *sp = [graph shortestPath:@0];
     [sp enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         NSLog(@"%@ - %@", key, obj);
     }];
