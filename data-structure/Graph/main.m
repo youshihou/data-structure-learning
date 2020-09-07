@@ -245,12 +245,12 @@ void testMst(void) {
     }
 }
 void testSp(void) {
-//    ListGraph *graph = testDirectedGraph([GraphData SP]);
+    ListGraph *graph = testDirectedGraph([GraphData SP]);
 //    ListGraph *graph = testUndirectedGraph([GraphData SP]);
 //    ListGraph *graph = testDirectedGraph([GraphData NEGATIVE_WEIGHT1]);
-//    NSDictionary *sp = [graph shortestPath:@"A"];
-    ListGraph *graph = testDirectedGraph([GraphData NEGATIVE_WEIGHT2]);
-    NSDictionary *sp = [graph shortestPath:@0];
+    NSDictionary *sp = [graph shortestPath:@"A"];
+//    ListGraph *graph = testDirectedGraph([GraphData NEGATIVE_WEIGHT2]);
+//    NSDictionary *sp = [graph shortestPath:@0];
     [sp enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         NSLog(@"%@ - %@", key, obj);
     }];

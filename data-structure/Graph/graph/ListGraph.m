@@ -132,6 +132,11 @@
 + (instancetype)path {
     return [[self alloc] init];
 }
++ (instancetype)pathWith:(id)weight {
+    PathInfo *path = [self path];
+    path->_weight = weight;
+    return path;
+}
 - (NSString *)description {
     return [NSString stringWithFormat:@"PathInfo [weight = %@, edgeInfos = %@]", _weight, _edgeInfos];
 }
@@ -490,8 +495,8 @@
     return [selected copy];
 }
 - (NSDictionary *)shortestPath:(id)begin {
-    return [self _bellmanFold:begin];
-//    return [self _dijkstra:begin];
+//    return [self _bellmanFold:begin];
+    return [self _dijkstra:begin];
 }
 - (NSDictionary *)_dijkstra:(id)begin {
     if (!begin) { return nil; }
@@ -499,17 +504,7 @@
     if (!vertex) { return nil; }
     NSMutableDictionary<id, PathInfo *> *selected = [NSMutableDictionary dictionary];
     NSMutableDictionary<Vertex *, PathInfo *> *paths = [NSMutableDictionary dictionary];
-    for (Edge *edge in vertex->_outEdges) {
-        if (edge->_to) {
-            PathInfo *path = [PathInfo path];
-            path->_weight = edge->_weight;
-            EdgeInfo *info = [edge info];
-            if (info) {
-                [path->_edgeInfos addObject:info];
-            }
-            paths[edge->_to] = path;
-        }
-    }
+    paths[vertex] = [PathInfo pathWith:[_weightManager zero]];
     while (paths.count) {
         Vertex *minVertext = [self _getMinPath:paths];
         PathInfo *value = nil;
@@ -560,9 +555,7 @@
     Vertex *vertex = _vertices[begin];
     if (!vertex) { return nil; }
     NSMutableDictionary<id, PathInfo *> *selected = [NSMutableDictionary dictionary];
-    PathInfo *path = [PathInfo path];
-    path->_weight = [_weightManager zero];
-    selected[begin] = path;
+    selected[begin] = [PathInfo pathWith:[_weightManager zero]];
     NSInteger count = _vertices.count - 1;
     for (NSInteger i = 0; i < count; i++) {
         for (Edge *edge in _edges) {
@@ -579,7 +572,7 @@
             PathInfo *fromPath = selected[edge->_from->_value];
             if (!fromPath) { continue; }
             if ([self _relaxForBellmanFold:edge fromPath:fromPath paths:selected]) {
-                NSLog(@"have negative weight ring");
+                NSLog(@"Have negative weight ring!");
                 return nil;
             }
         }

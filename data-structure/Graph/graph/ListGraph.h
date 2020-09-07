@@ -43,6 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
     NSMutableArray *_edgeInfos;
 }
 + (instancetype)path;
++ (instancetype)pathWith:(id)weight;
 @end
 
 
