@@ -146,6 +146,9 @@ void testUndirectedListGraph(void) {
 - (nonnull id)add:(nonnull id)e1 with:(nonnull id)e2 {
     return @([e1 integerValue] + [e2 integerValue]);
 }
+- (nonnull id)zero {
+    return @0;
+}
 @end
 
 ListGraph* testDirectedGraph(NSArray *data) {

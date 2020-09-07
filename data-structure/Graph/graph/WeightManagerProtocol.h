@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @required
 - (NSInteger)compare:(id)e1 with:(id)e2;
 - (id)add:(id)e1 with:(id)e2;
+- (id)zero;
 @end
 
 NS_ASSUME_NONNULL_END

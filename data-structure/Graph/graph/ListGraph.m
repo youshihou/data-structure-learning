@@ -490,7 +490,8 @@
     return [selected copy];
 }
 - (NSDictionary *)shortestPath:(id)begin {
-    return [self _dijkstra:begin];
+    return [self _bellmanFold:begin];
+//    return [self _dijkstra:begin];
 }
 - (NSDictionary *)_dijkstra:(id)begin {
     if (!begin) { return nil; }
@@ -521,7 +522,7 @@
                 if (edge->_to->_value) {
                     if ([selected.allKeys containsObject:edge->_to->_value]) { continue; }
                 }
-                [self _relax:edge fromPath:value paths:paths];
+                [self _relaxForDijkstra:edge fromPath:value paths:paths];
             }
         }
     }
@@ -539,7 +540,7 @@
     }];
     return minVertex;
 }
-- (void)_relax:(Edge *)edge fromPath:(PathInfo *)fromPath paths:(NSMutableDictionary<Vertex *, PathInfo *> *)paths {
+- (void)_relaxForDijkstra:(Edge *)edge fromPath:(PathInfo *)fromPath paths:(NSMutableDictionary<Vertex *, PathInfo *> *)paths {
     id newWeight = [_weightManager add:fromPath->_weight with:edge->_weight];
     PathInfo *oldPath = paths[edge->_to];
     if (oldPath && [_weightManager compare:newWeight with:oldPath->_weight] >= 0) { return;; }
@@ -554,5 +555,42 @@
     EdgeInfo *info = [edge info];
     if (info) { [oldPath->_edgeInfos addObject:info]; }
 }
+- (NSDictionary *)_bellmanFold:(id)begin {
+    if (!begin) { return nil; }
+    Vertex *vertex = _vertices[begin];
+    if (!vertex) { return nil; }
+    NSMutableDictionary<id, PathInfo *> *selected = [NSMutableDictionary dictionary];
+    PathInfo *path = [PathInfo path];
+    path->_weight = [_weightManager zero];
+    selected[begin] = path;
+    NSInteger count = _vertices.count - 1;
+    for (NSInteger i = 0; i < count; i++) {
+        for (Edge *edge in _edges) {
+            if (edge->_from->_value) {
+                PathInfo *fromPath = selected[edge->_from->_value];
+                if (!fromPath) { continue; }
+                [self _relaxForBellmanFold:edge fromPath:fromPath paths:selected];
+            }
+        }
+    }
+    [selected removeObjectForKey:begin];
+    return [selected copy];
+}
+- (void)_relaxForBellmanFold:(Edge *)edge fromPath:(PathInfo *)fromPath paths:(NSMutableDictionary<id, PathInfo *> *)paths {
+    id newWeight = [_weightManager add:fromPath->_weight with:edge->_weight];
+    PathInfo *oldPath = paths[edge->_to->_value];
+    if (oldPath && [_weightManager compare:newWeight with:oldPath->_weight] >= 0) { return;; }
+    if (oldPath) {
+        [oldPath->_edgeInfos removeAllObjects];
+    } else {
+        oldPath = [PathInfo path];
+        paths[edge->_to->_value] = oldPath;
+    }
+    oldPath->_weight = newWeight;
+    [oldPath->_edgeInfos addObjectsFromArray:fromPath->_edgeInfos];
+    EdgeInfo *info = [edge info];
+    if (info) { [oldPath->_edgeInfos addObject:info]; }
+}
+
 
 @end
