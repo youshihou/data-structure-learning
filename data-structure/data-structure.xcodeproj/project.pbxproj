@@ -32,6 +32,7 @@
 		035F706B24DC37E8000D649A /* Trie.m in Sources */ = {isa = PBXBuildFile; fileRef = 035F706A24DC37E8000D649A /* Trie.m */; };
 		036666DD2508F34E004BB901 /* Fibonacci.m in Sources */ = {isa = PBXBuildFile; fileRef = 036666DC2508F34E004BB901 /* Fibonacci.m */; };
 		036666E0250905B4004BB901 /* ClimbStairs.m in Sources */ = {isa = PBXBuildFile; fileRef = 036666DF250905B4004BB901 /* ClimbStairs.m */; };
+		036666E325090B7E004BB901 /* Hanoi.m in Sources */ = {isa = PBXBuildFile; fileRef = 036666E225090B7E004BB901 /* Hanoi.m */; };
 		036FA1F424CADFBB0007FFBA /* BST.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA1E324CADFBA0007FFBA /* BST.m */; };
 		036FA1F624CADFBB0007FFBA /* BinaryTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA1E824CADFBB0007FFBA /* BinaryTree.m */; };
 		036FA1F724CADFBB0007FFBA /* NSString+Tree.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA1EB24CADFBB0007FFBA /* NSString+Tree.m */; };
@@ -198,6 +199,8 @@
 		036666DC2508F34E004BB901 /* Fibonacci.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Fibonacci.m; sourceTree = "<group>"; };
 		036666DE250905B4004BB901 /* ClimbStairs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClimbStairs.h; sourceTree = "<group>"; };
 		036666DF250905B4004BB901 /* ClimbStairs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClimbStairs.m; sourceTree = "<group>"; };
+		036666E125090B7E004BB901 /* Hanoi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Hanoi.h; sourceTree = "<group>"; };
+		036666E225090B7E004BB901 /* Hanoi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Hanoi.m; sourceTree = "<group>"; };
 		036FA1DC24CADF970007FFBA /* BinaryTree */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BinaryTree; sourceTree = BUILT_PRODUCTS_DIR; };
 		036FA1E324CADFBA0007FFBA /* BST.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BST.m; sourceTree = "<group>"; };
 		036FA1E424CADFBB0007FFBA /* BST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BST.h; sourceTree = "<group>"; };
@@ -512,6 +515,8 @@
 				036666DC2508F34E004BB901 /* Fibonacci.m */,
 				036666DE250905B4004BB901 /* ClimbStairs.h */,
 				036666DF250905B4004BB901 /* ClimbStairs.m */,
+				036666E125090B7E004BB901 /* Hanoi.h */,
+				036666E225090B7E004BB901 /* Hanoi.m */,
 			);
 			path = Recursion;
 			sourceTree = "<group>";
@@ -1001,6 +1006,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				036666DD2508F34E004BB901 /* Fibonacci.m in Sources */,
+				036666E325090B7E004BB901 /* Hanoi.m in Sources */,
 				036666E0250905B4004BB901 /* ClimbStairs.m in Sources */,
 				032D19F3250786C30009A8CA /* main.m in Sources */,
 			);

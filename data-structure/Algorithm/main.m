@@ -8,6 +8,7 @@
 
 #import "Fibonacci.h"
 #import "ClimbStairs.h"
+#import "Hanoi.h"
 
 void testFib(void) {
     Fibonacci *fib = [[Fibonacci alloc] init];
@@ -24,11 +25,17 @@ void testCli(void) {
     NSInteger n = [ClimbStairs climbStairs:4];
     NSLog(@"%zd %zd", n1, n);
 }
+void testHanoi(void) {
+//    [Hanoi hanoi:1 a:@"A" b:@"B" c:@"C"];
+    [Hanoi hanoi:3 a:@"A" b:@"B" c:@"C"];
+}
+
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
 //        testFib();
-        testCli();
+//        testCli();
+        testHanoi();
     }
     return 0;
 }
