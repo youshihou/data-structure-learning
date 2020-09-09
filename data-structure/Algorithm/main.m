@@ -6,19 +6,29 @@
 //  Copyright © 2020 Ankui. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "Fibonacci.h"
+#import "ClimbStairs.h"
+
+void testFib(void) {
+    Fibonacci *fib = [[Fibonacci alloc] init];
+    NSInteger f0 = [fib fib0:10];
+    NSInteger f1 = [fib fib1:10];
+    NSInteger f2 = [fib fib2:10];
+    NSInteger f3 = [fib fib3:10];
+    NSInteger f4 = [fib fib4:10];
+    NSInteger f = [fib fib:10];
+    NSLog(@"%zd %zd %zd %zd %zd %zd", f0, f1, f2, f3, f4, f);
+}
+void testCli(void) {
+    NSInteger n1 = [ClimbStairs climbStairs1:4];
+    NSInteger n = [ClimbStairs climbStairs:4];
+    NSLog(@"%zd %zd", n1, n);
+}
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        Fibonacci *fib = [[Fibonacci alloc] init];
-        NSInteger f0 = [fib fib0:10];
-        NSInteger f1 = [fib fib1:10];
-        NSInteger f2 = [fib fib2:10];
-        NSInteger f3 = [fib fib3:10];
-        NSInteger f4 = [fib fib4:10];
-        NSInteger f = [fib fib:10];
-        NSLog(@"%zd %zd %zd %zd %zd %zd", f0, f1, f2, f3, f4, f);
+//        testFib();
+        testCli();
     }
     return 0;
 }
