@@ -14,6 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSInteger)fib0:(NSInteger)num;
 - (NSInteger)fib1:(NSInteger)num;
 - (NSInteger)fib2:(NSInteger)num;
+- (NSInteger)fib3:(NSInteger)num;
+- (NSInteger)fib4:(NSInteger)num;
+- (NSInteger)fib:(NSInteger)num;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -11,10 +11,14 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        Fibonacci *f = [[Fibonacci alloc] init];
-        NSInteger f1 = [f fib0:10];
-        NSInteger f2 = [f fib1:10];
-        NSLog(@"%zd %zd", f1, f2);
+        Fibonacci *fib = [[Fibonacci alloc] init];
+        NSInteger f0 = [fib fib0:10];
+        NSInteger f1 = [fib fib1:10];
+        NSInteger f2 = [fib fib2:10];
+        NSInteger f3 = [fib fib3:10];
+        NSInteger f4 = [fib fib4:10];
+        NSInteger f = [fib fib:10];
+        NSLog(@"%zd %zd %zd %zd %zd %zd", f0, f1, f2, f3, f4, f);
     }
     return 0;
 }
