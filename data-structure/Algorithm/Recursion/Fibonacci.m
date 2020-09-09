@@ -64,7 +64,6 @@
     return [array[num & 1] integerValue];
 }
 
-// 1 1 2 3 5 8
 - (NSInteger)fib:(NSInteger)num {
     if (num <= 2) { return 1; }
     NSInteger first = 1;
