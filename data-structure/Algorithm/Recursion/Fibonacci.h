@@ -11,7 +11,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Fibonacci : NSObject
-
+- (NSInteger)fib0:(NSInteger)num;
+- (NSInteger)fib1:(NSInteger)num;
+- (NSInteger)fib2:(NSInteger)num;
 @end
 
 NS_ASSUME_NONNULL_END
