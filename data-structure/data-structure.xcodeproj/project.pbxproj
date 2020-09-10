@@ -502,10 +502,18 @@
 			path = graph;
 			sourceTree = "<group>";
 		};
+		0325765A250A6A4300A9C444 /* back-tracking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "back-tracking";
+			sourceTree = "<group>";
+		};
 		032D19F1250786C30009A8CA /* Algorithm */ = {
 			isa = PBXGroup;
 			children = (
 				032D19F7250786CA0009A8CA /* recursion */,
+				0325765A250A6A4300A9C444 /* back-tracking */,
 				032D19F2250786C30009A8CA /* main.m */,
 			);
 			path = Algorithm;
