@@ -9,6 +9,7 @@
 #import "Fibonacci.h"
 #import "ClimbStairs.h"
 #import "Hanoi.h"
+#import "TailCall.h"
 
 void testFib(void) {
     Fibonacci *fib = [[Fibonacci alloc] init];
@@ -29,13 +30,19 @@ void testHanoi(void) {
 //    [Hanoi hanoi:1 a:@"A" b:@"B" c:@"C"];
     [Hanoi hanoi:3 a:@"A" b:@"B" c:@"C"];
 }
+void testTailCall(void) {
+    NSInteger n1 = [TailCall facttorial:4];
+    NSInteger n = [TailCall facttorial:4];
+    NSLog(@"%zd %zd", n1, n);
+}
 
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
 //        testFib();
 //        testCli();
-        testHanoi();
+//        testHanoi();
+        testTailCall();
     }
     return 0;
 }

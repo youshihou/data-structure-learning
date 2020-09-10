@@ -17,6 +17,7 @@
 		030900C024D1B273009C3DEE /* TreeMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 030900BF24D1B273009C3DEE /* TreeMap.m */; };
 		030E0F3624FD1DFF009201CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 030E0F3524FD1DFF009201CA /* main.m */; };
 		030E0F3E24FD1FA2009201CA /* ListGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 030E0F3D24FD1FA2009201CA /* ListGraph.m */; };
+		03257659250A65AE00A9C444 /* TailCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 03257658250A65AE00A9C444 /* TailCall.m */; };
 		032D19F3250786C30009A8CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 032D19F2250786C30009A8CA /* main.m */; };
 		0335DF1124AB8DE400507ACF /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 0335DF1024AB8DE400507ACF /* main.c */; };
 		0344427024BC8EC50030765D /* SingleLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 0344426F24BC8EC50030765D /* SingleLinkedList.c */; };
@@ -168,6 +169,8 @@
 		030E0F3B24FD1F56009201CA /* GraphProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphProtocol.h; sourceTree = "<group>"; };
 		030E0F3C24FD1FA2009201CA /* ListGraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListGraph.h; sourceTree = "<group>"; };
 		030E0F3D24FD1FA2009201CA /* ListGraph.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListGraph.m; sourceTree = "<group>"; };
+		03257657250A65AE00A9C444 /* TailCall.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TailCall.h; sourceTree = "<group>"; };
+		03257658250A65AE00A9C444 /* TailCall.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TailCall.m; sourceTree = "<group>"; };
 		032D19F0250786C30009A8CA /* Algorithm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Algorithm; sourceTree = BUILT_PRODUCTS_DIR; };
 		032D19F2250786C30009A8CA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0335DF0D24AB8DE400507ACF /* data-structure */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "data-structure"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -517,6 +520,8 @@
 				036666DF250905B4004BB901 /* ClimbStairs.m */,
 				036666E125090B7E004BB901 /* Hanoi.h */,
 				036666E225090B7E004BB901 /* Hanoi.m */,
+				03257657250A65AE00A9C444 /* TailCall.h */,
+				03257658250A65AE00A9C444 /* TailCall.m */,
 			);
 			path = recursion;
 			sourceTree = "<group>";
@@ -1008,6 +1013,7 @@
 				036666DD2508F34E004BB901 /* Fibonacci.m in Sources */,
 				036666E325090B7E004BB901 /* Hanoi.m in Sources */,
 				036666E0250905B4004BB901 /* ClimbStairs.m in Sources */,
+				03257659250A65AE00A9C444 /* TailCall.m in Sources */,
 				032D19F3250786C30009A8CA /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
