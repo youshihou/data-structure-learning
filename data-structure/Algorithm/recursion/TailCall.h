@@ -13,6 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TailCall : NSObject
 + (NSInteger)facttorial1:(NSInteger)n;
 + (NSInteger)facttorial:(NSInteger)n;
+
++ (NSInteger)fib1:(NSInteger)n;
++ (NSInteger)fib:(NSInteger)n;
+
 @end
 
 NS_ASSUME_NONNULL_END

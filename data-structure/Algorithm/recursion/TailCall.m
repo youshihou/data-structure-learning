@@ -23,6 +23,16 @@
 }
 
 
++ (NSInteger)fib1:(NSInteger)n {
+    if (n <= 2) { return 1; }
+    return [self fib1:n - 1] + [self fib1:n - 2];
+}
 
-
++ (NSInteger)fib:(NSInteger)n {
+    return [self _fib:n first:1 second:1];
+}
++ (NSInteger)_fib:(NSInteger)n first:(NSInteger)first second:(NSInteger)second {
+    if (n <= 1) { return first; }
+    return [self _fib:n - 1 first:second second:first + second];
+}
 @end

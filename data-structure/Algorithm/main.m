@@ -34,6 +34,9 @@ void testTailCall(void) {
     NSInteger n1 = [TailCall facttorial:4];
     NSInteger n = [TailCall facttorial:4];
     NSLog(@"%zd %zd", n1, n);
+    NSInteger n2 = [TailCall fib1:10];
+    NSInteger n3 = [TailCall fib:10];
+    NSLog(@"%zd %zd", n2, n3);
 }
 
 
