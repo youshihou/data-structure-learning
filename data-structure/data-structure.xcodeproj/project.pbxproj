@@ -502,13 +502,13 @@
 		032D19F1250786C30009A8CA /* Algorithm */ = {
 			isa = PBXGroup;
 			children = (
-				032D19F7250786CA0009A8CA /* Recursion */,
+				032D19F7250786CA0009A8CA /* recursion */,
 				032D19F2250786C30009A8CA /* main.m */,
 			);
 			path = Algorithm;
 			sourceTree = "<group>";
 		};
-		032D19F7250786CA0009A8CA /* Recursion */ = {
+		032D19F7250786CA0009A8CA /* recursion */ = {
 			isa = PBXGroup;
 			children = (
 				036666DB2508F34E004BB901 /* Fibonacci.h */,
@@ -518,7 +518,7 @@
 				036666E125090B7E004BB901 /* Hanoi.h */,
 				036666E225090B7E004BB901 /* Hanoi.m */,
 			);
-			path = Recursion;
+			path = recursion;
 			sourceTree = "<group>";
 		};
 		0335DF0424AB8DE400507ACF = {
