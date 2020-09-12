@@ -41,9 +41,16 @@
 - (BOOL)_isValid:(NSInteger)row col:(NSInteger)col {
     for (NSInteger i = 0; i < row; i++) {
         NSInteger cur = [_cols[i] integerValue];
-        if (cur == col) { return NO; }
-        if (row - i == labs(col - cur)) { return NO; }
+        if (cur == col) {
+            printf("[%zd][%zd] = false\n", row, col);
+            return NO;
+        }
+        if (row - i == labs(col - cur)) {
+            printf("[%zd][%zd] = false\n", row, col);
+            return NO;
+        }
     }
+    printf("[%zd][%zd] = true\n", row, col);
     return YES;
 }
 - (void)_show {
