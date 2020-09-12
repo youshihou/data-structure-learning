@@ -38,7 +38,7 @@ void testTailCall(void) {
 }
 void testPlaceQueens(void) {
     BackTracking *bt = [[BackTracking alloc] init];
-    [bt placeQueens:4];
+    [bt placeQueens:8];
 }
 
 int main(int argc, const char * argv[]) {
