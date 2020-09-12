@@ -28,6 +28,7 @@
 - (void)_place:(NSInteger)row {
     if (row == _cols.count) {
         _ways++;
+        [self _show];
         return;
     }
     for (NSInteger col = 0; col < _cols.count; col++) {
@@ -44,5 +45,18 @@
         if (row - i == labs(col - cur)) { return NO; }
     }
     return YES;
+}
+- (void)_show {
+    for (NSInteger row = 0; row < _cols.count; row++) {
+        for (NSInteger col = 0; col < _cols.count; col++) {
+            if ([_cols[row] integerValue] == col) {
+                printf("1 ");
+            } else {
+                printf("0 ");
+            }
+        }
+        printf("\n");
+    }
+    printf("---------------\n");
 }
 @end
