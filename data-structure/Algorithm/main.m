@@ -36,7 +36,10 @@ void testTailCall(void) {
     NSInteger n3 = [Recursion fib:10];
     NSLog(@"%zd %zd", n2, n3);
 }
-
+void testPlaceQueens(void) {
+    BackTracking *bt = [[BackTracking alloc] init];
+    [bt placeQueens:8];
+}
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -44,6 +47,7 @@ int main(int argc, const char * argv[]) {
 //        testCli();
 //        testHanoi();
 //        testTailCall();
+        testPlaceQueens();
     }
     return 0;
 }
