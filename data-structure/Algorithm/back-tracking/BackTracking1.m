@@ -1,5 +1,5 @@
 //
-//  BackTracking_.m
+//  BackTracking1.m
 //  Algorithm
 //
 //  Created by Ankui on 9/12/20.
@@ -9,6 +9,7 @@
 #import "BackTracking1.h"
 
 @interface BackTracking1 () {
+    NSMutableArray *_queens;
     NSMutableArray *_cols;
     NSMutableArray *_leftTop;
     NSMutableArray *_rightTop;
@@ -19,8 +20,10 @@
 @implementation BackTracking1
 - (void)placeQueens:(NSInteger)n {
     if (n < 1) { return; }
+    _queens = [NSMutableArray array];
     _cols = [NSMutableArray array];
     for (NSInteger i = 0; i < n; i++) {
+        [_queens addObject:@0];
         [_cols addObject:@NO];
     }
     _leftTop = [NSMutableArray array];
@@ -48,6 +51,7 @@
         NSInteger rightIdx = row + col;
         if ([_rightTop[rightIdx] boolValue]) { continue; }
         
+        _queens[row] = @(col);
         _cols[col] = @YES;
         _leftTop[leftIdx] = @YES;
         _rightTop[rightIdx] = @YES;
@@ -58,16 +62,17 @@
     }
 }
 - (void)_show {
-//    for (NSInteger row = 0; row < _cols.count; row++) {
-//        for (NSInteger col = 0; col < _cols.count; col++) {
-//            if ([_cols[row] integerValue] == col) {
-//                printf("1 ");
-//            } else {
-//                printf("0 ");
-//            }
-//        }
-//        printf("\n");
-//    }
-//    printf("---------------\n");
+    NSInteger count = _queens.count;
+    for (NSInteger row = 0; row < count; row++) {
+        for (NSInteger col = 0; col < count; col++) {
+            if ([_queens[row] integerValue] == col) {
+                printf("1 ");
+            } else {
+                printf("0 ");
+            }
+        }
+        printf("\n");
+    }
+    printf("---------------\n");
 }
 @end

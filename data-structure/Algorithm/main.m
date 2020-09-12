@@ -8,6 +8,7 @@
 
 #import "Recursion.h"
 #import "BackTracking.h"
+#import "BackTracking1.h"
 
 void testFib(void) {
     Recursion *fib = [[Recursion alloc] init];
@@ -37,8 +38,10 @@ void testTailCall(void) {
     NSLog(@"%zd %zd", n2, n3);
 }
 void testPlaceQueens(void) {
-    BackTracking *bt = [[BackTracking alloc] init];
-    [bt placeQueens:4];
+//    BackTracking *bt = [[BackTracking alloc] init];
+//    [bt placeQueens:8];
+    BackTracking1 *bt1 = [[BackTracking1 alloc] init];
+    [bt1 placeQueens:8];
 }
 
 int main(int argc, const char * argv[]) {
