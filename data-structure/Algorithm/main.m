@@ -9,6 +9,7 @@
 #import "Recursion.h"
 #import "BackTracking.h"
 #import "BackTracking1.h"
+#import "BackTracking2.h"
 
 void testFib(void) {
     Recursion *fib = [[Recursion alloc] init];
@@ -40,8 +41,10 @@ void testTailCall(void) {
 void testPlaceQueens(void) {
 //    BackTracking *bt = [[BackTracking alloc] init];
 //    [bt placeQueens:8];
-    BackTracking1 *bt1 = [[BackTracking1 alloc] init];
-    [bt1 placeQueens:8];
+//    BackTracking1 *bt1 = [[BackTracking1 alloc] init];
+//    [bt1 placeQueens:8];
+    BackTracking2 *bt2 = [[BackTracking2 alloc] init];
+    [bt2 place8Queens];
 }
 
 int main(int argc, const char * argv[]) {

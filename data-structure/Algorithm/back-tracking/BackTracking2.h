@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BackTracking2 : NSObject
-
+- (void)place8Queens;
 @end
 
 NS_ASSUME_NONNULL_END
