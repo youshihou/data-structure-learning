@@ -9,5 +9,7 @@
 #import "BackTracking.h"
 
 @implementation BackTracking
-
++ (void)placeQueens:(NSInteger)n {
+    
+}
 @end

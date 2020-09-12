@@ -17,7 +17,8 @@
 		030900C024D1B273009C3DEE /* TreeMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 030900BF24D1B273009C3DEE /* TreeMap.m */; };
 		030E0F3624FD1DFF009201CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 030E0F3524FD1DFF009201CA /* main.m */; };
 		030E0F3E24FD1FA2009201CA /* ListGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 030E0F3D24FD1FA2009201CA /* ListGraph.m */; };
-		03257659250A65AE00A9C444 /* TailCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 03257658250A65AE00A9C444 /* TailCall.m */; };
+		0324210F250C6546009E1B4F /* BackTracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0324210E250C6546009E1B4F /* BackTracking.m */; };
+		03242112250C6585009E1B4F /* Recursion.m in Sources */ = {isa = PBXBuildFile; fileRef = 03242111250C6585009E1B4F /* Recursion.m */; };
 		032D19F3250786C30009A8CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 032D19F2250786C30009A8CA /* main.m */; };
 		0335DF1124AB8DE400507ACF /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 0335DF1024AB8DE400507ACF /* main.c */; };
 		0344427024BC8EC50030765D /* SingleLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 0344426F24BC8EC50030765D /* SingleLinkedList.c */; };
@@ -31,9 +32,6 @@
 		035A799F24F3FBD400DE65CC /* QuickUnionRankPathHalving.m in Sources */ = {isa = PBXBuildFile; fileRef = 035A799E24F3FBD400DE65CC /* QuickUnionRankPathHalving.m */; };
 		035C081824DAF3C400D201B0 /* PriorityQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 035C081724DAF3C400D201B0 /* PriorityQueue.m */; };
 		035F706B24DC37E8000D649A /* Trie.m in Sources */ = {isa = PBXBuildFile; fileRef = 035F706A24DC37E8000D649A /* Trie.m */; };
-		036666DD2508F34E004BB901 /* Fibonacci.m in Sources */ = {isa = PBXBuildFile; fileRef = 036666DC2508F34E004BB901 /* Fibonacci.m */; };
-		036666E0250905B4004BB901 /* ClimbStairs.m in Sources */ = {isa = PBXBuildFile; fileRef = 036666DF250905B4004BB901 /* ClimbStairs.m */; };
-		036666E325090B7E004BB901 /* Hanoi.m in Sources */ = {isa = PBXBuildFile; fileRef = 036666E225090B7E004BB901 /* Hanoi.m */; };
 		036FA1F424CADFBB0007FFBA /* BST.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA1E324CADFBA0007FFBA /* BST.m */; };
 		036FA1F624CADFBB0007FFBA /* BinaryTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA1E824CADFBB0007FFBA /* BinaryTree.m */; };
 		036FA1F724CADFBB0007FFBA /* NSString+Tree.m in Sources */ = {isa = PBXBuildFile; fileRef = 036FA1EB24CADFBB0007FFBA /* NSString+Tree.m */; };
@@ -169,8 +167,10 @@
 		030E0F3B24FD1F56009201CA /* GraphProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphProtocol.h; sourceTree = "<group>"; };
 		030E0F3C24FD1FA2009201CA /* ListGraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListGraph.h; sourceTree = "<group>"; };
 		030E0F3D24FD1FA2009201CA /* ListGraph.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListGraph.m; sourceTree = "<group>"; };
-		03257657250A65AE00A9C444 /* TailCall.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TailCall.h; sourceTree = "<group>"; };
-		03257658250A65AE00A9C444 /* TailCall.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TailCall.m; sourceTree = "<group>"; };
+		0324210D250C6546009E1B4F /* BackTracking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BackTracking.h; sourceTree = "<group>"; };
+		0324210E250C6546009E1B4F /* BackTracking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BackTracking.m; sourceTree = "<group>"; };
+		03242110250C6585009E1B4F /* Recursion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Recursion.h; sourceTree = "<group>"; };
+		03242111250C6585009E1B4F /* Recursion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Recursion.m; sourceTree = "<group>"; };
 		032D19F0250786C30009A8CA /* Algorithm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Algorithm; sourceTree = BUILT_PRODUCTS_DIR; };
 		032D19F2250786C30009A8CA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0335DF0D24AB8DE400507ACF /* data-structure */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "data-structure"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -198,12 +198,6 @@
 		035C081724DAF3C400D201B0 /* PriorityQueue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PriorityQueue.m; sourceTree = "<group>"; };
 		035F706924DC37E8000D649A /* Trie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Trie.h; sourceTree = "<group>"; };
 		035F706A24DC37E8000D649A /* Trie.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Trie.m; sourceTree = "<group>"; };
-		036666DB2508F34E004BB901 /* Fibonacci.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Fibonacci.h; sourceTree = "<group>"; };
-		036666DC2508F34E004BB901 /* Fibonacci.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Fibonacci.m; sourceTree = "<group>"; };
-		036666DE250905B4004BB901 /* ClimbStairs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClimbStairs.h; sourceTree = "<group>"; };
-		036666DF250905B4004BB901 /* ClimbStairs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClimbStairs.m; sourceTree = "<group>"; };
-		036666E125090B7E004BB901 /* Hanoi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Hanoi.h; sourceTree = "<group>"; };
-		036666E225090B7E004BB901 /* Hanoi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Hanoi.m; sourceTree = "<group>"; };
 		036FA1DC24CADF970007FFBA /* BinaryTree */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BinaryTree; sourceTree = BUILT_PRODUCTS_DIR; };
 		036FA1E324CADFBA0007FFBA /* BST.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BST.m; sourceTree = "<group>"; };
 		036FA1E424CADFBB0007FFBA /* BST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BST.h; sourceTree = "<group>"; };
@@ -505,6 +499,8 @@
 		0325765A250A6A4300A9C444 /* back-tracking */ = {
 			isa = PBXGroup;
 			children = (
+				0324210D250C6546009E1B4F /* BackTracking.h */,
+				0324210E250C6546009E1B4F /* BackTracking.m */,
 			);
 			path = "back-tracking";
 			sourceTree = "<group>";
@@ -522,14 +518,8 @@
 		032D19F7250786CA0009A8CA /* recursion */ = {
 			isa = PBXGroup;
 			children = (
-				036666DB2508F34E004BB901 /* Fibonacci.h */,
-				036666DC2508F34E004BB901 /* Fibonacci.m */,
-				036666DE250905B4004BB901 /* ClimbStairs.h */,
-				036666DF250905B4004BB901 /* ClimbStairs.m */,
-				036666E125090B7E004BB901 /* Hanoi.h */,
-				036666E225090B7E004BB901 /* Hanoi.m */,
-				03257657250A65AE00A9C444 /* TailCall.h */,
-				03257658250A65AE00A9C444 /* TailCall.m */,
+				03242110250C6585009E1B4F /* Recursion.h */,
+				03242111250C6585009E1B4F /* Recursion.m */,
 			);
 			path = recursion;
 			sourceTree = "<group>";
@@ -1018,11 +1008,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				036666DD2508F34E004BB901 /* Fibonacci.m in Sources */,
-				036666E325090B7E004BB901 /* Hanoi.m in Sources */,
-				036666E0250905B4004BB901 /* ClimbStairs.m in Sources */,
-				03257659250A65AE00A9C444 /* TailCall.m in Sources */,
+				0324210F250C6546009E1B4F /* BackTracking.m in Sources */,
 				032D19F3250786C30009A8CA /* main.m in Sources */,
+				03242112250C6585009E1B4F /* Recursion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
