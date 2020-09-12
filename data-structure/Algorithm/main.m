@@ -10,6 +10,7 @@
 #import "BackTracking.h"
 #import "BackTracking1.h"
 #import "BackTracking2.h"
+#import "Greedy.h"
 
 void testFib(void) {
     Recursion *fib = [[Recursion alloc] init];
@@ -46,6 +47,9 @@ void testPlaceQueens(void) {
     BackTracking2 *bt2 = [[BackTracking2 alloc] init];
     [bt2 place8Queens];
 }
+void testGreedy(void) {
+    
+}
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -53,7 +57,8 @@ int main(int argc, const char * argv[]) {
 //        testCli();
 //        testHanoi();
 //        testTailCall();
-        testPlaceQueens();
+//        testPlaceQueens();
+        testGreedy();
     }
     return 0;
 }

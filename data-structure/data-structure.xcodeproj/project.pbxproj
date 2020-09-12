@@ -21,6 +21,7 @@
 		03242112250C6585009E1B4F /* Recursion.m in Sources */ = {isa = PBXBuildFile; fileRef = 03242111250C6585009E1B4F /* Recursion.m */; };
 		03242115250D0113009E1B4F /* BackTracking1.m in Sources */ = {isa = PBXBuildFile; fileRef = 03242114250D0113009E1B4F /* BackTracking1.m */; };
 		03242118250D0986009E1B4F /* BackTracking2.m in Sources */ = {isa = PBXBuildFile; fileRef = 03242117250D0986009E1B4F /* BackTracking2.m */; };
+		0324211C250D1116009E1B4F /* Greedy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0324211B250D1116009E1B4F /* Greedy.m */; };
 		032D19F3250786C30009A8CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 032D19F2250786C30009A8CA /* main.m */; };
 		0335DF1124AB8DE400507ACF /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 0335DF1024AB8DE400507ACF /* main.c */; };
 		0344427024BC8EC50030765D /* SingleLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 0344426F24BC8EC50030765D /* SingleLinkedList.c */; };
@@ -177,6 +178,8 @@
 		03242114250D0113009E1B4F /* BackTracking1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BackTracking1.m; sourceTree = "<group>"; };
 		03242116250D0986009E1B4F /* BackTracking2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BackTracking2.h; sourceTree = "<group>"; };
 		03242117250D0986009E1B4F /* BackTracking2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BackTracking2.m; sourceTree = "<group>"; };
+		0324211A250D1116009E1B4F /* Greedy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Greedy.h; sourceTree = "<group>"; };
+		0324211B250D1116009E1B4F /* Greedy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Greedy.m; sourceTree = "<group>"; };
 		032D19F0250786C30009A8CA /* Algorithm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Algorithm; sourceTree = BUILT_PRODUCTS_DIR; };
 		032D19F2250786C30009A8CA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0335DF0D24AB8DE400507ACF /* data-structure */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "data-structure"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -502,6 +505,15 @@
 			path = graph;
 			sourceTree = "<group>";
 		};
+		03242119250D10FA009E1B4F /* greedy */ = {
+			isa = PBXGroup;
+			children = (
+				0324211A250D1116009E1B4F /* Greedy.h */,
+				0324211B250D1116009E1B4F /* Greedy.m */,
+			);
+			path = greedy;
+			sourceTree = "<group>";
+		};
 		0325765A250A6A4300A9C444 /* back-tracking */ = {
 			isa = PBXGroup;
 			children = (
@@ -520,6 +532,7 @@
 			children = (
 				032D19F7250786CA0009A8CA /* recursion */,
 				0325765A250A6A4300A9C444 /* back-tracking */,
+				03242119250D10FA009E1B4F /* greedy */,
 				032D19F2250786C30009A8CA /* main.m */,
 			);
 			path = Algorithm;
@@ -1023,6 +1036,7 @@
 				032D19F3250786C30009A8CA /* main.m in Sources */,
 				03242112250C6585009E1B4F /* Recursion.m in Sources */,
 				03242118250D0986009E1B4F /* BackTracking2.m in Sources */,
+				0324211C250D1116009E1B4F /* Greedy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
