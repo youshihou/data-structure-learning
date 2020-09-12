@@ -1,8 +1,8 @@
 //
-//  Hanoi.h
+//  BackTracking.h
 //  Algorithm
 //
-//  Created by Ankui on 9/9/20.
+//  Created by Ankui on 9/12/20.
 //  Copyright © 2020 Ankui. All rights reserved.
 //
 
@@ -10,8 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Hanoi : NSObject
-+ (void)hanoi:(NSInteger)n a:(NSString *)p1 b:(NSString *)p2 c:(NSString *)p3;
+@interface BackTracking : NSObject
+
 @end
 
 NS_ASSUME_NONNULL_END
