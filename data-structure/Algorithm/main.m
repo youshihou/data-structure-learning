@@ -48,7 +48,8 @@ void testPlaceQueens(void) {
     [bt2 place8Queens];
 }
 void testGreedy(void) {
-    [Greedy pirate];
+//    [Greedy pirate];
+    [Greedy coinChange];
 }
 
 int main(int argc, const char * argv[]) {

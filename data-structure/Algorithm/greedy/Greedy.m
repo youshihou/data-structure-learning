@@ -22,9 +22,28 @@
         if (new <= capacity) {
             weight = new;
             count++;
-            NSLog(@"%@", weights[i]);
+            NSLog(@"weight: %@", weights[i]);
         }
     }
     NSLog(@"total: %zd", count);
+}
+
++ (void)coinChange {
+    NSArray *faces = @[@25, @10, @5, @1];
+    faces = [faces sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        return [obj1 integerValue] - [obj2 integerValue];
+    }];
+    NSInteger money = 41;
+    NSInteger coins = 0;
+    NSInteger count = faces.count - 1;
+    for (NSInteger i = count; i >= 0; i--) {
+        NSInteger face = [faces[i] integerValue];
+        if (money < face) { continue; }
+        money -= face;
+        coins++;
+        i = count + 1;
+        NSLog(@"face: %zd", face);
+    }
+    NSLog(@"total: %zd", coins);
 }
 @end
