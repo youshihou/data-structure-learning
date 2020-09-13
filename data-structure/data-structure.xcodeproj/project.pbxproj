@@ -537,6 +537,7 @@
 				0325765A250A6A4300A9C444 /* back-tracking */,
 				03242119250D10FA009E1B4F /* greedy */,
 				034A4534250DC16C00D3AE72 /* divide-conquer */,
+				034A4538250DDD7400D3AE72 /* dynamic-programming */,
 				032D19F2250786C30009A8CA /* main.m */,
 			);
 			path = Algorithm;
@@ -617,6 +618,13 @@
 				034A4536250DC6F800D3AE72 /* DivideConquer.m */,
 			);
 			path = "divide-conquer";
+			sourceTree = "<group>";
+		};
+		034A4538250DDD7400D3AE72 /* dynamic-programming */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "dynamic-programming";
 			sourceTree = "<group>";
 		};
 		034BDEE224E5613B002CC739 /* double-list */ = {
