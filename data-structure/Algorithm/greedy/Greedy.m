@@ -8,6 +8,28 @@
 
 #import "Greedy.h"
 
+@interface Article : NSObject {
+    @public
+    NSInteger _weight;
+    NSInteger _value;
+    NSNumber *_density;
+}
+@end
+@implementation Article
+- (instancetype)initWith:(NSInteger)weight value:(NSInteger)value {
+    if (self = [super init]) {
+        _weight = weight;
+        _value = value;
+        _density = @(value * 1.0 / weight);
+    }
+    return self;
+}
+- (NSString *)description {
+    return [NSString stringWithFormat:@"Article [weight = %zd, value = %zd, density = %@", _weight, _value, _density];
+}
+@end
+
+
 @implementation Greedy
 // MARK: - pirate
 + (void)pirate {
@@ -63,5 +85,56 @@
         NSLog(@"face: %zd", face);
     }
     NSLog(@"total: %zd", coins);
+}
+
+// MARK: - knapsack
++ (void)knapsack {
+    [self _select:@"Value" comparator:^NSComparisonResult(Article *obj1, Article *obj2) {
+        return obj2->_value - obj1->_value;
+    }];
+    [self _select:@"Weight" comparator:^NSComparisonResult(Article *obj1, Article *obj2) {
+        return obj1->_weight - obj2->_weight;
+    }];
+    [self _select:@"Density" comparator:^NSComparisonResult(Article *obj1, Article *obj2) {
+        return [obj2->_density compare:obj1->_density];
+    }];
+}
++ (void)_select:(NSString *)title comparator:(NSComparator)cmptr {
+    NSMutableArray<Article *> *array = [NSMutableArray array];
+    Article *a = [[Article alloc] initWith:35 value:10];
+    [array addObject:a];
+    a = [[Article alloc] initWith:30 value:40];
+    [array addObject:a];
+    a = [[Article alloc] initWith:60 value:30];
+    [array addObject:a];
+    a = [[Article alloc] initWith:50 value:50];
+    [array addObject:a];
+    a = [[Article alloc] initWith:40 value:35];
+    [array addObject:a];
+    a = [[Article alloc] initWith:10 value:40];
+    [array addObject:a];
+    a = [[Article alloc] initWith:25 value:30];
+    [array addObject:a];
+    [array sortUsingComparator:cmptr];
+    
+    NSInteger capacity = 150;
+    NSInteger weight = 0;
+    NSInteger value = 0;
+    NSMutableArray<Article *> *selected = [NSMutableArray array];
+    for (NSInteger i = 0; i < array.count && weight < capacity; i++) {
+        Article *article = array[i];
+        NSInteger new = weight + article->_weight;
+        if (new <= capacity) {
+            weight = new;
+            value += article->_value;
+            [selected addObject:article];
+        }
+    }
+    NSLog(@"[%@]", title);
+    NSLog(@"total value: %zd", value);
+    for (Article *a in selected) {
+        NSLog(@"%@", a);
+    }
+    NSLog(@"--------------------------------------------------------------");
 }
 @end

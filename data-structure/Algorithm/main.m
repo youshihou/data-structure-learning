@@ -49,9 +49,12 @@ void testPlaceQueens(void) {
 }
 void testGreedy(void) {
 //    [Greedy pirate];
-    NSArray *faces = @[@25, @10, @5, @1];
-//    faces = @[@25, @20, @5, @1];
-    [Greedy coinChange:faces total:41];
+    
+//    NSArray *faces = @[@25, @10, @5, @1];
+////    faces = @[@25, @20, @5, @1];
+//    [Greedy coinChange:faces total:41];
+    
+    [Greedy knapsack];
 }
 
 int main(int argc, const char * argv[]) {

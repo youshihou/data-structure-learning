@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Greedy : NSObject
 + (void)pirate;
 + (void)coinChange:(NSArray *)faces total:(NSInteger)money;
++ (void)knapsack;
 @end
 
 NS_ASSUME_NONNULL_END
