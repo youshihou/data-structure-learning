@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Greedy : NSObject
-
++ (void)pirate;
 @end
 
 NS_ASSUME_NONNULL_END
