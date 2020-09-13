@@ -9,6 +9,7 @@
 #import "Greedy.h"
 
 @implementation Greedy
+// MARK: - pirate
 + (void)pirate {
     NSArray *weights = @[@3, @5, @4, @10, @7, @14, @2, @11];
     weights = [weights sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
@@ -28,12 +29,11 @@
     NSLog(@"total: %zd", count);
 }
 
-+ (void)coinChange1 {
-    NSArray *faces = @[@25, @10, @5, @1];
+// MARK: - coinChange
++ (void)coinChange1:(NSArray *)faces total:(NSInteger)money {
     faces = [faces sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         return [obj1 integerValue] - [obj2 integerValue];
     }];
-    NSInteger money = 41;
     NSInteger coins = 0;
     NSInteger count = faces.count - 1;
     for (NSInteger i = count; i >= 0; i--) {
@@ -46,12 +46,10 @@
     }
     NSLog(@"total: %zd", coins);
 }
-+ (void)coinChange {
-    NSArray *faces = @[@25, @10, @5, @1];
++ (void)coinChange:(NSArray *)faces total:(NSInteger)money {
     faces = [faces sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         return [obj2 integerValue] - [obj1 integerValue];
     }];
-    NSInteger money = 41;
     NSInteger coins = 0;
     NSInteger i = 0;
     while (i < faces.count) {
