@@ -51,11 +51,11 @@ void testPlaceQueens(void) {
 void testGreedy(void) {
 //    [Greedy pirate];
     
-//    NSArray *faces = @[@25, @10, @5, @1];
+    NSArray *faces = @[@25, @10, @5, @1];
 ////    faces = @[@25, @20, @5, @1];
-//    [Greedy coinChange:faces total:41];
+    [Greedy coinChange:faces total:41];
     
-    [Greedy knapsack];
+//    [Greedy knapsack];
 }
 void testDivideConquer(void) {
     NSArray *array = @[@-2, @1, @-3, @4, @-1, @2, @1, @-5, @4];
@@ -70,8 +70,8 @@ int main(int argc, const char * argv[]) {
 //        testHanoi();
 //        testTailCall();
 //        testPlaceQueens();
-//        testGreedy();
-        testDivideConquer();
+        testGreedy();
+//        testDivideConquer();
     }
     return 0;
 }
