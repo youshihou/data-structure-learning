@@ -28,7 +28,7 @@
     NSLog(@"total: %zd", count);
 }
 
-+ (void)coinChange {
++ (void)coinChange1 {
     NSArray *faces = @[@25, @10, @5, @1];
     faces = [faces sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         return [obj1 integerValue] - [obj2 integerValue];
@@ -42,6 +42,26 @@
         money -= face;
         coins++;
         i = count + 1;
+        NSLog(@"face: %zd", face);
+    }
+    NSLog(@"total: %zd", coins);
+}
++ (void)coinChange {
+    NSArray *faces = @[@25, @10, @5, @1];
+    faces = [faces sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        return [obj2 integerValue] - [obj1 integerValue];
+    }];
+    NSInteger money = 41;
+    NSInteger coins = 0;
+    NSInteger i = 0;
+    while (i < faces.count) {
+        NSInteger face = [faces[i] integerValue];
+        if (money < face) {
+            i++;
+            continue;
+        }
+        money -= face;
+        coins++;
         NSLog(@"face: %zd", face);
     }
     NSLog(@"total: %zd", coins);
