@@ -11,6 +11,7 @@
 #import "BackTracking1.h"
 #import "BackTracking2.h"
 #import "Greedy.h"
+#import "DivideConquer.h"
 
 void testFib(void) {
     Recursion *fib = [[Recursion alloc] init];
@@ -56,6 +57,11 @@ void testGreedy(void) {
     
     [Greedy knapsack];
 }
+void testDivideConquer(void) {
+    NSArray *array = @[@-2, @1, @-3, @4, @-1, @2, @1, @-5, @4];
+    NSInteger max = [DivideConquer maxSubarray:array];
+    NSLog(@"%zd", max);
+}
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -64,7 +70,8 @@ int main(int argc, const char * argv[]) {
 //        testHanoi();
 //        testTailCall();
 //        testPlaceQueens();
-        testGreedy();
+//        testGreedy();
+        testDivideConquer();
     }
     return 0;
 }

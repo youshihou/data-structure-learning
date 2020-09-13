@@ -26,6 +26,7 @@
 		0335DF1124AB8DE400507ACF /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 0335DF1024AB8DE400507ACF /* main.c */; };
 		0344427024BC8EC50030765D /* SingleLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 0344426F24BC8EC50030765D /* SingleLinkedList.c */; };
 		0344427424BC912B0030765D /* ArrayList.c in Sources */ = {isa = PBXBuildFile; fileRef = 0344427324BC912B0030765D /* ArrayList.c */; };
+		034A4537250DC6F800D3AE72 /* DivideConquer.m in Sources */ = {isa = PBXBuildFile; fileRef = 034A4536250DC6F800D3AE72 /* DivideConquer.m */; };
 		034BDEE524E56158002CC739 /* DLinkedList.m in Sources */ = {isa = PBXBuildFile; fileRef = 034BDEE424E56158002CC739 /* DLinkedList.m */; };
 		0354350A2501238F00632C30 /* MinHeap.m in Sources */ = {isa = PBXBuildFile; fileRef = 035435092501238F00632C30 /* MinHeap.m */; };
 		035A799324F3E74600DE65CC /* QuickUnionSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 035A799224F3E74600DE65CC /* QuickUnionSize.m */; };
@@ -188,6 +189,8 @@
 		0344426F24BC8EC50030765D /* SingleLinkedList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SingleLinkedList.c; sourceTree = "<group>"; };
 		0344427224BC912B0030765D /* ArrayList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArrayList.h; sourceTree = "<group>"; };
 		0344427324BC912B0030765D /* ArrayList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ArrayList.c; sourceTree = "<group>"; };
+		034A4535250DC6F800D3AE72 /* DivideConquer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DivideConquer.h; sourceTree = "<group>"; };
+		034A4536250DC6F800D3AE72 /* DivideConquer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DivideConquer.m; sourceTree = "<group>"; };
 		034BDEE324E56158002CC739 /* DLinkedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLinkedList.h; sourceTree = "<group>"; };
 		034BDEE424E56158002CC739 /* DLinkedList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLinkedList.m; sourceTree = "<group>"; };
 		035435082501238F00632C30 /* MinHeap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MinHeap.h; sourceTree = "<group>"; };
@@ -533,6 +536,7 @@
 				032D19F7250786CA0009A8CA /* recursion */,
 				0325765A250A6A4300A9C444 /* back-tracking */,
 				03242119250D10FA009E1B4F /* greedy */,
+				034A4534250DC16C00D3AE72 /* divide-and-conquer */,
 				032D19F2250786C30009A8CA /* main.m */,
 			);
 			path = Algorithm;
@@ -604,6 +608,15 @@
 				038E9F8E24C2B98A005DD7A2 /* CycleLinkedList.c */,
 			);
 			path = list;
+			sourceTree = "<group>";
+		};
+		034A4534250DC16C00D3AE72 /* divide-and-conquer */ = {
+			isa = PBXGroup;
+			children = (
+				034A4535250DC6F800D3AE72 /* DivideConquer.h */,
+				034A4536250DC6F800D3AE72 /* DivideConquer.m */,
+			);
+			path = "divide-and-conquer";
 			sourceTree = "<group>";
 		};
 		034BDEE224E5613B002CC739 /* double-list */ = {
@@ -1033,6 +1046,7 @@
 			files = (
 				0324210F250C6546009E1B4F /* BackTracking.m in Sources */,
 				03242115250D0113009E1B4F /* BackTracking1.m in Sources */,
+				034A4537250DC6F800D3AE72 /* DivideConquer.m in Sources */,
 				032D19F3250786C30009A8CA /* main.m in Sources */,
 				03242112250C6585009E1B4F /* Recursion.m in Sources */,
 				03242118250D0986009E1B4F /* BackTracking2.m in Sources */,

@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DivideConquer : NSObject
-
++ (NSInteger)maxSubarray:(NSArray *)array;
 @end
 
 NS_ASSUME_NONNULL_END
