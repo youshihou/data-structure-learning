@@ -259,4 +259,30 @@
     }
 }
 
+
+
+- (void)inorder_morris:(struct Visitor *)visitor {
+    if (!_root || visitor->stop) { return; }
+    TreeNode *node = _root;
+    while (node) {
+        if (node->_left) {
+            TreeNode *pred = node->_left;
+            while (pred->_right && pred->_right != node) {
+                pred = pred->_right;
+            }
+            if (!pred->_right) {
+                pred->_right = node;
+                node = node->_left;
+            } else {
+                if (visitor->visit((__bridge void * _Nonnull)(node->_element))) { return; }
+                pred->_right = nil;
+                node = node->_right;
+            }
+        } else {
+            if (visitor->visit((__bridge void * _Nonnull)(node->_element))) { return; }
+            node = node->_right;
+        }
+    }
+}
+
 @end

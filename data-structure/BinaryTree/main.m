@@ -93,7 +93,8 @@ void testBST(void) {
 
     visitor->stop = false;
     visitor->visit = inorder_visit;
-    [bst inorder:visitor];
+//    [bst inorder:visitor];
+    [bst inorder_morris:visitor];
     printf("\n");
 
     visitor->stop = false;
